@@ -1,0 +1,21 @@
+<!--pages/mineAppointment/mineAppointment.wxml-->
+<view class="container">
+  <!-- 导航栏 -->
+    <view class="navbar">
+     <block wx:for="{{statusType}}" wx:key="index">
+        <view  class="navbar-item {{navbarActiveIndex ==index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" bindtap="onNavBarTap">
+          <text>{{item}}</text>
+        </view>
+     </block>
+    </view>
+    <view class="no-appointment" hidden="{{appointmentList ? true : false}}">
+        <image src="/images/icon/yuyuekc.png" class="no-appointment-img"></image>
+        <view class="text">暂无预约~ ~</view>
+    </view>
+    <swiper class="content-wrapper" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
+      <swiper-item wx:for="{{statusType}}" wx:key="index">
+        <scroll-view scroll-y="{{true}}">
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+</view>

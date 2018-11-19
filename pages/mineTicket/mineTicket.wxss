@@ -1,0 +1,166 @@
+/* pages/mineTicket/mineTicket.wxss */
+page{
+  background-color: #191A19;
+}
+.container{
+   margin: 20rpx 20rpx 0 20rpx;
+}
+.search-view{
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  flex-direction: row;
+  /* line-height: 3; */
+  height: 100rpx;
+  border-radius:15rpx;
+ 
+
+}
+.search-view .input-view{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.search-view .text-view{
+  display: flex;
+  width: 40%;
+  border-top-right-radius:15rpx; 
+  border-bottom-right-radius: 15rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F2873B
+}
+
+
+.navbar{
+  margin-top: 20rpx;
+  display: flex;
+  z-index: 500;
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+  text-align: center;
+  color: #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #191A19;
+  border: 1rpx solid #666;
+  border-radius: 15rpx
+}
+
+.navbar-item{
+  flex: 1;
+  padding: 26rpx 0px;
+}
+
+.navbar-item-active{
+  transition: all 0.3s;
+  border-bottom: 8rpx solid #F2873B;
+  color: #F2873B;
+}
+
+.content-wrapper{
+  padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 20rpx;
+  left: 20rpx;
+  top: 210rpx;
+}
+
+.no-ticket{
+    width:100%;
+    bottom:0;
+    top:88rpx;
+    left:0;
+    right:0;
+    text-align:center;
+    padding-top:203rpx;
+    /* background-color:#191A19; */
+
+}
+.no-ticket-img{
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 31rpx;
+}
+.no-ticket .text{
+    font-size:28rpx;
+    color:#999999;
+    text-align: center,
+   
+}
+
+.ticket-view{
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15rpx;
+}
+
+.ticket-view .ticket-view-up{
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  background-color: #959595;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+
+.ticket-view .ticket-view-down{
+  height: 30%;
+  background-color: #C3C3C3;
+  display: flex;
+  flex-direction: row;
+  border-bottom-left-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  justify-content: space-between;
+}
+
+.ticket-detail{
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content:center;
+  margin-left:10px;
+}
+
+.ticket-detail .store{
+  font-size:28rpx;
+}
+
+.ticket-money{
+  display: flex;
+  width: 20%;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  margin-right:20rpx
+}
+
+.ticket-money .num{
+  font-size: 80rpx;
+  align-self:center;
+}
+
+.ticket-money .logo{
+   margin-bottom:1rpx;
+   align-self:center;
+}
+
+.ticket-view-down .end-date{
+  font-size:24rpx;
+  align-items:center;
+  display:flex;
+  margin-left:20rpx;
+}
+.ticket-view-down .end-date-detail{
+  font-size:24rpx;
+  align-items:center;
+  display:flex;
+  margin-right:20rpx;
+
+}

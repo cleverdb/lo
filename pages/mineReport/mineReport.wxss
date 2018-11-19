@@ -1,0 +1,79 @@
+/* pages/mineReport/mineReport.wxss */
+
+page {
+  height: 100%;
+  background-color: #191a19;
+}
+.container{
+  padding: 20rpx;
+  /* background-color: #2E313F */
+  
+}
+.container-hd{
+  width: 100%;
+  color: #ccc;
+}
+.date-navbar{ 
+  font-size: 26rpx;
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+}
+.date-navbar .before{
+  display: flex;
+  flex-direction:row;
+  height: 100rpx;
+  align-items:center;
+
+}
+.date-navbar .next{
+  display: flex;
+  flex-direction:row;
+  height: 100rpx;
+  align-items:center;
+
+}
+.date-navbar image{
+  margin:20rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.container-bd{
+  width: 100%;
+  color: #ccc;
+  background-color: #202020;
+  padding: 20rpx;
+}
+ .container-bd .record-hd{
+   border-bottom: 2rpx solid #111;
+   padding: 20rpx;
+ }
+.record-hd .data-total .long{
+   padding-left: 20rpx;
+   color: #F2873B;
+   font-size: 26rpx;
+ }
+.container-bd .record-bd{
+   padding: 40rpx 20rpx 20rpx 20rpx;
+ }
+.container-bd .name{
+  font-size: 42rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+.record-bd .data-detail{
+  padding-left: 20rpx;
+}
+.record-bd  .project-title{
+  color:#F2873B;
+}
+.container-bd .data-detail .tr{
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 0; 
+  font-size: 34rpx;
+}
+.container-bd .data-detail .td{
+  font-size: 26rpx;
+}

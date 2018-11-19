@@ -1,0 +1,191 @@
+/* pages/curoseDetail/curoseDetail.wxss */
+
+.container {
+  min-height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx 120rpx 20rpx;
+  background-color: #191a19;
+}
+
+.container .container-hd {
+  width: 100%;
+  display: flex;
+  padding: 20rpx;
+  flex-grow: row no-wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: auto;
+  align-items: center;
+  background-color: #202020;
+}
+
+.coach-info {
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+}
+
+.title {
+  color: #f2873b;
+  font-size: 28rpx;
+}
+
+.coach-info .desc {
+  margin-top: 16rpx;
+  font-size: 22rpx;
+}
+
+.coach-avatar {
+  position: relative;
+}
+
+.coach-avatar   image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.container-bd {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20rpx;
+  box-sizing: border-box;
+  height: auto;
+  align-items: center;
+  background-color: #202020;
+}
+
+.course-attention {
+  margin-top: 20rpx;
+}
+
+.content {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+.buy-course {
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  height: 100rpx;
+  bottom: 0;
+  margin: 0;
+  right: 0;
+  background-color: #f2873b;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.popup-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 500;
+  color: #fff;
+}
+
+.popup-content {
+  height: 600rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 600;
+  background: #fff;
+  padding-top: 20rpx;
+}
+
+.popup-content .cell {
+  border-bottom: 2rpx solid #ccc;
+  line-height: 100rpx;
+  padding: 0 20rpx 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.popup-content .name {
+  font-size: 28rpx;
+}
+
+.popup-content .value {
+  font-size: 24rpx;
+}
+
+.num-step {
+  border: 2rpx solid #ccc;
+  border-radius: 6rpx;
+  width: 140rpx;
+  height: 52rpx;
+  margin: 0 0 0 40rpx;
+}
+
+.num-step text {
+  width: 38rpx;
+  height: 56rpx;
+  line-height: 42rpx;
+  text-align: center;
+  float: left;
+}
+
+.num-step input {
+  float: left;
+  margin: 0 auto;
+  width: 60rpx;
+  text-align: center;
+  height: 52rpx;
+  font-size: 24rpx;
+  border-left: 2rpx solid #ccc;
+  border-right: 2rpx solid #ccc;
+}
+
+.num-step .ok {
+  color: black;
+}
+
+.num-step .disabled {
+  color: #ccc;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container .mc-hd {
+  padding-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mc-hd .money {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #000;
+}
+
+.modal-container .mc-bd {
+  border-top: 2rpx solid #ccc;
+  padding-top: 20rpx;
+}
+
+.modal-container .mc-bd .cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

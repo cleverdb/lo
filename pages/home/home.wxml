@@ -1,0 +1,6 @@
+<!--pages/home/home.wxml-->
+  <image src='/images/home.png' class="bg-image" mode="scaleToFill"/>
+  <button class='buyMember' bindtap='buyMember'></button>
+  <button class='buyCourse' bindtap='buyCourse'></button>
+  <!-- <button class="appointmentCourse" bindtap='appointmentCourse'></button> -->
+  <button class="activity" bindtap='activity'></button>

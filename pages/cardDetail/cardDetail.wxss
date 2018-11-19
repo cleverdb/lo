@@ -1,0 +1,146 @@
+/* pages/cardDetail/cardDetail.wxss */
+page{
+  background-color: #191a19;
+}
+.container{
+  padding: 20rpx;
+}
+.img-box{   
+   width: 100%;
+   height: 400rpx;
+   position:relative;
+   margin-bottom:20rpx;
+}
+
+.img-box image{
+   width:100%;
+   height:100%;
+   display: block;
+   border-radius: 15rpx;
+}
+.img-box .card-type{
+   position: absolute;
+   top: 20rpx;
+   left: 20rpx;
+}
+
+.img-box text{
+  display:block;
+  margin-top:5rpx;
+}
+
+.img-box  .card-name{
+  font-size:34rpx; 
+  font-weight:700;
+  color:#000;
+}
+.card{
+  width: 100%;
+  font-size: 28rpx;
+  color: #ccc;
+}
+.card-hd{
+  border-top: 2rpx solid #666;
+  border-left: 2rpx solid #666;
+  border-right: 2rpx solid #666;
+}
+.card-hd .cell{
+  padding:10rpx 0 10rpx 0;
+  border-bottom: 2rpx solid #666;
+}
+.card-hd .cell .right{
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  margin-left:30rpx;
+  flex-wrap:wrap;
+}
+.card-hd .cell .left{
+ font-size: 28rpx;
+ margin: 20rpx;
+}
+.card-hd .cell .how-long{
+ width: 100rpx;
+ height: 52rpx;
+ border: 2rpx solid #666;
+ margin: 10rpx;
+ border-radius: 10rpx;
+ text-align: center;
+ line-height: 52rpx;
+}
+.card-hd .cell .how-long.selected{
+ border: 2rpx solid #f2873b;
+ color: #f2873b;
+}
+
+.card-bd{
+  margin-top: 20rpx;
+   border: 2rpx solid #666; 
+}
+.card-bd .cell{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between
+}
+.card-bd .cell{
+  margin: 20rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between
+}
+.card-bd .cell .left{
+  flex:2
+}
+.card-bd .cell .right{
+  flex:1
+}
+.card-bd .picker{
+  border: 2rpx solid #666;
+  border-radius: 10rpx;
+  text-align: center
+}
+.right .price{
+  color: #f2873b;
+}
+.buy-card {
+  width: 100%;
+  color: #fff;
+  position: fixed;
+  height: 100rpx;
+  bottom: 0;
+  margin: 0;
+  right: 0;
+  background-color: #f2873b;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container .mc-hd {
+  padding-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mc-hd .money {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #000;
+}
+
+.modal-container .mc-bd {
+  border-top: 2rpx solid #ccc;
+  padding-top: 20rpx;
+}
+
+.modal-container .mc-bd .cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

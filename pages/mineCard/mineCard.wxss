@@ -1,0 +1,44 @@
+page{
+  height: 100%;
+}
+.card-container{
+   background-color: #000;
+   padding: 20rpx;
+   min-height: 100%;
+}
+
+.card-container .card-box .img-box{   
+   width: 100%;
+   height: 400rpx;
+   position:relative;
+   margin-bottom:20rpx;
+}
+
+.img-box image{
+   width:100%;
+   height:100%;
+   display: block;
+   border-radius: 15rpx;
+}
+.img-box .card-type{
+   position: absolute;
+   top: 20rpx;
+   left: 20rpx;
+}
+
+.img-box text{
+  display:block;
+  margin-top:5rpx;
+}
+
+.img-box  .card-name{
+  font-size:34rpx; 
+  font-weight:700;
+  color:#000;
+}
+
+.img-box .card-desc{
+  margin: 80rpx 0 0 50rpx;
+  font-size:28rpx;
+  color:#000;
+}

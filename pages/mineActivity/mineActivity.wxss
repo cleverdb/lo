@@ -1,0 +1,63 @@
+/* pages/mineActivity/mineActivity.wxss *//* pages/activity/activity.wxss */
+/* pages/mineAppointment/mineAppointment.wxss */
+page{
+ background-color: #191A19;
+}
+.container{
+  display: flex;
+ 
+  flex-direction: column;
+}
+.navbar{
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+  text-align: center;
+  color: #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #191A19;
+  border-bottom: 1rpx solid #666;
+}
+
+.navbar-item{
+  flex: 1;
+  padding: 26rpx 0px;
+}
+
+.navbar-item-active{
+  transition: all 0.3s;
+  border-bottom: 8rpx solid #F2873B;
+  color: #F2873B;
+}
+
+.content-wrapper{
+  padding-top: 50px;
+}
+
+.no-appointment{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 100rpx;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 203rpx;
+    background-color: #191A19;
+}
+.no-appointment-img{
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 31rpx;
+}
+.no-appointment .text{
+    font-size:28rpx;
+    color:#999999;
+    text-align: center
+}

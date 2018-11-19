@@ -1,0 +1,19 @@
+<view class='container'>
+    <scroll-view scroll-y="true" class="course-list" >
+        <block wx:for="{{courseList}}" wx:key="index">
+            <view class="course">
+                <view class="course-hd">
+                    <image  mode='scaleToFill' src="{{item.avatar}}"></image>
+                </view>
+                <view class="course-bd">
+                    <view class="name">{{item.courseName}}</view>
+                    <view class="tag">{{item.tag}}</view>
+                    <view class="attention">{{item.coachName}}，{{item.courseNum}}课程，{{item.studentNum}}学员 </view>
+                </view>
+                <view class='course-ft'>
+                <navigator url="/pages/curoseDetail/curoseDetail" class="detail">详情</navigator> 
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

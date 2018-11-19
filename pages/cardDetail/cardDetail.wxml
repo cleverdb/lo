@@ -1,0 +1,79 @@
+<!--pages/cardDetail/cardDetail.wxml-->
+<view class='container'>
+  <view class="img-box">
+    <image src="/images/card.png" mode='scaleToFill'></image>
+    <view class='card-type'>
+      <text class="card-name">{{cardType}}</text>
+    </view>
+  </view>
+  <view class="card">
+    <view class="card-hd">
+      <view class='cell'>
+        <view class='left'>
+          课时
+        </view>
+        <view class='right'>
+          <block wx:for="{{validDateList}}">
+            <view data-item="{{item}}" class="how-long {{validIndex==item.id?'selected':''}}" bindtap='bindValidDate'>
+              {{item.name}}
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class='cell'>
+        <view class='left'>
+          价格
+        </view>
+        <view class='right'>
+          <view>
+            <text class='price'>{{countPrice}}</text> 元
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="card-bd">
+      <view class='cell'>
+        <view class='left'>开卡场馆</view>
+        <view class='right'>
+          <picker bindchange="bindPickerChange" mode = "selector" value="{{index}}"  range-key="name" range="{{storeList}}">
+            <view class="picker">
+              {{storeList[storeIndex]["name"]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='cell'>
+        <view class='left'>销售人员</view>
+        <view class='right'>
+          <view>
+            <input placeholder='请输入销售姓名'></input>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="card-ft">
+      <view class='buy-card' bindtap="buyCard">
+        <text>购买会员卡</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<modal title="" hidden="{{hideModal}}" bindconfirm="confirmCard" bindcancel="cancelCard">
+  <view class="modal-container">
+    <view class="mc-hd">
+      <text>总金额</text>
+      <text class="money">¥{{countPrice}}</text>
+    </view>
+    <view class="mc-bd">
+      <view class='cell'>
+      <text>卡类型</text>
+      <text>{{cardType}}</text>
+      </view>
+      <view class='cell'>
+        <text>详情</text>
+        <text>{{cardDesc}}</text>
+      </view>
+    </view>
+  </view>
+</modal>

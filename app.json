@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/mine/mine",
+    "pages/buyCourse/buyCourse",
+    "pages/home/home",
+    "pages/mineInfo/mineInfo",
+    "pages/appointment/appointment",
+    "pages/index/index",
+    "pages/card/card",
+    "pages/cardDetail/cardDetail",
+    "pages/activity/activity",
+    "pages/curoseDetail/curoseDetail",
+    "pages/logs/logs",
+    "pages/mineAppointment/mineAppointment",
+    "pages/mineReport/mineReport",
+    "pages/mineCard/mineCard",
+    "pages/activityDetail/activityDetail",
+    "pages/mineTicket/mineTicket",
+    "pages/mineActivity/mineActivity"
+  ],
+  "window": {
+    "backgroundColor":"#191A19",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#211C24",
+    "navigationBarTitleText": "力偶健身俱乐部",
+    "navigationBarTextStyle": "white",
+    "navigationBarTextSize":"24",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#F2873B",
+    "borderStyle": "#191A19",
+    "backgroundColor": "#191A19",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-ok.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/buyCourse/buyCourse",
+        "iconPath": "images/icon/yuyuekc.png",
+        "selectedIconPath": "images/icon/yuyuekc-ok.png",
+        "text": "购买课程"
+      },
+      {
+        "pagePath": "pages/card/card",
+        "iconPath": "images/icon/ka.png",
+        "selectedIconPath": "images/icon/ka-ok.png",
+        "text": "卡服务"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mine-ok.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+<!--pages/mineInfo/mineInfo.wxml-->
+<view class='mineInfo'>
+<view class='avatar'>
+    <!-- <view class='avatar-hd'>
+      头像
+    </view> -->
+    <view class='avatar-bd'> 
+      <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl:'../../images/logo.png'}}" mode='scaleToFill' bindtap='changPhoto'></image>
+    </view>
+    <!-- <view class='cell-ft'>
+    </view> -->
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      昵称
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' ></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      电话
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' type='number' maxlength='11' value='18600227873'></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      性别
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' disabled='true' value='男'></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      生日
+    </view>
+    <view class='cell-bd'> 
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="picker">
+        {{birthDate}}
+    </view>
+  </picker>
+     
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+   <view class='cell'>
+    <view class='cell-hd'>
+      身高(CM)
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入'value='180' ></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      体重(KG)
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' value='180'></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      BMI
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' value='自动' ></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+  <view class='cell'>
+    <view class='cell-hd'>
+      健身目标
+    </view>
+    <view class='cell-bd'> 
+      <input placeholder='请输入' value='自动'></input>
+    </view>
+    <view class='cell-ft'>
+    </view>
+  </view>
+</view>

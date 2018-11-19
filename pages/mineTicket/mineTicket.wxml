@@ -1,0 +1,48 @@
+<!--pages/mineTicket/mineTicket.wxml-->
+<view class='container'>
+  <view class='search-view'>
+      <view class='input-view'>
+          <input placeholder="输入兑换券码"></input>
+      </view>
+      <view class='text-view'>
+          <text>立即兑换</text>
+      </view> 
+  </view>
+  <view class="navbar">
+     <block wx:for="{{statusType}}" wx:key="index">
+        <view  class="navbar-item {{navbarActiveIndex ==index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" bindtap="onNavBarTap">
+          <text>{{item}}</text>
+        </view>
+     </block>
+    </view>
+  <view class="no-ticket" hidden="{{ticketList ? true : false}}">
+        <image src="/images/icon/quanbao.png" class="no-ticket-img"></image>
+        <view class="text">暂无优惠券~ ~</view>
+    </view>
+    <swiper class="content-wrapper" style="height:{{winHeight}}rpx" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
+      <swiper-item wx:for="{{ticketList}}" wx:key="index" >
+        <scroll-view scroll-y="{{true}}">
+        <view class='ticket-view'>
+          <view class='ticket-view-up'>
+            <view class='ticket-detail'>
+              <text class='tname'>{{item.name}}</text>
+              <text class='store'>{{item.holdStore}}</text>
+            </view>
+            <view class='ticket-money'>
+                <text class='logo'>¥</text>
+                <text class='num'>{{item.price}}</text>
+            </view>
+          </view>
+          <view class='ticket-view-down'>
+            <view class='end-date'> 
+              <text class='tdate'>有效期至{{item.endDate}}</text>  
+            </view>
+            <view class='end-date-detail'> 
+              <text class='tdesc'>未过期</text>
+            </view>
+          </view>
+        </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+</view>

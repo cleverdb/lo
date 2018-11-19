@@ -1,0 +1,12 @@
+<!--pages/buyCourse/buyCourse.wxml-->
+  <view class="card-container">
+          <view class="card-box" wx:for-items="{{card}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+            <view class="img-box">
+                <image src="/images/card.png" mode='scaleToFill'></image>
+                <view class='card-type'>
+                    <text class="card-name">{{item.cardType}}</text>
+                    <text class="card-desc">{{item.cardDesc}}</text>
+                </view> 
+            </view>
+          </view>
+  </view>

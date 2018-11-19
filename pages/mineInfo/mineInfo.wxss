@@ -1,0 +1,86 @@
+/* pages/mineInfo/mineInfo.wxss */
+page{
+  background: #191a19;
+  display: block; 
+  min-height: 100%;
+}
+.mineInfo{
+  display: flex;
+  flex-direction: column;
+}
+.avatar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  padding: 20rpx 20rpx;
+  height: rpx;
+  font-size: 28rpx;
+  color: #ccc;
+  font-weight: 700;
+  border-bottom: 2rpx solid #666;
+}
+.avatar-hd{
+   flex-grow: 1;
+}
+.avatar-bd{
+  padding-right:20rpx;
+}
+.avatar image{
+  height:150rpx;
+  width: 150rpx;
+  border-radius: 50%;
+} 
+.cell{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  padding: 24rpx 30rpx;
+  line-height: 0.5;
+  font-size: 28rpx;
+  color: #ccc;
+  font-weight: 700;
+  border-bottom: 2rpx solid #666;
+}
+.cell-hd{
+  flex-grow: 1;
+}
+.cell-bd{
+  padding-right:20rpx;
+  width:200rpx;
+}
+.cell-bd input{
+  text-align:center;
+}
+.cell-bd image{
+  height: 100%;
+  width: 100%;
+  text-align:center;
+
+}
+.input-placeholder{
+  text-align: center;
+}
+
+.cell-ft{
+margin-right:20rpx;
+position:relative
+}
+.picker{
+  text-align: center;
+}
+
+.cell-ft::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 4rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #c8c8c8;
+  border-style: solid;
+  height: 16rpx;
+  width: 16rpx;
+  transform: translateY(-50%) matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+}
+
