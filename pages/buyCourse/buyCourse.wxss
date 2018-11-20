@@ -44,7 +44,7 @@
 
 .course-bd .name {
   font-size: 28rpx;
-  color: #ccc;
+  color: #F2873B;
   margin-bottom:14rpx;
 }
 

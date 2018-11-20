@@ -1,107 +1,156 @@
 /* pages/cardDetail/cardDetail.wxss */
-page{
+
+page {
   background-color: #191a19;
 }
-.container{
-  padding: 20rpx;
-}
-.img-box{   
-   width: 100%;
-   height: 400rpx;
-   position:relative;
-   margin-bottom:20rpx;
+
+.container {
+  padding: 20rpx 20rpx 120rpx 20rpx;
 }
 
-.img-box image{
-   width:100%;
-   height:100%;
-   display: block;
-   border-radius: 15rpx;
-}
-.img-box .card-type{
-   position: absolute;
-   top: 20rpx;
-   left: 20rpx;
-}
-
-.img-box text{
-  display:block;
-  margin-top:5rpx;
-}
-
-.img-box  .card-name{
-  font-size:34rpx; 
-  font-weight:700;
-  color:#000;
-}
-.card{
+.container-hd {
   width: 100%;
-  font-size: 28rpx;
-  color: #ccc;
 }
-.card-hd{
-  border-top: 2rpx solid #666;
+
+.container-bd {
+  width: 100%;
+  border: 2rpx solid #666;
+  margin-top: 20rpx;
+}
+
+.container-ft {
+  width: 100%;
   border-left: 2rpx solid #666;
   border-right: 2rpx solid #666;
 }
-.card-hd .cell{
-  padding:10rpx 0 10rpx 0;
+
+.container-hd .img-box {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+
+.container-bd .tr {
+  font-size: 34rpx;
+  margin: 20rpx;
+  color: #ccc;
+}
+
+.container-bd .td.right {
+  font-size: 24rpx;
+  padding-left: 20rpx;
+}
+
+.container-bd .td.att {
+  color: #f2873b;
+}
+
+.img-box image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 15rpx;
+}
+
+.img-box .card-type {
+  position: absolute;
+  top: 25rpx;
+  left: 25rpx;
+}
+
+.img-box text {
+  display: block;
+  margin-top: 5rpx;
+}
+
+.img-box  .card-name {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #000;
+}
+
+.card {
+  width: 100%;
+  font-size: 34rpx;
+  color: #ccc;
+}
+
+.card-hd {
+  border-top: 2rpx solid #666;
+}
+
+.card-hd .cell {
+  padding: 10rpx 0 10rpx 0;
   border-bottom: 2rpx solid #666;
 }
-.card-hd .cell .right{
+
+.card-hd .cell .right {
   font-size: 28rpx;
   display: flex;
   flex-direction: row;
-  margin-left:30rpx;
-  flex-wrap:wrap;
-}
-.card-hd .cell .left{
- font-size: 28rpx;
- margin: 20rpx;
-}
-.card-hd .cell .how-long{
- width: 100rpx;
- height: 52rpx;
- border: 2rpx solid #666;
- margin: 10rpx;
- border-radius: 10rpx;
- text-align: center;
- line-height: 52rpx;
-}
-.card-hd .cell .how-long.selected{
- border: 2rpx solid #f2873b;
- color: #f2873b;
+  margin-left: 30rpx;
+  flex-wrap: wrap;
 }
 
-.card-bd{
-  margin-top: 20rpx;
-   border: 2rpx solid #666; 
-}
-.card-bd .cell{
-  display: flex;
-  flex-direction:row;
-  justify-content: space-between
-}
-.card-bd .cell{
+.card-hd .cell .left {
+  font-size: 34rpx;
   margin: 20rpx;
-  display: flex;
-  flex-direction:row;
-  justify-content: space-between
 }
-.card-bd .cell .left{
-  flex:2
-}
-.card-bd .cell .right{
-  flex:1
-}
-.card-bd .picker{
+
+.card-hd .cell .how-long {
+  width: 100rpx;
+  height: 52rpx;
   border: 2rpx solid #666;
+  margin: 10rpx;
   border-radius: 10rpx;
-  text-align: center
+  text-align: center;
+  line-height: 52rpx;
 }
-.right .price{
+
+.card-hd .cell .how-long.selected {
+  border: 2rpx solid #f2873b;
   color: #f2873b;
 }
+
+.card-bd {
+  margin-top: 20rpx;
+  border-bottom: 2rpx solid #666;
+}
+
+.card-bd .cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-bd .cell {
+  margin: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-bd .cell .left {
+  flex: 2;
+}
+
+.card-bd .cell .right {
+  flex: 1;
+}
+
+.card-bd .picker {
+  border: 2rpx solid #666;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.right .price {
+  color: #f2873b;
+  padding-left: 10rpx;
+  font-size: 34rpx;
+}
+
 .buy-card {
   width: 100%;
   color: #fff;
@@ -143,4 +192,9 @@ page{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.input-style{
+  z-index: -1;
+  font-size: 26rpx;
 }

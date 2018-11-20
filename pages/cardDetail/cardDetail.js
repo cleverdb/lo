@@ -12,6 +12,8 @@ Page({
     storeIndex:0,
     selectStoreId:"",
     selectCardTypeId: "",
+    cardDesc:"1.支持2家场馆:及时场馆1号，时场馆2号\n2.无需预约，随时可用",
+    buyAttention:"1.不支持退款\n2.有限期：自购买日期起6个月",
     storeList: [{
       id: "001",
       name: '力偶1店'

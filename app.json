@@ -16,7 +16,8 @@
     "pages/mineCard/mineCard",
     "pages/activityDetail/activityDetail",
     "pages/mineTicket/mineTicket",
-    "pages/mineActivity/mineActivity"
+    "pages/mineActivity/mineActivity",
+    "pages/stores/stores"
   ],
   "window": {
     "backgroundColor":"#191A19",

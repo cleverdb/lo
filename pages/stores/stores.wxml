@@ -1,0 +1,5 @@
+<!--pages/stores/stores.wxml-->
+<view class="container">
+  <map class="container-map"  longitude="{{longitude}}" latitude="{{latitude}}" markers='{{markers}}' circles="{{circles}}" include-points='{{includePoints}}' bindcallouttap="calloutTap" show-location>
+  </map>
+</view>

@@ -9,11 +9,11 @@ Page({
     bindAccount: false,
     userInfo: {},
     items: [
-      // {
-      //   icon: '../../images/icon/yuyue.png',
-      //   text: '我的预约',
-      //   path: '/pages/mineAppointment/mineAppointment'
-      // },
+      {
+        icon: '../../images/icon/address.png',
+        text: '附近门店',
+        path: '/pages/stores/stores'
+      },
       {
         icon: '../../images/icon/ka.png',
         text: '我的会员卡',

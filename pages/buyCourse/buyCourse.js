@@ -181,5 +181,11 @@ Page({
         scrollLeft: 0
       })
     }
+  },
+  courseTap:function(){
+    wx.navigateTo({
+      url: '/pages/curoseDetail/curoseDetail',
+    })
+    
   }
 })

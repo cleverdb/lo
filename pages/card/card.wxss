@@ -25,17 +25,18 @@
 }
 .img-box .card-type{
    position: absolute;
-   top: 20rpx;
-   left: 20rpx;
+   height:70rpx;
+   top: 25rpx;
+   left: 25rpx;
 }
 
 .img-box text{
   display:block;
-  margin-top:5rpx;
 }
 
 .img-box  .card-name{
-  font-size:34rpx; 
+  font-family: Microsoft YaHei;
+  font-size:44rpx; 
   font-weight:700;
   color:#000;
 }

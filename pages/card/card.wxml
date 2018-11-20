@@ -1,6 +1,6 @@
 <!--pages/buyCourse/buyCourse.wxml-->
   <view class="card-container">
-          <view class="card-box" wx:for-items="{{card}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+          <view class="card-box" wx:for-items="{{card}}" wx:key="{{index}}" data-path='/pages/cardDetail/cardDetail' bindtap="navigateTo" data-id="{{item.id}}">
             <view class="img-box">
                 <image src="/images/card.png" mode='scaleToFill'></image>
                 <view class='card-type'>
@@ -10,9 +10,9 @@
                 
                 
             </view>
-            <view data-id="{{item.id}}" data-path='/pages/cardDetail/cardDetail' class="detail-box" bindtap="navigateTo">
+            <!-- <view data-id="{{item.id}}" data-path='/pages/cardDetail/cardDetail' class="detail-box" bindtap="navigateTo">
                 <text>会员卡详情</text>
                 <view class="arrow"></view>
-            </view>
+            </view> -->
           </view>
   </view>

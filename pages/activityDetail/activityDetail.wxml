@@ -25,12 +25,12 @@
     </view>
     <view class='address'>
       <text class="name">地点：</text>
-      <text class="value">北京市朝阳区北苑路2012</text>
+      <text class="value">力偶健身俱乐部</text>
     </view>
       <map id="myMap" longitude='116.346163' latitude='39.88273' class='my-map' show-location="true" show-compass="true" bindmarkertap="markerTap" markers='{{markers}}'>
       </map>
   </view>
-  <view class='join-activity' bindtap='joinActivity'>
-    <text>参加活动</text>
-  </view>
+  <cover-view class='join-activity' bindtap='joinActivity'>
+    <cover-view>参加活动</cover-view>
+  </cover-view>
 </view>

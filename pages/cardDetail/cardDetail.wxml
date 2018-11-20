@@ -1,62 +1,81 @@
 <!--pages/cardDetail/cardDetail.wxml-->
 <view class='container'>
-  <view class="img-box">
-    <image src="/images/card.png" mode='scaleToFill'></image>
-    <view class='card-type'>
-      <text class="card-name">{{cardType}}</text>
-    </view>
-  </view>
-  <view class="card">
-    <view class="card-hd">
-      <view class='cell'>
-        <view class='left'>
-          课时
-        </view>
-        <view class='right'>
-          <block wx:for="{{validDateList}}">
-            <view data-item="{{item}}" class="how-long {{validIndex==item.id?'selected':''}}" bindtap='bindValidDate'>
-              {{item.name}}
-            </view>
-          </block>
-        </view>
-      </view>
-      <view class='cell'>
-        <view class='left'>
-          价格
-        </view>
-        <view class='right'>
-          <view>
-            <text class='price'>{{countPrice}}</text> 元
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="card-bd">
-      <view class='cell'>
-        <view class='left'>开卡场馆</view>
-        <view class='right'>
-          <picker bindchange="bindPickerChange" mode = "selector" value="{{index}}"  range-key="name" range="{{storeList}}">
-            <view class="picker">
-              {{storeList[storeIndex]["name"]}}
-            </view>
-          </picker>
-        </view>
-      </view>
-      <view class='cell'>
-        <view class='left'>销售人员</view>
-        <view class='right'>
-          <view>
-            <input placeholder='请输入销售姓名'></input>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="card-ft">
-      <view class='buy-card' bindtap="buyCard">
-        <text>购买会员卡</text>
+  <view class="container-hd">
+    <view class="img-box">
+      <image src="/images/card.png" mode='scaleToFill'></image>
+      <view class='card-type'>
+        <text class="card-name">{{cardType}}</text>
       </view>
     </view>
   </view>
+  <view class="container-ft">
+    <view class="card">
+      <view class="card-hd">
+        <view class='cell'>
+          <view class='left'>
+            课时
+          </view>
+          <view class='right'>
+            <block wx:for="{{validDateList}}">
+              <view data-item="{{item}}" class="how-long {{validIndex==item.id?'selected':''}}" bindtap='bindValidDate'>
+                {{item.name}}
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class='cell'>
+          <view class='left'>
+            价格
+          </view>
+          <view class='right'>
+            <view>
+              <text class='price'>{{countPrice}}</text> 元
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="card-bd">
+        <view class='cell'>
+          <view class='left'>开卡场馆</view>
+          <view class='right'>
+            <picker bindchange="bindPickerChange" mode="selector" value="{{index}}" range-key="name" range="{{storeList}}">
+              <view class="picker">
+                {{storeList[storeIndex]["name"]}}
+              </view>
+            </picker>
+          </view>
+        </view>
+        <view class='cell'>
+          <view class='left'>销售人员</view>
+          <view class='right'>
+            <view>
+              <input placeholder='请输入销售姓名' placeholder-class="input-style"></input>
+            </view>
+          </view>
+        </view>
+     
+      </view>
+      <view class="card-ft">        
+      </view>
+    </view> 
+  </view>
+    <view class="container-bd">
+    <view class='tr'>
+        <view class='td'>详情</view>
+        <view class='td right'>
+          <text>{{cardDesc}}</text>
+        </view>
+    </view>
+    <view class='tr'>
+        <view class='td att'>购买须知</view>
+        <view class='td right'>
+          <text>{{buyAttention}}</text>
+        </view>  
+    </view>
+  </view>  
+     <view class='buy-card' bindtap="buyCard">
+          <view>购买会员卡</view>
+        </view>
 </view>
 
 <modal title="" hidden="{{hideModal}}" bindconfirm="confirmCard" bindcancel="cancelCard">
@@ -67,8 +86,8 @@
     </view>
     <view class="mc-bd">
       <view class='cell'>
-      <text>卡类型</text>
-      <text>{{cardType}}</text>
+        <text>卡类型</text>
+        <text>{{cardType}}</text>
       </view>
       <view class='cell'>
         <text>详情</text>
