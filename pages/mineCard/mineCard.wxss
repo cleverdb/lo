@@ -32,7 +32,7 @@ page{
 }
 
 .img-box  .card-name{
-  font-size:34rpx; 
+  font-size:44rpx; 
   font-weight:700;
   color:#000;
 }

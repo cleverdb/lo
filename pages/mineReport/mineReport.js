@@ -1,10 +1,12 @@
 // pages/mineReport/mineReport.js
+import Canvas from '../../utils/canvas.js'
 Page({
-
+  ...Canvas.options,
   /**
    * 页面的初始数据
    */
   data: {
+    ...Canvas.data,
     howLong:"120分钟",
     projectRecords:[
       {
@@ -25,28 +27,24 @@ Page({
     }
     ]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
   },
-
+  /**
+     * 生命周期函数--监听页面显示
+     */
+  onReady: function () {
+    this.draw('arcCanvas','bgCanvas', 80, 1000);
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

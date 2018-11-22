@@ -12,6 +12,31 @@
       </view>
     </view>
     <view class="report-data">
+      <view class="left">
+        <view class="cell">
+        <view class="tr name">2018-11-25</view>
+        <view class="tr">
+          <view class="td">健身排名：</view>
+          <view class="td">5</view>
+        </view>
+        <view class="tr">
+          <view class="td">体重(KG)：</view>
+          <view class="td">70</view>
+        </view>
+        <view class="tr">
+          <view class="td">RMI：</view>
+          <view class="td">23.7</view>
+        </view>
+        </view>
+      </view>
+      <view class="right">
+        <view class='bgCircle'> 
+          <view class="socre">分</view>
+          <view class="desc">健康值</view>
+        </view>
+        <canvas canvas-id="bgCanvas" id="bgCanvas" class='canvas'></canvas>
+        <canvas canvas-id="arcCanvas" id="arcCanvas" class='canvas'></canvas>
+      </view>
     </view>
   </view>
   <view class='container-bd'>
@@ -20,26 +45,26 @@
         <view class="name">健身时长</view>
         <view class="long">{{howLong}}</view>
       </view>
-      </view>
-      <view class="record-bd">
-        <view class="name">健身记录</view>
-        <block wx:for="{{projectRecords}}" >
-          <view class="data-detail">
-            <view class="project-title">{{item.projectName}}</view>
-            <view class="tr">
-              <view class="td">开始时间：</view>
-              <view class="td">{{item.startTime}}</view>
-            </view>
-            <view class="tr">
-              <view class="td">结束时间：</view>
-              <view class="td">{{item.endTime}}</view>
-            </view>
-            <view class="tr">
-              <view class="td">时　　长：</view>
-              <view class="td">{{item.long}}</view>
-            </view>
+    </view>
+    <view class="record-bd">
+      <view class="name">健身记录</view>
+      <block wx:for="{{projectRecords}}">
+        <view class="data-detail">
+          <view class="project-title">{{item.projectName}}</view>
+          <view class="tr">
+            <view class="td">开始时间：</view>
+            <view class="td">{{item.startTime}}</view>
           </view>
-        </block>
+          <view class="tr">
+            <view class="td">结束时间：</view>
+            <view class="td">{{item.endTime}}</view>
+          </view>
+          <view class="tr">
+            <view class="td">时　　长：</view>
+            <view class="td">{{item.long}}</view>
+          </view>
         </view>
+      </block>
+    </view>
   </view>
 </view>

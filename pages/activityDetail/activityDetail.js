@@ -111,7 +111,7 @@ Page({
   joinActivity: function() {
     wx.showModal({
       title: '',
-      content: '您确定参加该活动？',
+      content: '您确定参加该活动，该活动将扣除1课时？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')

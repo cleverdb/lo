@@ -6,6 +6,7 @@
   justify-content:space-between;
   align-items: center;
   padding:20rpx 10rpx 120rpx 10rpx;
+  display: inline-block
 }
 
 .container-hd{

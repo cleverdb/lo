@@ -9,12 +9,14 @@
         <button wx:else  class="login" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandler">登录</button>
       </view>
     </view >
+    <view style='width:100%'>
     <view class="bind-account">
       <view class="bind-account-bd">
-      <text wx:if="{{!bindAccount}}">您还为绑定账户哟~</text>
+      <text wx:if="{{!bindAccount}}">您还未绑定会员哟~</text>
       </view>
       <view class="bind-account-ft">
           <button open-type="getPhoneNumber" class="phoneBtn" bindgetphonenumber="getPhoneNumberHandler">微信手机号登陆</button>
+      </view>
       </view>
     </view>
     <view class="menu-panel">
