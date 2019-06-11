@@ -1,5 +1,7 @@
 // pages/mineReport/mineReport.js
 import Canvas from '../../utils/canvas.js'
+import Utils from '../../utils/util.js'
+const app = getApp()
 Page({
   ...Canvas.options,
   /**
@@ -7,31 +9,22 @@ Page({
    */
   data: {
     ...Canvas.data,
-    howLong:"120分钟",
-    projectRecords:[
-      {
-        projectName:"动感单车",
-        startTime:"11月18日 12:12:00",
-        endTime: "11月18日 13:12:00",
-        long:"60分钟"
-      },{
-        projectName: "搏击",
-        startTime: "11月18日 15:00:00",
-        endTime: "11月18日 15:40:00",
-        long: "40分钟"
-    },{
-        projectName: "瑜伽",
-        startTime: "11月18日 18:20:00",
-        endTime: "11月18日 18:50:00",
-        long: "30分钟"
-    }
-    ]
+    host:app.globalData.host,
+    report: {},
+    nowDate: Utils.nowDate()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const nowDate = Utils.nowDate()
+    this.setData({
+      nowDate: nowDate
+    })
+    this.initData({
+      userId:app.globalData.userInfo.userId,
+      reportDate: nowDate
+    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -43,7 +36,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
   onReady: function () {
-    this.draw('arcCanvas','bgCanvas', 80, 1000);
+    
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -78,5 +71,52 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  initData: function (params) {
+    const _this = this
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      data: params,
+      method: 'GET',
+      url: app.globalData.host + '/rest/s1/Goods/mine/fitnessReport',
+      success: function (res) {
+        let result = res.data.data
+        _this.setData({
+          report: result
+        })
+        _this.draw('arcCanvas', 'bgCanvas', 'stepCanvas', result.score, 1000);
+      },
+      fail: function (res) {
+
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
+  nextTap:function(){
+    if (this.data.nowDate == Utils.nowDate()){
+      return;
+    }
+    let nextDate = Utils.plusDate(this.data.nowDate,1)
+    this.setData({
+      nowDate: nextDate
+    })
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      reportDate: nextDate
+    })
+  },
+  beforeTap: function () {
+    let nextDate = Utils.plusDate(this.data.nowDate, -1)
+    this.setData({
+      nowDate: nextDate
+    })
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      reportDate: nextDate
+    })
   }
 })

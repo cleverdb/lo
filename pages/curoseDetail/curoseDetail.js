@@ -1,17 +1,15 @@
 // pages/curoseDetail/curoseDetail.js
+const app = getApp()
 Page({
 
   data: {
     hideModal:true,
+    host: app.globalData.host,
     courseNum: 1,
     minusStatus: 'disabled',
     totalCoursePrice:500,
     coursePrice:500,
-    goodsDetail:{
-      properties:[
-        {idx:12312}
-      ]
-    },
+    course:{},
     animationData: "",
     showModalStatus: false,
   },
@@ -20,13 +18,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      courseId: options.courseId
+    })
+    this.initData()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**
@@ -70,9 +72,12 @@ Page({
   onShareAppMessage: function () {
 
   },
-  buyCourse:function(){
-    this.setData({
-      hideModal:false,
+
+  buyCourse:function(e){
+    let course = this.data.course
+    let params = '?courseId=' + course.courseId + '&courseName=' + course.courseName + '&price=' + course.price + "&coachName=" + course.coachName
+    wx.navigateTo({
+      url: '/pages/buyCourse/buyCourse' + params,
     })
   },
   confirmCourse:function(){
@@ -161,5 +166,43 @@ Page({
       courseNum: num,
       totalCoursePrice: totalCoursePrice
     });
+  },
+  initData:function(){
+    let _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    let params = { courseId:this.data.courseId}
+    wx.request({
+      url: _this.data.host + '/rest/s1/Goods/course/getCourseDetail',
+      data: params,
+      method:'GET',
+      success: function (res) {
+        if (res.statusCode == 400) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          _this.setData({
+            'course': res.data.data
+          })
+        }
+        
+      },
+      fail: function (res) {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete:function(){
+        wx.hideLoading()
+      }
+    })
   }
 })

@@ -1,0 +1,34 @@
+/* pages/template/pageAlert/pageAlert.wxss */
+
+.container {
+  animation: fadein 2s 1 ease-out;
+  height: 100%;
+  width: 100%;
+}
+
+.page-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.page-state .message {
+  color: #a0a0a0;
+  font-size: 28rpx;
+  height: 100rpx;
+}
+
+.page-state .btn {
+  height: 100rpx;
+}
+
+.page-state button {
+  background-color: #fcc700;
+  line-height: 60rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+}

@@ -1,0 +1,85 @@
+/* pages/login/login.wxss */
+
+page {
+  height: 100%;
+  width: 100%;
+  background-color: #3e3e3e;
+}
+
+.container {
+  width: 100%;
+}
+.message{
+  height: 30rpx;
+  line-height: 50rpx;
+  color: red;
+  font-size: 22rpx;
+  text-align: center
+}
+.hd {
+  width: 100%;
+  margin-top: 50rpx;
+}
+
+.hd .row {
+  display: flex;
+  height: 80rpx;
+  flex-direction: row;
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  color: #ffffff;
+  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
+  align-items: center;
+}
+
+.hd .row label {
+  margin-right: 50rpx;
+}
+
+.row input {
+  flex: 1;
+}
+
+.hd .btn {
+  margin: 60rpx 30rpx 30rpx 30rpx;
+}
+
+.btn button {
+  background-color: #fcc700;
+  color: #ffffff;
+  height: 92rpx;
+  line-height: 92rpx;
+}
+
+.bd {
+  width: 100%;
+  margin-top: 100rpx;
+}
+
+.bd .row {
+  padding: 20rpx 0;
+  margin: 0 150rpx;
+}
+
+.row button {
+  position: relative;
+}
+
+.wechat {
+  height: 48rpx;
+  width: 48rpx;
+  position: absolute;
+  left: 80rpx;
+  top: 22rpx;
+}
+
+.btn-vcode {
+  background-color: transparent;
+  color: #fcc700;
+  border: 1rpx solid #fcc700;
+  width:200rpx;
+  font-size:26rpx;
+  height:80rpx;
+  line-height:80rpx;
+
+}

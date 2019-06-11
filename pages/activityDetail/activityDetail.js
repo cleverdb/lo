@@ -1,5 +1,5 @@
 // pages/activityDetail/activityDetail.js
-var WxParse = require('../../wxParse/wxParse.js');
+var Utils = require('../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -7,11 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: "2018华夏幸福北京马拉松竞赛规程",
-    picture: "/images/act.jpg",
-    content: '<p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><strong><span style="font-family:微软雅黑, &quot;">一、&nbsp;主办单位</span></strong></p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">中国田径协会</span></p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">北京市体育局</span></p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"> <span style="font-family:微软雅黑, &quot;"> 二、联合主办单位</span ></p> <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <span style="font-family:微软雅黑, &quot;" > 中央电视台</span></p> <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <strong><span style="font-family:微软雅黑, &quot;" > 三、承办单位 </span></strong ></p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">中奥路跑（北京）体育管理有限公司</span > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">北京市体育竞赛管理中心</span > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><strong><span style="font-family:微软雅黑, &quot;">四、&nbsp;协办单位</span > </strong></p > <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <span style="font-family:微软雅黑, &quot;" > 北京市委宣传部、北京市公安局（北京市公安局治安管理总队、北京市公安局公安交通管理局）、北京市卫生和计划生育委员会、北京市环保局、北京市城市管理委员会、北京市交通委员会、天安门地区管理委员会、北京市气象局、共青团北京市委员会、北京市无线电管理局、北京奥林匹克公园管理委员会、北京市城市道路养护管理中心、北京公共交通控股（集团）有限公司、北京市地铁运营有限公司、北京市电力公司、北京城市副中心投资建设集团、北京体育大学 </span></p > <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <strong><span style="font-family:微软雅黑, &quot;" > 五、 备案单位 </span></strong > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">国际田径联合会</span > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">国际马拉松和公路跑协会</span ></p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><strong><span style="font-family:微软雅黑, &quot;">六、&nbsp;比赛日期与时间</span> </strong></p > <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <span style="font-family:微软雅黑, &quot;" > 2018年9月16日星期日上午7: 30 </span></p > <p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;" > <strong><span style="font-family:微软雅黑, &quot;" > 七、& nbsp; 比赛项目及规模 </span></strong > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">马拉松（42.195公里）</span > </p><p style="font-family:微软雅黑;font-size:14px;text-align:justify;text-indent:2em;"><span style="font-family:微软雅黑, &quot;">参赛规模30000人</span > </p>',
-    latitude: 39.88273,
-    longitude: 116.346163,
+    host: app.globalData.host,
+    hideModal: true,
     markers: [{
       iconPath: "/images/icon/address-ok.png",
       id: 0,
@@ -20,28 +17,26 @@ Page({
       width: 50,
       height: 50
     }],
-
+    activityId: '',
+    activity: {},
+    activityDeduct: [],
+    deductItem: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    WxParse.wxParse('article', 'html', that.data.content, that, 5);
-    // wx.request({
-    //   url: 'https://api.it120.cc/34vu54u7vuiuvc546d/cms/news/detail?id=656',
-    //   success: function(res) {
-    //     var data = res.data.data;
-    //     console.log(res);
-    //     //that.setData({
-    //       //title: data.title,
-    //      // picture: data.pic,
-    //      // content: data.content
-    //     //});
-        
-    //   }
-    // });
+    let _this = this;
+    let activityId = options.activityId;
+    _this.setData({
+      activityId: activityId
+    })
+    _this.initData()
+    if (app.globalData.userInfo.userId) {
+      _this.initActivityDeductData();
+    }
+
   },
 
   /**
@@ -55,6 +50,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var _this = this
+    if (_this.data.pageState) {
+      _this.setData({
+        pageState: {}
+      })
+      _this.initData({
+        activityId: _this.data.activityId
+      })
+    }
 
   },
 
@@ -92,33 +96,182 @@ Page({
   onShareAppMessage: function() {
 
   },
-  markerTap: function(e) {
+  lineNavTap: function(e) {
     var _this = this;
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(e) {
-        const latitude = _this.data.latitude
-        const longitude = _this.data.longitude
+        const latitude = _this.data.activity.latitude
+        const longitude = _this.data.activity.longitude
+        const name = _this.data.activity.place
+        const address = _this.data.activity.address
         wx.openLocation({
           latitude,
           longitude,
-          name: "力偶健身",
+          name: name,
+          address: address,
           scale: 18
         })
       }
     })
   },
+  confirmActivity: function() {
+    const _this = this
+    this.setData({
+      hideModal: true,
+    })
+    let params = _this.data.deductItem
+    params['activityId'] = _this.data.activityId
+    wx.request({
+      url: _this.data.host + '/rest/s1/Goods/activity/joinActivity',
+      data: params,
+      method: 'POST',
+      success: function(res) {},
+      fail: function(res) {
+
+      },
+      complete: function(res) {
+        wx.showToast({
+          title: res.data.messages,
+          icon: 'none',
+          duration: 2000,
+        })
+      }
+    })
+  },
+  cancelActivity: function() {
+    this.setData({
+      hideModal: true,
+    })
+  },
   joinActivity: function() {
-    wx.showModal({
-      title: '',
-      content: '您确定参加该活动，该活动将扣除1课时？',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+    let _this = this
+    let userId = app.globalData.userInfo.userId
+    if (!userId) {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return
+    }
+    if (this.data.activityDeduct.length == 0) {
+      this.initActivityDeductData(() => {
+        if (this.data.activityDeduct.length > 0) {
+          this.setData({
+            hideModal: false
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '参加活动需要扣除课时/会员卡时长，请先购买会员卡/课程',
+            showCancel: false
+          })
+        }
+      });
+    }else{
+      this.setData({
+        hideModal: false
+      })
+    }
+  },
+  initData: function() {
+    const _this = this
+    wx.showLoading({
+      title: '加载中...',
+    })
+    let params = {
+      activityId: _this.data.activityId
+    }
+    if (app.globalData.userInfo.userId) {
+      params['userId'] = app.globalData.userInfo.userId
+    }
+    wx.request({
+      url: _this.data.host + '/rest/s1/Goods/activity/getActivityDetail',
+      data: params,
+      method: 'GET',
+      success: function(res) {
+        if (res.statusCode != 200) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          let activity = res.data.data.activity
+          let hasJoin = res.data.data.hasJoin ? res.data.data.hasJoin : 0
+          let startTime = activity.startTime
+          if (startTime > new Date().getTime()) {
+            activity['ok'] = true
+          } else {
+            activity['ok'] = false
+          }
+          activity['date'] = Utils.formatTimestampToDate(startTime)
+          activity['startTime'] = Utils.formatTimestampToTime(startTime)
+          activity['endTime'] = Utils.formatTimestampToTime(activity.endTime)
+          _this.setData({
+            activity: activity,
+            hasJoin: hasJoin
+          })
+        }
+      },
+      fail: function() {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete: function(res) {
+        wx.hideLoading()
+      }
+    })
+  },
+  initActivityDeductData: function(callback) {
+    const _this = this
+    let params = {
+      userId: app.globalData.userInfo.userId
+    }
+    wx.request({
+      url: _this.data.host + '/rest/s1/Goods/activity/getActivityDeduct',
+      data: params,
+      method: 'GET',
+      success: function(res) {
+        let result = res.data.data
+        _this.setData({
+          activityDeduct: result
+        })
+      },
+      fail: function(res) {
+
+      },
+      complete: function() {
+        if (callback) {
+          callback()
         }
       }
+    })
+  },
+  radioChange: function(e) {
+    let value = e.detail.value
+    let selectItem = this.data.activityDeduct.filter((item, index, arr) => item.id == value)
+    this.setData({
+      deductItem: selectItem[0]
+    })
+  },
+  reloadTap: function() {
+    this.initData()
+  },
+  loginTap: function(res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   }
 })

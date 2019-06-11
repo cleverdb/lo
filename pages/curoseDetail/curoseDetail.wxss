@@ -1,86 +1,94 @@
-/* pages/curoseDetail/curoseDetail.wxss */
-
+ /* pages/curoseDetail/curoseDetail.wxss */
+page{
+  height: 100%;
+}
 .container {
-  min-height: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20rpx 20rpx 120rpx 20rpx;
-  background-color: #191a19;
+  color: #a0a0a0;
+  display:block;
+  font-size:28rpx;
 }
 
-.container .container-hd {
+.container-hd {
   width: 100%;
   display: flex;
-  padding: 20rpx;
   flex-grow: row no-wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   box-sizing: border-box;
   height: auto;
+  padding:20rpx;
   align-items: center;
-  background-color: #202020;
+  border-bottom:10rpx solid #090000;
 }
 
 .coach-info {
-  margin-right: 30rpx;
+  margin-left: 20rpx;
   display: flex;
   flex-direction: column;
-  color: #ccc;
 }
 
 .title {
-  color: #f2873b;
-  font-size: 28rpx;
+  color: #fcc700;
+  font-size: 30rpx;
 }
 
-.coach-info .desc {
+.coach-info .cell {
+  height: 100%;
   margin-top: 16rpx;
-  font-size: 22rpx;
 }
-
-.coach-avatar {
-  position: relative;
-}
-
-.coach-avatar   image {
+.coach-avatar{
   width: 150rpx;
   height: 150rpx;
+  margin: 0rpx 10rpx;
+}
+.empty {
+  background-color: #a0a0a0;
   border-radius: 50%;
+}
+.coach-avatar   image {
+  border-radius: 50%;
+  width: 150rpx;
+  height: 150rpx;
 }
 
 .container-bd {
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20rpx;
+  padding:0 20rpx 100rpx 20rpx;
   box-sizing: border-box;
   height: auto;
   align-items: center;
-  background-color: #202020;
+  background-color: #3e3e3e;
 }
 
-.course-attention {
-  margin-top: 20rpx;
+.course {
+  padding: 40rpx 0;
+  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
+}
+
+.no-border{
+  border-bottom: 1rpx #3e3e3e solid;
 }
 
 .content {
   margin-top: 20rpx;
-  font-size: 24rpx;
-  color: #ccc;
+  font-size: 28rpx;
+  line-height: 40rpx;
 }
 
 .buy-course {
   width: 100%;
-  color: #fff;
+  color: #090000;
   position: fixed;
   height: 100rpx;
   bottom: 0;
   margin: 0;
   right: 0;
-  background-color: #f2873b;
+  left: 0;
+  background-color: #fcc700;
   justify-content: center;
   display: flex;
+  font-size: 34rpx;
+  font-weight: 700;
   align-items: center;
 }
 
@@ -90,11 +98,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: #000;
+  background: #090000;
   opacity: 0.2;
   overflow: hidden;
   z-index: 500;
-  color: #fff;
+  color: #ffffff;
 }
 
 .popup-content {
@@ -105,12 +113,12 @@
   bottom: 0;
   left: 0;
   z-index: 600;
-  background: #fff;
+  background: #ffffff;
   padding-top: 20rpx;
 }
 
 .popup-content .cell {
-  border-bottom: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #a0a0a0;
   line-height: 100rpx;
   padding: 0 20rpx 0 20rpx;
   display: flex;
@@ -123,11 +131,11 @@
 }
 
 .popup-content .value {
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .num-step {
-  border: 2rpx solid #ccc;
+  border: 2rpx solid #a0a0a0;
   border-radius: 6rpx;
   width: 140rpx;
   height: 52rpx;
@@ -149,8 +157,8 @@
   text-align: center;
   height: 52rpx;
   font-size: 24rpx;
-  border-left: 2rpx solid #ccc;
-  border-right: 2rpx solid #ccc;
+  border-left: 2rpx solid #a0a0a0;
+  border-right: 2rpx solid #a0a0a0;
 }
 
 .num-step .ok {
@@ -158,7 +166,7 @@
 }
 
 .num-step .disabled {
-  color: #ccc;
+  color: #a0a0a0;
 }
 
 .modal-container {
@@ -176,11 +184,11 @@
 .mc-hd .money {
   font-size: 48rpx;
   font-weight: 700;
-  color: #000;
+  color: #090000;
 }
 
 .modal-container .mc-bd {
-  border-top: 2rpx solid #ccc;
+  border-top: 2rpx solid #a0a0a0;
   padding-top: 20rpx;
 }
 

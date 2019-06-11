@@ -1,98 +1,109 @@
 <!--pages/mineInfo/mineInfo.wxml-->
-<view class='mineInfo'>
-<view class='avatar'>
-    <!-- <view class='avatar-hd'>
-      头像
-    </view> -->
-    <view class='avatar-bd'> 
-      <image src="{{userInfo.avatarUrl ? userInfo.avatarUrl:'../../images/logo.png'}}" mode='scaleToFill' bindtap='changPhoto'></image>
+<view class='container'>
+  <view class='container-hd'>
+    <view class='container-hd_hd'>
+      <view class='avatar'>
+        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'../../images/logo.png'}}"></image>
+      </view>
     </view>
-    <!-- <view class='cell-ft'>
-    </view> -->
-  </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      昵称
+    <view class='container-hd_bd'>
+      <view class='cell name'>{{user.nickName?user.nickName:wUser.nickName}}</view>
+      <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
     </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' ></input>
-    </view>
-    <view class='cell-ft'>
+    <view class='container-hd_ft'>
+      <view class='cell' wx:if="{{user.weight}}">体重:{{user.weight}}kg</view>
+      <view class="cell" wx:if="{{user.bmi}}">BMI:{{user.bmi}}</view>
     </view>
   </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      电话
+  <view class='container-bd'>
+    <view class='cell'>
+      <view class='cell-hd'>
+        昵称
+      </view>
+      <view class='cell-bd'>
+        <input placeholder='请输入昵称' placeholder-class='placeholder' value='{{user.nickName?user.nickName:wUser.nickName}}' bindblur='nickNameEven'></input>
+      </view>
     </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' type='number' maxlength='11' value='18600227873'></input>
+    <view class='cell'>
+      <view class='cell-hd'>
+        身高
+      </view>
+      <view class='cell-bd'>
+        <input placeholder='请输入身高' type='digit' placeholder-class='placeholder' value='{{user.height}}' bindblur='heightEven'></input>
+        <view class='unit'>cm</view>
+      </view>
     </view>
-    <view class='cell-ft'>
+    <view class='cell'>
+      <view class='cell-hd'>
+        体重
+      </view>
+      <view class='cell-bd'>
+        <input placeholder='请输入体重' type='digit' placeholder-class='placeholder' value='{{user.weight}}' bindblur='weightEven'></input>
+        <view class='unit'>kg</view>
+      </view>
     </view>
-  </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      性别
+    <view class='cell'>
+      <view class='cell-hd'>
+        BMI
+      </view>
+      <view class='cell-bd'>
+        <input placeholder='自动' type='digit' disabled='true' placeholder-class='placeholder' value='{{user.bmi}}' bindblur='bmiEven'></input>
+      </view>
     </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' disabled='true' value='男'></input>
-    </view>
-    <view class='cell-ft'>
-    </view>
-  </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      生日
-    </view>
-    <view class='cell-bd'> 
-    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-    <view class="picker">
-        {{birthDate}}
-    </view>
-  </picker>
-     
-    </view>
-    <view class='cell-ft'>
-    </view>
-  </view>
-   <view class='cell'>
-    <view class='cell-hd'>
-      身高(CM)
-    </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入'value='180' ></input>
-    </view>
-    <view class='cell-ft'>
-    </view>
-  </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      体重(KG)
-    </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' value='180'></input>
-    </view>
-    <view class='cell-ft'>
+    <view class='cell'>
+      <view class='cell-hd'>
+        电话
+      </view>
+      <view class='cell-bd'>
+        <input placeholder='请输入电话' type='number' maxlength='11' disabled placeholder-class='placeholder' value='{{user.cellphone}}' bindblur='cellphoneEven'></input>
+      </view>
     </view>
   </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      BMI
+  <view class='container-ft'>
+    <view class='cell'>
+      <view class='cell-hd'>
+        性别
+      </view>
+      <view class='cell-bd'>
+        <picker mode="selector" range="{{sexArr}}" range-key="description" bindchange="sexChange">
+          <view class="picker">
+            {{user.sexName?user.sexName:'请选择'}}
+          </view>
+        </picker>
+      </view>
+      <view class='cell-ft'>
+      </view>
     </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' value='自动' ></input>
+    <view class='cell'>
+      <view class='cell-hd'>
+        生日
+      </view>
+      <view class='cell-bd'>
+        <picker mode="date" value="{{user.birthDate}}" start="1900-01-01" end="2050-12-30" bindchange="birthDateChange">
+          <view class="picker">
+            {{user.birthDate?user.birthDate:'请选择'}}
+          </view>
+        </picker>
+      </view>
+      <view class='cell-ft'>
+      </view>
     </view>
-    <view class='cell-ft'>
+    <view class='cell'>
+      <view class='cell-hd'>
+        健身目标
+      </view>
+      <view class='cell-bd'>
+        <picker mode="selector" range="{{targetArr}}" range-key="description" bindchange="targetChange">
+          <view class="picker">
+            {{user.targetEnumName?user.targetEnumName:'请选择'}}
+          </view>
+        </picker>
+      </view>
+      <view class='cell-ft'>
+      </view>
     </view>
   </view>
-  <view class='cell'>
-    <view class='cell-hd'>
-      健身目标
-    </view>
-    <view class='cell-bd'> 
-      <input placeholder='请输入' value='自动'></input>
-    </view>
-    <view class='cell-ft'>
-    </view>
-  </view>
+  <cover-view class='btn-save' bindtap='saveTap' >
+      <cover-view>保存</cover-view>
+    </cover-view>
 </view>

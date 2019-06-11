@@ -1,76 +1,126 @@
 /* pages/activityDetail/activityDetail.wxss */
-@import "/wxParse/wxParse.wxss";
-.container {
-  background-color: #191a19;
-  min-height: 100%;
-  justify-content:space-between;
-  align-items: center;
-  padding:20rpx 10rpx 120rpx 10rpx;
-  display: inline-block
+page{
+  height: 100%;
+}
+.container{
+  color: #a0a0a0;
+  font-size: 28rpx;
+  display:block;
+  height: auto
 }
 
 .container-hd{
-    width: 100%;
-}
-
-.container-bd{
+  height: 375rpx;
   width: 100%;
-  min-height: 1000rpx;
-  position: relative;
-}
-.content{
-  font-size:28rpx;
-  color:#fff;
-  line-height: 56rpx;
-  padding-bottom:20rpx;
-  width:100%;
-}
-
-.content-text{
-    font-size: 28rpx;
-    color: #ccc;
-    line-height: 42rpx;
-    word-break: break-all;
-    text-indent: 2em;
 }
 
 .act-img{
-    width: 100%;
+  height: 100%;
+  width: 100%;
 } 
 
-.act-title{
-    color: #f2873b;
-    text-align:center;
-} 
+.container-bd{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  height: auto;
+  border-bottom: 10rpx solid #090000;
+}
+
 .container-ft{
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  background-color: #3e3e3e;
+  padding-bottom: 100rpx;
+  height: auto;
+  border-bottom: 10rpx #3e3e3e solid;
 }
 
-.container-ft .name{
+.cell{
+  justify-content:center;
+  display:flex;
+  flex-direction:column;
+  height: 120rpx;
+  /* border-bottom: 1rpx rgba(168,168,168,0.2) solid; */
+}
+.line{
+  width: 100%;
+  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
+}
+
+.no-height{
+  height: auto;
+  padding: 40rpx 0;
+}
+
+ .name{
+  height: 100rpx;
   font-size: 34rpx;
-  color: #f2873b
+  font-weight: 700;
+  color: #fcc700;
 }
-.container-ft .value{
-  color: #fff;
+
+.container-bd  .store{
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.add{
+  width: 75%;
+}
+.store button{
+  background-color: #fcc700;
+  line-height:80rpx;
   font-size: 28rpx;
+  color: #251815;
 }
-.my-map{
-    width: 100%;
-    height: 300rpx;
-    margin-top: 20rpx;
-   
+.no-border{
+   border-bottom: 10rpx #3e3e3e solid;
+}
+
+
+
+.cell .content {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.cell  .title {
+  color: #fcc700;
+  font-size: 30rpx;
 }
 
 .join-activity {
   width: 100%;
-  color: #fff;
+  color: #251815;
   position: fixed;
   height: 100rpx;
   bottom: 0;
   margin: 0;
   right: 0;
-  background-color: #f2873b;
+  left: 0;
+  background-color: #fcc700;
   justify-content: center;
   display: flex;
+  font-size: 34rpx;
+  font-weight: 700;
   align-items: center;
+}
+
+.modal-container{
+  font-size: 28rpx;
+}
+.radio-group{
+  display: flex;
+  flex-direction: column;
+}
+.radio-group .radio{
+  margin: 10rpx 0;
 }

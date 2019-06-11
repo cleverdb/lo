@@ -1,70 +1,58 @@
 <!--pages/mineReport/mineReport.wxml-->
 <view class='container'>
   <view class='container-hd'>
-    <view class="date-navbar">
-      <view class="before">
-        <image src="/images/icon/before.png"></image>
-        <view>前一天</view>
-      </view>
-      <view class="next">
-        <view>后一天</view>
-        <image src="/images/icon/next.png"></image>
-      </view>
+    <view class="nav-hd" bindtap='beforeTap'>
+        <image src="/images/icon/arrow-left-ok.png"></image>
+        <view class='nav-label'>前一天</view>
     </view>
-    <view class="report-data">
-      <view class="left">
-        <view class="cell">
-        <view class="tr name">2018-11-25</view>
-        <view class="tr">
-          <view class="td">健身排名：</view>
-          <view class="td">5</view>
-        </view>
-        <view class="tr">
-          <view class="td">体重(KG)：</view>
-          <view class="td">70</view>
-        </view>
-        <view class="tr">
-          <view class="td">RMI：</view>
-          <view class="td">23.7</view>
-        </view>
-        </view>
-      </view>
-      <view class="right">
-        <view class='bgCircle'> 
-          <view class="socre">分</view>
-          <view class="desc">健康值</view>
-        </view>
+    <view class="nav-bd">
+       
         <canvas canvas-id="bgCanvas" id="bgCanvas" class='canvas'></canvas>
+         <canvas canvas-id="stepCanvas" id="stepCanvas" class='canvas'></canvas>
         <canvas canvas-id="arcCanvas" id="arcCanvas" class='canvas'></canvas>
-      </view>
+         <view class='bgCircle'>
+          运动值
+        </view>
+    </view>
+    <view class='nav-ft' bindtap='nextTap'>
+        <view class='nav-label'>后一天</view>
+        <image src="/images/icon/arrow-right-ok.png"></image>
     </view>
   </view>
   <view class='container-bd'>
-    <view class="record-hd">
-      <view class="data-total">
-        <view class="name">健身时长</view>
-        <view class="long">{{howLong}}</view>
+      <view class="tr header">{{nowDate}}</view>
+      <view class="tr">
+        <view class="td label">运动排名</view>
+        <view class="td value" wx:if='{{report.ranking ==1}}'><image src="/images/icon/1.png"></image></view>
+        <view class="td value" wx:if='{{report.ranking ==2}}'><image src="/images/icon/2.png"></image></view>
+        <view class="td value" wx:if='{{report.ranking ==3}}'><image src="/images/icon/3.png"></image></view>
+        <view class="td value" wx:if='{{report.ranking > 3}}'><image class ="other" src="/images/icon/n.png"></image><view class="num">04</view></view>
+        <view class="td value alert" wx:if='{{!report.ranking}}'>晚上11点更新</view>
       </view>
-    </view>
-    <view class="record-bd">
-      <view class="name">健身记录</view>
-      <block wx:for="{{projectRecords}}">
-        <view class="data-detail">
-          <view class="project-title">{{item.projectName}}</view>
-          <view class="tr">
-            <view class="td">开始时间：</view>
-            <view class="td">{{item.startTime}}</view>
-          </view>
-          <view class="tr">
-            <view class="td">结束时间：</view>
-            <view class="td">{{item.endTime}}</view>
-          </view>
-          <view class="tr">
-            <view class="td">时　　长：</view>
-            <view class="td">{{item.long}}</view>
-          </view>
+      <view class="tr">
+        <view class="td label">运动时长</view>
+        <view class="td value">{{report.howlong}}min</view>
+      </view>
+      <view class="tr noboder">
+        <view class="td label">消耗热量</view>
+        <view class="td value">{{report.calorie}}kcal</view>
+      </view>
+  </view>
+  <view class="container-ft">
+    <view class="tr header">健身记录</view>  
+    <block wx:for="{{report.appointments}}" wx:key="{{index}}">
+      <view class="cell">
+        <view class="cell_hd">
+          <view class='name'>{{item.appCourseName}}</view>
+          <view class='badge'>{{item.coachName}}</view>
+          <view class='badge'>{{item.storeName}}</view>
         </view>
-      </block>
-    </view>
+        <view class="cell_bd">
+          <view>{{item.howlong}}min</view>
+          <view>{{item.calorie}}kcal</view>
+          <view>{{item.strength}}</view>
+        </view>
+      </view>
+    </block>
   </view>
 </view>

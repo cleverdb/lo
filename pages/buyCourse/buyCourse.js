@@ -1,4 +1,5 @@
-// pages/mineCard/mineCard.js
+// pages/buyCourse/buyCourse.js
+import Utils from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -6,102 +7,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courseList: [{ //假数据
-      avatar: "../../images/na/0.jpg",
-        courseName: "格斗健身课",
-        tag: "中级，团操",
-        coachName: "王教练",
-        courseNum: 105,
-        studentNum: 205
-      },
-      { //假数据
-        avatar: "../../images/na/1.jpg",
-        courseName: "踏板",
-        tag: "初级，私教",
-        coachName: "李教练",
-        courseNum: 80,
-        studentNum: 150
-      },
-      { //假数据
-        avatar: "../../images/na/1.jpg",
-        courseName: "动感单车",
-        tag: "初级，团操",
-        coachName: "李教练",
-        courseNum: 150,
-        studentNum: 300
-      },
-      { //假数据
-        avatar: "../../images/na/2.jpg",
-        courseName: "拳击",
-        tag: "高级，私教",
-        coachName: "陈教练",
-        courseNum: 150,
-        studentNum: 205
-      },
-      { //假数据
-        avatar: "../../images/na/0.jpg",
-        courseName: "体操",
-        tag: "中级，团操",
-        coachName: "王教练",
-        courseNum: 150,
-        studentNum: 205
-      },
-      { //假数据
-        avatar: "../../images/na/3.jpg",
-        courseName: "舞蹈",
-        tag: "初级，团操",
-        coachName: "马教练",
-        courseNum: 150,
-        studentNum: 300
-      },
-      { //假数据
-        avatar: "../../images/na/5.jpg",
-        courseName: "瑜伽",
-        tag: "初级，团操",
-        coachName: "刘教练",
-        courseNum: 134,
-        studentNum: 223
-      },
-      { //假数据
-        avatar: "../../images/na/5.jpg",
-        courseName: "瑜伽",
-        tag: "中级，私教",
-        coachName: "刘教练",
-        courseNum: 134,
-        studentNum: 223
-      },
-      { //假数据
-        avatar: "../../images/na/6.jpg",
-        courseName: "柔道",
-        tag: "初级，团操",
-        coachName: "赵教练",
-        courseNum: 100,
-        studentNum: 150
-      },
-      { //假数据
-        avatar: "../../images/na/0.jpg",
-        courseName: "摔跤",
-        tag: "高级，私教",
-        coachName: "王教练",
-        courseNum: 150,
-        studentNum: 205
-      },
-      { //假数据
-        avatar: "../../images/na/3.jpg",
-        courseName: "舞蹈",
-        tag: "高级，私教",
-        coachName: "马教练",
-        courseNum: 134,
-        studentNum: 2234
-      }
-    ]
+    statusType: [{
+      status: 'usable',
+      name: "可用券"
+    }, {
+      status: 'unusable',
+      name: "不可用券"
+    }],
+    navbarActiveIndex: 0,
+    hideModal: true,
+    ticketDesc: "查看",
+    courseNum: 1,
+    minusStatus: 'disabled',
+    realPay: 0,
+    totalCoursePrice: 0,
+    price: 0,
+    courseName: '',
+    coachName: '',
+    courseId: '',
+    selectTicket: {},
+    tickets: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      price: options.price,
+      courseName: options.courseName,
+      coachName: options.coachName,
+      courseId: options.courseId,
+      totalCoursePrice: options.price,
+      realPay: options.price
+    })
   },
 
   /**
@@ -115,7 +54,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (app.globalData.userInfo.userId) {
+      this.setData({
+        pageState: {}
+      })
+    }
   },
 
   /**
@@ -152,40 +95,229 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // 滚动切换标签样式
-  switchTab: function(e) {
+  buyCourse:function(){
+    const _this = this
+    if(!app.globalData.userInfo.userId){
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return
+    }
+    this.payOrder()
+  },
+  bindMinus: function() {
+    var num = this.data.courseNum;
+    if (num > 1) {
+      num--;
+    }
+    var minusStatus = num <= 1 ? 'disabled' : 'ok';
+    var totalCoursePrice = this.data.price * num
     this.setData({
-      currentTab: e.detail.current
+      courseNum: num,
+      minusStatus: minusStatus,
+      totalCoursePrice: totalCoursePrice,
+      realPay: totalCoursePrice
     });
-    this.checkCor();
-  },
-  // 点击标题切换当前页时改变样式
-  swichNav: function(e) {
-    var cur = e.target.dataset.current;
-    if (this.data.currentTaB == cur) {
-      return false;
-    } else {
-      this.setData({
-        currentTab: cur
-      })
-    }
-  },
-  //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function() {
-    if (this.data.currentTab > 4) {
-      this.setData({
-        scrollLeft: 300
-      })
-    } else {
-      this.setData({
-        scrollLeft: 0
-      })
-    }
-  },
-  courseTap:function(){
-    wx.navigateTo({
-      url: '/pages/curoseDetail/curoseDetail',
+    this.loadVoucher({
+      userId: app.globalData.userInfo.userId,
+      countPrice: totalCoursePrice
     })
-    
+  },
+  bindPlus: function() {
+    var num = this.data.courseNum;
+    num++;
+    var totalCoursePrice = this.data.price * num
+    let realPay = totalCoursePrice
+    this.setData({
+      courseNum: num,
+      minusStatus: 'ok',
+      totalCoursePrice: totalCoursePrice,
+      realPay: realPay
+    });
+    this.loadVoucher({
+      userId: app.globalData.userInfo.userId,
+      countPrice: totalCoursePrice
+    })
+  },
+  /**
+   * 数量输入框改变事件
+   */
+  bindChange: function(e) {
+    var num = e.detail.value;
+    var totalCoursePrice = this.data.price * num
+    this.setData({
+      courseNum: num,
+      totalCoursePrice: totalCoursePrice,
+      realPay: totalCoursePrice
+    });
+    this.loadVoucher({
+      userId: app.globalData.userInfo.userId,
+      countPrice: totalCoursePrice
+    })
+  },
+  /**
+   * 点击导航栏
+   */
+  onNavBarTap: function(event) {
+    // 获取点击的navbar的index
+    let navbarTapIndex = event.currentTarget.dataset.navbarIndex
+    // 设置data属性中的navbarActiveIndex为当前点击的navbar
+    this.setData({
+      navbarActiveIndex: navbarTapIndex
+    })
+  },
+  /**
+   * 
+   */
+  onBindChange: function(e) {
+    // 设置data属性中的navbarActiveIndex为当前点击的navbar
+    this.setData({
+      navbarActiveIndex: e.detail.current
+    })
+  },
+  //点击加载优惠券
+  ticketTap: function(e) {
+    const _this = this
+    let status = e.currentTarget.dataset.status
+    let selectItem = e.currentTarget.dataset.item
+    if (status == "unusable") return
+    if (selectItem.voucherUuid == this.data.selectTicket.voucherUuid) {
+      this.setData({
+        selectTicket: {},
+        realPay: _this.data.totalCoursePrice
+      })
+      return
+    }
+    this.setData({
+      selectTicket: selectItem,
+      realPay: this.data.totalCoursePrice - selectItem.parValue
+    })
+  },
+  //显示对话框
+  showModal: function() {
+    this.loadVoucher({
+      userId: app.globalData.userInfo.userId,
+      countPrice: this.data.realPay
+    })
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
+    setTimeout(function() {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  //隐藏对话框
+  hideModal: function() {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function() {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 200)
+  },
+  loadVoucher: function(param) {
+    var _this = this
+    let paramsStr = Utils.concatParams(param)
+    wx.request({
+      url: app.globalData.host + '/rest/s1/Goods/voucher/getVoucher' + paramsStr,
+      success: function(res) {
+        let usableTicket = res.data.data.usable
+        if (usableTicket.length > 0) {
+          let select = usableTicket[0]
+          _this.setData({
+            tickets: res.data.data,
+            selectTicket: select,
+            ticketDesc: select.voucherName,
+            realPay: _this.data.totalCoursePrice - select.parValue
+          })
+        } else {
+          _this.setData({
+            tickets: res.data.data,
+            selectTicket: {},
+            ticketDesc: '暂无可用优惠券',
+            realPay: _this.data.totalCoursePrice
+          })
+        }  
+      },
+      fail: function(res) {
+     
+      }
+    })
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
+  payOrder: function () {
+    let _this = this
+    let params = {
+      voucherUuid: _this.data.selectTicket.voucherUuid,
+      courseId: _this.data.courseId,
+      userId: app.globalData.userInfo.userId,
+      num: _this.data.courseNum,
+      realPay: _this.data.realPay,
+      type:2,
+      openId: app.globalData.openId
+    }
+    wx.request({
+      url: app.globalData.host + '/rest/s1/Goods/buy',
+      data: params,
+      method: 'POST',
+      success: function (res) {
+        if (res.statusCode != 200 || !res.data.data) {
+          wx.showToast({
+            title: '支付出现问题，稍后再试',
+            duration:2000,
+            icon:'none'
+          })
+          return
+        }
+        const result = res.data.data
+        wx.requestPayment({
+          timeStamp: result.timeStamp,
+          nonceStr: result.nonceStr,
+          package: result.package,
+          signType: result.signType,
+          paySign: result.paySign,
+          success(res) {
+            wx.navigateBack({
+              delta: 1
+            }) },
+          fail(res) { }
+        })
+      },
+      fail: function (res) { }
+    })
   }
 })

@@ -1,6 +1,8 @@
 <!--pages/activity/activity.wxml-->
 <!--pages/mineAppointment/mineAppointment.wxml-->
-<view class="container">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
   <!-- 导航栏 -->
   <view class="navbar">
     <block wx:for="{{statusType}}" wx:key="index">
@@ -10,28 +12,29 @@
     </block>
   </view>
   <swiper class="content-wrapper" style="height:{{winHeight}}rpx" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
-    <swiper-item wx:for="{{activityList}}" wx:key="index" wx:for-item="activitys">
-      <scroll-view style="height:100%" scroll-y >
-        <view class="activity" wx:if="{{activitys.length > 0}}" wx:for="{{activitys}}" wx:key="activityId" id="{{item.activityId}}" bindtap="goActivity" >
-          <view  class="activity-hd">
-            <image mode='scaleToFill' src="{{item.activityPhoto}}"></image>
+    <swiper-item wx:for="{{activityArr}}" wx:key="{{index}}" wx:for-item="activitys">
+      <scroll-view style="height:100%" scroll-y="true" bindscrolltolower="loadMore">
+        <view class="activity" wx:if="{{activitys.length > 0}}" wx:for="{{activitys}}" wx:key="{{item.activityId}}" data-id="{{item.activityId}}" bindtap="goActivity">
+          <view class="activity-hd">
+            <image src="{{host}}{{item.logoPicUrl}}" mode='scaleToFill'></image>
           </view>
-          <view  class="activity-bd">
+          <view class="activity-bd">
             <view class="name">{{item.activityName}}</view>
-            <view class="tag" wx:if="{{item.description}}">{{item.description}}</view>
-            <view class="_date" wx:if="{{item.activityDate}}">
-                <image src='/images/icon/date.png' mode='scaleToFill'/>
-                 <text>{{item.activityDate}} </text>
-            </view>
-            <view class="address" wx:if="{{item.activitySotre}}" >
-              <image src='/images/icon/address.png' mode='scaleToFill'/>
-              <text>{{item.activitySotre}}</text>
+            <view class="store">{{item.place}}</view>
+            <view class="dt" wx:if="{{item.startTime}}">
+              <view>{{item.date}}</view>
+              <view>{{item.startTime}}—{{item.endTime}}</view>
             </view>
           </view>
         </view>
-        <view class="no-activity" wx:if="{{activitys.length == 0}}" >
-          <image src="/images/icon/yuyuekc.png" class="no-activity-img"></image>
-          <view class="text">暂无活动~ ~</view>
+        <view class="no-activity" wx:if="{{activitys.length == 0}}">
+          <!-- <image src="/images/icon/yuyue.png" class="no-activity-img"></image> -->
+          <view class="text">暂无活动~</view>
+        </view>
+        <view class='bottomline' wx:if="{{activitys.length > 0 && navbarPage[navbarActiveIndex]['moreFlag']}}">
+          <text class='baseline'></text>
+          <text class='tip'>我是有底线的哟～</text>
+          <text class='baseline'></text>
         </view>
       </scroll-view>
     </swiper-item>

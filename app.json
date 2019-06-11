@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/mine/mine",
-    "pages/buyCourse/buyCourse",
     "pages/home/home",
+    "pages/card/card",
+    "pages/mine/mine",
+    "pages/courses/courses",
+    "pages/login/login",
+    "pages/buyCourse/buyCourse",
+    "pages/activity/activity",
     "pages/mineInfo/mineInfo",
     "pages/appointment/appointment",
-    "pages/index/index",
-    "pages/card/card",
     "pages/cardDetail/cardDetail",
-    "pages/activity/activity",
     "pages/curoseDetail/curoseDetail",
     "pages/logs/logs",
     "pages/mineAppointment/mineAppointment",
@@ -17,23 +18,26 @@
     "pages/activityDetail/activityDetail",
     "pages/mineTicket/mineTicket",
     "pages/mineActivity/mineActivity",
-    "pages/stores/stores"
+    "pages/stores/stores",
+    "pages/template/pageAlert/pageAlert"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于导航"
+    }
+  },
   "window": {
-    "backgroundColor":"#191A19",
+    "backgroundColor": "#3e3e3e",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#211C24",
+    "navigationBarBackgroundColor": "#211c24",
     "navigationBarTitleText": "力偶健身俱乐部",
-    "navigationBarTextStyle": "white",
-    "navigationBarTextSize":"24",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#ccc",
-    "selectedColor": "#F2873B",
-    "borderStyle": "#191A19",
-    "backgroundColor": "#191A19",
-    "box-shadow": "0 0 6px 0",
+    "color": "#cccccc",
+    "selectedColor": "#fcc700",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/home/home",
@@ -42,16 +46,22 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/buyCourse/buyCourse",
-        "iconPath": "images/icon/yuyuekc.png",
-        "selectedIconPath": "images/icon/yuyuekc-ok.png",
-        "text": "购买课程"
+        "pagePath": "pages/courses/courses",
+        "iconPath": "images/icon/kc.png",
+        "selectedIconPath": "images/icon/kc-ok.png",
+        "text": "课程"
       },
       {
         "pagePath": "pages/card/card",
         "iconPath": "images/icon/ka.png",
         "selectedIconPath": "images/icon/ka-ok.png",
         "text": "卡服务"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "iconPath": "images/icon/yuyue.png",
+        "selectedIconPath": "images/icon/yuyue-ok.png",
+        "text": "预约"
       },
       {
         "pagePath": "pages/mine/mine",

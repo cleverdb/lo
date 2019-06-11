@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+import Utils from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -6,61 +7,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bindAccount: false,
-    userInfo: {},
-    items: [
-      {
-        icon: '../../images/icon/address.png',
-        text: '附近门店',
-        path: '/pages/stores/stores'
-      },
-      {
+    host: app.globalData.host,
+    user:{},
+    wUser: {},
+    bodyItems: [{
         icon: '../../images/icon/ka.png',
         text: '我的会员卡',
         path: '/pages/mineCard/mineCard'
       },
       {
         icon: '../../images/icon/yuyue.png',
-        text: '我的活动',
-        path: '/pages/mineActivity/mineActivity'
+        text: '我的预约',
+        path: '/pages/mineAppointment/mineAppointment'
       },
       {
-        icon: '../../images/icon/baogao.png',
-        text: '健身报告',
-        path: '/pages/mineReport/mineReport'
+        icon: '../../images/icon/activity.png',
+        text: '我的活动',
+        path: '/pages/mineActivity/mineActivity'
       },
       {
         icon: '../../images/icon/quanbao.png',
         text: '我的券包',
         path: '/pages/mineTicket/mineTicket'
       },
-      {
-        icon: '../../images/icon/mine.png',
-        text: '个人中心',
-        path: '/pages/mineInfo/mineInfo'
-      }
+
     ],
+    footItems: [{
+      icon: '../../images/icon/baogao.png',
+      text: '健身报告',
+      path: '/pages/mineReport/mineReport'
+    }, {
+      icon: '../../images/icon/mine.png',
+      text: '个人中心',
+      path: '/pages/mineInfo/mineInfo'
+    }, {
+      icon: '../../images/icon/address.png',
+      text: '门店导航',
+      path: '/pages/stores/stores'
+    }, ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var _this = this;
-    if (app.globalData.userInfo == null) {
-      setTimeout(() => {
-        console.log("dadasd")
-        _this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: true
-        })
-      }, 500)
-    } else {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    }
+    this.setData({
+      user: app.globalData.userInfo,
+      wUser: app.globalData.wUserInfo,
+    })
   },
 
   /**
@@ -73,28 +67,22 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    if (app.globalData.userInfo) {
-      console.log(app.globalData.userInfo)
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    }
+  onShow: function(e) {
+    this.setData({
+      user: app.globalData.userInfo
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
   },
 
   /**
@@ -117,15 +105,39 @@ Page({
   onShareAppMessage: function() {
 
   },
-  getUserInfoHandler: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  onGotUserInfo:function(res){
+    if (res.detail.rawData){
+      app.globalData.wUserInfo = res.detail.userInfo
+      this.setData({
+        wUser: app.globalData.wUserInfo
+      })
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
-  getPhoneNumberHandler: function(e) {
-    console.log(e);
+  initData: function (params) {
+    const _this = this
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      data: params,
+      method: 'GET',
+      url: app.globalData.host + '/rest/s1/Goods/mine/getInfo',
+      success: function (res) {
+        let result = res.data.data
+        app.globalData.userInfo = result
+        _this.setData({
+          user: result
+        })
+      },
+      fail: function (res) {
+
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
   }
 })

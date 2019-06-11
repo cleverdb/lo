@@ -1,0 +1,45 @@
+<view class='container'>
+  <view class='hd'>
+    <!-- <view class='message'>{{message}}</view> -->
+    <form bindsubmit="submit">
+      <block wx:if="{{account}}">
+        <view class='row'>
+          <label>账号</label>
+          <input placeholder='请输入手机号' type="number" maxlength="11"  ></input>
+        </view>
+        <view class='row'>
+          <label>密码</label>
+          <input placeholder='请输入密码' password='true' bi></input>
+        </view>
+      </block>
+      <block wx:if="{{tel}}">
+        <view class='row'>
+          <label>账号</label>
+          <input placeholder='请输入手机号' type="number" maxlength="11" bindinput='cellphoneInput'></input>
+        </view>
+        <view class='row'>
+          <label>验证码</label>
+          <input placeholder='验证码' type="number" maxlength="6"  bindinput="codeInput"></input>
+          <button class='btn-vcode' bindtap='vcodeTap'>{{time}}{{suffix}}</button>
+        </view>
+      </block>
+      <view class="btn">
+        <button form-type="submit" >登陆</button>
+      </view>
+    </form>
+  </view>
+  <view class='bd'>
+    <!-- <view class='row'>
+      <button type='primary' bindtap='accountTap' disabled='{{account}}' >账号密码登陆</button>
+    </view> -->
+    <view class='row'>
+      <button type='primary' open-type="getPhoneNumber" bindgetphonenumber="wechatLogin">微信登陆</button>
+      <!-- <image class='wechat' src="/images/icon/wechat.png"></image> -->
+      
+    </view>
+    <!-- <view class='row'>
+      <button type='primary' bindtap='telTap' disabled='{{tel}}'>手机号登陆</button>
+    </view> -->
+  </view>
+  <view class='ft'></view>
+</view>

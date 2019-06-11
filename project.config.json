@@ -8,11 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx7564b8b90db5388b",
+	"libVersion": "2.7.1",
+	"appid": "wx687f20a8752f6364",
 	"projectname": "liou",
 	"debugOptions": {
 		"hidedInDevtools": []

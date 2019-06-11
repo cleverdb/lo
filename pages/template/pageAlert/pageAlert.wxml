@@ -1,0 +1,17 @@
+<!--pages/template/pageAlert/pageAlert.wxml-->
+<template name="PageAlert">
+  <view class="container deep"  wx:if="{{state}}">
+    <view class="page-state" wx:if="{{state == 'error'}}">
+      <view class="message">{{message}}</view>
+      <view class="btn"><button bindtap='reloadTap'>重新加载</button></view>
+    </view>
+    <view class="page-state" wx:if="{{state == 'unlogin'}}">
+      <view class="message">{{message}}</view>
+      <view class="btn"><button open-type="getUserInfo" bindgetuserinfo="loginTap">登陆/注册</button></view>
+    </view>
+    <view class="page-state " wx:if="{{state == 'empty'}}">
+      <view class="message empty">{{message}}</view>
+    </view>
+  </view>
+</template>
+

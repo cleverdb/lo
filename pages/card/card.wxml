@@ -1,14 +1,10 @@
 <!--pages/buyCourse/buyCourse.wxml-->
-  <view class="card-container">
-          <view class="card-box" wx:for-items="{{card}}" wx:key="{{index}}" data-path='/pages/cardDetail/cardDetail' bindtap="navigateTo" data-id="{{item.id}}">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+  <view class="card-container" wx:if="{{!pageState.state}}">
+          <view class="card-box" wx:for-items="{{cardList}}" wx:key="{{index}}" data-path='/pages/cardDetail/cardDetail' bindtap="navigateTo" data-id="{{item.cardId}}">
             <view class="img-box">
-                <image src="/images/card.png" mode='scaleToFill'></image>
-                <view class='card-type'>
-                    <text class="card-name">{{item.cardType}}</text>
-                    <!-- <text class="curose-hold-store">支持{{item.count}}家场馆：{{item.holdStores}}</text> -->
-                </view>
-                
-                
+                <image src="{{host}}{{item.cardLogoUrl}}" mode='scaleToFill'></image>    
             </view>
             <!-- <view data-id="{{item.id}}" data-path='/pages/cardDetail/cardDetail' class="detail-box" bindtap="navigateTo">
                 <text>会员卡详情</text>

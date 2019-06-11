@@ -1,19 +1,124 @@
-<view class='container'>
-    <scroll-view scroll-y="true" class="course-list" >
-        <block wx:for="{{courseList}}" wx:key="index">
-            <view class="course" bindtap='courseTap'>
-                <view class="course-hd">
-                    <image  mode='scaleToFill' src="{{item.avatar}}"></image>
-                </view>
-                <view class="course-bd">
-                    <view class="name">{{item.courseName}}</view>
-                    <view class="tag">{{item.tag}}</view>
-                    <view class="attention">{{item.coachName}}，{{item.courseNum}}课程，{{item.studentNum}}学员 </view>
-                </view>
-                <!-- <view class='course-ft'>
-                <navigator url="/pages/curoseDetail/curoseDetail" class="detail">详情</navigator> 
-                </view> -->
-            </view>
-        </block>
-    </scroll-view>
+<!--pages/buyCourse/buyCourse.wxml-->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}"/>
+<view class="container" wx:if="{{!pageState.state}}">
+  <view class="container-hd">
+    <!-- <icon type="clear" size="40"></icon> -->
+  </view>
+  <view class="container-bd">
+    <view class="cell">
+      <text class='name'>课程名称</text>
+      <text class='value'>{{courseName}}</text>
+    </view>
+    <view class="cell">
+      <text class='name'>课程教练</text>
+      <text class='value'>{{coachName}}</text>
+    </view>
+    <view class="cell">
+      <text class='name'>课程价格</text>
+      <text class='value'>{{price}} 元/课</text>
+    </view>
+    <view class="cell">
+      <text class='name'>购买数量</text>
+      <view class="num-step">
+        <text bindtap='bindMinus' class="{{minusStatus}}">-</text>
+        <input type="number" value="{{courseNum}}" bindchange="bindChange" />
+        <text bindtap='bindPlus'>+</text>
+      </view>
+    </view>
+
+    <view class="cell">
+      <text class='name'>总金额</text>
+      <text class='value'>¥{{totalCoursePrice}}</text>
+    </view>
+
+    <view class="cell" bindtap='showModal'>
+      <text class='name'>优惠券</text>
+      <view class='arrow'>
+        <text class='value label' wx:if="{{selectTicket.voucherName}}">{{selectTicket.voucherName}}</text>
+        <text class='value label' wx:else>{{ticketDesc}}</text>
+      </view>
+    </view>
+    <view class="cell">
+      <text class='name'>待支付</text>
+      <text class='value price'>¥{{realPay}}</text>
+    </view>
+  </view>
+  <view class='container-ft'>
+    <view class='buy-course' bindtap='buyCourse'>
+      <text>确认购买</text>
+    </view>
+  </view>
 </view>
+
+<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
+  <view class="popup-content-hd">
+    <view class="navbar">
+      <block wx:for="{{statusType}}" wx:key="index">
+        <view class="navbar-item {{navbarActiveIndex ==index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" bindtap="onNavBarTap">
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="popup-content-bd">
+    <swiper class="content-wrapper" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
+      <swiper-item wx:for="{{statusType}}" wx:key="index" wx:for-item="st" data-status="{{st.status}}">
+        <scroll-view scroll-y class='sv'>
+          <view class="no-ticket" hidden="{{tickets[st.status].length > 0 ? true : false}}">
+            <!-- <image src="/images/icon/quanbao.png" class="no-ticket-img"></image> -->
+            <view class="text">暂无优惠券~</view>
+          </view>
+          <block wx:for="{{tickets[st.status]}}" wx:key="index" wx:for-item='ticket'>
+            <view class='ticket-view {{selectTicket.voucherUuid == ticket.voucherUuid ? "select": ""}}' bindtap='ticketTap' data-item='{{ticket}}' data-status="{{st.status}}">
+              <view class='ticket-view-left'>
+                <view class='hd'>
+                  <text class='tname'>{{ticket.voucherName}}</text>
+                </view>
+                <view class='bd'>
+                  <view class='left'>
+                    <text>有效期 {{ticket.activeDate}} 至 {{ticket.expireDate}}</text>
+                  </view>
+                  <!-- <view class='right'>
+                    <text>未过期</text>
+                  </view> -->
+                </view>
+              </view>
+              <view class='ticket-view-right'>
+                <view class='hd'>
+                  <text class='logo'>¥</text>
+                  <text class='num'>{{ticket.parValue}}</text>
+                </view>
+                <view class='bd'>
+                  <text>通用</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="popup-content-ft">
+  </view>
+</view>
+
+<modal title="" hidden="{{hideModal}}" bindconfirm="confirmCourse" bindcancel="cancelCourse">
+  <view class="modal-container">
+    <view class="mc-hd">
+      <text>课程总金额</text>
+      <text class="money">¥{{totalCoursePrice}}</text>
+    </view>
+    <view class="mc-bd">
+      <view class='cell'>
+        <text>课程名称</text>
+        <text>跆拳道</text>
+      </view>
+      <view class='cell'>
+        <text>课时</text>
+        <text>{{courseNum}}课时</text>
+      </view>
+    </view>
+  </view>
+</modal>

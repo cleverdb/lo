@@ -1,36 +1,52 @@
 <!--pages/mine/mine.wxml-->
 <view class='container'>
-    <view class='info'>
+  <view class='container-hd'>
+    <view class='container-hd_hd'>
       <view class='avatar'>
-        <image style="border-radius:50%;" src="{{userInfo.avatarUrl ? userInfo.avatarUrl:'../../images/logo.png'}}"></image>
-      </view>
-      <view class="text">
-        <text wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
-        <button wx:else  class="login" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandler">登录</button>
-      </view>
-    </view >
-    <view style='width:100%'>
-    <view class="bind-account">
-      <view class="bind-account-bd">
-      <text wx:if="{{!bindAccount}}">您还未绑定会员哟~</text>
-      </view>
-      <view class="bind-account-ft">
-          <button open-type="getPhoneNumber" class="phoneBtn" bindgetphonenumber="getPhoneNumberHandler">微信手机号登陆</button>
-      </view>
+        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'../../images/logo.png'}}"></image>
       </view>
     </view>
-    <view class="menu-panel">
-        <navigator class="menu" wx:for="{{ items }}" wx:key="{{item}}" url="{{ item.path }}" >
-        <view class='menu-row'>
-            <view class="menu-cell">
-                <image src="{{item.icon}}" class="img"></image>
-                <text>{{ item.text }}</text>
-            </view>
-            
-          </view>
-          <view class="arrow" >
-              <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
-            </view>
-        </navigator>
+    <view class='container-hd_bd'>  
+      <block wx:if='{{user.userId}}'>
+        <view class='cell name'>{{user.nickName?user.nickName:wUser.nickName}}</view>
+        <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
+      </block>
+      <block wx:else>
+        <button class='cell' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登陆/注册</button>
+      </block>
+     
+    </view>
+    <view class='container-hd_ft'>
+      <view class='cell' wx:if="{{user.weight}}">体重:{{user.weight}}kg</view>
+      <view class="cell" wx:if="{{user.bmi}}">BMI:{{user.bmi}}</view>
+    </view>
+  </view>
+  <view class='container-bd'>
+    <navigator class="menu" wx:for="{{ bodyItems }}" wx:key="{{item}}" url="{{ item.path }}">
+      <view class='menu-row'>
+        <view class="menu-cell">
+          <image src="{{item.icon}}" class="img"></image>
+          <text>{{ item.text }}</text>
+        </view>
+
       </view>
+      <view class="arrow">
+        <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
+      </view>
+    </navigator>
+  </view>
+<view class='container-ft'>
+  <navigator class="menu" wx:for="{{ footItems }}" wx:key="{{item}}" url="{{ item.path }}">
+    <view class='menu-row'>
+      <view class="menu-cell">
+        <image src="{{item.icon}}" class="img"></image>
+        <text>{{ item.text }}</text>
+      </view>
+
+    </view>
+    <view class="arrow">
+      <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
+    </view>
+  </navigator>
+</view>
 </view>

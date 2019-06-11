@@ -1,93 +1,93 @@
 <!--pages/curoseDetail/curoseDetail.wxml-->
-<view class='container'>
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
   <view class='container-hd'>
-    <view class='coach-info'>
-      <text class='title'>课程教练：王百万</text>
-      <text class='desc'>力偶健身私教教练，高级私人教练，从业10年，获得无数学员称赞。擅长：拳击，泰拳，武术。
-</text>
+    <view class="coach-avatar {{course.iconUrl ? ' ' : 'empty '}}">
+      <image wx:if='{{course.iconUrl}}' mode='scaleToFill' src="{{host}}{{course.iconUrl}}"></image>
     </view>
-    <view class='coach-avatar'>
-      <image src='/images/na/0.jpg' mode='scaleToFill' />
+    <view class='coach-info'>
+      <view class='cell title'>{{course.coachName}}</view>
+      <view class='cell'>{{course.forte}}</view>
+      <view class='cell'>
+        <text>{{course.honor}}</text>
+      </view>
     </view>
   </view>
   <view class='container-bd'>
-    <view class='course-desc'>
+    <view class='course'>
       <view class='title'>课程简介</view>
       <view class='content'>
-        跆拳道（英文：TAE-KWON-DO）跆在英文当中为TAE，意为以腿脚踢击；拳在英文当中为KWON，意为以拳头打击；而道的英文发音则为DO，是指代表道行、礼仪修练的艺术。 跆拳道是现代奥运会正式比赛项目之一，是一种主要使用手及脚进行格斗或对抗的运动。起源于朝鲜半岛，早期是由朝鲜三国时代的跆跟、花郎道演化而来的一种武术；后来由于二战之后百废待兴，为了振兴半岛文化而在民间进行推广；因而跆拳道是当时在朝鲜半岛除却空手道之外，较普遍流行的一项技击术。
+        <text>{{course.summary}}</text>
       </view>
     </view>
-    <view class='course-attention'>
+   
+    <view class='course no-border'>
       <view class='title'>课程要求</view>
       <view class='content'>
-        训练前：1，最好是穿运动装，如果室内温度不是很低的话，稍微穿少点为了好出汗2，训练前，最好前慢跑20分钟，把身体活动开，配合一些简单的热身运动，再压压韧带3，训练前不要喝太多的水和吃要多的食物，（最好健身时间是下午4点到6点这段，所以最好是不要吃东西。健身前可以喝一点水，大概就是1口2口左右）4，开点窗户，使室内有比较充足的空气 训练前：1，最好是穿运动装，如果室内温度不是很低的话，稍微穿少点为了好出汗2，训练前，最好前慢跑20分钟，把身体活动开，配合一些简单的热身运动，再压压韧带3，训练前不要喝太多的水和吃要多的食物，（最好健身时间是下午4点到6点这段，所以最好是不要吃东西。健身前可以喝一点水，大概就是1口2口左右）4，开点窗户，使室内有比较充足的空气
-        训练前：1，最好是穿运动装，如果室内温度不是很低的话，稍微穿少点为了好出汗2，训练前，最好前慢跑20分钟，把身体活动开，配合一些简单的热身运动，再压压韧带3，训练前不要喝太多的水和吃要多的食物，（最好健身时间是下午4点到6点这段，所以最好是不要吃东西。健身前可以喝一点水，大概就是1口2口左右）4，开点窗户，使室内有比较充足的空气
-
+        <text>{{course.demand}}</text>
       </view>
     </view>
   </view>
-  <view class='container-ft'>
-    <view class='buy-course' bindtap='showModal'>
-      <text>购买课程</text>
+  <cover-view class='buy-course' bindtap='buyCourse'>
+    <cover-view>购买课程</cover-view>
+  </cover-view>
+  <view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
+    <view class="popup-content-hd">
+      <!-- <icon type="clear" size="40"></icon> -->
+    </view>
+    <view class="popup-content-bd">
+      <view class="cell">
+        <text class='name'>课程名称：</text>
+        <text class='value'>跆拳道</text>
+      </view>
+      <view class="cell">
+        <text class='name'>课程教练：</text>
+        <text class='value'>王百万</text>
+      </view>
+      <view class="cell">
+        <text class='name'>课程价格：</text>
+        <text class='value'>{{coursePrice}} 元/课</text>
+      </view>
+      <view class="cell">
+        <text class='name'>购买数量：</text>
+        <view class="num-step">
+          <text bindtap='bindMinus' class="{{minusStatus}}">-</text>
+          <input type="number" value="{{courseNum}}" bindchange="bindChange" />
+          <text bindtap='bindPlus'>+</text>
+        </view>
+      </view>
+      <view class="cell">
+        <text class='name'>总金额：</text>
+        <text class='value'>{{totalCoursePrice}}</text>
+      </view>
+    </view>
+    <view class="popup-content-ft">
+      <view class='container-ft'>
+        <view class='buy-course' bindtap='buyCourse'>
+          <text>确认购买</text>
+        </view>
+      </view>
     </view>
   </view>
+
+  <modal title="" hidden="{{hideModal}}" bindconfirm="confirmCourse" bindcancel="cancelCourse">
+    <view class="modal-container">
+      <view class="mc-hd">
+        <text>课程总金额</text>
+        <text class="money">¥{{totalCoursePrice}}</text>
+      </view>
+      <view class="mc-bd">
+        <view class='cell'>
+          <text>课程名称</text>
+          <text>跆拳道</text>
+        </view>
+        <view class='cell'>
+          <text>课时</text>
+          <text>{{courseNum}}课时</text>
+        </view>
+      </view>
+    </view>
+  </modal>
 </view>
-
-<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
-  <view class="popup-content-hd">
-    <!-- <icon type="clear" size="40"></icon> -->
-  </view>
-  <view class="popup-content-bd">
-    <view class="cell">
-      <text class='name'>课程名称：</text>
-      <text class='value'>跆拳道</text>
-    </view>
-    <view class="cell">
-      <text class='name'>课程教练：</text>
-      <text class='value'>王百万</text>
-    </view>
-    <view class="cell">
-      <text class='name'>课程价格：</text>
-      <text class='value'>{{coursePrice}} 元/课</text>
-    </view>
-    <view class="cell">
-      <text class='name'>购买数量：</text>
-      <view class="num-step">
-        <text bindtap='bindMinus' class="{{minusStatus}}">-</text>
-        <input type="number" value="{{courseNum}}" bindchange="bindChange" />
-        <text bindtap='bindPlus'>+</text>
-      </view>
-    </view>
-    <view class="cell">
-      <text class='name'>总金额：</text>
-      <text class='value'>{{totalCoursePrice}}</text>
-    </view>
-  </view>
-  <view class="popup-content-ft">
-    <view class='container-ft'>
-      <view class='buy-course' bindtap='buyCourse'>
-        <text>确认购买</text>
-      </view>
-    </view>
-  </view>
-</view>
-
-<modal title="" hidden="{{hideModal}}" bindconfirm="confirmCourse" bindcancel="cancelCourse">
-  <view class="modal-container">
-    <view class="mc-hd">
-      <text>课程总金额</text>
-      <text class="money">¥{{totalCoursePrice}}</text>
-    </view>
-    <view class="mc-bd">
-      <view class='cell'>
-      <text>课程名称</text>
-      <text>跆拳道</text>
-      </view>
-      <view class='cell'>
-        <text>课时</text>
-        <text>{{courseNum}}课时</text>
-      </view>
-    </view>
-  </view>
-</modal>

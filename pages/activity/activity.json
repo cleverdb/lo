@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "活动报名"
+  "navigationBarTitleText": "活动报名",
+  "onReachBottomDistance": 50
 }

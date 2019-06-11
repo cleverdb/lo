@@ -1,98 +1,174 @@
 <!--pages/cardDetail/cardDetail.wxml-->
-<view class='container'>
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container {{parentScroll?'diasbled':''}}" wx:if="{{!pageState.state}}">
   <view class="container-hd">
-    <view class="img-box">
-      <image src="/images/card.png" mode='scaleToFill'></image>
-      <view class='card-type'>
-        <text class="card-name">{{cardType}}</text>
+    <view class="img-box" wx:if='{{card.cardLogoUrl}}'>
+      <image src="{{host}}{{card.cardLogoUrl}}" mode='scaleToFill'></image>
+    </view>
+  </view>
+  <view class='container-bd' wx:if='{{card.cardTypeId != "try_card"}}'>
+    <view class='cell header'>
+      <view class='hd'>
+        <view class='default-num {{selectDefault? "select":""}}' bindtap='selectDefaultTap'>{{defaultNum}}{{cardUnit}}</view>
+      </view>
+      <view class='bd'>
+        <view class="num-step">
+          <text bindtap='bindMinus' class="{{minusStatus}}">-</text>
+          <input type="number" value="{{cardNum}}{{cardUnit}}" bindchange="numChange"  disabled='true'/>
+          <text bindtap='bindPlus'>+</text>
+        </view>
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        单价
+      </view>
+      <view class='bd'>
+        <text>¥{{card.unitPrice}}</text>
+      </view>
+    </view>
+    <view class='cell' bindtap='showVoucherModal'>
+      <view class='hd'>
+        优惠券
+      </view>
+      <view class='bd'>
+        <text class='warning' wx:if="{{selectTicket.voucherName}}">{{selectTicket.voucherName}}</text>
+        <text class='warning' wx:else>{{ticketDesc}}</text>
+      </view>
+      <view class='ft'>
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        开卡场馆
+      </view>
+      <view class='bd'>
+        <picker bindchange="bindStoreChange" mode="selector" value="{{storeIndex}}" range-key="storeName" range="{{storeList}}">
+          <view class="picker">
+            <text wx:if='{{storeList}}'>{{storeList[storeIndex]['storeName']}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class='ft'>
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        销售人员
+      </view>
+      <view class='bd'>
+        <input placeholder='请输入销售姓名' placeholder-class="input-style" bindblur='bindSale'></input>
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        待支付
+      </view>
+      <view class='bd'>
+        <text class='price'>¥{{realPay}}</text>
       </view>
     </view>
   </view>
-  <view class="container-ft">
-    <view class="card">
-      <view class="card-hd">
-        <view class='cell'>
-          <view class='left'>
-            课时
-          </view>
-          <view class='right'>
-            <block wx:for="{{validDateList}}">
-              <view data-item="{{item}}" class="how-long {{validIndex==item.id?'selected':''}}" bindtap='bindValidDate'>
-                {{item.name}}
-              </view>
-            </block>
-          </view>
-        </view>
-        <view class='cell'>
-          <view class='left'>
-            价格
-          </view>
-          <view class='right'>
-            <view>
-              <text class='price'>{{countPrice}}</text> 元
-            </view>
-          </view>
-        </view>
+   <view class='container-bd' wx:else>
+    <view class='cell'>
+      <view class='hd'>
+        开卡场馆
       </view>
-      <view class="card-bd">
-        <view class='cell'>
-          <view class='left'>开卡场馆</view>
-          <view class='right'>
-            <picker bindchange="bindPickerChange" mode="selector" value="{{index}}" range-key="name" range="{{storeList}}">
-              <view class="picker">
-                {{storeList[storeIndex]["name"]}}
-              </view>
-            </picker>
+      <view class='bd'>
+        <picker bindchange="bindStoreChange" mode="selector" value="{{storeIndex}}" range-key="storeName" range="{{storeList}}">
+          <view class="picker">
+            <text wx:if='{{storeList}}'>{{storeList[storeIndex]['storeName']}}</text>
           </view>
-        </view>
-        <view class='cell'>
-          <view class='left'>销售人员</view>
-          <view class='right'>
-            <view>
-              <input placeholder='请输入销售姓名' placeholder-class="input-style"></input>
-            </view>
-          </view>
-        </view>
-     
+        </picker>
       </view>
-      <view class="card-ft">        
+      <view class='ft'>
       </view>
-    </view> 
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        销售人员
+      </view>
+      <view class='bd'>
+        <input placeholder='请输入销售姓名' placeholder-class="input-style" bindblur='bindSale'></input>
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='hd'>
+        待支付
+      </view>
+      <view class='bd'>
+        <text class='price'>¥{{realPay}}</text>
+      </view>
+    </view>
   </view>
-    <view class="container-bd">
+  <view class='container-ft'>
     <view class='tr'>
-        <view class='td'>详情</view>
-        <view class='td right'>
-          <text>{{cardDesc}}</text>
-        </view>
+      <view class='td'>详情</view>
+      <view class='td right'>
+        <text>{{card.summary}}</text>
+      </view>
     </view>
     <view class='tr'>
-        <view class='td att'>购买须知</view>
-        <view class='td right'>
-          <text>{{buyAttention}}</text>
-        </view>  
+      <view class='td att'>购买须知</view>
+      <view class='td right'>
+        <text>{{card.buyNote}}</text>
+      </view>
     </view>
-  </view>  
-     <view class='buy-card' bindtap="buyCard">
-          <view>购买会员卡</view>
-        </view>
+  </view>
+  <view class='buy-card' bindtap="buyCard">
+    <view>购买会员卡</view>
+  </view>
 </view>
-
-<modal title="" hidden="{{hideModal}}" bindconfirm="confirmCard" bindcancel="cancelCard">
-  <view class="modal-container">
-    <view class="mc-hd">
-      <text>总金额</text>
-      <text class="money">¥{{countPrice}}</text>
-    </view>
-    <view class="mc-bd">
-      <view class='cell'>
-        <text>卡类型</text>
-        <text>{{cardType}}</text>
-      </view>
-      <view class='cell'>
-        <text>详情</text>
-        <text>{{cardDesc}}</text>
-      </view>
+<view class="popup-container" bindtap="hideVoucherModal" catchtouchmove="touchmove" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
+  <view class="popup-content-hd">
+    <view class="navbar">
+      <block wx:for="{{statusType}}" wx:key="index">
+        <view class="navbar-item {{navbarActiveIndex ==index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" bindtap="onNavBarTap">
+          <text>{{item.name}}</text>
+        </view>
+      </block>
     </view>
   </view>
-</modal>
+  <view class="popup-content-bd">
+    <swiper class="content-wrapper" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
+      <swiper-item wx:for="{{statusType}}" wx:key="index" wx:for-item="st" data-status="{{st.status}}">
+        <scroll-view scroll-y class='sv'>
+          <view class="no-ticket" hidden="{{tickets[st.status].length > 0 ? true : false}}">
+            <!-- <image src="/images/icon/quanbao.png" class="no-ticket-img"></image> -->
+            <view class="text">暂无优惠券~</view>
+          </view>
+          <block wx:for="{{tickets[st.status]}}" wx:key="index" wx:for-item='ticket'>
+            <view class='ticket-view {{selectTicket.voucherUuid == ticket.voucherUuid ? "select": ""}}' bindtap='ticketTap' data-item='{{ticket}}' data-status="{{st.status}}">
+              <view class='ticket-view-left'>
+                <view class='hd'>
+                  <text class='tname'>{{ticket.voucherName}}</text>
+                </view>
+                <view class='bd'>
+                  <view class='left'>
+                    <text>有效期 {{ticket.activeDate}} 至 {{ticket.expireDate}}</text>
+                  </view>
+                  <!-- <view class='right'>
+                    <text>未过期</text>
+                  </view> -->
+                </view>
+              </view>
+              <view class='ticket-view-right'>
+                <view class='hd'>
+                  <text class='logo'>¥</text>
+                  <text class='num'>{{ticket.parValue}}</text>
+                </view>
+                <view class='bd'>
+                  <text>通用</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="popup-content-ft">
+  </view>
+</view>
