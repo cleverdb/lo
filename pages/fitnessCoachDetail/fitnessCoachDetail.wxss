@@ -1,0 +1,75 @@
+/* pages/fitnessCoachDetail/fitnessCoachDetail.wxss */
+page{
+    height: 100%;
+}
+.fitness_coach{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.fitness_coach_img{
+    flex: 1;
+    position: relative;
+}
+.fitness_coach_introduction{
+    position: absolute;
+    width: 628rpx;
+    background: #8B9094;
+    left: 30rpx;
+    border-radius: 10rpx;
+    top: 560rpx;
+    min-height: 384rpx;
+    padding: 30rpx 30rpx 0;
+    opacity: 0.5;
+}
+.coach_introduction_top{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.coach_introduction_top text{
+    color:#ffffff;
+    font-family:PingFangSC;
+    font-weight:500;
+}
+.first{
+    margin-bottom: 20rpx;
+}
+.introduction_name{
+    font-size:36rpx;
+}
+.introduction_time{
+    font-size: 28rpx;
+}
+.introduction_mony{
+    font-size: 22rpx;
+}
+.introduction_line{
+    height: 1px;
+    background: #FCC800;
+    margin: 20rpx 0;
+}
+.introduction_honor text{
+    display: block;
+    color: #ffffff;
+    font-size:22rpx;
+    margin-bottom: 5rpx;
+}
+.fitness_coach_end{
+    height:111rpx;
+    display: flex;
+    flex-direction: row;
+}
+.end_left{
+    width: 50%;
+    text-align: center;
+    line-height: 111rpx;
+}
+.end_rihgt{
+    width: 50%;
+    font-size:36rpx;
+    text-align: center;
+    background: #FBC700;
+    line-height: 111rpx;
+}

@@ -11,7 +11,105 @@
       </block>
     </swiper>
   </view>
-  <view class="container-bd">
+  <view class="container_store">
+    <picker  bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view wx:if='{{index}}' class="picker">
+        当前选择：{{array[index]}}
+      </view>
+      <view wx:else  class="store_title">
+        <text>请选择门店</text>
+        <view>
+          >
+        </view>
+      </view>
+    </picker>     
+  </view>
+  <view class="store_introduction">
+      <view>
+        <view class="store_introduction_title">
+           <text>店内环境</text>
+           <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+             <image src="/images/icon/elipsis.png"></image>
+           </navigator>
+        </view>
+      </view>
+      <view class="scroll_conteiner">
+        <scroll-view 
+        scroll-x="true"
+        scroll-with-animation="true" 
+       >
+          <view id="demo1" class="scroll-view-item_H">
+            <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+          </view>
+          <view id="demo2"  class="scroll-view-item_H">
+            <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+          </view>
+          <view id="demo3" class="scroll-view-item_H">
+            <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+  </view>
+  <view class="store_introduction">
+      <view>
+        <view class="store_introduction_title">
+           <text>私人教练</text>
+           <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+             <image src="/images/icon/elipsis.png"></image>
+           </navigator>
+        </view>
+      </view>
+      <view class="scroll_conteiner">
+        <scroll-view 
+        scroll-x="true"
+        scroll-with-animation="true" 
+       >
+          <view id="demo1" class="scroll-view-item_H">
+            <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+              <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+           </navigator>
+            
+          </view>
+          <view id="demo2"  class="scroll-view-item_H">
+            <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+          </view>
+          <view id="demo3" class="scroll-view-item_H">
+            <view class="scroll-view_continer">
+                <view class="scroll-view-item_img">
+                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+              </view>
+              <text>机械区</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+  </view>
+  <!-- <view class="container-bd">
     <block wx:for="{{menu}}" wx:key="*this">
       <view class='container-image'>
       <image  src="{{host}}{{item.picUrl}}" data-item='{{item}}' mode="scaleToFill" bindtap='menuTap'/>
@@ -21,6 +119,6 @@
     <button class='buyMember' bindtap='buyMember' ></button>
     <button class='buyCourse' bindtap='buyCourse'></button> -->
     <!-- <button class="appointmentCourse" bindtap='appointmentCourse'></button>-->
-    <!-- <button class="activity" bindtap='activity'></button> -->
-  </view> 
+    <!--  <button class="activity" bindtap='activity'></button>
+  </view>  -->
 </view>

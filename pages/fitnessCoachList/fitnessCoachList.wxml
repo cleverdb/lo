@@ -1,0 +1,18 @@
+<!--pages/fitnessCoachList/fitnessCoachList.wxml-->
+<!-- pages/storeDetail/storeDetail.wxml -->
+<view class="store_detail_wrap">
+    <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail" redirect hover-class="className">
+        <view class="store_detail_item">
+            <view class="img_wrap">
+                <image src="/images/test/test_store.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+            </view>
+            <view class="detail_text">
+                <text class="detail_text_left">刘石磊</text>
+                <view class="detail_text_right_wrap">
+                    <text class="detail_text_right right">增肌</text>
+                    <text class="detail_text_right">增肌</text>
+                </view>
+            </view>
+        </view>
+    </navigator>
+</view>

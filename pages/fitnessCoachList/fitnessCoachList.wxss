@@ -1,0 +1,58 @@
+/* pages/fitnessCoachList/fitnessCoachList.wxss */
+/* pages/storeDetail/storeDetail.wxss */
+page{
+    height: 100%;
+    background: #EEEEEE;
+}
+.store_detail_wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 30rpx 0;
+    flex-wrap: wrap;
+}
+.store_detail_item{
+    width: 336rpx;
+    margin-bottom: 20rpx;
+}
+.img_wrap{
+    width: 336rpx;
+    height: 244rpx;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+.img_wrap image{
+    width: 100%;
+    display: block;
+}
+.detail_text{
+    height: 60rpx;
+    background: #ffffff;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    padding: 0 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -2rpx;
+}
+.detail_text_left{
+    font-size: 28rpx;
+    color:rgba(0,0,0,1);
+}
+.detail_text_right_wrap{
+    display: flex;
+    align-items: center;
+}
+.detail_text_right{
+    width: 52rpx;
+    height: 29rpx;
+    font-size:18rpx;
+    font-weight:400;
+    color:#AEAEAF;
+    border: 1px solid #AEAEAF;
+    border-radius: 3px;
+    text-align: center;
+}
+.right{
+    margin-right: 8rpx;
+}

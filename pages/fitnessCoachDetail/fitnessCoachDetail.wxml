@@ -1,0 +1,33 @@
+<!--pages/fitnessCoachDetail/fitnessCoachDetail.wxml-->
+<view class="fitness_coach">
+    <view class="fitness_coach_img">
+        adadada
+       <view class="fitness_coach_introduction">
+            <view class="coach_introduction_top  first">
+                <text class="introduction_name">刘石磊</text>
+                <text>asdad</text>
+            </view>
+            <view  class="coach_introduction_top">
+                <text class="introduction_time">工作时间：4年</text>
+                <text class="introduction_mony">服务人次：80人/月</text>
+            </view>
+            <view class="introduction_line"/>
+            <view class="introduction_honor">
+                <text>古德体育减脂专家认证 古德体育</text>
+                <text>古德体育减脂专家认证 古德体育</text>
+                <text>古德体育减脂专家认证 古德体育</text>
+            </view>
+              
+       </view>
+    </view>
+    <view  class="fitness_coach_end">
+        <view class="end_left">
+            体验TA
+        </view>
+         <view class="end_rihgt">
+            购买课程
+         </view>
+            
+    </view>
+</view>
+  

@@ -21,7 +21,11 @@
     "pages/stores/stores",
     "pages/template/pageAlert/pageAlert",
     "pages/privateCourses/privateCourses",
-    "pages/privateCoursesBuy/privateCoursesBuy"
+    "pages/privateCoursesBuy/privateCoursesBuy",
+    "pages/storeList/storeList",
+    "pages/storeDetail/storeDetail",
+    "pages/fitnessCoachList/fitnessCoachList",
+    "pages/fitnessCoachDetail/fitnessCoachDetail"
   ],
   "permission": {
     "scope.userLocation": {

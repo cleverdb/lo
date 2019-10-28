@@ -11,8 +11,20 @@ Page({
       '/images/act.jpg',
       '/images/card.png'
     ],
+    index:2,
     host: app.globalData.host,
     banner: [],
+    sliberBanner:[{
+      picUrl:'/images/sliber_test.png'
+    }, {
+        picUrl: '/images/sliber_test.png'
+      }, {
+        picUrl: '/images/sliber_test.png'
+      }, {
+        picUrl: '/images/sliber_test.png'
+      }, {
+        picUrl: '/images/sliber_test.png'
+      }],
     menu: [],
     indicatorDots: true,
     autoplay: true,
