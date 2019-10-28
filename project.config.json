@@ -19,6 +19,8 @@
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,13 +30,49 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/storeList/storeList",
+					"pathName": "pages/storeList/storeList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/fitnessCoachList/fitnessCoachList",
+					"pathName": "pages/fitnessCoachList/fitnessCoachList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/storeDetail/storeDetail",
+					"pathName": "pages/storeDetail/storeDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/fitnessCoachDetail/fitnessCoachDetail",
+					"pathName": "pages/fitnessCoachDetail/fitnessCoachDetail",
+					"scene": null
+				}
+			]
 		}
 	}
 }
