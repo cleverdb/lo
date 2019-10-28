@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
-<view class="container" wx:if='{{!pageState.state}}'>
+<view class="container_q" wx:if='{{!pageState.state}}'>
   <view class="container-hd">
     <swiper indicator-dots="{{indicatorDots}}" circular='{{circular}}' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{banner}}" wx:key="*this">
@@ -28,7 +28,7 @@
       <view>
         <view class="store_introduction_title">
            <text>店内环境</text>
-           <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+           <navigator url="/pages/storeList/storeList?value={{value}}" hover-class="navigator-hover">
              <image src="/images/icon/elipsis.png"></image>
            </navigator>
         </view>
