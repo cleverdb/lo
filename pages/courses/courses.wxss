@@ -1,92 +1,49 @@
-page {
-  height: 100%;
-  background-color: #3e3e3e;
-}
 
-.course {
+.container{
+  height:100vh;
+  background-color: #EEEFEF;
+}
+.course{
+  padding-left: 29rpx;
+  padding-right: 29rpx;
+  padding-top: 29rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+
+  /* padding: 29rpx 0 29rpx 29rpx; */
+}
+.course_img{
+  height:253rpx;
+  display: block;
   width: 100%;
+  /* height: 100%; */
+  /* padding:; */
+}
+.footer_bar{
+  background-color: white;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
   display: flex;
-  flex-grow: row no-wrap;
-  justify-content: space-between;
-  padding: 30rpx;
-  box-sizing: border-box;
-  height: 210rpx;
-  align-items: center;
-  border-bottom: 6rpx solid;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:center;
+  padding-left: 15rpx;
+  padding-right: 17rpx;
+  padding-top:20rpx;
+   padding-bottom:20rpx;
 }
-
-.course-hd {
-  width: 150rpx;
-  height: 150rpx;
-  position: relative;
-  margin-right: 50rpx;
-}
-
-.empty {
-  background-color: #a0a0a0;
-  border-radius: 50%;
-}
-
-.course-hd  image {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.course-bd {
-  font-size: 22rpx;
-  flex-grow: 2;
-  line-height: 1.5em;
-}
-
-.course-bd .cell {
-  font-size: 24rpx;
-  margin: 8rpx 0;
-  width: 490rpx;
-  color: #a0a0a0;
-  overflow: hidden; /*超出部分隐藏*/
-  white-space: nowrap; /*不换行*/
-  text-overflow: ellipsis; /*超出部分文字以...显示*/
-}
-
-.course-bd .name {
+.course_name{
   font-size: 30rpx;
-  color: #fcc700;
-  margin-bottom: 14rpx;
-}
 
-.line {
-  width: 100%;
-  height: 1rpx;
-  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
 }
-
-.detail {
-  width: 100rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  text-align: center;
-  font-size: 28rpx;
-  border-radius: 10rpx;
-  border: 1px solid #fcc700;
-  color: #fcc700;
-}
-
-.bottomline {
-  color: #a0a0a0;
-  font-size: 24rpx;
-  text-align: center;
-  padding: 5rpx 100rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.baseline {
-  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
-  flex: 1;
-}
-
-.tip {
-  margin: 0 10rpx;
+.tag{
+  
+  line-height:inherit;
+  padding:2rpx 13rpx;
+  background-color: white;
+  color: #D3D3D4;
+  display: inline-block;
+  margin: 0;
+  font-size: 20rpx;
+  margin-left: 19rpx;
 }
