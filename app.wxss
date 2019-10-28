@@ -1,6 +1,9 @@
 /**app.wxss**/
 /* @import 'style/weui.wxss'; */
 @import 'pages/template/pageAlert/pageAlert.wxss';
+page{
+ background: #EEEEEE;
+}
 .container {
   height: 100%;
   display: flex;
