@@ -1,0 +1,65 @@
+/* pages/privateCourses/privateCourses.wxss */
+.container{
+  min-height:100vh;
+  background-color: #EEEFEF;
+}
+.course{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 30rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+
+  /* padding: 29rpx 0 29rpx 29rpx; */
+}
+.course2{
+  display: flex;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-top: 29rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+.course2_item{
+  flex:1;
+  margin-left:15rpx;
+  margin-right:15rpx;
+}
+.course_img{
+  height:253rpx;
+  display: block;
+  width: 100%;
+  /* height: 100%; */
+  /* padding:; */
+}
+.footer_bar{
+  background-color: white;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:center;
+  padding-left: 15rpx;
+  padding-right: 17rpx;
+  padding-top:20rpx;
+   padding-bottom:20rpx;
+}
+.course_name{
+  font-size: 30rpx;
+
+}
+
+.tag{
+  line-height:inherit;
+  padding:2rpx 13rpx;
+  background-color: white;
+  color: #D3D3D4;
+  display: inline-block;
+  margin: 0;
+  font-size: 20rpx;
+  margin-left: 19rpx;
+}
+.course-list{
+    display: flex;
+}

@@ -8,8 +8,8 @@ Page({
    */
   data: {
     curriculum: {
-      "1": "private",
-      "2": "public"
+      "1": "privateCourses",
+      "2": "publicCourses"
     },
     disabledBg: false,
     host: app.globalData.host,
@@ -134,12 +134,12 @@ Page({
     switch (type) {
       case '1':
         wx.navigateTo({
-          url: `/pages/${curriculum.type}`,
+          url: `/pages/${curriculum[type]}/${curriculum[type]}`,
         })
         break;
       case '2':
         wx.navigateTo({
-          url: `/pages/${curriculum.type}`,
+          url: `/pages/${curriculum[type]}/${curriculum[type]}`,
         })
         break;
     }

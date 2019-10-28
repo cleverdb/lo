@@ -1,0 +1,38 @@
+<!-- pages/privateCourses/privateCourses.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
+    <scroll-view scroll-y="true" class="course-list">
+        <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
+            <block wx:if="{{item.length=='1'}}">
+                <view class="course" bindtap='courseTap' id='{{item[0].id}}' data-type="{{item[0].courseType}}">
+                    <image class="course_img" wx:if='{{item[0].imgSrc}}' mode='scaleToFill' src="{{item[0].imgSrc}}"></image>
+                    <view class="footer_bar">
+                        <text class="course_name">{{item[0].title}}</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:if="{{item.length=='2'}}">
+                <view class="course2" bindtap='courseTap'>
+                    <view class="course2_item">
+                        <image class="course_img" wx:if='{{item[0].imgSrc}}' mode='scaleToFill' src="{{item[0].imgSrc}}"></image>
+                        <view class="footer_bar">
+                            <text class="course_name">{{item[0].title}}</text>
+                        </view>
+                    </view>
+                    <view class="course2_item">
+                        <image class="course_img" wx:if='{{item[1].imgSrc}}' mode='scaleToFill' src="{{item[1].imgSrc}}"></image>
+                        <view class="footer_bar">
+                            <text class="course_name">{{item[1].title}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <view class='bottomline' wx:if="{{moreFlag}}">
+            <text class='baseline'></text>
+            <text class='tip'>我是有底线的哟～</text>
+            <text class='baseline'></text>
+        </view>
+    </scroll-view>
+</view>

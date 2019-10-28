@@ -12,22 +12,22 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
           url: _this.globalData.host + '/rest/s1/Goods/mine/autologin',
-          data: { code: res.code},
+          data: { code: res.code },
           method: 'POST',
           success: function (res) {
-            if (res.statusCode != 200 ) {
+            if (res.statusCode != 200) {
               return
             }
             if (res.data.data.openId) _this.globalData.openId = res.data.data.openId
             if (res.data.data.sessionKey) _this.globalData.sessionKey = res.data.data.sessionKey
-            if (res.data.data.userInfo){
+            if (res.data.data.userInfo) {
               _this.globalData.userInfo = res.data.data.userInfo
-              _this.globalData.hasLogin = true       
+              _this.globalData.hasLogin = true
             }
           },
           fail: function (res) {
           }
-          })
+        })
       }
     })
     // 获取用户信息
@@ -53,12 +53,12 @@ App({
   },
   globalData: {
     app_id: 'wx687f20a8752f6364',//wx7564b8b90db5388b
-    sessionKey:'',
-    openId:'',
-    hasLogin:false,
+    sessionKey: '',
+    openId: '',
+    hasLogin: false,
     userInfo: {},
-    wUserInfo:{},
-    host:"https://liouwellness.com"
-    //host: "http://192.168.1.104:8080"
+    wUserInfo: {},
+    host: "https://liouwellness.com",
+    host_j: "http://localhost:8091"
   }
 })

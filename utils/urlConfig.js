@@ -1,7 +1,9 @@
 
 let _apis = {
-  "Goods_getCourse":'/rest/s1/Goods/course/getCourse'
+  "Goods_getCourse": '/rest/s1/Goods/course/getCourse',
+  "private_Courses": '/privateCourses',
+  "private_Buy": '/privateBuy'
 }
-module.exports ={
+module.exports = {
   _apis
 }
