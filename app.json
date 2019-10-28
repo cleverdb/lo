@@ -19,7 +19,11 @@
     "pages/mineTicket/mineTicket",
     "pages/mineActivity/mineActivity",
     "pages/stores/stores",
-    "pages/template/pageAlert/pageAlert"
+    "pages/template/pageAlert/pageAlert",
+    "pages/storeList/storeList",
+    "pages/storeDetail/storeDetail",
+    "pages/fitnessCoachList/fitnessCoachList",
+    "pages/fitnessCoachDetail/fitnessCoachDetail"
   ],
   "permission": {
     "scope.userLocation": {
@@ -70,5 +74,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

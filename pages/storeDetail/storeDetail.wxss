@@ -1,0 +1,55 @@
+/* pages/storeDetail/storeDetail.wxss */
+page{
+    height: 100%;
+}
+.store_detail_wrap{
+    padding: 30rpx;
+}
+.store_detail_item{
+    margin-bottom: 20rpx;
+}
+.detail_item_top{
+    height: 250rpx;
+    background: #DCDDDD;
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+.detail_item_bottom{
+    background: #ffffff;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    padding: 30rpx 20rpx;
+}
+.item_bottom_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25rpx;
+}
+.bottom_top_left_wrap{
+    display: flex;
+    align-items: center;
+}
+.bottom_top_right{
+    height: 27rpx;
+    border: 1rpx solid #E5E5E5;
+    border-radius: 4rpx;
+    padding: 4rpx 10rpx;
+    font-size:18rpx;
+    color: #9FA0A0;
+}
+.bottom_top_left{
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+}
+.right{
+    margin-right: 20rpx;
+}
+.item_bottom_text{
+    font-size:22rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#727272;
+}
