@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "课程",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#EEEFEF"
 }

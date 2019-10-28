@@ -1,4 +1,5 @@
-import Utils from '../../utils/util.js'
+import Utils from '../../utils/util.js';
+import { _apis } from '../../utils/urlConfig.js';
 const app = getApp()
 Page({
 
@@ -6,6 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    curriculum: {
+      "1": "private",
+      "2": "public"
+    },
     disabledBg: false,
     host: app.globalData.host,
     moreFlag: false,
@@ -20,7 +25,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let _this = this;
     _this.initData()
   },
@@ -28,35 +33,37 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
-
+  onDetailPage: function (e) {
+    console.log('57', e)
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     let currentPageIndex = this.data.queryParams.pageIndex
     this.setData({
       courseList: [],
@@ -72,7 +79,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     if (this.data.moreFlag) {
       return;
     }
@@ -87,18 +94,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   // 滚动切换标签样式
-  switchTab: function(e) {
+  switchTab: function (e) {
     this.setData({
       currentTab: e.detail.current
     });
     this.checkCor();
   },
   // 点击标题切换当前页时改变样式
-  swichNav: function(e) {
+  swichNav: function (e) {
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) {
       return false;
@@ -109,7 +116,7 @@ Page({
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function() {
+  checkCor: function () {
     if (this.data.currentTab > 4) {
       this.setData({
         scrollLeft: 300
@@ -120,23 +127,71 @@ Page({
       })
     }
   },
-  courseTap: function(e) {
-    let courseId = e.currentTarget.id;
-    wx.navigateTo({
-      url: '/pages/curoseDetail/curoseDetail?courseId=' + courseId,
-    })
+  courseTap: function (e) {
+
+    let { type } = e.currentTarget.dataset;
+    let { curriculum } = this.data
+    switch (type) {
+      case '1':
+        wx.navigateTo({
+          url: `/pages/${curriculum.type}`,
+        })
+        break;
+      case '2':
+        wx.navigateTo({
+          url: `/pages/${curriculum.type}`,
+        })
+        break;
+    }
   },
-  initData: function() {
+  initData: function () {
     var _this = this
     wx.showLoading({
       title: '加载中...',
     })
     let params = _this.data.queryParams
     wx.request({
-      url: app.globalData.host + '/rest/s1/Goods/course/getCourse',
+      url: app.globalData.host + _apis.Goods_getCourse,
       data: params,
-      method:'GET',
+      method: 'GET',
       success: function (res) {
+        if (res.data.data.length == 0) {
+          res.data.data = [
+            {
+              iconUrl: "http://localhost:8091/static/a.png",
+              courseName: "私教课",
+              courseType: "1",
+              tags: [
+                {
+                  id: "1",
+                  title: "增肌减脂"
+                }, {
+                  id: "2",
+                  title: "强健体质"
+                }
+              ],
+              id: '1'
+
+
+            }, {
+              iconUrl: "http://localhost:8091/static/a.png",
+              courseName: "公开课",
+              courseType: "2",
+              tags: [
+                {
+                  id: "11",
+                  title: "增肌减脂"
+                }, {
+                  id: "21",
+                  title: "强健体质"
+                }
+              ],
+              id: '2'
+
+            }
+          ]
+        }
+
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -164,13 +219,13 @@ Page({
       }
     })
   },
-  loadMoreData: function(param) {
+  loadMoreData: function (param) {
     var _this = this
     wx.request({
       url: app.globalData.host + '/rest/s1/Goods/course/getCourse',
       data: param,
-      method:'POST',
-      success: function(res) {
+      method: 'POST',
+      success: function (res) {
         let result = res.data.data
         if (result.length == 0) {
           _this.setData({
@@ -192,10 +247,10 @@ Page({
           return
         }
       },
-      fail: function(res) {
+      fail: function (res) {
 
       },
-      complete: function() {}
+      complete: function () { }
     })
   }
 })
