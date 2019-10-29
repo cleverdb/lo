@@ -1,0 +1,92 @@
+<!-- pages/privateCoursesBuy2/privateCoursesBuy2.wxml -->
+<!-- pages/privateCoursesBuy/privateCoursesBuy.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="try_course_container">
+    <view class="head">
+        <image wx:if='{{data.imgSrc}}' src="{{data.imgSrc}}" alt="" />
+    </view>
+    <view class="content">
+        <view class="content_item">
+            <view class="content_item_contents">
+                <text>首次私教体验</text>
+                <text class="hot">HOT</text>
+            </view>
+            <text>{{data.courseType||""}}</text>
+        </view>
+        <view class="content_item  bordernone">
+            <view>
+                <text>课程教练</text>
+            </view>
+            <view class="color_gary" bindtap='onSelectTeacher'>
+                <text>请选择教练</text>
+                <image class="icon_down" src="../../images/icon/icon_down.png" />
+            </view>
+        </view>
+    </view>
+    <view class="teachersListCantainer " wx:if="{{teacherSel}}">
+        <block wx:for="{{teacherslist}}" wx:key="index" wx:if="{{teacherslist}}">
+            <view class="teacherslist_item   course2">
+                <image class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
+                <image class="course_img" src="{{item.imgSrc}}"></image>
+                <view class="footer_bar">
+                    <text class="course_name">{{item.title}}</text>
+                    <view>
+                        <block wx:for="{{item.tags}}" wx:for-index="key">
+                            <button class="tag">{{item.title}}</button>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <button class="buy_button">确认私教</button>
+    </view>
+    <view class="content">
+        <view class="content_item topborder">
+            <view>
+                <text>课程价格</text>
+            </view>
+            <view>
+                <text>{{data.coursePrice||""}}</text>
+                <text>{{data.courseUnit||""}}</text>
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>优惠券</text>
+            </view>
+            <view class="color_gary">
+                <text>暂不可使用优惠券</text>
+            </view>
+        </view>
+        <view class="content_item color_red">
+            <view>
+                <text>待支付</text>
+            </view>
+            <view>
+                <text>￥{{data.coursePrice}}</text>
+            </view>
+        </view>
+        <view class="notic">
+            <view class="notice">
+                <text>购买须知</text>
+            </view>
+            <view>
+                <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}">
+                    <view>
+                        <text>{{item}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="read">
+            <radio></radio>
+            <text>勾选即代表阅读并同意</text>
+            <text class="toEnsure">《LIOU电子协议》</text>
+            <text>服务条款</text>
+        </view>
+    </view>
+    <view class="footer">
+        <button class="buy_button">立即购买</button>
+    </view>
+</view>

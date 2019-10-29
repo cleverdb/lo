@@ -1,4 +1,4 @@
-// pages/privateCourses/privateCourses.js
+// pages/privateCoursesBuy/privateCoursesBuy.js
 import Utils from '../../utils/util.js';
 import { _apis } from '../../utils/urlConfig.js';
 const app = getApp()
@@ -8,18 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
-    courseList: [],
-    curriculum: {
-      "1": "privateCoursesBuy1",
-      "2": "privateCoursesBuy2",
+    data: {
+      imgSrc: "",
+      courseType: "",
+      coursePrice: "",
+      courseUnit: "",
+      notice: []
     },
     host: app.globalData.host,
     host_j: app.globalData.host_j,
-    queryParams: {
-      pageIndex: 0,
-      pageSize: 10,
-    },
   },
 
   /**
@@ -61,15 +58,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.initData()
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('64')
-    this.initData(true)
+
   },
 
   /**
@@ -77,22 +73,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  courseTap: function (e) {
-    let { buytype } = e.currentTarget.dataset;
-    let { curriculum } = this.data;
-    switch (buytype) {
-      case '1':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-      case '2':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-    }
   },
   initData: function (down) {
     var _this = this
@@ -107,7 +87,7 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.host_j + _apis.private_Courses,
+      url: app.globalData.host_j + _apis.private_Buy,
       data: params,
       method: 'GET',
       success: function (res) {
@@ -121,7 +101,10 @@ Page({
           })
         } else {
           _this.setData({
-            'courseList': [_this.data.courseList, ...res.data.data],
+            'data': {
+              ..._this.data.data,
+              ...res.data.data
+            },
             disabledBg: true
           })
         }

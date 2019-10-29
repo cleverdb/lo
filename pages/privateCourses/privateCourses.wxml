@@ -4,30 +4,30 @@
 <view class="container" wx:if='{{!pageState.state}}'>
     <scroll-view scroll-y="true" class="course-list">
         <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
-            <block wx:if="{{item.length=='1'}}">
-                <view class="course" bindtap='courseTap' id='{{item[0].id}}' data-type="{{item[0].courseType}}">
-                    <image class="course_img" wx:if='{{item[0].imgSrc}}' mode='scaleToFill' src="{{item[0].imgSrc}}"></image>
+            <block wx:if="{{item.styleType=='1'}}">
+                <view class="course" bindtap='courseTap' id='{{item.cards[0].id}}' data-buyType="{{item.cards[0].buyType}}">
+                    <image class="course_img" wx:if='{{item.cards[0].imgSrc}}' mode='scaleToFill' src="{{item.cards[0].imgSrc}}"></image>
                     <view class="footer_bar">
-                        <text class="course_name">{{item[0].title}}</text>
+                        <text class="course_name">{{item.cards[0].title}}</text>
                     </view>
                 </view>
             </block>
-            <block wx:if="{{item.length=='2'}}">
-                <view class="course2" bindtap='courseTap'>
-                    <view class="course2_item">
-                        <image class="course_img" wx:if='{{item[0].imgSrc}}' mode='scaleToFill' src="{{item[0].imgSrc}}"></image>
-                        <view class="footer_bar">
-                            <text class="course_name">{{item[0].title}}</text>
-                        </view>
+            <view class="course2" wx:if="{{item.styleType=='2'}}">
+                <view class="course2_item" bindtap='courseTap' wx:if="{{item.cards[0]}}" data-buyType="{{item.cards[0].buyType}}">
+                    <image class="course_img" wx:if='{{item.cards[0].imgSrc}}' mode='scaleToFill' src="{{item.cards[0].imgSrc}}"></image>
+                    <view class="footer_bar">
+                        <text class="course_name">{{item.cards[0].title}}</text>
                     </view>
-                    <view class="course2_item">
-                        <image class="course_img" wx:if='{{item[1].imgSrc}}' mode='scaleToFill' src="{{item[1].imgSrc}}"></image>
+                </view>
+                <view class="course2_item">
+                    <view wx:if="{{item.cards[1]}}" bindtap='courseTap' data-buyType="{{item.cards[1].buyType}}">
+                        <image class="course_img" wx:if='{{item.cards[1].imgSrc}}' mode='scaleToFill' src="{{item.cards[1].imgSrc}}"></image>
                         <view class="footer_bar">
-                            <text class="course_name">{{item[1].title}}</text>
+                            <text class="course_name">{{item.cards[1].title}}</text>
                         </view>
                     </view>
                 </view>
-            </block>
+            </view>
         </block>
         <view class='bottomline' wx:if="{{moreFlag}}">
             <text class='baseline'></text>
