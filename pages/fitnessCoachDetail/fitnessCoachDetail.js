@@ -7,6 +7,16 @@ Page({
   data: {
     arr: [1, 2, 3, 4, 5],
     sort:3.5,
+    array:[{
+      id:0,
+      name:'拳击课',
+    },{
+      id:1,
+      name:'常规课',
+    },{
+      id:2,
+      name:'曾拉伸课'
+    }]
   },
 
   /**
@@ -62,5 +72,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  bindPickerChange:function(e){
+    console.log('picker发送选择改变，携带值为', e.detail.value,e.detail);
+    // 跳转到正式课程
+    wx.navigateTo({
+      url: `/pages/privateCoursesBuy2/privateCoursesBuy2`,
+    })
   }
 })
