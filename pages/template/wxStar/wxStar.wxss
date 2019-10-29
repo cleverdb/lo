@@ -1,0 +1,13 @@
+/* wx-star */
+.wx-star-panel{
+  display: flex;
+}
+.wx-star{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+.wx-star image{
+  width: 100%;
+  height: 100%;
+}

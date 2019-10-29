@@ -75,8 +75,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/publicCourses/publicCourses",
-					"pathName": "pages/publicCourses/publicCourses",
+					"name": "pages/home/home",
+					"pathName": "pages/home/home",
 					"scene": null
 				}
 			]

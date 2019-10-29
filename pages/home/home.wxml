@@ -12,17 +12,27 @@
     </swiper>
   </view>
   <view class="container_store">
-    <picker  bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <view wx:if='{{index}}' class="picker">
-        当前选择：{{array[index]}}
+      <view  class="store_title">
+          请选择门店
       </view>
-      <view wx:else  class="store_title">
-        <text>请选择门店</text>
+    <view class="store_select_wrap">
         <view>
-          >
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="picker">
+                  qweqe
+              </view>
+            </picker>
         </view>
-      </view>
-    </picker>     
+        <view class="cell-ft"></view>
+    </view>
+  </view>
+  <view class="store_address">
+    <view class="as">adad</view>
+    <view  class="bs">
+      <view class="address">红莲南路六号院一号楼0301</view>
+      <view class="address_low">距新年华购物中心步行1.4km</view>
+    </view>
+    <view  class="cs">asdasd</view>
   </view>
   <view class="store_introduction">
       <view>
