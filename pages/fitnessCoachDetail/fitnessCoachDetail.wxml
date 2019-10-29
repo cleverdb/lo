@@ -6,7 +6,9 @@
                 <text class="introduction_name">刘石磊</text>
                 <view class='wx-star-panel'>
                     <view class='wx-star' wx:for="{{arr}}">
-                        <image mode="aspectFit" src="/images/icon/star_full.png" />
+                        <image mode="aspectFit" wx:if="{{(sort - item >0) && (sort - item)!=0.5 }}" src="/images/icon/star_fill.png" />
+                        <image mode="aspectFit" wx:if="{{(sort - item)==0.5 }}" src="/images/icon/star_half.png" />
+                        <image mode="aspectFit" wx:else src="/images/icon/star_full.png" />
                     </view>
                 </view>
             </view>
