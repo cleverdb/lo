@@ -61,7 +61,7 @@
         "pagePath": "pages/card/card",
         "iconPath": "images/icon/ka.png",
         "selectedIconPath": "images/icon/ka-ok.png",
-        "text": "卡服务"
+        "text": "卡包"
       },
       {
         "pagePath": "pages/appointment/appointment",

@@ -1,11 +1,14 @@
-<!--pages/fitnessCoachDetail/fitnessCoachDetail.wxml-->
 <view class="fitness_coach">
     <view class="fitness_coach_img">
         adadada
        <view class="fitness_coach_introduction">
             <view class="coach_introduction_top  first">
                 <text class="introduction_name">刘石磊</text>
-                <text>asdad</text>
+                <view class='wx-star-panel'>
+                    <view class='wx-star' wx:for="{{arr}}">
+                        <image mode="aspectFit" src="/images/icon/star_full.png" />
+                    </view>
+                </view>
             </view>
             <view  class="coach_introduction_top">
                 <text class="introduction_time">工作时间：4年</text>

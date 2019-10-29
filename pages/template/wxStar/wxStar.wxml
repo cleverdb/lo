@@ -1,0 +1,9 @@
+<template name="wxStar" >
+  <view class='wx-star-panel'>
+    <view class='wx-star' wx:for="{{arr}}" >
+        <image mode="aspectFit" src="/images/icon/star_full.png" />
+    </view>
+  </view>
+</template>
+
+
