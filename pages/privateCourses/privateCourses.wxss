@@ -43,7 +43,7 @@
   padding-left: 15rpx;
   padding-right: 17rpx;
   padding-top:20rpx;
-   padding-bottom:20rpx;
+  padding-bottom:20rpx;
 }
 .course_name{
   font-size: 30rpx;

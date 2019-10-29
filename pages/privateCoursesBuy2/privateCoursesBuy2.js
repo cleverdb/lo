@@ -1,4 +1,4 @@
-// pages/privateCoursesBuy/privateCoursesBuy.js
+// pages/privateCoursesBuy2/privateCoursesBuy2.js
 import Utils from '../../utils/util.js';
 import { _apis } from '../../utils/urlConfig.js';
 const app = getApp()
@@ -8,14 +8,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    teacherslist: [],
+    data: {
+      imgSrc: "",
+      courseType: "",
+      coursePrice: "",
+      courseUnit: "",
+      teacherSel: false,
+      notice: []
+    },
+    host: app.globalData.host,
+    host_j: app.globalData.host_j,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initData()
   },
 
   /**
@@ -66,6 +76,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onSelectTeacher: function () {
+    this.setData({
+      teacherSel: !this.data.teacherSel
+    })
+  },
   initData: function (down) {
     var _this = this
     wx.showLoading({
@@ -79,7 +94,7 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.host_j + _apis.private_Courses,
+      url: app.globalData.host_j + _apis.private_Buy_sel_teachers,
       data: params,
       method: 'GET',
       success: function (res) {
@@ -93,7 +108,12 @@ Page({
           })
         } else {
           _this.setData({
-            'courseList': [_this.data.courseList, ...res.data.data],
+            'data': {
+              ...res.data.data.info
+            },
+            teacherslist: [
+              ...res.data.data.teachers
+            ],
             disabledBg: true
           })
         }
