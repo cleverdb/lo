@@ -8,14 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    total: "",
     teacherslist: [],
     data: {
       imgSrc: "",
       courseType: "",
       coursePrice: "",
       courseUnit: "",
-      teacherSel: false,
       notice: []
+    },
+    num: 1,
+    teacherSel: false,
+    beSelTeacher: {
+
     },
     host: app.globalData.host,
     host_j: app.globalData.host_j,
@@ -76,10 +81,56 @@ Page({
   onShareAppMessage: function () {
 
   },
+  ondel: function () {
+    let { num, data: { coursePrice } } = this.data;
+    num = num - 1
+    if (num > 0) {
+      this.setData({
+        num: num,
+        total: Utils.times(coursePrice, num)
+      })
+    }
+  },
+  onadd: function () {
+    let { num, data: { coursePrice } } = this.data;
+    num = num + 1
+    this.setData({
+      num: num,
+      total: Utils.times(coursePrice, num)
+    })
+  },
+  onItemSelTeacher: function (e) {
+    let { id } = e.currentTarget.dataset;
+    let { teacherslist } = this.data;
+
+    this.setData({
+      teacherslist: teacherslist.map((item) => {
+        if (id == item.id) {
+          item.besel = true
+        } else {
+          item.besel = false
+        }
+        return item;
+      })
+    })
+  },
   onSelectTeacher: function () {
     this.setData({
       teacherSel: !this.data.teacherSel
     })
+  },
+  ensureTeacher: function () {
+    let { teacherslist } = this.data;
+    let data = teacherslist.find((item) => {
+      return item.besel == true;
+    });
+    this.setData({
+      beSelTeacher: data,
+      teacherSel: false
+    })
+    // this.setData({
+    //   teacherSel: !this.data.teacherSel
+    // })
   },
   initData: function (down) {
     var _this = this
@@ -114,6 +165,7 @@ Page({
             teacherslist: [
               ...res.data.data.teachers
             ],
+            total: Utils.times(res.data.data.info.coursePrice, _this.data.num),
             disabledBg: true
           })
         }

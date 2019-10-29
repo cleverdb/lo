@@ -156,7 +156,35 @@ border-top-left-radius: 10rpx;
     width:68rpx;
     height:68rpx;
     position: absolute;
-    right: 14rpx;
-    top: 14rpx;
+    right: 13rpx;
+    top: 13rpx;
+}
+.numContainer{
+    display: flex;
+    border: 1rpx solid #B5B6B6;
+    border-radius:4rpx;
+    overflow: hidden;
+}
+.numContainer text{
+    font-size:30rpx;
+    
+}
+.numleft,.numright,.numcontent {
+    width:74rpx;
+    height:59rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.numright{
+    background-color:#FCC800;
+}
+.numleft,.numright{
+   border: none;
+
+}
+.numcontent{
+    border-left: 1rpx solid #B5B6B6;
+    border-right: 1rpx solid #B5B6B6;
 }
 

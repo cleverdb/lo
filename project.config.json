@@ -70,6 +70,13 @@
 					"id": -1,
 					"name": "pages/fitnessCoachDetail/fitnessCoachDetail",
 					"pathName": "pages/fitnessCoachDetail/fitnessCoachDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/publicCourses/publicCourses",
+					"pathName": "pages/publicCourses/publicCourses",
 					"scene": null
 				}
 			]

@@ -19,15 +19,15 @@
                 <text>课程教练</text>
             </view>
             <view class="color_gary" bindtap='onSelectTeacher'>
-                <text>请选择教练</text>
+                <text>{{beSelTeacher.title||"请选择教练"}}</text>
                 <image class="icon_down" src="../../images/icon/icon_down.png" />
             </view>
         </view>
     </view>
     <view class="teachersListCantainer " wx:if="{{teacherSel}}">
         <block wx:for="{{teacherslist}}" wx:key="index" wx:if="{{teacherslist}}">
-            <view class="teacherslist_item   course2">
-                <image class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
+            <view class="teacherslist_item   course2" data-id="{{item.id}}" bindtap="onItemSelTeacher">
+                <image wx:if="{{item.besel||false}}" class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
                 <image class="course_img" src="{{item.imgSrc}}"></image>
                 <view class="footer_bar">
                     <text class="course_name">{{item.title}}</text>
@@ -39,9 +39,9 @@
                 </view>
             </view>
         </block>
-        <button class="buy_button">确认私教</button>
     </view>
-    <view class="content">
+    <button wx:if="{{teacherSel}}" class="buy_button" bindtap="ensureTeacher">确认私教</button>
+    <view class="content" wx:if="{{!teacherSel}}">
         <view class="content_item topborder">
             <view>
                 <text>课程价格</text>
@@ -49,6 +49,22 @@
             <view>
                 <text>{{data.coursePrice||""}}</text>
                 <text>{{data.courseUnit||""}}</text>
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>购买数量</text>
+            </view>
+            <view class="color_gary">
+                <view class="numContainer">
+                    <view class="numleft" bindtap="ondel">
+                        <text>-</text>
+                    </view>
+                    <view class="numcontent">{{num}}</view>
+                    <view class="numright" bindtap="onadd">
+                        <text>+</text>
+                    </view>
+                </view>
             </view>
         </view>
         <view class="content_item">
@@ -64,7 +80,7 @@
                 <text>待支付</text>
             </view>
             <view>
-                <text>￥{{data.coursePrice}}</text>
+                <text>￥{{total}}</text>
             </view>
         </view>
         <view class="notic">
@@ -86,7 +102,7 @@
             <text>服务条款</text>
         </view>
     </view>
-    <view class="footer">
-        <button class="buy_button">立即购买</button>
+    <view class="footer" wx:if="{{!teacherSel}}">
+        <button class="buy_button">确认购买</button>
     </view>
 </view>

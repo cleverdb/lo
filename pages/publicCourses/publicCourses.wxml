@@ -1,0 +1,69 @@
+<!-- pages/publicCourses/publicCourses.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
+    <scroll-view scroll-y="true" class="course-list">
+        <view>
+            <view class="tabs_container">
+                <block wx:for="{{tabsList}}" wx:key="index">
+                    <view class="normal_border {{item.besel==true?'besel_border':null}}" data-id="{{item.id}}" bindtap="tabsChange">
+                        <text>{{item.title}}</text>
+                    </view>
+                </block>
+            </view>
+            <view class="main_container">
+                <view wx:if="{{besel=='1'}}">
+                    <block wx:for="{{runningList}}" wx:key="index">
+                        <view class="list_item_container">
+                            <image class="imgs_item" src="{{item.imgSrc}}" />
+                            <view>
+                                <view>
+                                    <text>{{item.title}}</text>
+                                </view>
+                                <view>
+                                    <text>{{item.currentNum}}</text>
+                                    <text>/</text>
+                                    <text>{{item.totalNum}}</text>
+                                </view>
+                            </view>
+                            <view>
+                                <text>{{item.date}}</text>
+                            </view>
+                            <view>
+                                <text>{{item.content}}</text>
+                            </view>
+                            <view>
+                                <button>报名</button>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view wx:if="{{besel=='2'}}">
+                    <block wx:for="{{doneList}}" wx:key="index">
+                        <view>
+                            <image src="{{item.imgSrc}}" />
+                            <view>
+                                <view>
+                                    <text>{{item.title}}</text>
+                                </view>
+                                <view>
+                                    <text>{{item.currentNum}}</text>
+                                    <text>{{item.totalNum}}</text>
+                                </view>
+                            </view>
+                            <view>
+                                <text>{{item.date}}</text>
+                            </view>
+                            <view>
+                                <text>{{item.content}}</text>
+                            </view>
+                            <view>
+                                <button>报名</button>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
