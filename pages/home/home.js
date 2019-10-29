@@ -11,6 +11,7 @@ Page({
       '/images/act.jpg',
       '/images/card.png'
     ],
+    value:2,
     index:2,
     host: app.globalData.host,
     banner: [],
