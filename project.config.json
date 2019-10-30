@@ -84,6 +84,34 @@
 					"id": -1,
 					"name": "pages/publicCourses/publicCourses",
 					"pathName": "pages/publicCourses/publicCourses",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"pathName": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/curoseDetail/curoseDetail",
+					"pathName": "pages/curoseDetail/curoseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/courseDetail/courseDetail",
+					"pathName": "pages/courseDetail/courseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/reserveTime/reserveTime",
+					"pathName": "pages/reserveTime/reserveTime",
 					"scene": null
 				}
 			]

@@ -108,9 +108,11 @@ swiper  image{
     justify-content: space-between;
 }
 .picker{
-  min-width: 400rpx;
+  min-width: 100rpx;
   text-align: right;
-  margin-top: -9rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
 }
 .cell-ft {
   padding-right: 26rpx;
@@ -140,14 +142,22 @@ swiper  image{
   justify-content: space-between;
   align-items: center;
 }
+.store_address image{
+  width: 100%;
+  height: 100%;
+}
 .as{
   flex-grow: 1;
+  height: 46rpx;
+  margin-right: 35rpx;
 }
 .bs{
   flex-grow: 3;
+ 
 }
 .cs{
   flex-grow: 1;
+  height: 63rpx;
 }
 .address{
   font-size:32rpx;
