@@ -58,7 +58,6 @@ page {
   width: 100%;
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
-  background-color: #fcc700;
 }
 
 .header>view {
@@ -67,6 +66,7 @@ page {
   color: #090000;
   font-size: 28rpx;
   text-align: center;
+  color: #9E9F9F;
   /* border-bottom: 1px solid #666; */
   padding: 20rpx 0;
 }
@@ -108,14 +108,14 @@ page {
 .nowDay .date-head {
   width: 60rpx;
   text-align: center;
-  border-radius: 10rpx;
+  border-radius: 50%;
   background-color: #a0a0a0;
   margin: 0 auto;
 }
 .selectedDay .date-head {
   width: 60rpx;
   text-align: center;
-  border-radius: 10rpx;
+  border-radius: 50%;
   background-color: #fcc700;
   margin: 0 auto;
 }

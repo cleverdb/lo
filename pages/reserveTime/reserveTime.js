@@ -10,7 +10,7 @@ Page({
     showModalStatus: true,
     year: 0,
     month: 0,
-    date: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    date: ['日', '一', '二', '三', '四', '五', '六'],
     dateArr: [],
     isToday: 0,
     selectedDay: 0,

@@ -7,28 +7,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    host: app.globalData.host,
-    courseList: [],
-    coursePlan: [],
-    times: [],
-    pickerDates: [],
-    selectPlanId: "",
-    selectPlan: '',
-    selectDate: "请选择",
-    selectStore: "请选择",
-    selectCourse: "",
-    dateIndex: "0",
-    animationData: "",
-    stores: ["力偶一店", "力偶二店"],
-    showModalStatus: false,
-    hideAlert: true,
+    year: 0,
+    month: 0,
+    date: ['日', '一', '二', '三', '四', '五', '六'],
+    dateArr: [],
+    tabArray: [{
+        title: '私教',
+        key:0
+    }, {
+        title: '操课',
+        key:1
+      }, {
+        title: '活动',
+        key:2
+      }],
+    tabsIndex: 0,
+    showData:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    this.initData()
+  onLoad: function (options) {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let nowDay = Utils.formatDate(new Date())
+    this.dateInit();
+    this.setData({
+      year: year,
+      month: month,
+      selectedDay: nowDay,
+      isToday: nowDay
+    })
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      startDate: nowDay,
+      endDate: Utils.plusDate(nowDay, 1)
+    })
   },
 
   /**
@@ -365,6 +381,83 @@ Page({
     }
     wx.navigateTo({
       url: '/pages/login/login',
+    })
+  },
+  dateTap: function (e) {
+    const { selectedDay } = this.data;
+    console.log(selectedDay);
+    let selectDate = e.currentTarget.dataset.date;
+    if (selectDate == undefined) {
+      return;
+    }
+    this.setData({
+      selectedDay: selectDate,
+    })
+  },
+  dateInit: function (setYear, setMonth) {
+    //全部时间的月份都是按0~11基准，显示月份才+1
+    let dateArr = []; //需要遍历的日历数组数据
+    let arrLen = 0; //dateArr的数组长度
+    let now = setYear ? new Date(setYear, setMonth) : new Date();
+    let year = setYear || now.getFullYear();
+    let nextYear = 0;
+    let month = setMonth || now.getMonth(); //没有+1方便后面计算当月总天数
+    let nextMonth = (month + 1) > 11 ? 1 : (month + 1);
+    let startWeek = new Date(year + '/' + (month + 1) + '/' + 1).getDay(); //目标月1号对应的星期
+    let dayNums = new Date(year, nextMonth, 0).getDate(); //获取目标月有多少天
+    let obj = {};
+    let num = 0;
+
+    if (month + 1 > 11) {
+      nextYear = year + 1;
+      dayNums = new Date(nextYear, nextMonth, 0).getDate();
+    }
+    arrLen = startWeek + dayNums;
+    for (let i = 0; i < arrLen; i++) {
+      if (i >= startWeek) {
+        num = i - startWeek + 1;
+        obj = {
+          isToday: [year, month + 1, num].map(Utils.formatNumber).join('-'),
+          dateNum: num > 9 ? num : '0' + num
+        }
+      } else {
+        obj = {};
+      }
+      dateArr[i] = obj;
+    }
+    this.setData({
+      dateArr: dateArr
+    })
+  },
+  lastMonth: function () {
+    let year = this.data.month - 2 < 0 ? this.data.year - 1 : this.data.year;
+    let month = this.data.month - 2 < 0 ? 11 : this.data.month - 2;
+    this.setData({
+      year: year,
+      month: (month + 1)
+    })
+    this.dateInit(year, month);
+  },
+  nextMonth: function () {
+    let year = this.data.month > 11 ? this.data.year + 1 : this.data.year;
+    let month = this.data.month > 11 ? 0 : this.data.month;
+    this.setData({
+      year: year,
+      month: (month + 1)
+    })
+    this.dateInit(year, month);
+  },
+  tapChange:function (e) {
+    const { id } = e.currentTarget.dataset;
+    this.setData({
+      tabsIndex:id
+    })
+  },
+  // 展示全部的日期
+  showDataTap: function () {
+    const { showData } = this.data;
+    this.setData({
+      showData: !showData
     })
   }
 })
