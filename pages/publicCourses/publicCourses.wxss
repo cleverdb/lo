@@ -3,9 +3,13 @@
     min-height: 100vh;
     background-color: #ffffff;
 }
+view{
+    display: flex;
+    flex-direction: column;
+}
 .normal_border{
     flex:1;
-    display: flex;
+    height:92rpx;
     justify-content: center;
     align-items: center;
     border-bottom:1rpx solid #D2D3D3;
@@ -14,7 +18,8 @@
     border-bottom:4rpx solid #FCC800 ;
 }
 .tabs_container{
-display: flex;  
+flex:1;
+flex-direction: row;  
 height:90rpx;
 }
 .tabs_container text{
@@ -22,38 +27,71 @@ height:90rpx;
     font-size: 24rpx;
 }
 .list_item_container {
-    display: flex;
-    flex-direction:column;
+    border-bottom:1rpx solid  #D3D3D4;
+    margin-bottom: 30rpx;
 }
 .list_item_container image{
  width: 100%;
  height:251rpx;
  border-radius:10rpx;
- margin-bottom:23rpx;
+ margin-bottom:26rpx;
     /* flex:1; */
 }
-.list_item_container view{
-    line-height: 1;
-}
 .list_item_container>view:nth-child(2){
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 4rpx;
 }
 .list_item_container>view:nth-child(2) text{
+   color: #3F3A3A;
     font-size: 30rpx;
 }
 .list_item_container>view:nth-child(3){
-
+margin-top: 10rpx;
+margin-bottom: 20rpx;
 }
+
 .list_item_container>view:nth-child(3) text{
     font-size: 24rpx;
+    color: #727171;
+}
+.list_item_container>view .bulge{
+    color:#43B9AA !important;
+    font-size:36rpx !important;
 }
 .list_item_container>view:nth-child(4) text{
    font-size: 24rpx;
+   color: #727171;
+}
+.posend .end{
+    color:#9F9FA0;
+    background-color:#DDDDDE;
 }
 .main_container{
     padding:30rpx;
+}
+.fontSize1{
+    font-size:16rpx;
+    /* font-size: 20rpx; */
+}
+.row{
+    flex-direction: row;
+}
+.report,.end{
+    font-size: 28rpx;
+    height: 68rpx;
+    width: 135rpx;
+    color: #FFFFFF;
+    background-color: #42B9AA;
+    margin: 0;
+}
+
+.itemCenter{
+    align-items: center;
+}
+.posend{
+    justify-content: flex-end;
+}
+.posendMar{
+   margin: 24rpx 0 30rpx 0; 
 }
     
