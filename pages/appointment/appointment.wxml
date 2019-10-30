@@ -9,7 +9,7 @@
     <view class="appoint_content">
         <swiper  current="{{tabsIndex}}" class="appoint_swiper">
           <swiper-item>
-            <view id="demo1" class="scroll-view-item_H demo-text-1">
+            <view id="demo1" class="scroll-view-item_H">
               <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
                 <view class='date-show'>
                   <view class='lt-arrow' bindtap='lastMonth'>
@@ -39,9 +39,10 @@
                 </view>
               </view>
               <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
-                  <view id="demo1" class="scroll-view-item_H demo-text-1"></view>
-                  <view id="demo2" class="scroll-view-item_H demo-text-2"></view>
-                  <view id="demo3" class="scroll-view-item_H demo-text-3"></view>
+                  <view id="demo1" class="class_list"></view>
+                  <view id="demo2" class="class_list"></view>
+                  <view id="demo3" class="class_list"></view>
+                                    <view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view>
               </scroll-view>
             </view>
           </swiper-item>

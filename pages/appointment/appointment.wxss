@@ -5,12 +5,15 @@ page{
 .appoint_wrap{
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: auto;
 }
 .appoint_tab{
   display: flex;
   align-content: center;
   font-size:32rpx;
   color: #B5B5B6;
+  height: 98rpx;
 }
 .appoint_tab > view{
   line-height: 98rpx;
@@ -166,6 +169,7 @@ page{
 .scroll-view-item_H{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .scroll-view_H{
   flex: 1;
