@@ -7,44 +7,77 @@
      </block>
    </view>
     <view class="appoint_content">
-        <swiper  current="{{tabsIndex}}" class="appoint_swiper">
+        <swiper  
+            current="{{tabsIndex}}" 
+            class="appoint_swiper" 
+            style="height:{{winHeight}}rpx"
+            bindchange="onBindChange"
+        >
           <swiper-item>
-            <view id="demo1" class="scroll-view-item_H">
-              <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
-                <view class='date-show'>
-                  <view class='lt-arrow' bindtap='lastMonth'>
-                    <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
-                  </view>
-                  <view class="date-content">{{year}}年{{month}}月</view>
-                  <view class='rt-arrow' bindtap='nextMonth'>
-                    <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
-                  </view>
-                </view>
-                <view class="date-br">
-                  <view class='header'>
-                    <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
-                  </view>
-                  <view class='date-box'>
-                    <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
-                      <view class='date-head'>
-                        <view>{{item.dateNum}}</view>
+              <scroll-view class="scroll-view_H" scroll-y="true">
+                  <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+                    <view class='date-show'>
+                      <view class='lt-arrow' bindtap='lastMonth'>
+                        <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+                      </view>
+                      <view class="date-content">{{year}}年{{month}}月</view>
+                      <view class='rt-arrow' bindtap='nextMonth'>
+                        <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+                      </view>
+                    </view>
+                    <view class="date-br">
+                      <view class='header'>
+                        <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+                      </view>
+                      <view class='date-box'>
+                        <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                          <view class='date-head'>
+                            <view>{{item.dateNum}}</view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                    <view class="date-show-footer" bindtap="showDataTap">
+                      <view class="footer-view">
+                          <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
                       </view>
                     </view>
                   </view>
-                </view>
-                <view class="date-show-footer" bindtap="showDataTap">
-                  <view class="footer-view">
-                      <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+                  <view id="demo1" class="class_list">
+                    <view class="class_list_left">
+                      qweqe
+                    </view>
+                    <view class="class_list_right">
+                      <view class="list_right_top">
+                          <view>
+                            <text class="class_title">常规私教课</text>
+                            <view class="class_teacher">
+                              <text >王教练</text>
+                              <text>擅长:减脂、增肌</text>
+                            </view>
+                          </view>
+                          <view>
+                              <button class="top_button">预 约</button>
+                          </view>
+                      </view>
+                      <view class="list_right_bottom">
+                        <text>剩余课程:20节</text>
+                        <text>已上时节:20节</text>
+                      </view>
+                        
+                        
+                    </view>
+                      
                   </view>
-                </view>
-              </view>
-              <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
-                  <view id="demo1" class="class_list"></view>
-                  <view id="demo2" class="class_list"></view>
-                  <view id="demo3" class="class_list"></view>
-                                    <view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view><view id="demo3" class="class_list"></view>
+                  <view id="demo2" class="class_list">2</view>
+                  <view id="demo3" class="class_list">3</view>
+                  <view id="demo3" class="class_list">4</view>
+                  <view id="demo3" class="class_list">5</view>
+                  <view id="demo3" class="class_list">6</view>
+                  <view id="demo3" class="class_list">7</view>
+                  <view id="demo3" class="class_list">8</view>
+                  <view id="demo3" class="class_list">9</view>
               </scroll-view>
-            </view>
           </swiper-item>
           <swiper-item>
             <view id="demo2" class="scroll-view-item_H demo-text-2">2</view>

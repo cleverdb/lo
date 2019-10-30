@@ -23,6 +23,7 @@ Page({
       }],
     tabsIndex: 0,
     showData:false,
+    winHeight:""
   },
 
   /**
@@ -57,12 +58,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    const that = this;
     if (this.data.pageState) {
       this.setData({
         pageState: {}
       })
       this.initData()
     }
+    wx.getSystemInfo({
+      success: function (res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 98;
+        console.log(calc)
+        that.setData({
+          winHeight: calc
+        });
+      }
+    });
   },
 
   /**
@@ -458,6 +472,13 @@ Page({
     const { showData } = this.data;
     this.setData({
       showData: !showData
+    })
+  },
+  // tabs 
+  onBindChange:function(e){
+    const {current} = e.detail;
+    this.setData({
+      tabsIndex:current
     })
   }
 })
