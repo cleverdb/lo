@@ -23,7 +23,10 @@ Page({
       }],
     tabsIndex: 0,
     showData:false,
-    winHeight:""
+    winHeight: "",
+    modalVisible: false,
+    timeDataSelected: -1,
+    array_time: ['12:00-13:00', '12:00-13:00', '12:00-13:00', '12:00-13:00'],
   },
 
   /**
@@ -397,6 +400,10 @@ Page({
       url: '/pages/login/login',
     })
   },
+
+
+
+
   dateTap: function (e) {
     const { selectedDay } = this.data;
     console.log(selectedDay);
@@ -461,11 +468,37 @@ Page({
     })
     this.dateInit(year, month);
   },
+
+
+
   tapChange:function (e) {
     const { id } = e.currentTarget.dataset;
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
     this.setData({
-      tabsIndex:id
-    })
+      tabsIndex: id,
+      year,
+      month,
+      selectedDay: Utils.formatDate(new Date()),
+      showData: false
+    });
+    this.dateInit();
+  },
+  // tabs 
+  onBindChange: function (e) {
+    const { current } = e.detail;
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    this.setData({
+      tabsIndex: current,
+      year,
+      month,
+      selectedDay: Utils.formatDate(new Date()),
+      showData:false
+    });
+    this.dateInit();
   },
   // 展示全部的日期
   showDataTap: function () {
@@ -474,11 +507,35 @@ Page({
       showData: !showData
     })
   },
-  // tabs 
-  onBindChange:function(e){
-    const {current} = e.detail;
-    this.setData({
-      tabsIndex:current
+  // 课程预约的点击事件
+  classTap: function () {
+    wx.showModal({
+      title: '请确认预约信息',
+      content: '2012.10.12 周2\r\n12:00-13:00\r\n常规课 刘石磊',
+      confirmColor: '#FCC800',
+      success(res) {
+        console.log(res);
+      }
     })
-  }
+  },
+  // 预约的点击事件
+  reserveTap: function () {
+    this.setData({
+      modalVisible: true
+    })
+  },
+  hideModal: function () {
+    this.setData({
+      modalVisible: false
+    })
+  },
+   // 选时间段的 点击事件
+  timeClick: function (e) {
+    const { id } = e.currentTarget.dataset;
+    const { timeDataSelected } = this.data;
+    this.setData({
+      timeDataSelected: id == timeDataSelected ? -1 : id,
+    })
+    console.log(item);
+  },
 })

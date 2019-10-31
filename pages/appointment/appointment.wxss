@@ -224,3 +224,126 @@ page{
 .list_right_bottom > text:last-child{
   color: #9C9C9D;
 }
+.popup-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 500;
+}
+.alert {
+  width: 100%;
+  height: 608rpx;
+  font-size: 34rpx;
+  position: fixed;
+  top: 30%;
+  left: 0;
+  right: 0;
+  z-index: 700;
+  color:#3e3e3e;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.alert_content{
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.alert_title{
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  line-height: 96rpx;
+  border-bottom: 1px solid #E6E6E7;
+}
+.alert_title > text:first-child{
+  color: #727172;
+  margin-right: 46rpx;
+}
+.alert_title > text:last-child{
+  color: #3F3B3A;
+}
+.alert_footer{
+  position: absolute;
+  bottom: 0;
+  height: 108rpx;
+  width: 100%;
+}
+.alert_button{
+   background: #FBC700;
+   height: 100%;
+   border-radius: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.alert_button::after{
+  border-radius: 0;
+  border: 0;
+}
+.alert_time{
+  margin-bottom: 108rpx;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding:30rpx;
+}
+.alert_time_button{
+  border: 1px solid #E6E6E7;
+  height: 58rpx;
+  border-radius: 6rpx;
+  display: inline-block;
+  font-size:28rpx;
+  margin-bottom: 28rpx;
+  margin-left: 34rpx;
+  padding: 0 16rpx;
+  display: flex;
+  align-items: center;
+}
+.container-bd-select{
+  border: 1px solid #FCC700;
+  background: #FCC700;
+}
+.alert_time_button:nth-child(3n+1){
+  margin-left: 0;
+}
+.class_list_wrap{
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.class_name{
+  padding: 26rpx 30rpx;
+  border-bottom: 1px solid #BFC0C0;
+  color: #3F3B3A;
+  font-size: 28rpx;
+}
+.class_list_content{
+   padding:0 30rpx;
+}
+.class_list_item{
+  display: flex;
+  align-items: center;
+  color: #3F3B3A;
+  font-size: 28rpx;
+  justify-content: space-between;
+  padding: 34rpx 0;
+}
+.list_item_left{
+  width: 160rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.list_item_left > view:last-child{
+  font-size: 24rpx;
+  color: #727272;
+}
+.list_item_line{
+  height: 1px;
+  background: #BFC0C0;
+}
+
