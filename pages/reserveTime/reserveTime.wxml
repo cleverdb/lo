@@ -1,0 +1,41 @@
+<!--pages/reserveTime/reserveTime.wxml-->
+<!-- pages/mineAppointment/mineAppointment.wxml -->
+<view class="container">
+    <view class="container-hd">
+        <view class='date-show'>
+            <view class='lt-arrow' bindtap='lastMonth'>
+                <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+            </view>
+            <view class="date-content">{{year}}年{{month}}月</view>
+            <view class='rt-arrow' bindtap='nextMonth'>
+                <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+            </view>
+        </view>
+        <view class="date-br">
+            <view class='header'>
+                <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+            </view>
+            <view class='date-box'>
+                <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                    <view class='date-head'>
+                        <view>{{item.dateNum}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="container-bd">
+        <block wx:for="{{array_time}}" wx:key="{{index}}">
+            <text class="container-bd-time {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}">{{item}}</text>
+        </block>
+    </view>
+    <view class="footer_button">
+        <button 
+            class="buy_button" 
+            disabled="{{!(timeDataSelected >= 0)}}"
+            bindtap="reserveTap"
+        >
+            立即预约
+        </button>
+    </view>
+</view>

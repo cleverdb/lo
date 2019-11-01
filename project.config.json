@@ -89,8 +89,22 @@
 				},
 				{
 					"id": -1,
+					"name": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"pathName": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
 					"name": "pages/card/card",
 					"pathName": "pages/card/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/curoseDetail/curoseDetail",
+					"pathName": "pages/curoseDetail/curoseDetail",
 					"query": "",
 					"scene": null
 				},
@@ -99,6 +113,26 @@
 					"name": "pages/privateCoursesBuy2/privateCoursesBuy2",
 					"pathName": "pages/privateCoursesBuy2/privateCoursesBuy2",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/courseDetail/courseDetail",
+					"pathName": "pages/courseDetail/courseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/reserveTime/reserveTime",
+					"pathName": "pages/reserveTime/reserveTime",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/appointment/appointment",
+					"pathName": "pages/appointment/appointment",
 					"scene": null
 				},
 				{

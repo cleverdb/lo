@@ -1,0 +1,161 @@
+/* pages/mineAppointment/mineAppointment.wxss */
+
+page {
+  height: 100%;
+  background-color: #fff;
+}
+
+.container {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.container-hd {
+  background-color: #f6f6f6;
+  padding: 20rpx;
+}
+
+.date-show {
+  position: relative;
+  font-size: 34rpx;
+  color: #090000;
+  text-align: center;
+  height: 60rpx;
+  margin-bottom:20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.lt-arrow, .rt-arrow {
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.lt-arrow image, .rt-arrow image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.lt-arrow {
+  left: -110rpx;
+}
+
+.rt-arrow {
+  right: -100rpx;
+}
+
+.date-content {
+  line-height: 60rpx;
+}
+
+.date-br {
+  background-color: #ffffff;
+}
+
+.header {
+  font-size: 0;
+  width: 100%;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.header>view {
+  display: inline-block;
+  width: 14.285%;
+  color: #090000;
+  font-size: 28rpx;
+  text-align: center;
+  color: #9E9F9F;
+  /* border-bottom: 1px solid #666; */
+  padding: 20rpx 0;
+}
+
+.weekMark {
+  position: relative;
+}
+
+.weekMark view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* border-bottom: 1px solid #F2873B; */
+}
+
+.date-box {
+  font-size: 0;
+  padding: 10rpx 0;
+  color: #090000;
+}
+
+.date-box>view {
+  position: relative;
+  display: inline-block;
+  width: 14.285%;
+  font-size: 34rpx;
+  text-align: center;
+  vertical-align: middle;
+  margin: 10rpx 0;
+}
+
+.date-head {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+}
+
+.nowDay .date-head {
+  width: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #a0a0a0;
+  margin: 0 auto;
+}
+.selectedDay .date-head {
+  width: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fcc700;
+  margin: 0 auto;
+}
+.container-bd{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 110rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container-bd-time{
+  border: 1px solid #E6E6E7;
+  padding: 16rpx;
+  border-radius: 6rpx;
+  display: inline-block;
+  font-size:28rpx;
+  margin-bottom: 28rpx;
+  margin-left: 34rpx;
+}
+.container-bd-select{
+  border: 1px solid #FCC700;
+  background: #FCC700;
+}
+.container-bd-time:nth-child(3n+1){
+  margin-left: 0;
+}
+.footer_button{
+  position: absolute;
+  bottom: 0;
+  height: 110rpx;
+  width: 100%;
+}
+.buy_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#FCC800;
+    height:110rpx;
+    border-radius:0;
+    font-size: 34rpx;
+    color: #3F3B3A;
+}

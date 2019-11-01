@@ -1,103 +1,144 @@
-<import src="../template/pageAlert/pageAlert.wxml" />
-<template is="PageAlert" data="{{...pageState}}" />
-<view class='container' wx:if='{{!pageState.state}}'>
-  <scroll-view scroll-y="true" class="course-list">
-    <block wx:for="{{courseList}}" wx:key="index">
-      <view class="course">
-         <view class="course-hd {{item.iconUrl ? '' : 'empty'}}">
-                    <image  wx:if='{{item.iconUrl}}' mode='scaleToFill' src="{{host}}{{item.iconUrl}}"></image>
+<view class="appoint_wrap">
+   <view class="appoint_tab">
+     <block wx:for="{{tabArray}}">
+        <view class="{{tabsIndex==index ? 'active' : ''}}" bindtap="tapChange" data-id='{{index}}'>
+          {{item.title}}
         </view>
-        <view class="course-bd">
-          <view class='hd'>
-            <view class='lt'>
-              <view class="cell name">{{item.courseName}}</view>
-              <view class="cell">{{item.coachName}}</view>
-              <view class="cell">{{item.courseType}} / {{item.strength}}</view>
-            </view>
-            <view class='rt'>
-              <button bindtap='loadPlanTap' data-id ="{{item.courseId}}" data-item ="{{item}}" >预约</button>
-            </view>
-          </view>
-          <view class='bd'>
-            <view class="line"></view>
-            <view class="cell">{{item.stores}}</view>
-          </view>
-        </view>
-        <view class='course-ft'>
-          <!-- <view class='detail' bindtap='showModal'>
-            预约
-          </view> -->
-          <!-- <navigator url="/pages/curoseDetail/curoseDetail" class="detail">预约</navigator>  -->
-        </view>
-      </view>
-    </block>
-  </scroll-view>
-  <view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-  <view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
-    <view class="popup-content-hd">
-      <view class="tr">
-        <view class="td name">预约门店</view>
-        <view class="td content">
-          <picker value="{{dateIndex}}" range='{{stores}}' bindchange="bindStoreChange">
-            <view class="picker">
-              {{selectStore}}
-            </view>
-          </picker>
-          <view class="arrow"></view>
-        </view>
-      </view>
-      <view class="tr">
-        <view class="td name">预约日期</view>
-        <view class="td content">
-          <picker value="{{dateIndex}}" range='{{pickerDates}}' bindchange="bindDateChange">
-            <view class="picker">
-              {{selectDate}}
-            </view>
-          </picker>
-          <view class="arrow"></view>
-        </view>
-      </view>
-      <view class='tr no-border'>
-        <view class='td name'>上课时间</view>
-        <view class='td content time'>
-          <block wx:for="{{times}}" wx:key="{{index}}">
-            <view class="time {{selectPlanId==item.coursePlanId?'selected':''}}" data-id="{{item.coursePlanId}}" data-item ="{{item}}" bindtap='timeTap'>{{item.startTime}}-{{item.endTime}}</view>
-          </block>
-        </view>
-      </view>
+     </block>
+   </view>
+    <view class="appoint_content">
+        <swiper  
+            current="{{tabsIndex}}" 
+            class="appoint_swiper" 
+            style="height:{{winHeight}}rpx"
+            bindchange="onBindChange"
+        >
+          <swiper-item>
+              <scroll-view class="scroll-view_H" scroll-y="true">
+                  <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+                    <view class='date-show'>
+                      <view class='lt-arrow' bindtap='lastMonth'>
+                        <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+                      </view>
+                      <view class="date-content">{{year}}年{{month}}月</view>
+                      <view class='rt-arrow' bindtap='nextMonth'>
+                        <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+                      </view>
+                    </view>
+                    <view class="date-br">
+                      <view class='header'>
+                        <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+                      </view>
+                      <view class='date-box'>
+                        <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                          <view class='date-head'>
+                            <view>{{item.dateNum}}</view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                    <view class="date-show-footer" bindtap="showDataTap">
+                      <view class="footer-view">
+                          <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+                      </view>
+                    </view>
+                  </view>
+                  <view id="demo1" class="class_list">
+                    <view class="class_list_left">
+                      qweqe
+                    </view>
+                    <view class="class_list_right">
+                      <view class="list_right_top">
+                          <view>
+                            <text class="class_title">常规私教课</text>
+                            <view class="class_teacher">
+                              <text >王教练</text>
+                              <text>擅长:减脂、增肌</text>
+                            </view>
+                          </view>
+                          <view>
+                              <button class="top_button" bindtap="reserveTap">预 约</button>
+                          </view>
+                      </view>
+                      <view class="list_right_bottom">
+                        <text>剩余课程:20节</text>
+                        <text>已上时节:20节</text>
+                      </view>
+                    </view>
+                  </view>
+              </scroll-view>
+          </swiper-item>
+          <swiper-item>
+                <scroll-view class="scroll-view_H" scroll-y="true">
+                   <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+                     <view class='date-show'>
+                       <view class='lt-arrow' bindtap='lastMonth'>
+                         <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+                       </view>
+                       <view class="date-content">{{year}}年{{month}}月</view>
+                       <view class='rt-arrow' bindtap='nextMonth'>
+                         <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+                       </view>
+                     </view>
+                     <view class="date-br">
+                       <view class='header'>
+                         <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+                       </view>
+                       <view class='date-box'>
+                         <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                           <view class='date-head'>
+                             <view>{{item.dateNum}}</view>
+                           </view>
+                         </view>
+                       </view>
+                     </view>
+                     <view class="date-show-footer" bindtap="showDataTap">
+                       <view class="footer-view">
+                         <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+                       </view>
+                     </view>
+                   </view>
+                   <view class="class_list_wrap">
+                      <view class="class_name">
+                        动感操车
+                      </view>
+                       <view class="class_list_content">
+                          <view class="class_list_item">
+                              <view class="list_item_left">
+                                <view>NTC训练营</view>
+                                <view>刘石磊</view>
+                              </view>
+                              <view class="list_item_time">12:00-13:00</view>
+                              <view>
+                                <button class="top_button" bindtap="classTap">预 约</button>
+                              </view>
+                          </view>
+                          <view class="list_item_line"></view>
+                       </view>
+                   </view>
+                </scroll-view>
+          </swiper-item>
+          <swiper-item>
+            <view id="demo3" class="scroll-view-item_H demo-text-3">3</view>
+          </swiper-item>
+        </swiper>
     </view>
-    <cover-view class='join-activity' bindtap='appointmentTap'>
-      <cover-view>立即预约</cover-view>
-    </cover-view>
-  </view>
-  
-  <view class="alert" hidden='{{hideAlert}}'>
-      <view class='alert-hd'>
-        <view>
-          请确认预约信息
+    <view class="popup-container" bindtap="hideModal"  hidden='{{!modalVisible}}'></view>
+    <view class="alert" hidden='{{!modalVisible}}'>
+    <view class="alert_content">
+        <view class="alert_title">
+          <text>2018.10.12</text>
+          <text>刘教练</text>
+        </view>
+        <view class="alert_time">
+            <view  wx:for='{{array_time}}' class="alert_time_button   {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}">
+              12:00-14:00
+            </view>
+        </view>
+        <view class="alert_footer">
+          <button class="alert_button" disabled="{{timeDataSelected<0}}">预 约</button>
         </view>
       </view>
-      <view class='alert-bd'>
-        <view class="alert-bd_cell">
-           <view class='point'></view>
-           <view>{{selectCourse.courseName}}</view>
-        </view>
-        <view class="alert-bd_cell">
-           <view class='point'></view>
-           <view>{{selectCourse.coachName}}</view>
-        </view>
-        <view class="alert-bd_cell">
-          <view class='point'></view>
-          <view>{{selectStore}}</view>
-        </view>
-        <view class="alert-bd_cell">
-          <view class='point'></view>
-          <view>{{selectPlan.courseDate}} {{selectPlan.startTime}}-{{selectPlan.endTime}}</view>
-        </view>
-      </view>
-      <view class='alert-ft' bindtap='confirmAppointment' >
-      确定
-      </view>
-    <view class="del" bindtap='closeAlert'><image mode='scaleToFill' src="/images/icon/del.png"></image></view>
     </view>
 </view>
+  

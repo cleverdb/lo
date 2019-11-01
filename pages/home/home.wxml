@@ -13,26 +13,30 @@
   </view>
   <view class="container_store">
       <view  class="store_title">
-          请选择门店
+          {{storeName || '请选择门店'}}
       </view>
     <view class="store_select_wrap">
         <view>
-            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
               <view class="picker">
-                  qweqe
+                  {{storeName ? "更换门店" : "" }}
               </view>
             </picker>
         </view>
         <view class="cell-ft"></view>
     </view>
   </view>
-  <view class="store_address">
-    <view class="as">adad</view>
+  <view class="store_address" hidden="{{storeName ? flase : true}}">
+    <view class="as">
+      <image class="" src="/images/icon/map_daohang.png" mode="aspectFit" lazy-load="false" />
+    </view>
     <view  class="bs">
       <view class="address">红莲南路六号院一号楼0301</view>
       <view class="address_low">距新年华购物中心步行1.4km</view>
     </view>
-    <view  class="cs">asdasd</view>
+    <view  class="cs">
+      <image class="" src="/images/icon/phone.png" mode="aspectFit" lazy-load="false" />
+    </view>
   </view>
   <view class="store_introduction">
       <view>

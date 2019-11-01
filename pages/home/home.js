@@ -26,6 +26,14 @@ Page({
       }, {
         picUrl: '/images/sliber_test.png'
       }],
+    array: [{
+      id: 1,
+      name:'LIOU健身俱乐部'
+    }, {
+      id: 2,
+      name:'LIOU STUDIO健身工作室'
+      }],
+    storeName:'',
     menu: [],
     indicatorDots: true,
     autoplay: true,
@@ -160,5 +168,15 @@ Page({
    
   },
   loginTap: function (res) {
+  },
+  bindPickerChange:function (e) {
+    const { value } = e.detail;
+    const { array } = this.data;
+    console.log(value, array);
+    const { name } = array[value];
+    console.log(name);
+    this.setData({
+      storeName:name
+    })
   }
 })

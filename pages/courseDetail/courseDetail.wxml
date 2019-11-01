@@ -1,0 +1,95 @@
+<!-- pages/privateCoursesBuy2/privateCoursesBuy2.wxml -->
+<!-- pages/privateCoursesBuy/privateCoursesBuy.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="try_course_container">
+    <view class="head">
+        <image wx:if='{{data.imgSrc}}' src="{{data.imgSrc}}" alt="" />
+    </view>
+    <view class="content">
+        <view class="content_item">
+            <view class="content_item_contents">
+                <text>课程名称</text>
+            </view>
+            <text>常规课</text>
+        </view>
+        <view class="content_item  bordernone">
+            <view>
+                <text>课程教练</text>
+            </view>
+            <view>
+                <text>刘石磊</text>
+            </view>
+        </view>
+        <view class="content_item topborder">
+             <view>
+                 <text>课程价格</text>
+             </view>
+             <view>
+                 <text>{{data.coursePrice||""}}</text>
+                 <text>{{data.courseUnit||""}}</text>
+             </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>购买数量</text>
+            </view>
+            <view class="color_gary">
+                <view class="numContainer">
+                    <view class="numleft" bindtap="ondel">
+                        <text>-</text>
+                    </view>
+                    <view class="numcontent">{{num}}</view>
+                    <view class="numright" bindtap="onadd">
+                        <text>+</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>优惠券</text>
+            </view>
+            <view class="color_gary">
+                <text>暂不可使用优惠券</text>
+            </view>
+        </view>
+        <view class="content_item color_red">
+            <view>
+                <text>待支付</text>
+            </view>
+            <view>
+                <text>￥{{total}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="content footer_content">
+        <view class="notic">
+            <view class="notice">
+                <text>购买须知</text>
+            </view>
+            <view>
+                <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}">
+                    <view>
+                        <text>{{item}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="agree_content {{radioChecked ? 'agree_content_checked' : ''}}">
+            请先阅读并勾选协议
+        </view>
+        <view class="read">
+            <radio  checked="{{radioChecked}}"  bindtap='radioTap'>
+                <text>勾选即代表阅读并同意</text>
+            </radio>
+            <text class="toEnsure">《LIOU电子协议》</text>
+            <text>服务条款</text>
+        </view>
+    </view>
+    <cover-view class="footer {{radioChecked ?  '' : 'footer_disabled'}}" bindtap="tapnPay" >
+        <cover-view>
+            确认购买
+        </cover-view>
+    </cover-view>
+</view>
