@@ -414,3 +414,17 @@ border-top-left-radius: 10rpx;
   right: 30rpx;
   position: absolute;
 }
+.button_arr button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight:normal;
+    font-size:26rpx;
+    width: 242rpx;
+    height: 81rpx;
+    background-color:#ffffff !important;
+}
+.button_arr{
+    padding-left: 38rpx;
+    padding-right: 38rpx;
+}

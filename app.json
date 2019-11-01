@@ -27,7 +27,8 @@
     "pages/fitnessCoachList/fitnessCoachList",
     "pages/fitnessCoachDetail/fitnessCoachDetail",
     "pages/privateCoursesBuy2/privateCoursesBuy2",
-    "pages/publicCourses/publicCourses"
+    "pages/publicCourses/publicCourses",
+    "pages/tryCard/tryCard"
   ],
   "permission": {
     "scope.userLocation": {

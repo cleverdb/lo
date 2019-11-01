@@ -84,6 +84,27 @@
 					"id": -1,
 					"name": "pages/publicCourses/publicCourses",
 					"pathName": "pages/publicCourses/publicCourses",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/card/card",
+					"pathName": "pages/card/card",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"pathName": "pages/privateCoursesBuy2/privateCoursesBuy2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cardDetail/cardDetail",
+					"pathName": "pages/cardDetail/cardDetail",
 					"scene": null
 				}
 			]
