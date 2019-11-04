@@ -1,0 +1,25 @@
+<!-- pages/gymnasticsCourses/gymnasticsCourses.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
+    <scroll-view scroll-y="true" class="course-list">
+        <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
+            <view class="course" bindtap='courseTap' id='{{item.id}}' data-type="{{item.courseType}}">
+                <image class="course_img" wx:if='{{item.iconUrl}}' mode='scaleToFill' src="{{item.iconUrl}}"></image>
+                <view class="footer_bar">
+                    <text class="course_name">{{item.courseName}}</text>
+                    <view>
+                        <block wx:for="{{item.tags}}" wx:key="{{item.id}}">
+                            <button class="tag" id="{{item.id}}">{{item.title}}</button>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class='bottomline' wx:if="{{moreFlag}}">
+            <text class='baseline'></text>
+            <text class='tip'>我是有底线的哟～</text>
+            <text class='baseline'></text>
+        </view>
+    </scroll-view>
+</view>

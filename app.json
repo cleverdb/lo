@@ -30,7 +30,10 @@
     "pages/publicCourses/publicCourses",
     "pages/tryCard/tryCard",
     "pages/courseDetail/courseDetail",
-    "pages/reserveTime/reserveTime"
+    "pages/reserveTime/reserveTime",
+    "pages/practiceCourses/practiceCourses",
+    "pages/gymnasticsCourses/gymnasticsCourses",
+    "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail"
   ],
   "permission": {
     "scope.userLocation": {
