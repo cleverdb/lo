@@ -28,8 +28,12 @@
     "pages/fitnessCoachDetail/fitnessCoachDetail",
     "pages/privateCoursesBuy2/privateCoursesBuy2",
     "pages/publicCourses/publicCourses",
+    "pages/tryCard/tryCard",
     "pages/courseDetail/courseDetail",
-    "pages/reserveTime/reserveTime"
+    "pages/reserveTime/reserveTime",
+    "pages/practiceCourses/practiceCourses",
+    "pages/gymnasticsCourses/gymnasticsCourses",
+    "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail"
   ],
   "permission": {
     "scope.userLocation": {

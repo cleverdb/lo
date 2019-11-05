@@ -13,59 +13,59 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.initData();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
-  initData: function(params) {
+  initData: function (params) {
     var _this = this
     wx.showLoading({
       title: '加载中...',
@@ -75,7 +75,7 @@ Page({
       url: _this.data.host + '/rest/s1/Goods/card/getCard',
       data: params,
       method: 'GET',
-      success: function(res) {
+      success: function (res) {
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -90,7 +90,7 @@ Page({
           })
         }
       },
-      fail: function() {
+      fail: function () {
         _this.setData({
           pageState: {
             message: '请检查您的网络连接~',
@@ -98,19 +98,25 @@ Page({
           }
         })
       },
-      complete: function(res) {
+      complete: function (res) {
         wx.hideNavigationBarLoading()
         wx.hideLoading()
       }
 
     })
   },
-  navigateTo: function(e) {
+  navigateTo: function (e) {
     const cardId = e.currentTarget.dataset.id;
-    const path = e.currentTarget.dataset.path;
+    const data = e.currentTarget.dataset.type;
+    data.type = "2";
+    let urlMap = {
+      '1': "/pages/cardDetail/cardDetail",
+      "2": "/pages/tryCard/tryCard"
+    }
     wx.navigateTo({
-      url: path + "?cardId=" + cardId
+      url: urlMap[data.type] + "?cardId=" + cardId
     });
+
 
   },
 })

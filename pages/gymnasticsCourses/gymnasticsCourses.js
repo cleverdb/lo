@@ -132,23 +132,9 @@ Page({
 
     let { type } = e.currentTarget.dataset;
     let { curriculum } = this.data
-    switch (type) {
-      case '1':
-        wx.navigateTo({
-          url: `/pages/${curriculum[type]}/${curriculum[type]}`,
-        })
-        break;
-      case '2':
-        wx.navigateTo({
-          url: `/pages/${curriculum[type]}/${curriculum[type]}`,
-        })
-        break;
-      case '3':
-        wx.navigateTo({
-          url: `/pages/${curriculum[type]}/${curriculum[type]}`,
-        })
-
-    }
+    wx.navigateTo({
+      url: `/pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail`,
+    });
   },
   initData: function () {
     var _this = this
@@ -165,8 +151,9 @@ Page({
           res.data.data = [
             {
               iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "私教课",
+              courseName: "动态操厅",
               courseType: "1",
+
               tags: [
                 {
                   id: "1",
@@ -179,7 +166,7 @@ Page({
               id: '1'
             }, {
               iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "操课",
+              courseName: "瑜伽厅",
               courseType: "3",
               tags: [
                 {
@@ -193,7 +180,7 @@ Page({
               id: '1'
             }, {
               iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "公开课",
+              courseName: "单车厅",
               courseType: "2",
               tags: [
                 {

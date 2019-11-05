@@ -1,14 +1,16 @@
-<!--pages/buyCourse/buyCourse.wxml-->
+<!-- pages/buyCourse/buyCourse.wxml -->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
+<scroll-view scroll-y="true" class="course-list">
   <view class="card-container" wx:if="{{!pageState.state}}">
-          <view class="card-box" wx:for-items="{{cardList}}" wx:key="{{index}}" data-path='/pages/cardDetail/cardDetail' bindtap="navigateTo" data-id="{{item.cardId}}">
-            <view class="img-box">
-                <image src="{{host}}{{item.cardLogoUrl}}" mode='scaleToFill'></image>    
-            </view>
-            <!-- <view data-id="{{item.id}}" data-path='/pages/cardDetail/cardDetail' class="detail-box" bindtap="navigateTo">
+    <view class="card-box" wx:for-items="{{cardList}}" wx:key="{{index}}">
+      <view class="img-box" data-type="{{item}}" bindtap="navigateTo" data-id="{{item.cardId}}">
+        <image src="{{host}}{{item.cardLogoUrl}}" mode='scaleToFill'></image>
+      </view>
+      <!-- <view data-id="{{item.id}}" data-path='/pages/cardDetail/cardDetail' class="detail-box" bindtap="navigateTo">
                 <text>会员卡详情</text>
                 <view class="arrow"></view>
             </view> -->
-          </view>
+    </view>
   </view>
+</scroll-view>

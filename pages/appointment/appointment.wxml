@@ -57,35 +57,88 @@
                             </view>
                           </view>
                           <view>
-                              <button class="top_button">预 约</button>
+                              <button class="top_button" bindtap="reserveTap">预 约</button>
                           </view>
                       </view>
                       <view class="list_right_bottom">
                         <text>剩余课程:20节</text>
                         <text>已上时节:20节</text>
                       </view>
-                        
-                        
                     </view>
-                      
                   </view>
-                  <view id="demo2" class="class_list">2</view>
-                  <view id="demo3" class="class_list">3</view>
-                  <view id="demo3" class="class_list">4</view>
-                  <view id="demo3" class="class_list">5</view>
-                  <view id="demo3" class="class_list">6</view>
-                  <view id="demo3" class="class_list">7</view>
-                  <view id="demo3" class="class_list">8</view>
-                  <view id="demo3" class="class_list">9</view>
               </scroll-view>
           </swiper-item>
           <swiper-item>
-            <view id="demo2" class="scroll-view-item_H demo-text-2">2</view>
+                <scroll-view class="scroll-view_H" scroll-y="true">
+                   <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+                     <view class='date-show'>
+                       <view class='lt-arrow' bindtap='lastMonth'>
+                         <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+                       </view>
+                       <view class="date-content">{{year}}年{{month}}月</view>
+                       <view class='rt-arrow' bindtap='nextMonth'>
+                         <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+                       </view>
+                     </view>
+                     <view class="date-br">
+                       <view class='header'>
+                         <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+                       </view>
+                       <view class='date-box'>
+                         <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                           <view class='date-head'>
+                             <view>{{item.dateNum}}</view>
+                           </view>
+                         </view>
+                       </view>
+                     </view>
+                     <view class="date-show-footer" bindtap="showDataTap">
+                       <view class="footer-view">
+                         <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+                       </view>
+                     </view>
+                   </view>
+                   <view class="class_list_wrap">
+                      <view class="class_name">
+                        动感操车
+                      </view>
+                       <view class="class_list_content">
+                          <view class="class_list_item">
+                              <view class="list_item_left">
+                                <view>NTC训练营</view>
+                                <view>刘石磊</view>
+                              </view>
+                              <view class="list_item_time">12:00-13:00</view>
+                              <view>
+                                <button class="top_button" bindtap="classTap">预 约</button>
+                              </view>
+                          </view>
+                          <view class="list_item_line"></view>
+                       </view>
+                   </view>
+                </scroll-view>
           </swiper-item>
           <swiper-item>
             <view id="demo3" class="scroll-view-item_H demo-text-3">3</view>
           </swiper-item>
         </swiper>
+    </view>
+    <view class="popup-container" bindtap="hideModal"  hidden='{{!modalVisible}}'></view>
+    <view class="alert" hidden='{{!modalVisible}}'>
+    <view class="alert_content">
+        <view class="alert_title">
+          <text>2018.10.12</text>
+          <text>刘教练</text>
+        </view>
+        <view class="alert_time">
+            <view  wx:for='{{array_time}}' class="alert_time_button   {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}">
+              12:00-14:00
+            </view>
+        </view>
+        <view class="alert_footer">
+          <button class="alert_button" disabled="{{timeDataSelected<0}}">预 约</button>
+        </view>
+      </view>
     </view>
 </view>
   

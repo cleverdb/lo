@@ -1,0 +1,36 @@
+<!-- pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container">
+    <view class="dateSel">
+        <view bindtap="onbefore">
+            <text class="left">《</text>
+        </view>
+        <view>
+            <text>{{year}}年{{month}}月</text>
+        </view>
+        <view bindtap="onafter">
+            <text class="right">》</text>
+        </view>
+    </view>
+    <scroll-view scroll-x>
+        <view class="table_head">
+            <block wx:for="{{columns}}" wx:key="index" wx:if="{{columns}}">
+                <view>
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+        </view>
+        <view class="body">
+            <block wx:for="{{columns}}" wx:key="index" wx:for-item="item" wx:if="{{columns}}">
+                <view>
+                    <block wx:for="{{data}}" wx:key="index" wx:for-item="item1" wx:if="{{data}}">
+                        <view class="body_item">
+                            <text>{{item1[item.key]}}</text>
+                        </view>
+                    </block>
+                </view>
+            </block>
+        </view>
+    </scroll-view>
+</view>

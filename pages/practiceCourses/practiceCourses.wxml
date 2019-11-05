@@ -1,0 +1,71 @@
+<!-- pages/practiceCourses/practiceCourses.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container">
+    <image class="show_image" src="../../images/activity.png"></image>
+    <view class="content_container">
+        <view class="content_container_item  bor_bottom">
+            <view class="">
+                <text class="typename">{{titleList.typename}}</text>
+                <text>燃脂指数:</text>
+                <text>{{titleList.price}}</text>
+                <block></block>
+            </view>
+            <view bindtip="onshare">
+                <image class="position" src="{{titleList.imgSrc2}}"></image>
+            </view>
+        </view>
+        <view class="content_container_item">
+            <view class="item-details">
+                <view class="item_details">
+                    <text>{{titleList.name}}</text>
+                    <text>{{titleList.startTime}}</text>
+                </view>
+                <image class="position position1" src="{{titleList.imgSrc1}}"></image>
+            </view>
+            <view>
+                <image class="position" src="{{titleList.imgSrc2}}"></image>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="center_item"></view>
+        <view>
+            <view class="list_title">
+                <text>活动详情</text>
+            </view>
+            <view class="detail_content">
+                <block wx:for="{{activeList}}" wx:key="{{index}}" wx:if="{{activeList}}">
+                    <view class="detail_content_item">
+                        <text class="detail_title">{{item.title}}</text>
+                        <text class="detail_content">{{item.content}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="report_container">
+        <button class="report">立即报名</button>
+    </view>
+    <view class="back"></view>
+    <view class="modal">
+        <view class="close">
+            <image src="../../images/close.png"></image>
+        </view>
+        <image src="../../images/modal.png"></image>
+    </view>
+    <view class="footer_handle">
+        <view>
+            <image src="../../images/weixin.png"></image>
+            <text>微信</text>
+        </view>
+        <view>
+            <image src="../../images/save.png"></image>
+            <text>保存到手机</text>
+        </view>
+        <view>
+            <image src="../../images/share.png"></image>
+            <text>分享到朋友圈</text>
+        </view>
+    </view>
+</view>

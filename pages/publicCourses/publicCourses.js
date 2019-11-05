@@ -110,6 +110,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  ondetail: function () {
+    wx.navigateTo({
+      url: `/pages/practiceCourses/practiceCourses`,
+    })
+  },
   tabsChange: function (e) {
     let { id } = e.currentTarget.dataset;
     console.log('78', id)

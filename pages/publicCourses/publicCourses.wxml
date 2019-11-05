@@ -15,7 +15,7 @@
                 <view wx:if="{{besel=='1'}}">
                     <block wx:for="{{runningList}}" wx:key="index">
                         <view class="list_item_container">
-                            <image class="imgs_item" src="{{item.imgSrc}}" />
+                            <image bindtap="ondetail" class="imgs_item" src="{{item.imgSrc}}" />
                             <view>
                                 <view>
                                     <text>{{item.title}}</text>

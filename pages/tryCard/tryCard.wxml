@@ -1,0 +1,150 @@
+<!-- pages/privateCoursesBuy2/privateCoursesBuy2.wxml -->
+<!-- pages/privateCoursesBuy/privateCoursesBuy.wxml -->
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="try_course_container">
+    <view class="head">
+        <image wx:if='{{data.cardLogoUrl}}' src="{{host}}{{data.cardLogoUrl}}" alt="" />
+    </view>
+    <view class="content">
+        <view class="content_item button_arr">
+            <view>
+                <button>体验次卡</button>
+            </view>
+            <view>
+                <button>体验周卡</button>
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>优惠券</text>
+            </view>
+            <view class="color_gary" bindtap="onSelCoupon">
+                <text>{{beselcoupon.voucherName||'暂不可使用优惠券'}}</text>
+                <image class="arrow-right" src="../../images/icon/arrow-right.png" />
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>开卡场馆</text>
+            </view>
+            <view class="color_gary">
+                <text>力偶健身乐城店</text>
+                <image class="arrow-right" src="../../images/icon/arrow-right.png" />
+            </view>
+        </view>
+        <view class="content_item">
+            <view>
+                <text>销售人员</text>
+            </view>
+            <view class="color_gary" bindtap="onSelSale">
+                <text>{{beSelSale.userFullName||"请选择销售人员"}}</text>
+                <image class="arrow-right" src="../../images/icon/arrow-right.png" />
+            </view>
+        </view>
+    </view>
+    <view class="content" wx:if="{{!teacherSel}}">
+        <view class="content_item color_red">
+            <view>
+                <text>待支付</text>
+            </view>
+            <view>
+                <text>￥{{total}}</text>
+            </view>
+        </view>
+        <view class="notic">
+            <view class="notice">
+                <text>购买须知</text>
+            </view>
+            <view>
+                <!-- <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}"> -->
+                <view>
+                    <text>{{data.buyNote}}</text>
+                </view>
+                <!-- </block> -->
+            </view>
+        </view>
+        <view class="read">
+            <radio></radio>
+            <text>勾选即代表阅读并同意</text>
+            <text class="toEnsure">《LIOU电子协议》</text>
+            <text>服务条款</text>
+        </view>
+    </view>
+    <view class="footer">
+        <button class="buy_button">确认购买</button>
+    </view>
+    <view wx:if="{{isShowsalesList}}" class="bk" bindtap="onSaleCancel"></view>
+    <view wx:if="{{isShowsalesList}}" class="flex_container">
+        <view class="sales_title">选择会籍销售人员</view>
+        <view class="sales_list row-rap">
+            <block wx:for="{{sales}}" wx:key="index" wx:if="{{sales}}">
+                <view class="sales_item row  height_center" bindtap="onSelSaler" data-id='{{item.id}}'>
+                    <image wx:if="{{item.besel}}" class="besel_icon" src="../../images/icon/ensure_three.png" />
+                    <image class="sales_item_img" src="{{item.iconUrl}}" wx:if="{{item.iconUrl}}" />
+                    <view>
+                        <text>{{item.userFullName}}</text>
+                        <text>工号:{{item.username}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view wx:if="{{isShowCoupon}}" class="bk" bindtap="onCouponCancel"></view>
+    <view wx:if="{{isShowCoupon}}" class="coupon_container">
+        <view class="sales_title">可用优惠券</view>
+        <view class="sales_list row-rap">
+            <block wx:for="{{coupon.usable}}" wx:key="index" wx:if="{{coupon.usable}}">
+                <view class="coupon_item row-rap" bindtap="onselcoupon" data-item="{{item}}">
+                    <image wx:if="{{item.besel}}" class="besel_flag" src="../../images/icon/ensure_three.png"></image>
+                    <view class="coupon_item_left" data-item="{{item}}">
+                        <text data-item="{{item}}" class="voucherName">{{item.voucherName}}</text>
+                        <view data-item="{{item}}" class="expireDate row">
+                            <text data-item="{{item}}">有效期：{{item.expireDate}}</text>
+                            <text data-item="{{item}}">{{item.status}}</text>
+                        </view>
+                    </view>
+                    <view class="coupon_item_border">
+                        <view></view>
+                        <view></view>
+                        <view></view>
+                    </view>
+                    <view class="coupon_item_right" data-item="{{item}}">
+                        <view class="row" data-item="{{item}}">
+                            <text data-item="{{item}}" class="character">￥</text>
+                            <text data-item="{{item}}" class="parValue">{{item.parValue}}</text>
+                        </view>
+                        <text data-item="{{item}}" class="scope">{{item.scope}}</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="sales_title unuse_title">不可用券</view>
+        <view class="sales_list row-rap">
+            <block wx:for="{{coupon.unusable}}" wx:key="index" wx:if="{{coupon.unusable}}">
+                <view class="coupon_item row-rap  coupon_item_nouse">
+                    <view class="coupon_item_left">
+                        <text class="voucherName  gray_color">{{item.voucherName}}</text>
+                        <view class="expireDate row">
+                            <text class="gray_color">有效期：{{item.expireDate}}</text>
+                            <text class="gray_color">{{item.status}}</text>
+                        </view>
+                    </view>
+                    <view class="coupon_item_border">
+                        <view></view>
+                        <view></view>
+                        <view></view>
+                    </view>
+                    <view class="coupon_item_right">
+                        <view class="row">
+                            <text class="character  gray_color">￥</text>
+                            <text class="parValue  gray_color">{{item.parValue}}</text>
+                        </view>
+                        <text class="scope  gray_color">{{item.scope}}</text>
+                    </view>
+                </view>
+                <text class="cause">不可使用原因：{{item.cause}}</text>
+            </block>
+        </view>
+    </view>
+</view>
