@@ -26,14 +26,9 @@ Page({
       }, {
         picUrl: '/images/sliber_test.png'
       }],
-    array: [{
-      id: 1,
-      name:'LIOU健身俱乐部'
-    }, {
-      id: 2,
-      name:'LIOU STUDIO健身工作室'
-      }],
+    selectArray: [],
     storeName:'',
+    storeAddress:'',
     menu: [],
     indicatorDots: true,
     autoplay: true,
@@ -47,7 +42,7 @@ Page({
    */
   onLoad: function(options) {
     this.initData()
-    
+    this.getSelectData();
     app.userInfoReadyCallback = res => {
       app.globalData.wUserInfo = res.userInfo
     };
@@ -117,9 +112,11 @@ Page({
             }
           })
         } else {
+          const {data} = res;
+          const { menu, banner } = data;
           _this.setData({
-            banner: res.data.banner,
-            menu: res.data.menu,
+            banner,
+            menu,
             pageState: {}
           })
         }
@@ -169,14 +166,49 @@ Page({
   },
   loginTap: function (res) {
   },
+  getSelectData:function(e){
+    const _this = this;
+    wx.request({
+      url: app.globalData.host + '/rest/s1/Goods/store/getStore',
+      success: function (res) {
+        const { data = {} } = res || {};
+        console.log('res',res);
+        if (res.statusCode != 200) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          const {data:dat=[]}=data;
+          console.log('data',data);
+          _this.setData({
+            selectArray: dat
+          })
+        }
+      },
+      fail: function () {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete: function (res) {
+        wx.hideLoading()
+      }
+    })
+  },
   bindPickerChange:function (e) {
     const { value } = e.detail;
-    const { array } = this.data;
-    console.log(value, array);
-    const { name } = array[value];
-    console.log(name);
+    const { selectArray } = this.data;
+    const { storeName, address } = selectArray[value];
+    console.log('storeName', storeName);
     this.setData({
-      storeName:name
+      storeName,
+      storeAddress: address
     })
   }
 })

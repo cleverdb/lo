@@ -17,7 +17,7 @@
       </view>
     <view class="store_select_wrap">
         <view>
-            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{selectArray}}" range-key="storeName">
               <view class="picker">
                   {{storeName ? "更换门店" : "" }}
               </view>
@@ -31,7 +31,7 @@
       <image class="" src="/images/icon/map_daohang.png" mode="aspectFit" lazy-load="false" />
     </view>
     <view  class="bs">
-      <view class="address">红莲南路六号院一号楼0301</view>
+      <view class="address">{{storeAddress}}</view>
       <view class="address_low">距新年华购物中心步行1.4km</view>
     </view>
     <view  class="cs">

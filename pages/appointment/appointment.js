@@ -23,7 +23,8 @@ Page({
       }],
     tabsIndex: 0,
     showData:false,
-    winHeight:""
+    winHeight:"",
+    host: app.globalData.host,
   },
 
   /**
@@ -210,7 +211,7 @@ Page({
       title: '加载中...',
     })
     wx.request({
-      url: _this.data.host + '/rest/s1/Goods/appointment/getAppointmentCourse',
+      url: _this.data.host + '/rest/s1/Goods/appointment/getAppointment',
       method: 'GET',
       data: {
         userId: userId
