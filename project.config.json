@@ -147,6 +147,7 @@
 					"id": -1,
 					"name": "pages/practiceCourses/practiceCourses",
 					"pathName": "pages/practiceCourses/practiceCourses",
+					"query": "",
 					"scene": null
 				}
 			]
