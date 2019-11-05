@@ -149,6 +149,12 @@
 					"pathName": "pages/practiceCourses/practiceCourses",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail",
+					"pathName": "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail",
+					"scene": null
 				}
 			]
 		}
