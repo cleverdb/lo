@@ -14,7 +14,8 @@ Page({
     pageSize: 10,
     pageIndex: 0,
     userId: '',
-    workLong:''
+    workLong:'',
+    selectArray:[]
   },
 
   /**
@@ -130,19 +131,22 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value,e.detail);
     // 跳转到正式课程
     wx.navigateTo({
-      url: `/pages/privateCoursesBuy2/privateCoursesBuy2`,
+      url: `/pages/courseDetail/courseDetail`,
     })
   },
   getDataSelect:function(){
+    const _this = this;
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/course/classes`,
       data:{
         storeId: app.globalData.storeId,
-        pageIndex:0,
-        pageSize:10
       },
       success:function(res){
         console.log(res);
+        const data = res.data.data;
+        _this.setData({
+           selectArray:data
+        })
       }
     })
   }
