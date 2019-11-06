@@ -167,21 +167,7 @@ Page({
           const { storeId = '' } = dat[0] || {};
           app.globalData.selectStore = [dat[0]];
           app.globalData.storeId = storeId;
-          wx.request({
-            url: app.globalData.host + '/rest/s1/Goods/store/getStoreArea',
-            data: {
-              storeId,
-              pageIndex,
-              pageSize
-            },
-            success: function (res) {
-              const { data } = res;
-              const { data: sliberBanner } = data;
-              _this.setData({
-                  sliberBanner
-              })
-            }
-          })
+          _this.getStoreArea(storeId);
           _this.setData({
             selectArray: dat,
             storeId
@@ -207,6 +193,7 @@ Page({
     const { storeName, address, storeId, storePhone } = selectArray[value];
     app.globalData.storeId = storeId;
     app.globalData.selectStore = [selectArray[value]];
+    this.getStoreArea(storeId);
     this.setData({
       storeName,
       storeAddress: address,
@@ -241,6 +228,25 @@ Page({
         const { data } = res.data;
         _this.setData({
           coachList: data
+        })
+      }
+    })
+  },
+  getStoreArea: function (storeId){
+    const {pageIndex,pageSize}= this.data;
+    const _this = this;
+    wx.request({
+      url: app.globalData.host + '/rest/s1/Goods/store/getStoreArea',
+      data: {
+        storeId,
+        pageIndex,
+        pageSize
+      },
+      success: function (res) {
+        const { data } = res;
+        const { data: sliberBanner } = data;
+        _this.setData({
+          sliberBanner,
         })
       }
     })

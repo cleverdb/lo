@@ -24,6 +24,7 @@ Page({
     const { userId } = options;
     const { pageSize, pageIndex} = this.data;
     const _this = this;
+    this.getDataSelect();
     wx.showLoading({
       title: '加载中...',
     })
@@ -44,7 +45,14 @@ Page({
           })
         } else {
           const { data } = res;
-          const { serviceLevel, honor, userId, userFullName, workLong, iconUrl } = data.data;
+          const { 
+            serviceLevel, 
+            honor, 
+            userId, 
+            userFullName, 
+            workLong, 
+            iconUrl =""
+          } = data.data;
           _this.setData({
             serviceLevel,
             honor,
@@ -123,6 +131,19 @@ Page({
     // 跳转到正式课程
     wx.navigateTo({
       url: `/pages/privateCoursesBuy2/privateCoursesBuy2`,
+    })
+  },
+  getDataSelect:function(){
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/classes`,
+      data:{
+        storeId: app.globalData.storeId,
+        pageIndex:0,
+        pageSize:10
+      },
+      success:function(res){
+        console.log(res);
+      }
     })
   }
 })

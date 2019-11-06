@@ -180,6 +180,12 @@ swiper  image{
   background: #ffffff;
   padding-bottom: 23rpx;
 }
+.no_data_introduction{
+  height: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .store_introduction_title{
   padding: 30rpx;
   display: flex;

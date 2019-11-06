@@ -15,6 +15,12 @@ page{
     width: 100%;
     display: block;
 }
+.fitness_no_img{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .fitness_coach_introduction{
     position: absolute;
     width: 628rpx;
@@ -64,9 +70,10 @@ page{
     margin-bottom: 5rpx;
 }
 .fitness_coach_end{
-    height:111rpx;
+    height:110rpx;
     display: flex;
     flex-direction: row;
+    border-top: 1px solid #8B9094;
 }
 .end_left{
     width: 50%;

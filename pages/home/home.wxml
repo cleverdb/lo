@@ -37,11 +37,11 @@
       <image class="" src="/images/icon/phone.png" mode="aspectFit" lazy-load="false" />
     </view>
   </view>
-  <view class="store_introduction">
+  <view class="store_introduction" wx:if="{{sliberBanner.length > 0}}">
       <view>
         <view class="store_introduction_title">
            <text>店内环境</text>
-           <navigator url="/pages/storeList/storeList" hover-class="navigator-hover">
+           <navigator url="/pages/storeList/storeList" wx:if="{{sliberBanner.length > 0}}" hover-class="navigator-hover">
              <image src="/images/icon/elipsis.png"></image>
            </navigator>
         </view>
@@ -66,11 +66,14 @@
         </scroll-view>
       </view>
   </view>
-  <view class="store_introduction">
+  <view class="store_introduction no_data_introduction" wx:else>
+      暂无数据
+  </view>
+  <view class="store_introduction" wx:if="{{coachList.length > 0}}">
       <view>
         <view class="store_introduction_title">
            <text>私人教练</text>
-           <navigator url="/pages/fitnessCoachList/fitnessCoachList" hover-class="navigator-hover">
+           <navigator url="/pages/fitnessCoachList/fitnessCoachList" wx:if="{{coachList.length > 0}}" hover-class="navigator-hover">
              <image src="/images/icon/elipsis.png"></image>
            </navigator>
         </view>
@@ -95,5 +98,8 @@
           </block>
         </scroll-view>
       </view>
+  </view>
+   <view class="store_introduction no_data_introduction" wx:else>
+      暂无数据
   </view>
 </view>

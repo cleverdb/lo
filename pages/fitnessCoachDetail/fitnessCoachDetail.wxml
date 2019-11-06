@@ -1,6 +1,7 @@
 <view class="fitness_coach">
     <view class="fitness_coach_img">
-       <image src="{{host}}{{iconUrl}}"  mode="widthFix" />
+       <image src="{{host}}{{iconUrl}}"  mode="widthFix" wx:if="{{iconUrl}}" />
+       <text class="fitness_no_img" wx:else>暂无图片</text>
        <view class="fitness_coach_introduction">
             <view class="coach_introduction_top  first">
                 <text class="introduction_name">{{userFullName}}</text>
