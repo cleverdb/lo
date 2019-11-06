@@ -44,8 +44,7 @@ page{
     align-items: center;
 }
 .detail_text_right{
-    width: 52rpx;
-    height: 29rpx;
+    padding:0 4rpx;
     font-size:18rpx;
     font-weight:400;
     color:#AEAEAF;
@@ -55,4 +54,22 @@ page{
 }
 .right{
     margin-right: 8rpx;
+}
+.bottomline {
+  color: #a0a0a0;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 5rpx 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.baseline {
+  border-bottom: 1rpx #a0a0a0 solid;
+  flex: 1;
+}
+
+.tip {
+  margin: 0 10rpx;
 }

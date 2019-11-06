@@ -1,28 +1,24 @@
 <view class="fitness_coach">
     <view class="fitness_coach_img">
-        adadada
+       <image src="{{host}}{{iconUrl}}"  mode="widthFix" />
        <view class="fitness_coach_introduction">
             <view class="coach_introduction_top  first">
-                <text class="introduction_name">刘石磊</text>
+                <text class="introduction_name">{{userFullName}}</text>
                 <view class='wx-star-panel'>
                     <view class='wx-star' wx:for="{{arr}}">
-                        <image mode="aspectFit" wx:if="{{(sort - item >=0)}}" src="/images/icon/star_fill.png" />
-                        <image mode="aspectFit" wx:elif="{{(sort - item)== -0.5 }}" src="/images/icon/star_half.png" />
+                        <image mode="aspectFit" wx:if="{{(serviceLevel - item >=0)}}" src="/images/icon/star_fill.png" />
+                        <image mode="aspectFit" wx:elif="{{(serviceLevel - item)== -0.5 }}" src="/images/icon/star_half.png" />
                         <image mode="aspectFit" wx:else src="/images/icon/star_full.png" />
                     </view>
                 </view>
             </view>
             <view  class="coach_introduction_top">
-                <text class="introduction_time">工作时间：4年</text>
-                <text class="introduction_mony">服务人次：80人/月</text>
+                <text class="introduction_time">工作时间：{{workLong||4}}年</text>
             </view>
             <view class="introduction_line"/>
             <view class="introduction_honor">
-                <text>古德体育减脂专家认证 古德体育</text>
-                <text>古德体育减脂专家认证 古德体育</text>
-                <text>古德体育减脂专家认证 古德体育</text>
+                <text> {{honor}}</text>
             </view>
-              
        </view>
     </view>
     <view  class="fitness_coach_end">

@@ -1,81 +1,28 @@
 <!--pages/storeDetail/storeDetail.wxml-->
 <view class="store_detail_wrap" hover-class="none" hover-stop-propagation="false">
-    <view class="store_detail_item">
-        <view class="detail_item_top">
-            qweqweqwewq
-        </view>
-        <view  class="detail_item_bottom">
-            <view class="item_bottom_top">
-                 <text class="bottom_top_left">精选哑铃</text>
-                 <view class="bottom_top_left_wrap">
-                        <text class="bottom_top_right right">减脂</text>
-                        <text class="bottom_top_right">增肌</text>
-                 </view>
-            </view>
-            <view class="item_bottom_text">
-                从1kg至50kg不等，提升肌肉控制能力，矫正畸形,消除脂肪。哑铃是我们最常用的健身器械，甚至可能不是之一。很简单，哑铃小巧简单，一点都不含糊。
-            </view>
-        </view>
-    </view>
-    <view class="store_detail_item">
-        <view class="detail_item_top">qweqweqwewq</view>
-        <view class="detail_item_bottom">
-            <view class="item_bottom_top">
-                <text class="bottom_top_left">精选哑铃</text>
-                <view class="bottom_top_left_wrap">
-                    <text class="bottom_top_right right">减脂</text>
-                    <text class="bottom_top_right">增肌</text>
-                </view>
-            </view>
-            <view class="item_bottom_text">
-                从1kg至50kg不等，提升肌肉控制能力，矫正畸形,消除脂肪。哑铃是我们最常用的健身器械，甚至可能不是之一。很简单，哑铃小巧简单，一点都不含糊。
-            </view>
-        </view>
-    </view>
+    <block wx:for="{{storeDetailList}}"  wx:key="*this">
         <view class="store_detail_item">
-        <view class="detail_item_top">qweqweqwewq</view>
-        <view class="detail_item_bottom">
-            <view class="item_bottom_top">
-                <text class="bottom_top_left">精选哑铃</text>
-                <view class="bottom_top_left_wrap">
-                    <text class="bottom_top_right right">减脂</text>
-                    <text class="bottom_top_right">增肌</text>
+            <view class="detail_item_top">
+               <image src="{{host}}{{item.envPicture}}"  mode="widthFix" />
+            </view>
+            <view class="detail_item_bottom">
+                <view class="item_bottom_top">
+                    <text class="bottom_top_left">{{item.areaName}}</text>
+                    <view class="bottom_top_left_wrap">
+                        <block wx:for="{{item.keywords}}"  wx:for-item="itemKeywords">
+                            <text class="bottom_top_right right">{{itemKeywords}}</text>
+                        </block>
+                    </view>
+                </view>
+                <view class="item_bottom_text">
+                    {{item.description}}
                 </view>
             </view>
-            <view class="item_bottom_text">
-                从1kg至50kg不等，提升肌肉控制能力，矫正畸形,消除脂肪。哑铃是我们最常用的健身器械，甚至可能不是之一。很简单，哑铃小巧简单，一点都不含糊。
-            </view>
         </view>
+    </block>
+    <view class='bottomline' wx:if="{{moreFlag}}">
+        <text class='baseline'></text>
+        <text class='tip'>我是有底线的哟～</text>
+        <text class='baseline'></text>
     </view>
-        <view class="store_detail_item">
-        <view class="detail_item_top">qweqweqwewq</view>
-        <view class="detail_item_bottom">
-            <view class="item_bottom_top">
-                <text class="bottom_top_left">精选哑铃</text>
-                <view class="bottom_top_left_wrap">
-                    <text class="bottom_top_right right">减脂</text>
-                    <text class="bottom_top_right">增肌</text>
-                </view>
-            </view>
-            <view class="item_bottom_text">
-                从1kg至50kg不等，提升肌肉控制能力，矫正畸形,消除脂肪。哑铃是我们最常用的健身器械，甚至可能不是之一。很简单，哑铃小巧简单，一点都不含糊。
-            </view>
-        </view>
-    </view>
-        <view class="store_detail_item">
-        <view class="detail_item_top">qweqweqwewq</view>
-        <view class="detail_item_bottom">
-            <view class="item_bottom_top">
-                <text class="bottom_top_left">精选哑铃</text>
-                <view class="bottom_top_left_wrap">
-                    <text class="bottom_top_right right">减脂</text>
-                    <text class="bottom_top_right">增肌</text>
-                </view>
-            </view>
-            <view class="item_bottom_text">
-                从1kg至50kg不等，提升肌肉控制能力，矫正畸形,消除脂肪。哑铃是我们最常用的健身器械，甚至可能不是之一。很简单，哑铃小巧简单，一点都不含糊。
-            </view>
-        </view>
-    </view>
-      
 </view>

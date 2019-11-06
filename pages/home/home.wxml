@@ -27,14 +27,13 @@
     </view>
   </view>
   <view class="store_address" hidden="{{storeName ? flase : true}}">
-    <view class="as">
-      <image class="" src="/images/icon/map_daohang.png" mode="aspectFit" lazy-load="false" />
+    <view class="as" bindtap="storeAddressTap">
+        <image class="" src="/images/icon/map_daohang.png" mode="aspectFit" lazy-load="false" />
     </view>
     <view  class="bs">
       <view class="address">{{storeAddress}}</view>
-      <view class="address_low">距新年华购物中心步行1.4km</view>
     </view>
-    <view  class="cs">
+    <view  class="cs" bindtap="phoneTap">
       <image class="" src="/images/icon/phone.png" mode="aspectFit" lazy-load="false" />
     </view>
   </view>
@@ -42,7 +41,7 @@
       <view>
         <view class="store_introduction_title">
            <text>店内环境</text>
-           <navigator url="/pages/storeList/storeList?value={{value}}" hover-class="navigator-hover">
+           <navigator url="/pages/storeList/storeList" hover-class="navigator-hover">
              <image src="/images/icon/elipsis.png"></image>
            </navigator>
         </view>
@@ -52,30 +51,18 @@
         scroll-x="true"
         scroll-with-animation="true" 
        >
-          <view id="demo1" class="scroll-view-item_H">
-            <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
+          <block wx:for="{{sliberBanner}}" wx:key="*this">
+              <view  class="scroll-view-item_H">
+              <navigator url="/pages/storeDetail/storeDetail?storeAreaId={{item.storeAreaId}}" redirect hover-class="className">
+                <view class="scroll-view_continer">
+                  <view class="scroll-view-item_img">
+                    <image mode="widthFix" src="{{host}}{{item.areaPicture}}"></image>
+                  </view>
+                  <text>{{item.areaName}}</text>
+                </view>
+                </navigator>
               </view>
-              <text>机械区</text>
-            </view>
-          </view>
-          <view id="demo2"  class="scroll-view-item_H">
-            <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
-              </view>
-              <text>机械区</text>
-            </view>
-          </view>
-          <view id="demo3" class="scroll-view-item_H">
-            <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
-              </view>
-              <text>机械区</text>
-            </view>
-          </view>
+          </block>
         </scroll-view>
       </view>
   </view>
@@ -83,7 +70,7 @@
       <view>
         <view class="store_introduction_title">
            <text>私人教练</text>
-           <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+           <navigator url="/pages/fitnessCoachList/fitnessCoachList" hover-class="navigator-hover">
              <image src="/images/icon/elipsis.png"></image>
            </navigator>
         </view>
@@ -93,46 +80,20 @@
         scroll-x="true"
         scroll-with-animation="true" 
        >
-          <view id="demo1" class="scroll-view-item_H">
-            <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
-              <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
-              </view>
-              <text>机械区</text>
+          <block wx:for="{{coachList}}"  wx:key="*this">
+            <view class="scroll-view-item_H">
+              <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}" hover-class="navigator-hover">
+                <view class="scroll-view_continer">
+                  <view class="scroll-view-item_img">
+                    <image mode="widthFix" src="/images/sliber_test.png"></image>
+                  </view>
+                  <text>{{item.userFullName}}</text>
+                  <text class="scroll-view-forte">擅长:{{item.forte}}</text>
+                </view>
+              </navigator>
             </view>
-           </navigator>
-            
-          </view>
-          <view id="demo2"  class="scroll-view-item_H">
-            <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
-              </view>
-              <text>机械区</text>
-            </view>
-          </view>
-          <view id="demo3" class="scroll-view-item_H">
-            <view class="scroll-view_continer">
-                <view class="scroll-view-item_img">
-                <image mode="widthFix"  src="/images/sliber_test.png"></image>
-              </view>
-              <text>机械区</text>
-            </view>
-          </view>
+          </block>
         </scroll-view>
       </view>
   </view>
-  <!-- <view class="container-bd">
-    <block wx:for="{{menu}}" wx:key="*this">
-      <view class='container-image'>
-      <image  src="{{host}}{{item.picUrl}}" data-item='{{item}}' mode="scaleToFill" bindtap='menuTap'/>
-      </view>
-    </block>
-    <!-- <image src='/images/home.png' class="bg-image" mode="scaleToFill" />
-    <button class='buyMember' bindtap='buyMember' ></button>
-    <button class='buyCourse' bindtap='buyCourse'></button> -->
-    <!-- <button class="appointmentCourse" bindtap='appointmentCourse'></button>-->
-    <!--  <button class="activity" bindtap='activity'></button>
-  </view>  -->
 </view>

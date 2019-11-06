@@ -11,6 +11,10 @@ page{
     flex: 1;
     position: relative;
 }
+.fitness_coach_img image{
+    width: 100%;
+    display: block;
+}
 .fitness_coach_introduction{
     position: absolute;
     width: 628rpx;

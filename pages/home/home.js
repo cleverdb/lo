@@ -15,17 +15,7 @@ Page({
     index:2,
     host: app.globalData.host,
     banner: [],
-    sliberBanner:[{
-      picUrl:'/images/sliber_test.png'
-    }, {
-        picUrl: '/images/sliber_test.png'
-      }, {
-        picUrl: '/images/sliber_test.png'
-      }, {
-        picUrl: '/images/sliber_test.png'
-      }, {
-        picUrl: '/images/sliber_test.png'
-      }],
+    sliberBanner:[],
     selectArray: [],
     storeName:'',
     storeAddress:'',
@@ -34,7 +24,12 @@ Page({
     autoplay: true,
     circular: true,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+    storeId: '',
+    pageIndex: 0,
+    pageSize: 5,
+    storePhone: '',
+    coachList:[]
   },
 
   /**
@@ -43,6 +38,7 @@ Page({
   onLoad: function(options) {
     this.initData()
     this.getSelectData();
+    this.getCoach();
     app.userInfoReadyCallback = res => {
       app.globalData.wUserInfo = res.userInfo
     };
@@ -113,10 +109,9 @@ Page({
           })
         } else {
           const {data} = res;
-          const { menu, banner } = data;
+          const { banner } = data;
           _this.setData({
             banner,
-            menu,
             pageState: {}
           })
         }
@@ -147,19 +142,6 @@ Page({
       })
     }
   },
-  menuTap: function(e) {
-    let item = e.currentTarget.dataset.item;
-    let skipUrl = item.skipParam ? item.pageUrl + "?" + item.paramKey + "=" + item.skipParam : item.pageUrl
-    if (item.tab == 'Y') {
-      wx.switchTab({
-        url: skipUrl,
-      })
-    } else {
-      wx.navigateTo({
-        url: skipUrl,
-      })
-    }
-  },
   reloadTap: function () {
     this.initData()
    
@@ -168,11 +150,11 @@ Page({
   },
   getSelectData:function(e){
     const _this = this;
+    const { pageIndex,pageSize } = this.data;
     wx.request({
       url: app.globalData.host + '/rest/s1/Goods/store/getStore',
       success: function (res) {
         const { data = {} } = res || {};
-        console.log('res',res);
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -182,9 +164,27 @@ Page({
           })
         } else {
           const {data:dat=[]}=data;
-          console.log('data',data);
+          const { storeId = '' } = dat[0] || {};
+          app.globalData.selectStore = [dat[0]];
+          app.globalData.storeId = storeId;
+          wx.request({
+            url: app.globalData.host + '/rest/s1/Goods/store/getStoreArea',
+            data: {
+              storeId,
+              pageIndex,
+              pageSize
+            },
+            success: function (res) {
+              const { data } = res;
+              const { data: sliberBanner } = data;
+              _this.setData({
+                  sliberBanner
+              })
+            }
+          })
           _this.setData({
-            selectArray: dat
+            selectArray: dat,
+            storeId
           })
         }
       },
@@ -204,11 +204,45 @@ Page({
   bindPickerChange:function (e) {
     const { value } = e.detail;
     const { selectArray } = this.data;
-    const { storeName, address } = selectArray[value];
-    console.log('storeName', storeName);
+    const { storeName, address, storeId, storePhone } = selectArray[value];
+    app.globalData.storeId = storeId;
+    app.globalData.selectStore = [selectArray[value]];
     this.setData({
       storeName,
-      storeAddress: address
+      storeAddress: address,
+      storeId,
+      storePhone
+    })
+  },
+  // 点击 电话 打电话
+  phoneTap: function () {
+    const { storePhone } = this.data;
+    wx.makePhoneCall({
+      phoneNumber: storePhone,
+    })
+  },
+  // 点击门店 
+  storeAddressTap: function () {
+    wx.navigateTo({
+      url: '/pages/stores/stores'
+    });
+  },
+  // 教练的banner
+  getCoach: function () {
+    const _this = this;
+    const { pageIndex, pageSize } = this.data;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/coach/getCoach`,
+      data: {
+        pageIndex,
+        pageSize
+      },
+      success: function(res) {
+        const { data } = res.data;
+        _this.setData({
+          coachList: data
+        })
+      }
     })
   }
 })

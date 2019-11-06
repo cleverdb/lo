@@ -13,6 +13,11 @@ page{
     background: #DCDDDD;
     border-top-left-radius: 10rpx;
     border-top-right-radius: 10rpx;
+    overflow: hidden;
+}
+.detail_item_top image{
+    width: 100%;
+    display: block;
 }
 .detail_item_bottom{
     background: #ffffff;
@@ -52,4 +57,22 @@ page{
     font-family:PingFangSC;
     font-weight:400;
     color:#727272;
+}
+.bottomline {
+  color: #a0a0a0;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 5rpx 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.baseline {
+  border-bottom: 1rpx #a0a0a0 solid;
+  flex: 1;
+}
+
+.tip {
+  margin: 0 10rpx;
 }

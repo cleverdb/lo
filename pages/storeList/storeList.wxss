@@ -18,6 +18,7 @@ page{
     height: 244rpx;
     border-top-left-radius: 10rpx;
     border-top-right-radius: 10rpx;
+    overflow: hidden;
 }
 .img_wrap image{
     width: 100%;
@@ -37,4 +38,23 @@ page{
 .detail_text_left{
     font-size: 28rpx;
     color:rgba(0,0,0,1);
+}
+.bottomline {
+  color: #a0a0a0;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 5rpx 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+
+.baseline {
+  border-bottom: 1rpx #a0a0a0 solid;
+  flex: 1;
+}
+
+.tip {
+  margin: 0 10rpx;
 }
