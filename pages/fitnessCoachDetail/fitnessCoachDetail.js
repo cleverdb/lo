@@ -23,7 +23,6 @@ Page({
    */
   onLoad: function (options) {
     const { userId } = options;
-    const { pageSize, pageIndex} = this.data;
     const _this = this;
     this.getDataSelect();
     wx.showLoading({
@@ -33,8 +32,6 @@ Page({
       url: `${app.globalData.host}/rest/s1/Goods/coach/getCoachDetail`,
       data: {
         userId,
-        pageSize,
-        pageIndex
       },
       success: function (res) {
         if (res.statusCode != 200) {
@@ -128,7 +125,15 @@ Page({
 
   },
   bindPickerChange:function(e){
-    console.log('picker发送选择改变，携带值为', e.detail.value,e.detail);
+    const { selectArray, iconUrl,userId } = this.data;
+    const { value } = e.detail;
+    console.log('picker发送选择改变，携带值为', e.detail.value, selectArray[value],selectArray);
+    const data = {
+      ...selectArray[value],
+      iconUrl,
+      coachId: userId
+    }
+    app.globalData.coachSelectData = data;
     // 跳转到正式课程
     wx.navigateTo({
       url: `/pages/courseDetail/courseDetail`,

@@ -24,14 +24,47 @@ Page({
 
     },
     host: app.globalData.host,
-    host_j: app.globalData.host_j,
+    courseName: '',
+    iconUrl: '',
+    coachName: '',
+    buyNote: '',
+    unitPrice: '',
+    isVoucher:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData()
+    const _this = this;
+    const {
+      iconUrl,
+      buyNote,
+      courseId,
+      coachId
+    } = app.globalData.coachSelectData;
+    console.log(app.globalData);
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/private`,
+      data: {
+        courseId,
+        coachId
+      },
+      success: function(res) {
+        const data = res.data.data;
+        const { unitPrice, coachName, courseName } = data;
+        const { num } = _this.data;
+        const total = Utils.times(unitPrice, num);
+        _this.setData({
+          iconUrl,
+          coachName,
+          courseName,
+          buyNote,
+          unitPrice,
+          total
+        })
+      }
+    })
   },
 
   /**
@@ -83,21 +116,25 @@ Page({
 
   },
   ondel: function () {
-    let { num, data: { coursePrice } } = this.data;
+    let { num, unitPrice } = this.data;
     num = num - 1
     if (num > 0) {
+      const data = Utils.times(unitPrice, num);
+      this.getVoucher(data);
       this.setData({
         num: num,
-        total: Utils.times(coursePrice, num)
+        total: data
       })
     }
   },
   onadd: function () {
-    let { num, data: { coursePrice } } = this.data;
-    num = num + 1
+    let { num, unitPrice } = this.data;
+    num = num + 1;
+    const data = Utils.times(unitPrice, num);
+    this.getVoucher(data);
     this.setData({
       num: num,
-      total: Utils.times(coursePrice, num)
+      total: data
     })
   },
   onItemSelTeacher: function (e) {
@@ -208,5 +245,25 @@ Page({
           }
       }
     }): ''
+  },
+  // 查询优惠卷
+  getVoucher: function (param) {
+    const { userId } = app.globalData.userInfo;
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/voucher/getVoucher`,
+      data: {
+        countPrice: param,
+        userId
+      },
+      success: function (res) {
+        const data = res.data.data;
+        const { usable } = data;
+        console.log(usable);
+        _this.setData({
+          isVoucher: usable.length > 0
+        })
+      } 
+    })
   }
 })

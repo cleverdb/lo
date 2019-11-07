@@ -17,12 +17,11 @@ page {
     padding-right: 30rpx;
 }
 .head{
-    display: flex;
-    /* height: 401rpx; */
+    height: 400rpx;
+    overflow: hidden;
 }
 .head image{
-    height:401rpx;
-    flex: 1;
+   width: 100%;
 }
 .content_item{
     display: flex;

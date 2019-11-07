@@ -4,31 +4,30 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="try_course_container">
     <view class="head">
-        <image wx:if='{{data.imgSrc}}' src="{{data.imgSrc}}" alt="" />
+        <image src="{{host}}{{iconUrl}}" mode="widthFix" wx:if="{{iconUrl}}" />
     </view>
     <view class="content">
         <view class="content_item">
             <view class="content_item_contents">
                 <text>课程名称</text>
             </view>
-            <text>常规课</text>
+            <text>{{courseName}}</text>
         </view>
         <view class="content_item  bordernone">
             <view>
                 <text>课程教练</text>
             </view>
             <view>
-                <text>刘石磊</text>
+                <text>{{coachName}}</text>
             </view>
         </view>
         <view class="content_item topborder">
-             <view>
-                 <text>课程价格</text>
-             </view>
-             <view>
-                 <text>{{data.coursePrice||""}}</text>
-                 <text>{{data.courseUnit||""}}</text>
-             </view>
+            <view>
+                <text>课程价格</text>
+            </view>
+            <view>
+                <text>{{unitPrice||""}}元/课</text>
+            </view>
         </view>
         <view class="content_item">
             <view>
@@ -51,7 +50,7 @@
                 <text>优惠券</text>
             </view>
             <view class="color_gary">
-                <text>暂不可使用优惠券</text>
+                <text>{{isVoucher ? '请选择优惠券' : '暂不可使用优惠券'}}</text>
             </view>
         </view>
         <view class="content_item color_red">
@@ -69,18 +68,14 @@
                 <text>购买须知</text>
             </view>
             <view>
-                <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}">
-                    <view>
-                        <text>{{item}}</text>
-                    </view>
-                </block>
+                <text>{{buyNote}}</text>
             </view>
         </view>
         <view class="agree_content {{radioChecked ? 'agree_content_checked' : ''}}">
             请先阅读并勾选协议
         </view>
         <view class="read">
-            <radio  checked="{{radioChecked}}"  bindtap='radioTap'>
+            <radio checked="{{radioChecked}}" bindtap='radioTap'>
                 <text>勾选即代表阅读并同意</text>
             </radio>
             <text class="toEnsure">《LIOU电子协议》</text>
