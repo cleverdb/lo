@@ -29,7 +29,10 @@ Page({
     coachName: '',
     buyNote: '',
     unitPrice: '',
-    isVoucher:false
+    isVoucher:false,
+    ticketDesc:'暂无优惠券',
+    showModalStatus:false,
+    usable:[]
   },
 
   /**
@@ -52,6 +55,7 @@ Page({
       },
       success: function(res) {
         const data = res.data.data;
+        console.log(data);
         const { unitPrice, coachName, courseName } = data;
         const { num } = _this.data;
         const total = Utils.times(unitPrice, num);
@@ -259,11 +263,47 @@ Page({
       success: function (res) {
         const data = res.data.data;
         const { usable } = data;
-        console.log(usable);
         _this.setData({
-          isVoucher: usable.length > 0
+          ticketDesc: usable.length > 0 ? '查看':'暂无优惠券',
+          usable,
         })
       } 
     })
+  },
+  showModal:function(){
+    // 显示遮罩层
+    const animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    });
+    animation.translateY(800).step();
+    this.setData({
+      showModalStatus:true,
+      animationData: animation.export(),
+    });
+    setTimeout(()=>{
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    },200)
+  },
+  hideModal:function(){
+    // 显示遮罩层
+    const animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    });
+    animation.translateY(300).step();
+    setTimeout(()=>{
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false,
+      },200)
+    })
+  
   }
 })

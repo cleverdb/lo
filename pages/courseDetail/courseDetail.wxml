@@ -45,12 +45,11 @@
                 </view>
             </view>
         </view>
-        <view class="content_item">
-            <view>
-                <text>优惠券</text>
-            </view>
-            <view class="color_gary">
-                <text>{{isVoucher ? '请选择优惠券' : '暂不可使用优惠券'}}</text>
+        <view class="content_item" bindtap='showModal'>
+            <text class='name'>优惠券</text>
+            <view class='{{ticketDesc=="查看" ? "arrow" : ""}}'>
+                <text class='value label' wx:if="{{selectTicket.voucherName}}">{{selectTicket.voucherName}}</text>
+                <text class='value label' wx:else>{{ticketDesc}}</text>
             </view>
         </view>
         <view class="content_item color_red">
@@ -87,4 +86,40 @@
             确认购买
         </cover-view>
     </cover-view>
+</view>
+
+<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
+  <view class="popup-content-bd">
+        <scroll-view scroll-y class='sv'>
+          <block wx:for="{{usable}}" wx:key="index" wx:for-item='ticket'>
+            <view class='ticket-view {{selectTicket.voucherUuid == ticket.voucherUuid ? "select": ""}}' bindtap='ticketTap'>
+              <view class='ticket-view-left'>
+                <view class='hd'>
+                  <text class='tname'>{{ticket.voucherName}}</text>
+                </view>
+                <view class='bd'>
+                  <view class='left'>
+                    <text>{{ticket.expireDate}}</text>
+                  </view>
+                  <view class='right'>
+                    <text>未使用</text>
+                  </view>
+                </view>
+              </view>
+              <view class='ticket-view-right'>
+                <view class='hd'>
+                  <text class='logo'>¥</text>
+                  <text class='num'>{{ticket.parValue}}</text>
+                </view>
+                <view class='bd'>
+                  <text>通用</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+  </view>
+  <view class="popup-content-ft">
+  </view>
 </view>

@@ -12,39 +12,30 @@ Page({
     wUser: {},
     bodyItems: [{
         icon: '../../images/icon/ka.png',
-        text: '我的会员卡',
+        text: '我的卡包',
         path: '/pages/mineCard/mineCard'
+      },
+      {
+        icon: '../../images/icon/kc.png',
+        text: '我的课程',
+        path: '/pages/courses/courses'
       },
       {
         icon: '../../images/icon/yuyue.png',
         text: '我的预约',
-        path: '/pages/mineAppointment/mineAppointment'
-      },
-      {
-        icon: '../../images/icon/activity.png',
-        text: '我的活动',
-        path: '/pages/mineActivity/mineActivity'
+        path: '/pages/appointment/appointment'
       },
       {
         icon: '../../images/icon/quanbao.png',
         text: '我的券包',
         path: '/pages/mineTicket/mineTicket'
       },
-
+      {
+        icon: '../../images/icon/baogao.png',
+        text: '健身报告',
+        path: '/pages/mineReport/mineReport'
+      }
     ],
-    footItems: [{
-      icon: '../../images/icon/baogao.png',
-      text: '健身报告',
-      path: '/pages/mineReport/mineReport'
-    }, {
-      icon: '../../images/icon/mine.png',
-      text: '个人中心',
-      path: '/pages/mineInfo/mineInfo'
-    }, {
-      icon: '../../images/icon/address.png',
-      text: '门店导航',
-      path: '/pages/stores/stores'
-    }, ]
   },
 
   /**
