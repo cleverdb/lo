@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    total: "",
     teacherslist: [],
     data: {
       imgSrc: "",
@@ -32,9 +31,12 @@ Page({
     isVoucher:false,
     ticketDesc:'暂无优惠券',
     showModalStatus:false,
-    usable:[]
+    usable: [],
+    selectTicket: {},
+    total: 0,
+    oldTotal: 0,
+    courseId:''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,7 +48,6 @@ Page({
       courseId,
       coachId
     } = app.globalData.coachSelectData;
-    console.log(app.globalData);
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/course/private`,
       data: {
@@ -55,8 +56,7 @@ Page({
       },
       success: function(res) {
         const data = res.data.data;
-        console.log(data);
-        const { unitPrice, coachName, courseName } = data;
+        const { unitPrice, coachName, courseName, courseId:id } = data;
         const { num } = _this.data;
         const total = Utils.times(unitPrice, num);
         _this.setData({
@@ -65,7 +65,9 @@ Page({
           courseName,
           buyNote,
           unitPrice,
-          total
+          total,
+          oldTotal: total,
+          courseId:id
         })
       }
     })
@@ -127,7 +129,8 @@ Page({
       this.getVoucher(data);
       this.setData({
         num: num,
-        total: data
+        total: data,
+        oldTotal:data
       })
     }
   },
@@ -138,7 +141,8 @@ Page({
     this.getVoucher(data);
     this.setData({
       num: num,
-      total: data
+      total: data,
+      oldTotal:data
     })
   },
   onItemSelTeacher: function (e) {
@@ -200,6 +204,7 @@ Page({
             }
           })
         } else {
+          const dat = Utils.times(res.data.data.info.coursePrice, _this.data.num);
           _this.setData({
             'data': {
               ...res.data.data.info
@@ -207,7 +212,8 @@ Page({
             teacherslist: [
               ...res.data.data.teachers
             ],
-            total: Utils.times(res.data.data.info.coursePrice, _this.data.num),
+            total: dat,
+            oldTotal: dat,
             disabledBg: true
           })
         }
@@ -234,21 +240,64 @@ Page({
   },
   // 点击 支付按钮
   tapnPay: function () {
-    const { radioChecked } = this.data;
-    radioChecked? wx.showModal({
-      title: '购买成功',
-      content: '成功购买50节课\r\n在“我的-我的课程”中查看',
-      showCancel: false,
-      confirmText: '预约时间',
-      confirmColor: '#FCC800',
-      success(res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url:'/pages/reserveTime/reserveTime'
-            })
-          }
+    const { radioChecked, num, total, selectTicket,courseId } = this.data;
+    const { voucherUuid = "" } = selectTicket;
+    const { userId } = app.globalData.userInfo;
+    if (radioChecked) {
+      const data = {
+        type: 2,
+        realPay: total,
+        voucherUuid,
+        num,
+        courseId,
+        openId: app.globalData.openId,
+        userId
       }
-    }): ''
+      console.log(this.data);
+       wx.request({
+          url: `${app.globalData.host}/rest/s1/Goods/buy`,
+          data,
+          method:"POST",
+          success: function (res) {
+            if (res.statusCode != 200 || !res.data.data) {
+              wx.showToast({
+                title: '支付出现问题，稍后再试',
+                duration: 2000,
+                icon: 'none'
+              })
+              return
+            }
+            const result = res.data.data
+            wx.requestPayment({
+              timeStamp: result.timeStamp,
+              nonceStr: result.nonceStr,
+              package: result.package,
+              signType: result.signType,
+              paySign: result.paySign,
+              success(res) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              },
+              fail(res) { }
+            })
+          },
+       })
+    }
+    // wx.showModal({
+    //   title: '购买成功',
+    //   content: '成功购买50节课\r\n在“我的-我的课程”中查看',
+    //   showCancel: false,
+    //   confirmText: '预约时间',
+    //   confirmColor: '#FCC800',
+    //   success(res) {
+    //     if (res.confirm) {
+    //       wx.navigateTo({
+    //         url:'/pages/reserveTime/reserveTime'
+    //         })
+    //       }
+    //   }
+    // })
   },
   // 查询优惠卷
   getVoucher: function (param) {
@@ -269,6 +318,22 @@ Page({
         })
       } 
     })
+  },
+  // 点击 优惠券
+  ticketTap: function (e) {
+    const { parvalue, vouchername, voucheruuid } = e.currentTarget.dataset;
+    const { selectTicket, oldTotal } = this.data;
+    const data = {
+      parValue:parvalue,
+      voucherName:vouchername,
+      voucherUuid:voucheruuid
+    };
+    const selectTicketData = voucheruuid == selectTicket.voucherUuid ? {} : data;
+    this.setData({
+      selectTicket: selectTicketData,
+      total: Object.keys(selectTicketData).length==0 ? oldTotal : (oldTotal - parvalue)
+    });
+    
   },
   showModal:function(){
     // 显示遮罩层
