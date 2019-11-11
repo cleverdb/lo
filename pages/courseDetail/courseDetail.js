@@ -35,7 +35,8 @@ Page({
     selectTicket: {},
     total: 0,
     oldTotal: 0,
-    courseId:''
+    courseId:'',
+    unusable:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -275,8 +276,19 @@ Page({
               signType: result.signType,
               paySign: result.paySign,
               success(res) {
-                wx.navigateBack({
-                  delta: 1
+                wx.showModal({
+                  title: '购买成功',
+                  content: `成功购买${num}节课\r\n在“我的-我的课程”中查看`,
+                  showCancel: false,
+                  confirmText: '预约时间',
+                  confirmColor: '#FCC800',
+                  success(res) {
+                    if (res.confirm) {
+                      wx.navigateTo({
+                        url:'/pages/reserveTime/reserveTime'
+                        })
+                      }
+                  }
                 })
               },
               fail(res) { }
@@ -284,20 +296,7 @@ Page({
           },
        })
     }
-    // wx.showModal({
-    //   title: '购买成功',
-    //   content: '成功购买50节课\r\n在“我的-我的课程”中查看',
-    //   showCancel: false,
-    //   confirmText: '预约时间',
-    //   confirmColor: '#FCC800',
-    //   success(res) {
-    //     if (res.confirm) {
-    //       wx.navigateTo({
-    //         url:'/pages/reserveTime/reserveTime'
-    //         })
-    //       }
-    //   }
-    // })
+
   },
   // 查询优惠卷
   getVoucher: function (param) {
@@ -311,10 +310,11 @@ Page({
       },
       success: function (res) {
         const data = res.data.data;
-        const { usable } = data;
+        const { usable, unusable } = data;
         _this.setData({
           ticketDesc: usable.length > 0 ? '查看':'暂无优惠券',
           usable,
+          unusable
         })
       } 
     })
@@ -370,5 +370,9 @@ Page({
       },200)
     })
   
+  },
+  preventD:function(){
+    console.log('adasdasdas');
+    return;
   }
 })

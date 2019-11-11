@@ -167,6 +167,7 @@ border-top-left-radius: 10rpx;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 .footer_disabled{
     background: #DDDDDE;
@@ -246,7 +247,6 @@ border-top-left-radius: 10rpx;
   left: 0;
   background: #090000;
   opacity: 0.2;
-  overflow: hidden;
   z-index: 500;
   color: #fff;
 }
@@ -263,32 +263,9 @@ border-top-left-radius: 10rpx;
   background-color: #EFEFEF;
   padding-top: 20rpx;
 }
-
-.navbar {
-  display: flex;
-  z-index: 500;
-  width: 100%;
-  height: 50px;
-  flex-direction: row;
-  text-align: center;
-  font-size: 15px;
-  box-sizing: border-box;
-}
-
-.navbar-item{
-  flex: 1;
-  padding: 26rpx 0px;
-  border-bottom: 1rpx solid #a0a0a0;
-}
-
-.navbar-item-active{
-  transition: all 0.3s;
-  border-bottom: 2rpx solid #fcc700;
-  color: #fcc700;
-}
 .popup-content-bd {
   width: 100%;
-  height: 100%;
+  height: 600rpx;
   position: relative;
 }
 
@@ -300,8 +277,10 @@ border-top-left-radius: 10rpx;
   height: 100%;
 }
 
-.content-wrapper .sv {
-  height: 480rpx;
+ .sv {
+  height: 600rpx;
+  padding-bottom: 20rpx;
+
 }
 
 .no-ticket {
@@ -412,6 +391,25 @@ border-top-left-radius: 10rpx;
 .usable_title{
   font-size:28rpx;
   padding-left: 30rpx;
+}
+.unusable_title{
+  font-size:20rpx;
+  padding-left: 30rpx;
+}
+.unusable_footer{
+  height: 20rpx;
+}
+.usable_footer{
+  height: 1px;
+}
+.threshold_reason{
+  color: red;
+  font-size: 20rpx;
+  padding-left: 20rpx;
+  margin-top: 10rpx;
+}
+.unusable_view{
+  margin-bottom: 0;
 }
 
 

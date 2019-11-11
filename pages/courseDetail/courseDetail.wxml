@@ -81,15 +81,15 @@
             <text>服务条款</text>
         </view>
     </view>
-    <cover-view class="footer {{radioChecked ?  '' : 'footer_disabled'}}" bindtap="tapnPay" >
-        <cover-view>
+    <view class="footer {{radioChecked ?  '' : 'footer_disabled'}}" bindtap="tapnPay" >
+        <view>
             确认购买
-        </cover-view>
-    </cover-view>
+        </view>
+    </view>
 </view>
 
-<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
+<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}" catchtouchmove="true"></view>
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}" catchtouchmove="true">
   <view class="popup-content-bd">
         <scroll-view scroll-y class='sv'>
           <view class="usable_title" wx:if="{{usable.length > 0}}">
@@ -131,12 +131,12 @@
               </view>
             </view>
           </block>
-          <view class="usable_title" wx:if="{{usable.length > 0}}">
+          <view class="unusable_title" wx:if="{{unusable.length > 0}}">
               不可用券
           </view>
-          <block wx:for="{{usable}}" wx:key="index" wx:for-item='ticket'>
+          <block wx:for="{{unusable}}" wx:key="index" wx:for-item='ticket'>
             <view 
-                class='ticket-view' 
+                class='ticket-view unusable_view' 
             >
               <view class='ticket-view-left'>
                 <view class='hd'>
@@ -165,7 +165,11 @@
                 </view>
               </view>
             </view>
+            <view class="threshold_reason">
+              不可用原因：付款金额未达到{{ticket.threshold}}
+            </view>
           </block>
+          <view class="{{unusable.length>0 ? 'unusable_footer':'usable_footer'}}" ></view>
         </scroll-view>
   </view>
   <view class="popup-content-ft">
