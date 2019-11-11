@@ -8,6 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ensure_buy: true,
+    type: "1",
+    courseId: "",
     total: "",
     teacherslist: [],
     data: {
@@ -133,6 +136,13 @@ Page({
     // })
   },
   initData: function (down) {
+    let pages = getCurrentPages();
+    //数组中最后一个即当前路由，options是参数
+    let { options } = pages.pop();
+    this.setData({
+      type: options.type,
+      courseId: options.courseId
+    })
     var _this = this
     wx.showLoading({
       title: '加载中...',
@@ -141,7 +151,9 @@ Page({
     if (down) {
       params = {
         pageIndex: params.pageIndex + 1,
-        ...params
+        ...params,
+        ...options
+
       }
     }
     wx.request({
@@ -149,7 +161,6 @@ Page({
       data: params,
       method: 'GET',
       success: function (res) {
-
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -159,13 +170,9 @@ Page({
           })
         } else {
           _this.setData({
-            'data': {
-              ...res.data.data.info
-            },
             teacherslist: [
-              ...res.data.data.teachers
+              ...res.data.data
             ],
-            total: Utils.times(res.data.data.info.coursePrice, _this.data.num),
             disabledBg: true
           })
         }

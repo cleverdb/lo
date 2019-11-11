@@ -68,7 +68,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('64')
     this.initData(true)
   },
 
@@ -79,20 +78,23 @@ Page({
 
   },
   courseTap: function (e) {
-    let { buytype } = e.currentTarget.dataset;
+    let { buytype, id } = e.currentTarget.dataset;
     let { curriculum } = this.data;
-    switch (buytype) {
-      case '1':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-      case '2':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-    }
+    wx.navigateTo({
+      url: `/pages/${curriculum['2']}/${curriculum['2']}?type=${buytype}&courseId=${id}`,
+    })
+    // switch (buytype) {
+    //   case '1':
+    //     wx.navigateTo({
+    //       url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
+    //     })
+    //     break;
+    //   case '2':
+    //     wx.navigateTo({
+    //       url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
+    //     })
+    //     break;
+    // }
   },
   initData: function (down) {
     var _this = this
@@ -107,8 +109,8 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.host_j + _apis.private_Courses,
-      data: params,
+      url: app.globalData.host + _apis.private_Courses,
+      // data: params,
       method: 'GET',
       success: function (res) {
 
@@ -121,7 +123,15 @@ Page({
           })
         } else {
           _this.setData({
-            'courseList': [_this.data.courseList, ...res.data.data],
+            'courseList': res.data.data.map((item) => {
+              return {
+                id: item.courseId,
+                hot: item.hot,
+                buyType: item.experience == "1" ? "1" : "2",
+                title: item.courseName,
+                imgSrc: app.globalData.host + item.courseNavPic
+              }
+            }),
             disabledBg: true
           })
         }

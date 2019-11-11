@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     curriculum: {
       "1": "privateCourses",
       "2": "publicCourses",
@@ -129,7 +130,6 @@ Page({
     }
   },
   courseTap: function (e) {
-
     let { type } = e.currentTarget.dataset;
     let { curriculum } = this.data
     switch (type) {
@@ -161,56 +161,56 @@ Page({
       data: params,
       method: 'GET',
       success: function (res) {
-        if (true) {
-          res.data.data = [
-            {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "私教课",
-              courseType: "1",
-              tags: [
-                {
-                  id: "1",
-                  title: "增肌减脂"
-                }, {
-                  id: "2",
-                  title: "强健体质"
-                }
-              ],
-              id: '1'
-            }, {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "操课",
-              courseType: "3",
-              tags: [
-                {
-                  id: "1",
-                  title: "增肌减脂"
-                }, {
-                  id: "2",
-                  title: "强健体质"
-                }
-              ],
-              id: '1'
-            }, {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "公开课",
-              courseType: "2",
-              tags: [
-                {
-                  id: "11",
-                  title: "增肌减脂"
-                }, {
-                  id: "21",
-                  title: "强健体质"
-                }
-              ],
-              id: '2'
+        // if (true) {
+        //   res.data.data = [
+        //     {
+        //       iconUrl: "http://localhost:8091/static/a.png",
+        //       courseName: "私教课",
+        //       courseType: "1",
+        //       tags: [
+        //         {
+        //           id: "1",
+        //           title: "增肌减脂"
+        //         }, {
+        //           id: "2",
+        //           title: "强健体质"
+        //         }
+        //       ],
+        //       id: '1'
+        //     }, {
+        //       iconUrl: "http://localhost:8091/static/a.png",
+        //       courseName: "操课",
+        //       courseType: "3",
+        //       tags: [
+        //         {
+        //           id: "1",
+        //           title: "增肌减脂"
+        //         }, {
+        //           id: "2",
+        //           title: "强健体质"
+        //         }
+        //       ],
+        //       id: '1'
+        //     }, {
+        //       iconUrl: "http://localhost:8091/static/a.png",
+        //       courseName: "公开课",
+        //       courseType: "2",
+        //       tags: [
+        //         {
+        //           id: "11",
+        //           title: "增肌减脂"
+        //         }, {
+        //           id: "21",
+        //           title: "强健体质"
+        //         }
+        //       ],
+        //       id: '2'
 
-            }
-          ]
-        }
+        //     }
+        //   ]
+        // }
         // res.statusCode != 200
-        if (false) {
+        if (res.statusCode != 200) {
           _this.setData({
             pageState: {
               message: '加载失败，请重新加载~',
@@ -218,8 +218,26 @@ Page({
             }
           })
         } else {
+          let json = {
+            PrivateCourse: "1",
+            GroupCourse: "2",
+            PublicCourse: "3"
+          }
           _this.setData({
-            'courseList': res.data.data,
+            'courseList': res.data.data.map((item, index) => {
+              return {
+                iconUrl: app.globalData.host + item.courseTypePicture,
+                id: item.index,
+                courseName: item.courseTypeName,
+                courseType: json[item.courseTypeId],
+                tags: item.keywords.split('/').map((item1, index) => {
+                  return {
+                    id: index,
+                    title: item1
+                  }
+                })
+              }
+            }),
             disabledBg: true
           })
         }
@@ -239,36 +257,36 @@ Page({
   },
   loadMoreData: function (param) {
     var _this = this
-    wx.request({
-      url: app.globalData.host + '/rest/s1/Goods/course/getCourse',
-      data: param,
-      method: 'POST',
-      success: function (res) {
-        let result = res.data.data
-        if (result.length == 0) {
-          _this.setData({
-            moreFlag: true,
-          })
-          return
-        }
-        if (result.length == 10) {
-          _this.setData({
-            'courseList': _this.data.courseList.concat(result),
-          })
-          return
-        }
-        if (0 < result.length < 10) {
-          _this.setData({
-            'courseList': _this.data.courseList.concat(result),
-            moreFlag: true,
-          })
-          return
-        }
-      },
-      fail: function (res) {
+    // wx.request({
+    //   url: app.globalData.host + '/rest/s1/Goods/course/getCourse',
+    //   data: param,
+    //   method: 'POST',
+    //   success: function (res) {
+    //     let result = res.data.data
+    //     if (result.length == 0) {
+    //       _this.setData({
+    //         moreFlag: true,
+    //       })
+    //       return
+    //     }
+    //     if (result.length == 10) {
+    //       _this.setData({
+    //         'courseList': _this.data.courseList.concat(result),
+    //       })
+    //       return
+    //     }
+    //     if (0 < result.length < 10) {
+    //       _this.setData({
+    //         'courseList': _this.data.courseList.concat(result),
+    //         moreFlag: true,
+    //       })
+    //       return
+    //     }
+    //   },
+    //   fail: function (res) {
 
-      },
-      complete: function () { }
-    })
+    //   },
+    //   complete: function () { }
+    // })
   }
 })

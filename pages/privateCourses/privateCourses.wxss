@@ -9,6 +9,7 @@
   padding-top: 30rpx;
   border-radius: 5rpx;
   overflow: hidden;
+  box-sizing: border-box;
 
   /* padding: 29rpx 0 29rpx 29rpx; */
 }
@@ -60,6 +61,13 @@
   font-size: 20rpx;
   margin-left: 19rpx;
 }
-.course-list{
+._course_list{
     display: flex;
+    flex-direction: row;
+}
+.w5{
+  width: 50%;
+}
+.w10{
+  width: 100%;
 }
