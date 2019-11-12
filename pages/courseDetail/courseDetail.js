@@ -242,59 +242,60 @@ Page({
   },
   // 点击 支付按钮
   tapnPay: function () {
-    const { radioChecked, num, total, selectTicket,courseId } = this.data;
+    const { radioChecked, num, total, selectTicket, courseId, courseName, coachName } = this.data;
     const { voucherUuid = "" } = selectTicket;
     const { userId } = app.globalData.userInfo;
     if (radioChecked) {
-      const data = {
-        type: 2,
-        realPay: total,
-        voucherUuid,
-        num,
-        courseId,
-        openId: app.globalData.openId,
-        userId
-      }
-       wx.request({
-          url: `${app.globalData.host}/rest/s1/Goods/buy`,
-          data,
-          method:"POST",
-          success: function (res) {
-            if (res.statusCode != 200 || !res.data.data) {
-              wx.showToast({
-                title: '支付出现问题，稍后再试',
-                duration: 2000,
-                icon: 'none'
-              })
-              return
-            }
-            const result = res.data.data
-            wx.requestPayment({
-              timeStamp: result.timeStamp,
-              nonceStr: result.nonceStr,
-              package: result.package,
-              signType: result.signType,
-              paySign: result.paySign,
-              success(res) {
-                wx.showModal({
-                  title: '购买成功',
-                  content: `成功购买${num}节课\r\n在“我的-我的课程”中查看`,
-                  showCancel: false,
-                  confirmText: '预约时间',
-                  confirmColor: '#FCC800',
-                  success(res) {
-                    if (res.confirm) {
-                      wx.navigateTo({
-                        url:'/pages/reserveTime/reserveTime'
-                        })
-                      }
-                  }
-                })
-              },
-              fail(res) { }
+      wx.showModal({
+        title: '购买成功',
+        content: `成功购买${num}节课\r\n在“我的-我的课程”中查看`,
+        showCancel: false,
+        confirmText: '预约时间',
+        confirmColor: '#FCC800',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: `/pages/reserveTime/reserveTime?courseId=${courseId}&coachName=${coachName}&courseName=${courseName}`
             })
-          },
-       })
+          }
+        }
+      })
+      // const data = {
+      //   type: 2,
+      //   realPay: total,
+      //   voucherUuid,
+      //   num,
+      //   courseId,
+      //   openId: app.globalData.openId,
+      //   userId
+      // }
+      //  wx.request({
+      //     url: `${app.globalData.host}/rest/s1/Goods/buy`,
+      //     data,
+      //     method:"POST",
+      //     success: function (res) {
+      //       if (res.statusCode != 200 || !res.data.data) {
+      //         wx.showToast({
+      //           title: '支付出现问题，稍后再试',
+      //           duration: 2000,
+      //           icon: 'none'
+      //         })
+      //         return
+      //       }
+      //       const result = res.data.data
+      //       wx.requestPayment({
+      //         timeStamp: result.timeStamp,
+      //         nonceStr: result.nonceStr,
+      //         package: result.package,
+      //         signType: result.signType,
+      //         paySign: result.paySign,
+      //         success(res) {
+                
+      //         },
+      //         fail(res) { }
+      //       })
+      //     },
+      //  })
     }
 
   },

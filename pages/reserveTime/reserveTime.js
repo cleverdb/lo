@@ -18,14 +18,17 @@ Page({
     selectItem: {},
     hideAlert: true,
     showModalStatus: false,
-    array_time: ['12:00-13:00', '12:00-13:00', '12:00-13:00', '12:00-13:00'],
-    timeDataSelected:-1
+    array_time: [],
+    timeDataSelected: -1,
+    coachName: '',
+    courseName:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { courseId, coachName, courseName } = options;
     let now = new Date();
     let year = now.getFullYear();
     let month = now.getMonth() + 1;
@@ -35,12 +38,15 @@ Page({
       year: year,
       month: month,
       selectedDay: nowDay,
-      isToday: nowDay
-    })
+      isToday: nowDay,
+      coachName,
+      courseName,
+      courseId
+    });
     this.initData({
-      userId: app.globalData.userInfo.userId,
-      startDate: nowDay,
-      endDate: Utils.plusDate(nowDay, 1)
+      courseId,
+      storeId: app.globalData.storeId,
+      data: nowDay
     })
   },
 
@@ -94,7 +100,7 @@ Page({
   },
 
   dateTap: function (e) {
-    const { selectedDay } = this.data;
+    const { selectedDay, courseId } = this.data;
     console.log(selectedDay);
     let selectDate = e.currentTarget.dataset.date;
     if (selectDate == undefined) {
@@ -104,9 +110,9 @@ Page({
       selectedDay: selectDate,
     })
     this.initData({
-      userId: app.globalData.userInfo.userId,
-      startDate: selectDate,
-      endDate: Utils.plusDate(selectDate, 1)
+      courseId,
+      storeId: app.globalData.storeId,
+      data: selectDate
     })
   },
 
@@ -179,16 +185,11 @@ Page({
     })
     wx.request({
       data: params,
-      method: 'GET',
-      url: app.globalData.host + '/rest/s1/Goods/appointment/getAppointment',
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private/planlist`,
       success: function (res) {
-        let result = res.data.data
-        result.forEach(item => {
-          item.startTime = item.startTime.substr(11, 5)
-          item.endTime = item.endTime.substr(11, 5)
-        })
+        let result = res.data.data;
         _this.setData({
-          appointmentList: result
+          array_time: result
         })
       },
       fail: function (res) {
@@ -218,18 +219,38 @@ Page({
     this.setData({
       timeDataSelected: id == timeDataSelected ? -1 : id,
     })
-    console.log(item);
   },
   // 立即预约的点击事件
   reserveTap: function () {
-    wx.showModal({
-      title: '请确认预约信息',
-      content: '2012.10.12 周2\r\n12:00-13:00\r\n常规课-刘石磊\r\n在“我的-我的课程”中查看',
-      confirmColor: '#FCC800',
-      success(res) {
-        console.log(res);
+    const {
+      courseName,
+      coachName,
+      timeDataSelected,
+      array_time,
+      dateArr,
+      selectedDay
+    } = this.data;
+    const { startTime, endTime } = array_time[timeDataSelected];
+    let startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
+    console.log(startWeek);
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
+      method:"POST",
+      data: {
+        
+      },
+      success: function(res) {
+        wx.showModal({
+          title: '请确认预约信息',
+          content: `${selectedDay} 周${startWeek}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
+          confirmColor: '#FCC800',
+          success(res) {
+            console.log(res);
+          }
+        })
       }
     })
+  
   }
   
 })
