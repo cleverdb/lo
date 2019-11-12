@@ -123,7 +123,7 @@ Page({
 
   },
   ondel: function () {
-    let { num, unitPrice } = this.data;
+    let { num, unitPrice, selectTicket, oldTotal } = this.data;
     num = num - 1
     if (num > 0) {
       const data = Utils.times(unitPrice, num);
@@ -131,7 +131,7 @@ Page({
       this.setData({
         num: num,
         total: data,
-        oldTotal:data
+        oldTotal: data,
       })
     }
   },
@@ -143,7 +143,8 @@ Page({
     this.setData({
       num: num,
       total: data,
-      oldTotal:data
+      oldTotal: data,
+      
     })
   },
   onItemSelTeacher: function (e) {
@@ -254,7 +255,6 @@ Page({
         openId: app.globalData.openId,
         userId
       }
-      console.log(this.data);
        wx.request({
           url: `${app.globalData.host}/rest/s1/Goods/buy`,
           data,
@@ -314,7 +314,8 @@ Page({
         _this.setData({
           ticketDesc: usable.length > 0 ? '查看':'暂无优惠券',
           usable,
-          unusable
+          unusable,
+          selectTicket: {}
         })
       } 
     })
@@ -371,8 +372,28 @@ Page({
     })
   
   },
-  preventD:function(){
-    console.log('adasdasdas');
-    return;
+  LiouTap: function () {
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/protocol`,
+      success: function(res) {
+        const data = res.data.data;
+        const { protocolName, summary } = data;
+        wx.showModal({
+          title: protocolName,
+          content: summary,
+          showCancel: false,
+          confirmText: '同意',
+          confirmColor: '#FCC700',
+          success: function () {
+            _this.setData({
+              radioChecked:true
+            })
+          }
+        })
+      }
+        
+    })
+  
   }
 })

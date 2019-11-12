@@ -77,7 +77,7 @@
             <radio checked="{{radioChecked}}" bindtap='radioTap'>
                 <text>勾选即代表阅读并同意</text>
             </radio>
-            <text class="toEnsure">《LIOU电子协议》</text>
+            <text class="toEnsure" bindtap="LiouTap">《LIOU电子协议》</text>
             <text>服务条款</text>
         </view>
     </view>
