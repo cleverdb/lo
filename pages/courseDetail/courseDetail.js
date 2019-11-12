@@ -339,6 +339,8 @@ Page({
   },
   showModal:function(){
     // 显示遮罩层
+    const { ticketDesc }= this.data;
+    if (ticketDesc == '暂无优惠券') return;
     const animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",
