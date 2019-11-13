@@ -176,11 +176,17 @@ page{
   width: 150rpx;
   height: 150rpx;
   border-radius: 50%;
-  background: red;
+  background: gray;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 16rpx;
+
+}
+.class_list_left image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
 }
 .class_list_right{
   flex: 1;
@@ -345,5 +351,8 @@ page{
 .list_item_line{
   height: 1px;
   background: #BFC0C0;
+}
+.list_left_img{
+  font-size: 28rpx;
 }
 
