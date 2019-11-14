@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    total: "",
     teacherslist: [],
     data: {
       imgSrc: "",
@@ -24,14 +23,55 @@ Page({
 
     },
     host: app.globalData.host,
-    host_j: app.globalData.host_j,
+    courseName: '',
+    iconUrl: '',
+    coachName: '',
+    buyNote: '',
+    unitPrice: '',
+    isVoucher:false,
+    ticketDesc:'暂无优惠券',
+    showModalStatus:false,
+    usable: [],
+    selectTicket: {},
+    total: 0,
+    oldTotal: 0,
+    courseId:'',
+    unusable:[]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData()
+    const _this = this;
+    const {
+      iconUrl,
+      buyNote,
+      courseId,
+      coachId
+    } = app.globalData.coachSelectData;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/private`,
+      data: {
+        courseId,
+        coachId
+      },
+      success: function(res) {
+        const data = res.data.data;
+        const { unitPrice, coachName, courseName, courseId:id } = data;
+        const { num } = _this.data;
+        const total = Utils.times(unitPrice, num);
+        _this.setData({
+          iconUrl,
+          coachName,
+          courseName,
+          buyNote,
+          unitPrice,
+          total,
+          oldTotal: total,
+          courseId:id
+        })
+      }
+    })
   },
 
   /**
@@ -83,21 +123,28 @@ Page({
 
   },
   ondel: function () {
-    let { num, data: { coursePrice } } = this.data;
+    let { num, unitPrice, selectTicket, oldTotal } = this.data;
     num = num - 1
     if (num > 0) {
+      const data = Utils.times(unitPrice, num);
+      this.getVoucher(data);
       this.setData({
         num: num,
-        total: Utils.times(coursePrice, num)
+        total: data,
+        oldTotal: data,
       })
     }
   },
   onadd: function () {
-    let { num, data: { coursePrice } } = this.data;
-    num = num + 1
+    let { num, unitPrice } = this.data;
+    num = num + 1;
+    const data = Utils.times(unitPrice, num);
+    this.getVoucher(data);
     this.setData({
       num: num,
-      total: Utils.times(coursePrice, num)
+      total: data,
+      oldTotal: data,
+      
     })
   },
   onItemSelTeacher: function (e) {
@@ -159,6 +206,7 @@ Page({
             }
           })
         } else {
+          const dat = Utils.times(res.data.data.info.coursePrice, _this.data.num);
           _this.setData({
             'data': {
               ...res.data.data.info
@@ -166,7 +214,8 @@ Page({
             teacherslist: [
               ...res.data.data.teachers
             ],
-            total: Utils.times(res.data.data.info.coursePrice, _this.data.num),
+            total: dat,
+            oldTotal: dat,
             disabledBg: true
           })
         }
@@ -193,20 +242,161 @@ Page({
   },
   // 点击 支付按钮
   tapnPay: function () {
-    const { radioChecked } = this.data;
-    radioChecked? wx.showModal({
-      title: '购买成功',
-      content: '成功购买50节课\r\n在“我的-我的课程”中查看',
-      showCancel: false,
-      confirmText: '预约时间',
-      confirmColor: '#FCC800',
-      success(res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url:'/pages/reserveTime/reserveTime'
+    const { radioChecked, num, total, selectTicket, courseId, courseName, coachName } = this.data;
+    const { voucherUuid = "" } = selectTicket;
+    const { userId } = app.globalData.userInfo;
+    if (radioChecked) {
+      wx.showModal({
+        title: '购买成功',
+        content: `成功购买${num}节课\r\n在“我的-我的课程”中查看`,
+        showCancel: false,
+        confirmText: '预约时间',
+        confirmColor: '#FCC800',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: `/pages/reserveTime/reserveTime?courseId=${courseId}&coachName=${coachName}&courseName=${courseName}`
             })
           }
+        }
+      })
+      // const data = {
+      //   type: 2,
+      //   realPay: total,
+      //   voucherUuid,
+      //   num,
+      //   courseId,
+      //   openId: app.globalData.openId,
+      //   userId
+      // }
+      //  wx.request({
+      //     url: `${app.globalData.host}/rest/s1/Goods/buy`,
+      //     data,
+      //     method:"POST",
+      //     success: function (res) {
+      //       if (res.statusCode != 200 || !res.data.data) {
+      //         wx.showToast({
+      //           title: '支付出现问题，稍后再试',
+      //           duration: 2000,
+      //           icon: 'none'
+      //         })
+      //         return
+      //       }
+      //       const result = res.data.data
+      //       wx.requestPayment({
+      //         timeStamp: result.timeStamp,
+      //         nonceStr: result.nonceStr,
+      //         package: result.package,
+      //         signType: result.signType,
+      //         paySign: result.paySign,
+      //         success(res) {
+                
+      //         },
+      //         fail(res) { }
+      //       })
+      //     },
+      //  })
+    }
+
+  },
+  // 查询优惠卷
+  getVoucher: function (param) {
+    const { userId } = app.globalData.userInfo;
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/voucher/getVoucher`,
+      data: {
+        countPrice: param,
+        userId
+      },
+      success: function (res) {
+        const data = res.data.data;
+        const { usable, unusable } = data;
+        _this.setData({
+          ticketDesc: usable.length > 0 ? '查看':'暂无优惠券',
+          usable,
+          unusable,
+          selectTicket: {}
+        })
+      } 
+    })
+  },
+  // 点击 优惠券
+  ticketTap: function (e) {
+    const { parvalue, vouchername, voucheruuid } = e.currentTarget.dataset;
+    const { selectTicket, oldTotal } = this.data;
+    const data = {
+      parValue:parvalue,
+      voucherName:vouchername,
+      voucherUuid:voucheruuid
+    };
+    const selectTicketData = voucheruuid == selectTicket.voucherUuid ? {} : data;
+    this.setData({
+      selectTicket: selectTicketData,
+      total: Object.keys(selectTicketData).length==0 ? oldTotal : (oldTotal - parvalue)
+    });
+    
+  },
+  showModal:function(){
+    // 显示遮罩层
+    const { ticketDesc }= this.data;
+    if (ticketDesc == '暂无优惠券') return;
+    const animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    });
+    animation.translateY(800).step();
+    this.setData({
+      showModalStatus:true,
+      animationData: animation.export(),
+    });
+    setTimeout(()=>{
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    },200)
+  },
+  hideModal:function(){
+    // 显示遮罩层
+    const animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    });
+    animation.translateY(300).step();
+    setTimeout(()=>{
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false,
+      },200)
+    })
+  
+  },
+  LiouTap: function () {
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/protocol`,
+      success: function(res) {
+        const data = res.data.data;
+        const { protocolName, summary } = data;
+        wx.showModal({
+          title: protocolName,
+          content: summary,
+          showCancel: false,
+          confirmText: '同意',
+          confirmColor: '#FCC700',
+          success: function () {
+            _this.setData({
+              radioChecked:true
+            })
+          }
+        })
       }
-    }): ''
+        
+    })
+  
   }
 })

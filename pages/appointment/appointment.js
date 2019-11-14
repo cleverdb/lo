@@ -23,10 +23,14 @@ Page({
       }],
     tabsIndex: 0,
     showData:false,
+    host: app.globalData.host,
     winHeight: "",
     modalVisible: false,
     timeDataSelected: -1,
-    array_time: ['12:00-13:00', '12:00-13:00', '12:00-13:00', '12:00-13:00'],
+    array_time: [],
+    courseList: [],
+    activeitem: {},
+    groupArr:[]
   },
 
   /**
@@ -45,9 +49,11 @@ Page({
       isToday: nowDay
     })
     this.initData({
-      userId: app.globalData.userInfo.userId,
-      startDate: nowDay,
-      endDate: Utils.plusDate(nowDay, 1)
+      userId: '100000',
+    });
+    this.getGroup({
+      data: nowDay,
+      storeId: '100000'
     })
   },
 
@@ -62,11 +68,16 @@ Page({
    */
   onShow: function() {
     const that = this;
+    const { selectedDay} = this.data;
     if (this.data.pageState) {
       this.setData({
         pageState: {}
       })
-      this.initData()
+      this.initData(),
+      this.getGroup({
+        data: selectedDay,
+        storeId: '100000'
+      })
     }
     wx.getSystemInfo({
       success: function (res) {
@@ -130,13 +141,6 @@ Page({
     })
     _this.filtePlanTime()
   },
-  //选择时间
-  timeTap: function(e) {
-    this.setData({
-      selectPlanId: e.currentTarget.dataset.id,
-      selectPlan: e.currentTarget.dataset.item
-    })
-  },
   //预约
   appointmentTap: function(e) {
     var _this = this;
@@ -197,27 +201,24 @@ Page({
       hideAlert: true
     })
   },
-  initData: function() {
+  initData: function(param) {
     let _this = this;
     let userId = app.globalData.userInfo.userId
-    if (!userId) {
-      this.setData({
-        pageState: {
-          message: '请先登陆/注册哟~',
-          state: 'unlogin'
-        }
-      })
-      return
-    }
+    // if (!userId) {
+    //   this.setData({
+    //     pageState: {
+    //       message: '请先登陆/注册哟~',
+    //       state: 'unlogin'
+    //     }
+    //   })
+    //   return
+    // }
     wx.showLoading({
       title: '加载中...',
     })
     wx.request({
-      url: _this.data.host + '/rest/s1/Goods/appointment/getAppointmentCourse',
-      method: 'GET',
-      data: {
-        userId: userId
-      },
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
+      data: param|| { userId },
       success: function(res) {
         if (res.statusCode != 200) {
           _this.setData({
@@ -237,7 +238,7 @@ Page({
             })
           } else {
             _this.setData({
-              'courseList': result,
+              courseList: result,
               pageState: {}
             })
           }
@@ -411,6 +412,10 @@ Page({
     if (selectDate == undefined) {
       return;
     }
+    this.getGroup({
+      data: selectDate,
+      storeId: app.globalData.storeId
+    })
     this.setData({
       selectedDay: selectDate,
     })
@@ -508,7 +513,8 @@ Page({
     })
   },
   // 课程预约的点击事件
-  classTap: function () {
+  classTap: function (e) {
+    const { plans } = e.currentTarget.dataset;
     wx.showModal({
       title: '请确认预约信息',
       content: '2012.10.12 周2\r\n12:00-13:00\r\n常规课 刘石磊',
@@ -519,9 +525,34 @@ Page({
     })
   },
   // 预约的点击事件
-  reserveTap: function () {
-    this.setData({
-      modalVisible: true
+  reserveTap: function (e) {
+    const { activeitem } = e.currentTarget.dataset;
+    const { courseId } = activeitem;
+    const { selectedDay } = this.data;
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private/planlist`,
+      data: {
+        courseId,
+        storeId: app.globalData.storeId,
+        data: selectedDay
+      },
+      success: function (res) {
+        const resurl = res.data.data;
+        _this.setData({
+          modalVisible: true,
+          array_time: resurl,
+          activeitem
+        })
+        // wx.showModal({
+        //   title: '请确认预约信息',
+        //   content: `${selectedDay} 周${startWeek}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
+        //   confirmColor: '#FCC800',
+        //   success(res) {
+        //     console.log(res);
+        //   }
+        // })
+      }
     })
   },
   hideModal: function () {
@@ -531,11 +562,46 @@ Page({
   },
    // 选时间段的 点击事件
   timeClick: function (e) {
-    const { id } = e.currentTarget.dataset;
+    const { id, timeitem } = e.currentTarget.dataset;
     const { timeDataSelected } = this.data;
     this.setData({
       timeDataSelected: id == timeDataSelected ? -1 : id,
+      timeitem: id == timeDataSelected ? {} : timeitem
     })
-    console.log(item);
   },
+  // 点击预约
+  setDataTap: function () {
+    const { timeitem, activeitem } = this.data;
+    const { coursePlanId } = timeitem;
+    const { id, appiontmentType } = activeitem;
+    const { userId } = app.globalData.userInfo;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
+      method: "POST",
+      data: {
+        id,
+        coursePlanId,
+        appiontmentType,
+        userId
+      },
+      success: function(res) {
+        console.log(res);
+      }
+    })
+  },
+  getGroup: function (param) {
+    console.log(param);
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      data: param,
+      success: function(res) {
+        const groupArr = res.data.data;
+        console.log(groupArr);
+        _this.setData({
+          groupArr
+        })
+      }
+    })
+  }
 })

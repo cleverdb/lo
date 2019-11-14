@@ -1,5 +1,5 @@
 // pages/stores/stores.js
-const app =getApp()
+const app = getApp();
 Page({
 
   /**
@@ -15,21 +15,10 @@ Page({
    */
   onLoad: function(options) {
     var _this = this;
-    _this.initData()
-    wx.getLocation({
-      success: function(res) {
-        console.log(res)
-        _this.setData({
-          longitude: res.longitude,
-          latitude: res.latitude
-        })
-      },
-      fail: function(res) {
-        wx.showToast({
-          title: '获取位置失败',
-        })
-      }
-    })
+    const { selectStore } = app.globalData;
+    console.log(app);
+    console.log(selectStore);
+    _this.dataHandler(selectStore);
   },
 
   /**

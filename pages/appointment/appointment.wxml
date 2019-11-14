@@ -43,29 +43,39 @@
                       </view>
                     </view>
                   </view>
-                  <view id="demo1" class="class_list">
-                    <view class="class_list_left">
-                      qweqe
-                    </view>
-                    <view class="class_list_right">
-                      <view class="list_right_top">
-                          <view>
-                            <text class="class_title">常规私教课</text>
-                            <view class="class_teacher">
-                              <text >王教练</text>
-                              <text>擅长:减脂、增肌</text>
+                  <block wx:for="{{courseList}}" >
+                    <view class="class_list">
+                      <view class="class_list_left">
+                        <image src="{{host}}{{item.iconUrl}}" mode="aspectFill" wx:if="{{item.iconUrl}}"/>
+                        <text wx:else class='list_left_img'>暂无图片</text>
+                      </view>
+                      <view class="class_list_right">
+                        <view class="list_right_top">
+                            <view>
+                              <text class="class_title">{{item.courseName}}</text>
+                              <view class="class_teacher">
+                                <text>{{item.coachName}}</text>
+                                <text>擅长:{{item.coachForte}}</text>
+                              </view>
                             </view>
-                          </view>
-                          <view>
-                              <button class="top_button" bindtap="reserveTap">预 约</button>
-                          </view>
-                      </view>
-                      <view class="list_right_bottom">
-                        <text>剩余课程:20节</text>
-                        <text>已上时节:20节</text>
+                            <view>
+                                <button 
+                                  class="top_button" 
+                                  bindtap="reserveTap" 
+                                  disabled="{{item.remaining==0}}"
+                                  data-activeItem="{{item}}"
+                                >
+                                  预 约
+                                </button>
+                            </view>
+                        </view>
+                        <view class="list_right_bottom">
+                          <text>剩余课程:{{item.remaining}}节</text>
+                          <text>已上时节:{{item.used}}节</text>
+                        </view>
                       </view>
                     </view>
-                  </view>
+                  </block>
               </scroll-view>
           </swiper-item>
           <swiper-item>
@@ -98,24 +108,28 @@
                        </view>
                      </view>
                    </view>
-                   <view class="class_list_wrap">
-                      <view class="class_name">
-                        动感操车
-                      </view>
-                       <view class="class_list_content">
-                          <view class="class_list_item">
-                              <view class="list_item_left">
-                                <view>NTC训练营</view>
-                                <view>刘石磊</view>
-                              </view>
-                              <view class="list_item_time">12:00-13:00</view>
-                              <view>
-                                <button class="top_button" bindtap="classTap">预 约</button>
-                              </view>
+                   <block wx:for="{{groupArr}}">
+                      <view class="class_list_wrap">
+                        <view class="class_name">
+                          {{item.courseAreaName}}
+                        </view>
+                        <block wx:for="{{item.plans}}" wx:for-item="itemGroup" wx:for-index="idx">
+                          <view class="class_list_content">
+                            <view class="class_list_item">
+                                <view class="list_item_left">
+                                  <view>{{itemGroup.courseName}}</view>
+                                  <view>{{itemGroup.coachName}}</view>
+                                </view>
+                                <view class="list_item_time">{{itemGroup.startTime}}-{{itemGroup.endTime}}</view>
+                                <view>
+                                  <button class="top_button" bindtap="classTap" data-plans="{{item.plans}}"  >预 约</button>
+                                </view>
+                            </view>
+                            <view class="list_item_line" wx:if="{{!(item.plans.length==1&&idx==0)||(!(idx==(item.plans.length-1)))}}"></view>
                           </view>
-                          <view class="list_item_line"></view>
-                       </view>
-                   </view>
+                        </block>
+                      </view>
+                   </block>
                 </scroll-view>
           </swiper-item>
           <swiper-item>
@@ -127,16 +141,16 @@
     <view class="alert" hidden='{{!modalVisible}}'>
     <view class="alert_content">
         <view class="alert_title">
-          <text>2018.10.12</text>
-          <text>刘教练</text>
+          <text>{{selectedDay}}</text>
+          <text>{{activeitem.coachName}}</text>
         </view>
         <view class="alert_time">
-            <view  wx:for='{{array_time}}' class="alert_time_button   {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}">
-              12:00-14:00
+            <view  wx:for='{{array_time}}' class="alert_time_button   {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}" data-timeItem="{{item}}">
+              {{item.startTime}}-{{item.endTime}}
             </view>
         </view>
         <view class="alert_footer">
-          <button class="alert_button" disabled="{{timeDataSelected<0}}">预 约</button>
+          <button class="alert_button" bindtap="setDataTap" disabled="{{timeDataSelected<0}}">预 约</button>
         </view>
       </view>
     </view>

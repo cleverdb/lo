@@ -1,14 +1,23 @@
 <!--pages/storeDetail/storeDetail.wxml-->
-<view class="store_detail_wrap">
-    <navigator url="/pages/storeDetail/storeDetail" redirect hover-class="className">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="store_detail_wrap"  wx:if='{{!pageState.state}}'>
+    <block wx:for="{{storeList}}" wx:key="*this">
+        <navigator url="/pages/storeDetail/storeDetail?storeAreaId={{item.storeAreaId}}" redirect hover-class="className">
             <view class="store_detail_item">
                 <view class="img_wrap">
-                    <image src="/images/test/test_store.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+                    <image src="{{host}}{{item.areaPicture}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="detail_text">
-                    <text class="detail_text_left">机械区</text>
+                    <text class="detail_text_left">{{item.areaName}}</text>
                 </view>
             </view>
-    </navigator>
+        </navigator>
+    </block>
+    <view class='bottomline' wx:if="{{moreFlag}}">
+        <text class='baseline'></text>
+        <text class='tip'>我是有底线的哟～</text>
+        <text class='baseline'></text>
+    </view>
 </view>
   
