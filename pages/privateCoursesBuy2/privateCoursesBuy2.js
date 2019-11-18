@@ -23,14 +23,18 @@ Page({
 
     },
     host: app.globalData.host,
-    host_j: app.globalData.host_j,
+    courseName:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData()
+    const { courseName } = options;
+    this.setData({
+      courseName
+    })
+    // this.initData();
   },
 
   /**

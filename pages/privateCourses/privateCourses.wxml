@@ -4,35 +4,30 @@
 <view class="container" wx:if='{{!pageState.state}}'>
     <scroll-view scroll-y="true" class="course-list">
         <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
-            <block wx:if="{{item.styleType=='1'}}">
-                <view class="course" bindtap='courseTap' id='{{item.cards[0].id}}' data-buyType="{{item.cards[0].buyType}}">
-                    <image class="course_img" wx:if='{{item.cards[0].imgSrc}}' mode='scaleToFill' src="{{item.cards[0].imgSrc}}"></image>
-                    <view class="footer_bar">
-                        <text class="course_name">{{item.cards[0].title}}</text>
-                    </view>
-                </view>
-            </block>
-            <view class="course2" wx:if="{{item.styleType=='2'}}">
-                <view class="course2_item" bindtap='courseTap' wx:if="{{item.cards[0]}}" data-buyType="{{item.cards[0].buyType}}">
-                    <image class="course_img" wx:if='{{item.cards[0].imgSrc}}' mode='scaleToFill' src="{{item.cards[0].imgSrc}}"></image>
-                    <view class="footer_bar">
-                        <text class="course_name">{{item.cards[0].title}}</text>
-                    </view>
-                </view>
-                <view class="course2_item">
-                    <view wx:if="{{item.cards[1]}}" bindtap='courseTap' data-buyType="{{item.cards[1].buyType}}">
-                        <image class="course_img" wx:if='{{item.cards[1].imgSrc}}' mode='scaleToFill' src="{{item.cards[1].imgSrc}}"></image>
+                <navigator open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}'>
+                    <view  wx:if="{{item.experience=='1'}}" class="course"   data-buyType="{{item.sort}}">
+                        <view class='courseNavPic_div'>
+                            <image class="course_img" wx:if='{{item.courseNavPic}}' mode='scaleToFill' src="{{host}}{{item.courseNavPic}}"></image>
+                        </view>
                         <view class="footer_bar">
-                            <text class="course_name">{{item.cards[1].title}}</text>
+                            <text class="course_name">{{item.courseName}}</text>
                         </view>
                     </view>
-                </view>
-            </view>
+                </navigator>
         </block>
-        <view class='bottomline' wx:if="{{moreFlag}}">
-            <text class='baseline'></text>
-            <text class='tip'>我是有底线的哟～</text>
-            <text class='baseline'></text>
+        <view class="course2">
+            <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}" wx:if="{{item.experience=='0'}}">
+                <navigator open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}'>
+                    <view class="course2_item" data-buyType="{{item.sort}}" >
+                        <view class='course2_item_div'>
+                            <image class="course_img" wx:if='{{item.coursePic}}' mode='scaleToFill' src="{{host}}{{item.coursePic}}"></image>
+                        </view>
+                        <view class="footer_bar">
+                            <text class="course_name">{{item.courseName}}</text>
+                        </view>
+                    </view>
+                </navigator>
+            </block>
         </view>
     </scroll-view>
 </view>

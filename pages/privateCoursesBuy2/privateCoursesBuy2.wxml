@@ -9,10 +9,9 @@
     <view class="content">
         <view class="content_item">
             <view class="content_item_contents">
-                <text>首次私教体验</text>
-                <text class="hot">HOT</text>
+                <text>课程名称</text>
             </view>
-            <text>{{data.courseType||""}}</text>
+            <text>{{courseName}}</text>
         </view>
         <view class="content_item  bordernone">
             <view>

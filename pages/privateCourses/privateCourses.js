@@ -8,18 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
     courseList: [],
-    curriculum: {
-      "1": "privateCoursesBuy1",
-      "2": "privateCoursesBuy2",
-    },
     host: app.globalData.host,
-    host_j: app.globalData.host_j,
-    queryParams: {
-      pageIndex: 0,
-      pageSize: 10,
-    },
   },
 
   /**
@@ -61,15 +51,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.initData()
+   
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('64')
-    this.initData(true)
   },
 
   /**
@@ -78,40 +66,17 @@ Page({
   onShareAppMessage: function () {
 
   },
-  courseTap: function (e) {
-    let { buytype } = e.currentTarget.dataset;
-    let { curriculum } = this.data;
-    switch (buytype) {
-      case '1':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-      case '2':
-        wx.navigateTo({
-          url: `/pages/${curriculum[buytype]}/${curriculum[buytype]}`,
-        })
-        break;
-    }
-  },
   initData: function (down) {
     var _this = this
     wx.showLoading({
       title: '加载中...',
     })
-    let params = _this.data.queryParams
-    if (down) {
-      params = {
-        pageIndex: params.pageIndex + 1,
-        ...params
-      }
-    }
     wx.request({
-      url: app.globalData.host_j + _apis.private_Courses,
-      data: params,
-      method: 'GET',
+      url: `${app.globalData.host}/rest/s1/Goods/course/classes`,
+      data: {
+        storeId: app.globalData.storeId
+      },
       success: function (res) {
-
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -121,7 +86,7 @@ Page({
           })
         } else {
           _this.setData({
-            'courseList': [_this.data.courseList, ...res.data.data],
+            courseList: [_this.data.courseList, ...res.data.data],
             disabledBg: true
           })
         }

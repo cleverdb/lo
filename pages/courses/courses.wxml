@@ -3,17 +3,19 @@
 <view class="container" wx:if='{{!pageState.state}}'>
     <scroll-view scroll-y="true" class="course-list">
         <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
-            <view class="course" bindtap='courseTap' id='{{item.id}}' data-type="{{item.courseType}}">
-                <image class="course_img" wx:if='{{item.iconUrl}}' mode='scaleToFill' src="{{item.iconUrl}}"></image>
+        <navigator open-type='navigate' url='/pages/{{curriculum[item.courseTypeId]}}/{{curriculum[item.courseTypeId]}}'>
+            <view class="course">
+                <image class="course_img" wx:if='{{item.courseTypePicture}}' mode='scaleToFill' src="{{host}}{{item.courseTypePicture}}"></image>
                 <view class="footer_bar">
-                    <text class="course_name">{{item.courseName}}</text>
+                    <text class="course_name">{{item.courseTypeName}}</text>
                     <view>
-                        <block wx:for="{{item.tags}}" wx:key="{{item.id}}">
-                            <button class="tag" id="{{item.id}}">{{item.title}}</button>
+                        <block wx:for="{{item.keywords}}" wx:for-item="itemName">
+                            <button class="tag" id="{{itemName}}">{{itemName}}</button>
                         </block>
                     </view>
                 </view>
             </view>
+        </navigator>
         </block>
         <view class='bottomline' wx:if="{{moreFlag}}">
             <text class='baseline'></text>
