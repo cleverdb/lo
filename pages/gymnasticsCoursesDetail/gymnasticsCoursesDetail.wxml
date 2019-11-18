@@ -4,33 +4,73 @@
 <view class="container">
     <view class="dateSel">
         <view bindtap="onbefore">
-            <text class="left">《</text>
+            <text class="left">{{'<'}}</text>
         </view>
         <view>
             <text>{{year}}年{{month}}月</text>
         </view>
         <view bindtap="onafter">
-            <text class="right">》</text>
+            <text class="right">{{'>'}}</text>
         </view>
     </view>
     <scroll-view scroll-x>
-        <view class="table_head">
-            <block wx:for="{{columns}}" wx:key="index" wx:if="{{columns}}">
-                <view>
-                    <text>{{item.title}}</text>
-                </view>
-            </block>
-        </view>
-        <view class="body">
-            <block wx:for="{{columns}}" wx:key="index" wx:for-item="item" wx:if="{{columns}}">
-                <view>
-                    <block wx:for="{{data}}" wx:key="index" wx:for-item="item1" wx:if="{{data}}">
-                        <view class="body_item">
-                            <text>{{item1[item.key]}}</text>
+        <image src="../../images/icon/next.png" class="moveright" bindtap="onnext"></image>
+        <view class="_table">
+            <block wx:for="{{data}}" wx:key="index" wx:if="{{data}}">
+                <view class="_table_col">
+                    <view class="_table_head">
+                        <text>{{item.title}}</text>
+                    </view>
+                    <block wx:for="{{item.data}}" wx:key="index" wx:if="{{item.data}}" wx:for-item="item1">
+                        <view class="body_col">
+                            <block wx:for="{{item1}}" wx:key="index" wx:for-item="item2">
+                                <view class="tr_col">
+                                    <view>
+                                        <text>{{item2.startTime}}</text>
+                                        <text>{{item2.endTime}}</text>
+                                    </view>
+                                    <text>{{item2.courseName}}</text>
+                                    <text>{{item2.coachName}}</text>
+                                </view>
+                            </block>
                         </view>
                     </block>
                 </view>
             </block>
         </view>
     </scroll-view>
+    <view class="space"></view>
+    <view class="_card">
+        <view class="_card_head">
+            <view class="_card_head_title">
+                <text>{{descript.title}}</text>
+            </view>
+            <view class="_card_head_subheading">
+                <text>{{descript.subheading}}</text>
+            </view>
+            <view class="_card_head_mark">
+                <text>{{descript.mark1}}</text>
+                <text>/{{descript.mark2}}</text>
+            </view>
+        </view>
+        <view class="_card_head_details">
+            <text>{{descript.details}}</text>
+        </view>
+    </view>
+    <view class="space"></view>
+    <view class="person_details">
+        <image class="_person_details_img" src="../../images/sliber_test.png" />
+        <view>
+            <view class="_personDetail_name">
+                <text>{{personDetail.name}}</text>
+            </view>
+            <view class="_personDetail_goods">
+                <text>{{personDetail.goods}}</text>
+            </view>
+            <view class="_personDetail_detail">
+                <text>{{personDetail.detail}}</text>
+            </view>
+        </view>
+    </view>
+    <button class="order_button">立即预约</button>
 </view>

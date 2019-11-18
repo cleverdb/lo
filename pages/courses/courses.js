@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+
     curriculum: {
       PrivateCourse: "privateCourses",
       PublicCourse: "publicCourses",
@@ -212,7 +213,8 @@ Page({
       fail: function (res) {
 
       },
-      complete: function () { }
-    })
+      //   complete: function () { }
+      // })
+    });
   }
 })

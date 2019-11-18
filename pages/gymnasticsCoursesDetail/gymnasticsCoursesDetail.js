@@ -7,62 +7,219 @@ Page({
   data: {
     year: 2019,
     month: 12,
-    columns: [
-      {
-        title: "日/01",
-        key: "01",
-      }, {
-        title: "六/02",
-        key: "02",
-      }, {
-        title: "五/03",
-        key: "03",
-      }, {
-        title: "四/04",
-        key: "04",
-      }, {
-        title: "三/05",
-        key: "05",
-      }, {
-        title: "二/06",
-        key: "06",
-      }, {
-        title: "一/06",
-        key: "07",
-      }
-    ],
+    personDetail: {
+      name: "宋亚如",
+      goods: "擅长：减脂，增肌",
+      detail: "拳在英文当中为KWON，意为以拳头打击：而道的英文发音是Do,是指代表道行、礼仪修行的艺术。跆拳道是现代奥运会正式而道的英文发音为Do"
+    },
+    descript: {
+      title: "身心平衡",
+      subheading: "燃脂指数",
+      mark1: "4",
+      mark2: "5",
+      details: "拳在英文当中为KWON,意为拳头打击:而道的英文发音为Do,是指代表道行、礼仪修炼的艺术。跆拳道是现代运动会正式而道的英文发音为Do,是指代表道行、礼仪修炼的艺术。"
+    },
     data: [
       {
-        "01": "11:00-12:00有课程",
-        "02": "",
-        "03": "11:00-12:00有课程",
-        "04": "",
-        "05": "",
-        "06": "",
-        "07": "",
-        "08": "",
-      },
-      {
-        "01": "11:00-12:00有课程",
-        "02": "",
-        "03": "11:00-12:00有课程",
-        "04": "",
-        "05": "",
-        "06": "",
-        "07": "",
-        "08": "",
-      },
-      {
-        "01": "11:00-12:00有课程",
-        "02": "",
-        "03": "11:00-12:00有课程",
-        "04": "",
-        "05": "",
-        "06": "",
-        "07": "",
-        "08": "",
-      },
+        title: "日/01",
+        data: [
+          [{
+            "courseId": "100004",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100005",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100059",
+          }],
+          [],
+          [{
+            "courseId": "100006",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100007",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }],
+          []
+        ],
+      }, {
+        title: "六/02",
+        data: [
+          [{
+            "courseId": "150011",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "140012",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100059",
+          }],
+          [],
+          [{
+            "courseId": "130012",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "120034",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }],
+          []
+        ]
+      }, {
+        title: "五/03",
+        data: [
+          [{
+            "courseId": "100061",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100052",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100059",
+          }],
+          [],
+          [{
+            "courseId": "100042",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100044",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }],
+          []
+        ],
+      }, {
+        title: "四/04",
+        data: [
+          [{
+            "courseId": "100811",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100712",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100059",
+          }],
+          [],
+          [{
+            "courseId": "100612",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100534",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }],
+          []
+        ],
+      }, {
+        title: "三/05",
+        data: [
+          [{
+            "courseId": "100411",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100312",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100059",
+          }],
+          [],
+          [{
+            "courseId": "100212",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }, {
+            "courseId": "100134",
+            "courseName": "跆拳道",
+            "coachName": "李美丽",
+            "startTime": "18:50",
+            "endTime": "12:45",
+            "coursePlanId": "100055",
+          }],
+          []
+        ],
+      }, {
+        title: "二/06",
+        data: [
+          [],
+          [],
+          [],
+          []
+        ],
+      }, {
+        title: "一/07",
+        data: [
+          [],
+          [],
+          [],
+          []
+        ],
+      }
+
     ]
+
   },
 
   /**
@@ -147,5 +304,8 @@ Page({
         month: month + 1
       })
     }
+  },
+  onnext: function () {
+
   }
 })

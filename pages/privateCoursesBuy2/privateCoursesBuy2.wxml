@@ -50,7 +50,7 @@
                 <text>{{data.courseUnit||""}}</text>
             </view>
         </view>
-        <view class="content_item">
+        <view class="content_item" wx:if="{{type!='1'}}">
             <view>
                 <text>购买数量</text>
             </view>
@@ -102,6 +102,6 @@
         </view>
     </view>
     <view class="footer" wx:if="{{!teacherSel}}">
-        <button class="buy_button">确认购买</button>
+        <button class="buy_button" disabled="{{ensure_buy}}">确认购买</button>
     </view>
 </view>
