@@ -87,11 +87,11 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.host_j + _apis.private_Buy,
+      url: app.globalData.host + _apis.private_Buy,
       data: params,
       method: 'GET',
       success: function (res) {
-
+        console.log('94', res)
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
@@ -101,10 +101,7 @@ Page({
           })
         } else {
           _this.setData({
-            'data': {
-              ..._this.data.data,
-              ...res.data.data
-            },
+            'data': [],
             disabledBg: true
           })
         }

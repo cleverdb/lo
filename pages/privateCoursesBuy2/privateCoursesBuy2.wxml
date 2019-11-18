@@ -4,43 +4,45 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="try_course_container">
     <view class="head">
-        <image wx:if='{{data.imgSrc}}' src="{{data.imgSrc}}" alt="" />
+        <image wx:if='{{courseData.courseNavPic}}' src="{{host}}{{courseData.courseNavPic}}" alt="" />
     </view>
     <view class="content">
         <view class="content_item">
             <view class="content_item_contents">
-                <text>首次私教体验</text>
-                <text class="hot">HOT</text>
+                <text>课程名称</text>
             </view>
-            <text>{{data.courseType||""}}</text>
+            <text>{{courseName}}</text>
         </view>
         <view class="content_item  bordernone">
             <view>
                 <text>课程教练</text>
             </view>
             <view class="color_gary" bindtap='onSelectTeacher'>
-                <text>{{beSelTeacher.title||"请选择教练"}}</text>
+                <text>{{beSelTeacher.coachName||"请选择教练"}}</text>
                 <image class="icon_down" src="../../images/icon/icon_down.png" />
             </view>
         </view>
     </view>
     <view class="teachersListCantainer " wx:if="{{teacherSel}}">
-        <block wx:for="{{teacherslist}}" wx:key="index" wx:if="{{teacherslist}}">
-            <view class="teacherslist_item   course2" data-id="{{item.id}}" bindtap="onItemSelTeacher">
-                <image wx:if="{{item.besel||false}}" class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
-                <image class="course_img" src="{{item.imgSrc}}"></image>
+        <block wx:for="{{coachData}}" wx:key="index" wx:if="{{coachData}}">
+            <view class="teacherslist_item"  bindtap="onItemSelTeacher" data-coachName="{{item.coachName}}">
+                <image wx:if="{{item.besel}}" class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
+                <view class='course_img {{item.iconUrl? "":"course_no_img"}}'>
+                    <image  src="{{host}}{{item.iconUrl}}" wx:if="{{item.iconUrl}}" mode='aspectFit'></image>
+                    <text wx:else>暂无图片</text>
+                </view>
                 <view class="footer_bar">
-                    <text class="course_name">{{item.title}}</text>
-                    <view>
-                        <block wx:for="{{item.tags}}" wx:for-index="key">
-                            <button class="tag">{{item.title}}</button>
+                    <text class="course_name">{{item.coachName}}</text>
+                    <view class='course_name_right'>
+                        <block wx:for="{{item.tags}}" wx:for-item="tagsItem">
+                            <button class="tag">{{tagsItem}}</button>
                         </block>
                     </view>
                 </view>
             </view>
         </block>
     </view>
-    <button wx:if="{{teacherSel}}" class="buy_button" bindtap="ensureTeacher">确认私教</button>
+    <button wx:if="{{teacherSel}}" class="buy_button" bindtap="ensureTeacher" disabled="{{teacherDisabled}}">确认私教</button>
     <view class="content" wx:if="{{!teacherSel}}">
         <view class="content_item topborder">
             <view>
@@ -51,7 +53,7 @@
                 <text>{{data.courseUnit||""}}</text>
             </view>
         </view>
-        <view class="content_item">
+        <view class="content_item" wx:if="{{type!='1'}}">
             <view>
                 <text>购买数量</text>
             </view>
@@ -88,11 +90,7 @@
                 <text>购买须知</text>
             </view>
             <view>
-                <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}">
-                    <view>
-                        <text>{{item}}</text>
-                    </view>
-                </block>
+                <text>{{courseData.buyNote}}</text>
             </view>
         </view>
         <view class="read">
@@ -102,7 +100,8 @@
             <text>服务条款</text>
         </view>
     </view>
-    <view class="footer" wx:if="{{!teacherSel}}">
-        <button class="buy_button">确认购买</button>
-    </view>
+    
+</view>
+<view class="footer" wx:if="{{!teacherSel}}">
+    <button class="buy_button" disabled="{{ensure_buy}}">确认购买</button>
 </view>
