@@ -3,9 +3,9 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="container" wx:if='{{!pageState.state}}'>
     <scroll-view scroll-y="true" class="course-list">
-        <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}">
-                <navigator open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}'>
-                    <view  wx:if="{{item.experience=='1'}}" class="course"   data-buyType="{{item.sort}}">
+        <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}" wx:if="{{item.experience=='1'}}">
+                <navigator  open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}&courseId={{item.courseId}}'>
+                    <view  class="course"   data-buyType="{{item.sort}}">
                         <view class='courseNavPic_div'>
                             <image class="course_img" wx:if='{{item.courseNavPic}}' mode='scaleToFill' src="{{host}}{{item.courseNavPic}}"></image>
                         </view>
@@ -17,7 +17,7 @@
         </block>
         <view class="course2">
             <block wx:for="{{courseList}}" wx:key="index" wx:if="{{courseList}}" wx:if="{{item.experience=='0'}}">
-                <navigator open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}'>
+                <navigator open-type='navigate' url='/pages/privateCoursesBuy2/privateCoursesBuy2?courseName={{item.courseName}}&courseId={{item.courseId}}'>
                     <view class="course2_item" data-buyType="{{item.sort}}" >
                         <view class='course2_item_div'>
                             <image class="course_img" wx:if='{{item.coursePic}}' mode='scaleToFill' src="{{host}}{{item.coursePic}}"></image>
