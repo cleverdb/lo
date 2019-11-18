@@ -44,7 +44,7 @@
                     </view>
                   </view>
                   <block wx:for="{{courseList}}" >
-                    <view class="class_list">
+                    <view class="class_list" >
                       <view class="class_list_left">
                         <image src="{{host}}{{item.iconUrl}}" mode="aspectFill" wx:if="{{item.iconUrl}}"/>
                         <text wx:else class='list_left_img'>暂无图片</text>
@@ -76,6 +76,9 @@
                       </view>
                     </view>
                   </block>
+                  <view wx:if="{{courseList.length==0}}" class="time_no_wrap">
+                    暂时无课程安排
+                  </view>
               </scroll-view>
           </swiper-item>
           <swiper-item>
@@ -108,8 +111,8 @@
                        </view>
                      </view>
                    </view>
-                   <block wx:for="{{groupArr}}">
-                      <view class="class_list_wrap">
+                   <block wx:for="{{groupArr}}" >
+                      <view class="class_list_wrap" wx:if="{{item.plans.length > 0}}">
                         <view class="class_name">
                           {{item.courseAreaName}}
                         </view>
@@ -118,18 +121,25 @@
                             <view class="class_list_item">
                                 <view class="list_item_left">
                                   <view>{{itemGroup.courseName}}</view>
-                                  <view>{{itemGroup.coachName}}</view>
+                                  <view class='item_left_name'>{{itemGroup.coachName}}</view>
+                                  <view wx:if="{{itemGroup.unitPrice!=0}}" class="item_left_bottom">￥{{itemGroup.unitPrice}}</view>
+                                  <view wx:else class='item_left_bottom'>免费</view>
                                 </view>
-                                <view class="list_item_time">{{itemGroup.startTime}}-{{itemGroup.endTime}}</view>
                                 <view>
-                                  <button class="top_button" bindtap="classTap" data-plans="{{item.plans}}"  >预 约</button>
+                                  <view class="list_item_time">{{itemGroup.startTime}}-{{itemGroup.endTime}}</view>
+                                </view>
+                                <view>
+                                  <button class="top_button" bindtap="classTap" data-plans="{{itemGroup}}"  >预 约</button>
                                 </view>
                             </view>
-                            <view class="list_item_line" wx:if="{{!(item.plans.length==1&&idx==0)||(!(idx==(item.plans.length-1)))}}"></view>
+                            <view class="list_item_line" wx:if="{{!(item.plans.length==1)&&!(idx==(item.plans.length-1))}}"></view>
                           </view>
                         </block>
                       </view>
                    </block>
+                    <view wx:if="{{isShow}}" class="time_no_wrap">
+                      暂无预约课
+                    </view>
                 </scroll-view>
           </swiper-item>
           <swiper-item>
@@ -147,6 +157,9 @@
         <view class="alert_time">
             <view  wx:for='{{array_time}}' class="alert_time_button   {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}" data-timeItem="{{item}}">
               {{item.startTime}}-{{item.endTime}}
+            </view>
+            <view wx:if="{{array_time.length==0}}" class="time_no_wrap">
+                暂无预约时间
             </view>
         </view>
         <view class="alert_footer">

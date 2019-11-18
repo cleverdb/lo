@@ -2,17 +2,6 @@
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="container">
-    <view class="dateSel">
-        <view bindtap="onbefore">
-            <text class="left">{{'<'}}</text>
-        </view>
-        <view>
-            <text>{{year}}年{{month}}月</text>
-        </view>
-        <view bindtap="onafter">
-            <text class="right">{{'>'}}</text>
-        </view>
-    </view>
     <scroll-view scroll-x>
         <image src="../../images/icon/next.png" class="moveright" bindtap="onnext"></image>
         <view class="_table">
@@ -24,10 +13,9 @@
                     <block wx:for="{{item.data}}" wx:key="index" wx:if="{{item.data}}" wx:for-item="item1">
                         <view class="body_col">
                             <block wx:for="{{item1}}" wx:key="index" wx:for-item="item2">
-                                <view class="tr_col">
+                                <view class="tr_col {{(item1.length==1||index==item1.length-1 ? '':'tr_col_border')}}">
                                     <view>
-                                        <text>{{item2.startTime}}</text>
-                                        <text>{{item2.endTime}}</text>
+                                        <text>{{item2.startTime}}-{{item2.endTime}}</text>
                                     </view>
                                     <text>{{item2.courseName}}</text>
                                     <text>{{item2.coachName}}</text>

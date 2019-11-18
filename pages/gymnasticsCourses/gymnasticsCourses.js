@@ -141,63 +141,16 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    let params = _this.data.queryParams
+    let params ={
+      ..._this.data.queryParams,
+      storeId: app.globalData.storeId
+    } 
     wx.request({
-      url: app.globalData.host + _apis.Goods_getCourse,
+      url: `${app.globalData.host}/rest/s1/Goods/course/group/area`,
       data: params,
       method: 'GET',
       success: function (res) {
-        if (true) {
-          res.data.data = [
-            {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "动态操厅",
-              courseType: "1",
-
-              tags: [
-                {
-                  id: "1",
-                  title: "增肌减脂"
-                }, {
-                  id: "2",
-                  title: "强健体质"
-                }
-              ],
-              id: '1'
-            }, {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "瑜伽厅",
-              courseType: "3",
-              tags: [
-                {
-                  id: "1",
-                  title: "增肌减脂"
-                }, {
-                  id: "2",
-                  title: "强健体质"
-                }
-              ],
-              id: '1'
-            }, {
-              iconUrl: "http://localhost:8091/static/a.png",
-              courseName: "单车厅",
-              courseType: "2",
-              tags: [
-                {
-                  id: "11",
-                  title: "增肌减脂"
-                }, {
-                  id: "21",
-                  title: "强健体质"
-                }
-              ],
-              id: '2'
-
-            }
-          ]
-        }
-        // res.statusCode != 200
-        if (false) {
+        if (res.statusCode != 200) {
           _this.setData({
             pageState: {
               message: '加载失败，请重新加载~',
@@ -205,8 +158,17 @@ Page({
             }
           })
         } else {
+          const { data } = res.data;
+          const courseList = data.reduce((nex,current)=>{
+            const { keywords = undefined} = current;
+            return [...nex,{
+              ...current,
+              tags: keywords ? keywords.split('/'):[]
+            }]
+          },[]);
+          console.log(courseList);
           _this.setData({
-            'courseList': res.data.data,
+            courseList,
             disabledBg: true
           })
         }

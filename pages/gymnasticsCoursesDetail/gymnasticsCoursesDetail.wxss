@@ -68,7 +68,7 @@
 }
 .container  ._table_col{
     flex:1 0 auto;
-    width: 176rpx;
+    width: 190rpx;
     border:1rpx solid  #E4E5E5;
     border-right:none;
 }
@@ -90,9 +90,10 @@
     width: 176rpx;
     justify-content: center;
     align-items: center;
-
-    /* border-top:1rpx solid  #E4E5E5; */
-    margin-bottom: 10rpx;
+    padding-bottom: 10rpx;
+}
+.tr_col_border{
+    border-bottom:1rpx solid  #E4E5E5;
 }
 .container .tr_col text{
     font-weight:bold;
@@ -107,7 +108,6 @@
     background-color: #EEEFEF;
     justify-content: center;
     height: 65rpx;
-    width: 173rpx;
     align-items: center;
 }
 .container  ._table_head text{

@@ -344,7 +344,7 @@ page{
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.list_item_left > view:last-child{
+.item_left_name{
   font-size: 24rpx;
   color: #727272;
 }
@@ -355,4 +355,12 @@ page{
 .list_left_img{
   font-size: 28rpx;
 }
-
+.time_no_wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.item_left_bottom{
+  color: red;
+  font-size: 24rpx;
+}

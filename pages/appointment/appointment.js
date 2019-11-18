@@ -30,7 +30,9 @@ Page({
     array_time: [],
     courseList: [],
     activeitem: {},
-    groupArr:[]
+    groupArr: [], 
+    isShow:false,
+    selectedDay:''
   },
 
   /**
@@ -52,7 +54,7 @@ Page({
       userId: '100000',
     });
     this.getGroup({
-      data: nowDay,
+      date: nowDay,
       storeId: '100000'
     })
   },
@@ -75,7 +77,7 @@ Page({
       })
       this.initData(),
       this.getGroup({
-        data: selectedDay,
+        date: selectedDay,
         storeId: '100000'
       })
     }
@@ -413,7 +415,7 @@ Page({
       return;
     }
     this.getGroup({
-      data: selectDate,
+      date: selectDate,
       storeId: app.globalData.storeId
     })
     this.setData({
@@ -515,12 +517,80 @@ Page({
   // 课程预约的点击事件
   classTap: function (e) {
     const { plans } = e.currentTarget.dataset;
+    console.log(plans);
+    const { selectedDay} = this.data;
+    const { userId} = app.globalData.userInfo;
+    const { 
+      coachName, 
+      courseName, 
+      startTime, 
+      endTime, 
+      unitPrice,
+      courseId,
+      coursePlanId,
+    }=plans;
+    const startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
     wx.showModal({
       title: '请确认预约信息',
-      content: '2012.10.12 周2\r\n12:00-13:00\r\n常规课 刘石磊',
+      content: `${selectedDay} 周${startWeek}\r\n${startTime}-${endTime}\r\n${courseName}${coachName}`,
       confirmColor: '#FCC800',
       success(res) {
-        console.log(res);
+        wx.request({
+          url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+          method: 'POST',
+          data: {
+            courseId,
+            coursePlanId,
+            realPay: unitPrice > 0 ? unitPrice : 0 ,
+            openId: app.globalData.openId,
+            vipId: userId
+          },
+          success(res) {
+            const { errorCode = '', messages, errors } = res.data;
+            if (errorCode) {
+              wx.showToast({
+                title: errors,
+                duration: 2000,
+                icon: 'none'
+              })
+              return
+            }
+            if (unitPrice>0){
+              const result = res.data.data;
+              const { orderid } = result;
+              wx.requestPayment({
+                timeStamp: result.timeStamp,
+                nonceStr: result.nonceStr,
+                package: result.package,
+                signType: result.signType,
+                paySign: result.paySign,
+                success(res) {
+                  wx.showModal({
+                    title: '预约成功',
+                    showCancel: false,
+                    confirmText: '确定',
+                    confirmColor: '#FCC800',
+                  });
+                },
+                fail(res) {
+                   wx.request({
+                     url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                     data:{
+                       orderId: orderid,
+                     }
+                   })
+                 }
+              })
+            }else{
+              wx.showToast({
+                title: messages,
+                duration: 2000,
+                icon: 'none'
+              })
+            }
+            
+          }
+        })
       }
     })
   },
@@ -584,8 +654,21 @@ Page({
         appiontmentType,
         userId
       },
-      success: function(res) {
-        console.log(res);
+      success(res) {
+        const { errorCode = '', messages, errors } = res.data;
+        if (errorCode) {
+          wx.showToast({
+            title: errors,
+            duration: 2000,
+            icon: 'none'
+          })
+          return
+        }
+        wx.showToast({
+          title: messages,
+          duration: 2000,
+          icon: 'none'
+        })
       }
     })
   },
@@ -597,9 +680,13 @@ Page({
       data: param,
       success: function(res) {
         const groupArr = res.data.data;
-        console.log(groupArr);
+        const isShow = groupArr.reduce((nex,current)=>{
+          const { plans} = current;
+          return [...nex, ...plans]
+        },[]);
         _this.setData({
-          groupArr
+          groupArr,
+          isShow: isShow.length===0
         })
       }
     })

@@ -1,4 +1,6 @@
 // pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail.js
+import Utils from '../../utils/util.js'
+const app = getApp()
 Page({
 
   /**
@@ -7,6 +9,7 @@ Page({
   data: {
     year: 2019,
     month: 12,
+    host: app.globalData.host,
     personDetail: {
       name: "宋亚如",
       goods: "擅长：减脂，增肌",
@@ -226,9 +229,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const { courseAreaId} = options;
+    const nowDay = Utils.formatDate(new Date());
+    this.initData({ courseAreaId, startDate: nowDay});
   },
+  initData:function(param){
+    var _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/group`,
+      data:param,
+      success: function (res) {
+        if (res.statusCode != 200) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          _this.setData({
+            data:res.data.data
+          })
+        }
+      },
+      fail: function () {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete: function (res) {
+        wx.hideLoading()
+      }
 
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
