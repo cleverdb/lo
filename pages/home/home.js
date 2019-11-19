@@ -193,6 +193,7 @@ Page({
     const { storeName, address, storeId, storePhone } = selectArray[value];
     app.globalData.storeId = storeId;
     app.globalData.selectStore = [selectArray[value]];
+    console.log(app.globalData.selectStore);
     this.getStoreArea(storeId);
     this.setData({
       storeName,

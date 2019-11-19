@@ -1,7 +1,7 @@
 // pages/privateCourses/privateCourses.js
 import Utils from '../../utils/util.js';
 import { _apis } from '../../utils/urlConfig.js';
-const app = getApp()
+const app = getApp();
 Page({
 
   /**

@@ -1,4 +1,5 @@
 // pages/publicCourses/publicCourses.js
+import Utils from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -20,10 +21,8 @@ Page({
     doneList: [],
     host: app.globalData.host,
     runningPageIndex: 0,
-    runningPageSize:10,
     donePageIndex: 0,
-    donePageSize: 10,
-    besel:''
+    moreFlag:false,
   },
 
   /**
@@ -32,17 +31,13 @@ Page({
   onLoad: function (options) {
     const {
       donePageIndex,
-      donePageSize,
       runningPageIndex,
-      runningPageSize,
     } = this.data;
     this.getDoingData({
       pageIndex:runningPageIndex,
-      pageSize:runningPageSize
     });
     this.getDoneData({
       pageIndex:donePageIndex,
-      pageSize:donePageSize
     });
   },
 
@@ -78,14 +73,28 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let { besel, runningPageIndex, donePageIndex } = this.data;
+    const param = besel === '1' ? {
+      pageIndex: ++runningPageIndex
+    } : {
+        pageIndex: ++donePageIndex
+      };
+    const dataParam = besel === '1' ? {
+      runningPageIndex
+    } : {
+        donePageIndex
+    };
+    this.setData(dataParam)
+    this.loadMoreData({
+      ...param,
+    });
   },
 
   /**
@@ -102,8 +111,14 @@ Page({
   tabsChange: function (e) {
     let { id } = e.currentTarget.dataset;
     this.setData({
-      besel: id
-    })
+      besel: id,
+      moreFlag: false,
+      runningPageIndex: 0,
+      donePageIndex: 0,
+      runningList: [],
+      doneList: [],
+    });
+    id === '1' ? this.getDoingData({ pageIndex: 0 }) : this.getDoneData({ pageIndex: 0 });
   },
   getDoingData: function (param) {
     const { runningList } = this.data;
@@ -113,7 +128,10 @@ Page({
     })
       wx.request({
         url: `${app.globalData.host}/rest/s1/Goods/course/public/doing`,
-        data: param,
+        data: {
+          ...param,
+          pageSize:10,
+        },
         success: function (res) {
           if (res.statusCode != 200) {
             _this.setData({
@@ -123,8 +141,17 @@ Page({
               }
             })
           } else {
+            const dat = res.data.data.reduce((ex,current) => {
+              const { courseDate } = current;
+              const weaknum = new Date(courseDate).getDay();
+              const dat2 = `周${Utils.weekObj[weaknum]}`
+              return [...ex, {
+                ...current,
+                weakData: dat2
+              }]
+            },[])
             _this.setData({
-              runningList: [...runningList, ...res.data.data] 
+              runningList: [...runningList, ...dat] 
             })
           }
         },
@@ -149,7 +176,10 @@ Page({
     })
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/course/public/did`,
-      data: param,
+      data: {
+        ...param,
+        pageSize: 10,
+      },
       success: function (res) {
         if (res.statusCode != 200) {
           _this.setData({
@@ -159,8 +189,18 @@ Page({
             }
           })
         } else {
+          const dat = res.data.data.reduce((ex, current) => {
+            const { courseDate } = current;
+            const weaknum = new Date(courseDate).getDay();
+            const dat2 = `周${Utils.weekObj[weaknum]}`;
+            console.log(weaknum, Utils.weekObj[weaknum]);
+            return [...ex, {
+              ...current,
+              weakData: dat2
+            }]
+          }, [])
           _this.setData({
-            doneList: [...doneList, ...res.data.data]
+            doneList: [...doneList, ...dat]
           })
         }
       },
@@ -176,5 +216,35 @@ Page({
         wx.hideLoading()
       }
     })
+  },
+  loadMoreData: function (param) {
+    const _this = this;
+    const { besel, runningList, doneList} = this.data;
+    const url = `/rest/s1/Goods/course/public/${besel == '1' ? 'doing' : 'did'}`;
+    wx.request({
+      url: `${app.globalData.host}${url}`,
+      data: param,
+      success: function (res) {
+        let result = res.data.data;
+        const data = besel == '1' ? {
+          runningList: [...runningList, ...res.data.data]
+        } : {
+            doneList: [...doneList, ...res.data.data]
+        }
+        if (result.length == 10) {
+          _this.setData(data)
+          return
+        }
+        _this.setData({
+          ...data,
+          moreFlag: true,
+        })
+      },
+      fail: function (res) {
+
+      },
+      //   complete: function () { }
+      // })
+    });
   }
 })

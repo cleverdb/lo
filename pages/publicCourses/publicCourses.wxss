@@ -37,13 +37,30 @@ height:90rpx;
  margin-bottom:26rpx;
     /* flex:1; */
 }
+.courseName_wrap{
+    display: flex;
+}
+.courseName_top{
+    display: flex;
+    flex-direction: row;
+    color: #3F3B3A;
+}
+.courseName_bottom{
+    font-size:24px;
+    color: #727172;
+}
+.courseName_wrap text{
+    font-size: 28rpx;
+}
 .list_item_container>view:nth-child(2){
     flex-direction: row;
     justify-content: space-between;
 }
-.list_item_container>view:nth-child(2) text{
-   color: #3F3A3A;
-    font-size: 30rpx;
+.list_item_container .unitPrice_backgound{
+    color: red;
+    font-size: 20rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;
 }
 .list_item_container>view:nth-child(3){
 margin-top: 10rpx;
@@ -93,5 +110,14 @@ margin-bottom: 20rpx;
 }
 .posendMar{
    margin: 24rpx 0 30rpx 0; 
+}
+.bottomline{
+  height: 50rpx;
+}
+.tip{
+  display: flex;
+  justify-content: center;
+  font-size: 20rpx;
+  color: #D3D3D4;
 }
     
