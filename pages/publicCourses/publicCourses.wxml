@@ -15,7 +15,7 @@
                 <view wx:if="{{besel=='1'}}">
                     <block wx:for="{{runningList}}" wx:key="index">
                         <view class="list_item_container">
-                            <image bindtap="ondetail" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
+                            <image bindtap="ondetail" data-courseId="{{item.courseId}}" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
                             <view>
                                 <view class='courseName_wrap'>
                                     <view class='courseName_top'>
@@ -40,7 +40,7 @@
                                 <text class="content">{{item.courseBg}}</text>
                             </view>
                             <view class="posend row  posendMar">
-                                <button class="report">报名</button>
+                                <button class="report" data-item="{{item}}" bindtap="payTap">报名</button>
                             </view>
                         </view>
                     </block>
