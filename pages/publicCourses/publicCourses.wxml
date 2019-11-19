@@ -6,7 +6,7 @@
         <view class="">
             <view class="tabs_container">
                 <block wx:for="{{tabsList}}" wx:key="index">
-                    <view class="normal_border {{item.besel==true?'besel_border':null}}" data-id="{{item.id}}" bindtap="tabsChange">
+                    <view class="normal_border {{item.id==besel?'besel_border':null}}" data-id="{{item.id}}" bindtap="tabsChange">
                         <text>{{item.title}}</text>
                     </view>
                 </block>
@@ -15,15 +15,15 @@
                 <view wx:if="{{besel=='1'}}">
                     <block wx:for="{{runningList}}" wx:key="index">
                         <view class="list_item_container">
-                            <image bindtap="ondetail" class="imgs_item" src="{{item.imgSrc}}" />
+                            <image bindtap="ondetail" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
                             <view>
                                 <view>
-                                    <text>{{item.title}}</text>
+                                    <text>{{item.courseName}}</text>
                                 </view>
                                 <view class="row  itemCenter">
                                     <text class="bulge">{{item.currentNum}}</text>
                                     <text>/</text>
-                                    <text>{{item.totalNum}}</text>
+                                    <text>{{item.maxNum}}</text>
                                 </view>
                             </view>
                             <view>

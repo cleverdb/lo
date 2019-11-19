@@ -7,224 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    year: 2019,
-    month: 12,
     host: app.globalData.host,
-    personDetail: {
-      name: "宋亚如",
-      goods: "擅长：减脂，增肌",
-      detail: "拳在英文当中为KWON，意为以拳头打击：而道的英文发音是Do,是指代表道行、礼仪修行的艺术。跆拳道是现代奥运会正式而道的英文发音为Do"
-    },
-    descript: {
-      title: "身心平衡",
-      subheading: "燃脂指数",
-      mark1: "4",
-      mark2: "5",
-      details: "拳在英文当中为KWON,意为拳头打击:而道的英文发音为Do,是指代表道行、礼仪修炼的艺术。跆拳道是现代运动会正式而道的英文发音为Do,是指代表道行、礼仪修炼的艺术。"
-    },
-    data: [
-      {
-        title: "日/01",
-        data: [
-          [{
-            "courseId": "100004",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100005",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100059",
-          }],
-          [],
-          [{
-            "courseId": "100006",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100007",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }],
-          []
-        ],
-      }, {
-        title: "六/02",
-        data: [
-          [{
-            "courseId": "150011",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "140012",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100059",
-          }],
-          [],
-          [{
-            "courseId": "130012",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "120034",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }],
-          []
-        ]
-      }, {
-        title: "五/03",
-        data: [
-          [{
-            "courseId": "100061",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100052",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100059",
-          }],
-          [],
-          [{
-            "courseId": "100042",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100044",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }],
-          []
-        ],
-      }, {
-        title: "四/04",
-        data: [
-          [{
-            "courseId": "100811",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100712",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100059",
-          }],
-          [],
-          [{
-            "courseId": "100612",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100534",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }],
-          []
-        ],
-      }, {
-        title: "三/05",
-        data: [
-          [{
-            "courseId": "100411",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100312",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100059",
-          }],
-          [],
-          [{
-            "courseId": "100212",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }, {
-            "courseId": "100134",
-            "courseName": "跆拳道",
-            "coachName": "李美丽",
-            "startTime": "18:50",
-            "endTime": "12:45",
-            "coursePlanId": "100055",
-          }],
-          []
-        ],
-      }, {
-        title: "二/06",
-        data: [
-          [],
-          [],
-          [],
-          []
-        ],
-      }, {
-        title: "一/07",
-        data: [
-          [],
-          [],
-          [],
-          []
-        ],
-      }
-
-    ]
-
+    data: [],
+    courseDetail: {},
+    isDetail: false,
+    courseData: {},
+    weekObj: Utils.weekObj,
+    hours: new Date().getHours(),
+    startWeek: new Date().getDay()
   },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -250,8 +42,19 @@ Page({
             }
           })
         } else {
+          const dayNum  = res.data.data.reduce((nex, current) => {
+            const { title } = current;
+            const titleArray = title.split('/');
+            return [...nex, {
+              ...current,
+              dayNum: titleArray[0]
+            }] 
+          }, []);
+          console.log(_this.data.startWeek);
+          console.log(dayNum);
+          
           _this.setData({
-            data:res.data.data
+            data: dayNum
           })
         }
       },
@@ -317,35 +120,141 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onbefore: function () {
-    let { year, month } = this.data;
-    if (month == 1) {
-      this.setData({
-        year: year - 1,
-        month: 12
-      })
-    } else {
-      this.setData({
-        year: year,
-        month: month - 1
-      })
-    }
-  },
-  onafter: function () {
-    let { year, month } = this.data;
-    if (month == 12) {
-      this.setData({
-        year: year + 1,
-        month: 1
-      })
-    } else {
-      this.setData({
-        year: year,
-        month: month + 1
-      })
-    }
-  },
   onnext: function () {
 
+  },
+  colTap: function (e) {
+    const { coursedata, disabled } = e.currentTarget.dataset;
+    if (disabled) {
+      wx.showToast({
+        title: '已过期,请选择其他课',
+        duration: 2000,
+        icon: 'none'
+      });
+      return;
+    }
+    const { coursePlanId } = this.data;
+    const { coursePlanId: courseplanid, courseId: courseid } = coursedata;
+    const courseId = coursePlanId == courseplanid ? "" : courseid;
+    const courseData = coursePlanId == courseplanid ? {} : coursedata;
+    this.getDetail(courseId);
+    this.setData({
+      coursePlanId: coursePlanId == courseplanid ? "" : courseplanid,
+      courseId,
+      courseData
+    });
+  },
+  getDetail: function (param) {
+    const _this = this;
+    console.log(param);
+    if (param!=='') {
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wx.request({
+        url: `${app.globalData.host}/rest/s1/Goods/course/group/detail`,
+        data: {
+          courseId: param
+        },
+        success: function (res) {
+          if (res.statusCode != 200) {
+            wx.showToast({
+              title: '加载失败',
+              icon: 'fail',
+              duration: 2000
+            });
+            _this.setData({
+              coursePlanId: "",
+              courseId: "",
+            });
+          } else {
+            _this.setData({
+              courseDetail: res.data.data,
+              isDetail:true
+            })
+          }
+        },
+        fail: function () {
+          _this.setData({
+            coursePlanId: "",
+            courseId: "",
+          });
+          wx.showToast({
+            title: '请检查您的网络连接~',
+            icon: 'fail',
+            duration: 2000
+          })
+        },
+        complete: function (res) {
+          wx.hideLoading()
+        }
+      })
+    } else {
+      this.setData({
+        isDetail:false
+      })
+    }
+  },
+  buyTap: function () {
+    const { courseData,courseDetail } = this.data;
+    const { coursePlanId, courseId } = courseData;
+    const { unitPrice } = courseDetail;
+    const { userId } = app.globalData.userInfo;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      method: 'POST',
+      data: {
+        courseId,
+        coursePlanId,
+        realPay: unitPrice || 0,
+        openId: app.globalData.openId,
+        vipId: userId
+      },
+      success(res) {
+        const { errorCode = undefined, messages, errors } = res.data;
+        if (errorCode) {
+          wx.showToast({
+            title: errors,
+            duration: 2000,
+            icon: 'none'
+          })
+          return
+        }
+        if (unitPrice > 0) {
+          const result = res.data.data;
+          const { orderid } = result;
+          wx.requestPayment({
+            timeStamp: result.timeStamp,
+            nonceStr: result.nonceStr,
+            package: result.package,
+            signType: result.signType,
+            paySign: result.paySign,
+            success(res) {
+              wx.showModal({
+                title: '预约成功',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#FCC800',
+              });
+            },
+            fail(res) {
+              wx.request({
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                data: {
+                  orderId: orderid,
+                }
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: messages,
+            duration: 2000,
+            icon: 'none'
+          })
+        }
+
+      }
+    })
   }
 })

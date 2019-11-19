@@ -1,4 +1,5 @@
 // pages/publicCourses/publicCourses.js
+const app = getApp()
 Page({
 
   /**
@@ -10,56 +11,39 @@ Page({
       {
         "id": "1",
         title: "进行中",
-        besel: true
       }, {
         "id": "2",
         title: "已结束",
-        besel: false
       }
     ],
-    runningList: [
-      {
-        imgSrc: "../../images/activity.png",
-        title: "野蛮人障碍赛",
-        currentNum: '20',
-        totalNum: '50',
-        date: "2019.10.09 周一 10:30-11:20",
-        content: "从1kg至50kg,提升肌肉控制能力，矫正萨迪克江安河肯德基安环科送达回单卡建行卡号数据库的"
-      },
-      {
-        imgSrc: "../../images/activity.png",
-        title: "野蛮人障碍赛",
-        currentNum: '20',
-        totalNum: '50',
-        date: "2019.10.09 周一 10:30-11:20",
-        content: "从1kg至50kg,提升肌肉控制能力，矫正ji'xing"
-      }
-    ],
-    doneList: [
-      {
-        imgSrc: "../../images/activity.png",
-        title: "野蛮人障碍赛",
-        currentNum: '20',
-        totalNum: '50',
-        date: "2019.10.09 周一 10:30-11:20",
-        content: "从1kg至50kg,提升肌肉控制能力，矫正ji'xing"
-      },
-      {
-        imgSrc: "../../images/activity.png",
-        title: "野蛮人障碍赛",
-        currentNum: '20',
-        totalNum: '50',
-        date: "2019.10.09 周一 10:30-11:20",
-        content: "从1kg至50kg,提升肌肉控制能力，矫正ji'xing"
-      }
-    ]
+    runningList: [],
+    doneList: [],
+    host: app.globalData.host,
+    runningPageIndex: 0,
+    runningPageSize:10,
+    donePageIndex: 0,
+    donePageSize: 10,
+    besel:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const {
+      donePageIndex,
+      donePageSize,
+      runningPageIndex,
+      runningPageSize,
+    } = this.data;
+    this.getDoingData({
+      pageIndex:runningPageIndex,
+      pageSize:runningPageSize
+    });
+    this.getDoneData({
+      pageIndex:donePageIndex,
+      pageSize:donePageSize
+    });
   },
 
   /**
@@ -117,20 +101,80 @@ Page({
   },
   tabsChange: function (e) {
     let { id } = e.currentTarget.dataset;
-    console.log('78', id)
-    let { tabsList } = this.data;
-    let data = tabsList.map((item) => {
-      if (item.id == id) {
-        item.besel = true
-      } else {
-        item.besel = false
-      }
-      return item;
-    })
-    console.log('125', id)
     this.setData({
-      tabsList: data,
       besel: id
+    })
+  },
+  getDoingData: function (param) {
+    const { runningList } = this.data;
+    const _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+      wx.request({
+        url: `${app.globalData.host}/rest/s1/Goods/course/public/doing`,
+        data: param,
+        success: function (res) {
+          if (res.statusCode != 200) {
+            _this.setData({
+              pageState: {
+                message: '加载失败，请重新加载~',
+                state: 'error'
+              }
+            })
+          } else {
+            _this.setData({
+              runningList: [...runningList, ...res.data.data] 
+            })
+          }
+        },
+        fail: function () {
+          _this.setData({
+            pageState: {
+              message: '请检查您的网络连接~',
+              state: 'error'
+            }
+          })
+        },
+        complete: function (res) {
+          wx.hideLoading()
+        }
+      })
+  },
+  getDoneData: function (param) {
+    const { doneList } = this.data;
+    const _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/public/did`,
+      data: param,
+      success: function (res) {
+        if (res.statusCode != 200) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          _this.setData({
+            doneList: [...doneList, ...res.data.data]
+          })
+        }
+      },
+      fail: function () {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete: function (res) {
+        wx.hideLoading()
+      }
     })
   }
 })

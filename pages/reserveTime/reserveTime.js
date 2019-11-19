@@ -1,6 +1,7 @@
 // pages/mineAppointment/mineAppointment.js
 import Utils from '../../utils/util.js'
-const app = getApp()
+const app = getApp();
+
 Page({
 
   /**
@@ -242,7 +243,7 @@ Page({
     const { userId } = app.globalData.userInfo;
     wx.showModal({
       title: '请确认预约信息',
-      content: `${selectedDay} 周${startWeek}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
+      content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
       confirmColor: '#FCC800',
       success(res) {
         wx.request({

@@ -532,7 +532,7 @@ Page({
     const startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
     wx.showModal({
       title: '请确认预约信息',
-      content: `${selectedDay} 周${startWeek}\r\n${startTime}-${endTime}\r\n${courseName}${coachName}`,
+      content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}${coachName}`,
       confirmColor: '#FCC800',
       success(res) {
         wx.request({

@@ -1,9 +1,17 @@
 <!-- pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail.wxml -->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
+<wxs module="fn">
+    module.exports = {
+        split: function(str){
+            var dat = str.split(':');
+            return dat[0];
+        }
+    }
+</wxs>
 <view class="container">
+    <image src="../../images/icon/next.png" class="moveright" bindtap="onnext"></image>
     <scroll-view scroll-x>
-        <image src="../../images/icon/next.png" class="moveright" bindtap="onnext"></image>
         <view class="_table">
             <block wx:for="{{data}}" wx:key="index" wx:if="{{data}}">
                 <view class="_table_col">
@@ -11,14 +19,19 @@
                         <text>{{item.title}}</text>
                     </view>
                     <block wx:for="{{item.data}}" wx:key="index" wx:if="{{item.data}}" wx:for-item="item1">
-                        <view class="body_col">
+                        <view class="body_col" >
                             <block wx:for="{{item1}}" wx:key="index" wx:for-item="item2">
-                                <view class="tr_col {{(item1.length==1||index==item1.length-1 ? '':'tr_col_border')}}">
+                                <view 
+                                    class="tr_col {{item2.coursePlanId == coursePlanId ? 'tr_col_background' : '' }}"
+                                    bindtap="colTap"
+                                    data-courseData="{{item2}}"
+                                    data-disabled="{{(weekObj[item.dayNum] < startWeek)||((weekObj[item.dayNum] == startWeek)&&((fn.split(item2.startTime))<hours))}}"
+                                >
                                     <view>
                                         <text>{{item2.startTime}}-{{item2.endTime}}</text>
                                     </view>
-                                    <text>{{item2.courseName}}</text>
-                                    <text>{{item2.coachName}}</text>
+                                    <view class='col_name'>{{item2.courseName}}</view>
+                                    <view class='col_name'>{{item2.coachName}}</view>
                                 </view>
                             </block>
                         </view>
@@ -27,38 +40,42 @@
             </block>
         </view>
     </scroll-view>
-    <view class="space"></view>
-    <view class="_card">
+    <view wx:if="{{isDetail}}">
+        <view class="space"></view>
+        <view class="_card" >
         <view class="_card_head">
             <view class="_card_head_title">
-                <text>{{descript.title}}</text>
+                <text>{{courseDetail.courseName}}</text>
             </view>
             <view class="_card_head_subheading">
-                <text>{{descript.subheading}}</text>
-            </view>
-            <view class="_card_head_mark">
-                <text>{{descript.mark1}}</text>
-                <text>/{{descript.mark2}}</text>
+               <text wx:if="{{courseDetail.unitPrice}}" class='subheading_text'>￥{{courseDetail.unitPrice}}</text>
+               <text wx:else class='subheading_text'>免费</text>
+               <text>燃烧指数:</text>
+               <text>{{courseDetail.bmiLevel}}/5</text>
             </view>
         </view>
         <view class="_card_head_details">
-            <text>{{descript.details}}</text>
+            <text>{{courseDetail.summary}}</text>
+        </view>
+        </view>
+        <view class="space"></view>
+        <view class="person_details">
+            <image class="_person_details_img" src="{{host}}{{courseDetail.coachPic}}" />
+            <view>
+                <view class="_personDetail_name">
+                    <text>{{courseDetail.coachName}}</text>
+                </view>
+                <view class="_personDetail_goods">
+                    <text>擅长:{{courseDetail.coachForte}}</text>
+                </view>
+                <view class="_personDetail_detail">
+                    <text>{{courseDetail.coachSummary}}</text>
+                </view>
+            </view>
         </view>
     </view>
-    <view class="space"></view>
-    <view class="person_details">
-        <image class="_person_details_img" src="../../images/sliber_test.png" />
-        <view>
-            <view class="_personDetail_name">
-                <text>{{personDetail.name}}</text>
-            </view>
-            <view class="_personDetail_goods">
-                <text>{{personDetail.goods}}</text>
-            </view>
-            <view class="_personDetail_detail">
-                <text>{{personDetail.detail}}</text>
-            </view>
-        </view>
+    <view wx:else class='_card_no_data'>
+        请选择一个项目
     </view>
-    <button class="order_button">立即预约</button>
 </view>
+ <button class="order_button" disabled="{{!isDetail}}" bindtap="buyTap">立即预约</button>
