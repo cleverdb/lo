@@ -1,12 +1,16 @@
 <!--pages/mineReport/mineReport.wxml-->
 <view class='container'>
+  <view class='mine-report-top'>
+    <block wx:for="{{dateArr}}">
+      <view class="{{choose==index ? 'active' : ''}}" data-index='{{index}}' bindtap='tabsChange'>{{item.text}}</view>
+    </block>   
+  </view>
   <view class='container-hd'>
     <view class="nav-hd" bindtap='beforeTap'>
         <image src="/images/icon/arrow-left-ok.png"></image>
         <view class='nav-label'>前一天</view>
     </view>
     <view class="nav-bd">
-       
         <canvas canvas-id="bgCanvas" id="bgCanvas" class='canvas'></canvas>
          <canvas canvas-id="stepCanvas" id="stepCanvas" class='canvas'></canvas>
         <canvas canvas-id="arcCanvas" id="arcCanvas" class='canvas'></canvas>
@@ -19,40 +23,173 @@
         <image src="/images/icon/arrow-right-ok.png"></image>
     </view>
   </view>
-  <view class='container-bd'>
-      <view class="tr header">{{nowDate}}</view>
+  <view class='container-rank'>
       <view class="tr">
-        <view class="td label">运动排名</view>
-        <view class="td value" wx:if='{{report.ranking ==1}}'><image src="/images/icon/1.png"></image></view>
-        <view class="td value" wx:if='{{report.ranking ==2}}'><image src="/images/icon/2.png"></image></view>
-        <view class="td value" wx:if='{{report.ranking ==3}}'><image src="/images/icon/3.png"></image></view>
-        <view class="td value" wx:if='{{report.ranking > 3}}'><image class ="other" src="/images/icon/n.png"></image><view class="num">04</view></view>
-        <view class="td value alert" wx:if='{{!report.ranking}}'>晚上11点更新</view>
+        <view class='td-top'>190</view>
+        <view class="label">运动排名</view>
       </view>
       <view class="tr">
-        <view class="td label">运动时长</view>
-        <view class="td value">{{report.howlong}}min</view>
+        <view class='td-top'>120</view>
+        <view class="label">运动时长(分钟)</view>
       </view>
       <view class="tr noboder">
-        <view class="td label">消耗热量</view>
-        <view class="td value">{{report.calorie}}kcal</view>
+        <view class='td-top'>120</view>
+        <view class="label">消耗(大卡))</view>
       </view>
   </view>
   <view class="container-ft">
-    <view class="tr header">健身记录</view>  
-    <block wx:for="{{report.appointments}}" wx:key="{{index}}">
-      <view class="cell">
-        <view class="cell_hd">
-          <view class='name'>{{item.appCourseName}}</view>
-          <view class='badge'>{{item.coachName}}</view>
-          <view class='badge'>{{item.storeName}}</view>
+    <view class="ft-header">健身记录</view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
         </view>
-        <view class="cell_bd">
-          <view>{{item.howlong}}min</view>
-          <view>{{item.calorie}}kcal</view>
-          <view>{{item.strength}}</view>
+        <view>
+          已完成第9次运动
         </view>
       </view>
-    </block>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
+    <view class='ft-item'>
+      <view class='ft-top-wrap'>
+        <view>
+          12月12日
+        </view>
+        <view>
+          已完成第9次运动
+        </view>
+      </view>
+      <view class='ft-bottom'>
+        <view class='left-wrap'>
+          <text class='ft-name'>格斗健身课</text><text class='ft-type'>有氧运动</text>
+        </view>
+        <view class='right-wrap'>
+          <text class='right-num'>60</text><text>分钟</text>
+          <text class='right-num ml'>500</text><text>大卡</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

@@ -11,20 +11,28 @@ Page({
     ...Canvas.data,
     host:app.globalData.host,
     report: {},
-    nowDate: Utils.nowDate()
+    nowDate: Utils.nowDate(),
+    dateArr:[{
+      text:'日'
+    },{
+      text:'周'
+    },{
+      text:'月'
+    }],
+    choose:0,
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     const nowDate = Utils.nowDate()
-    this.setData({
-      nowDate: nowDate
-    })
-    this.initData({
-      userId:app.globalData.userInfo.userId,
-      reportDate: nowDate
-    })
+    // this.setData({
+    //   nowDate: nowDate
+    // })
+    // this.initData({
+    //   userId:app.globalData.userInfo.userId,
+    //   reportDate: nowDate
+    // })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -118,5 +126,13 @@ Page({
       userId: app.globalData.userInfo.userId,
       reportDate: nextDate
     })
+  },
+  // tabs change 
+  tabsChange:function(e){
+    const { index } = e.currentTarget.dataset;
+    this.setData({
+      choose:index
+    })
   }
+
 })

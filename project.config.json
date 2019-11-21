@@ -189,6 +189,13 @@
 					"id": -1,
 					"name": "pages/mineCouresDetail/mineCouresDetail",
 					"pathName": "pages/mineCouresDetail/mineCouresDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineReport/mineReport",
+					"pathName": "pages/mineReport/mineReport",
 					"scene": null
 				}
 			]

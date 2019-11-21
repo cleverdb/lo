@@ -34,7 +34,7 @@
         <view class='tr'>
           <view class='td'>
             <view class='name'>
-               <view class='course_name'> {{item.courseName}}</view><view class='course_type' style="background:{{courseYype[item.courseTypeName]}}">{{item.courseTypeName}}</view>
+               <view class='course_name'> {{item.courseName}}</view><view class='course_type' style="background:{{courseYype[item.courseTypeId].color}}">{{courseYype[item.courseTypeId].text}}</view>
             </view>
             <view>
               <text class='badge'>{{item.coachName}}</text>

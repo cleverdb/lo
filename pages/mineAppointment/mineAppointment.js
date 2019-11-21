@@ -19,9 +19,18 @@ Page({
     hideAlert: true,
     showModalStatus: false,
     courseYype: {
-      '团操课': '#3EBDE0',
-      '私教': '#43B9AA',
-      '活动':'#E8365F'
+      'PrivateCourse':{
+        text:'私教',
+        color: '#3EBDE0'
+      },
+      'GroupCourse': {
+        text: '操课',
+        color: '#43B9AA'
+      },
+      'PublicCourse': {
+        text: '活动',
+        color: '#E8365F'
+      }
     }
   },
 
