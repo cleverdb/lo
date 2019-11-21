@@ -207,7 +207,6 @@ Page({
     })
   },
   vcodeTap: function() {
-    debugger
     const _this = this
     let cellphone = _this.data.cellphone
     if (cellphone == '' || cellphone.length != 11){

@@ -124,7 +124,7 @@ Page({
 
   },
   ondel: function () {
-    let { num, unitPrice, selectTicket, oldTotal } = this.data;
+    let { num, unitPrice } = this.data;
     num = num - 1
     if (num > 0) {
       const data = Utils.times(unitPrice, num);
@@ -251,7 +251,6 @@ Page({
       courseId, 
       courseName, 
       coachName,
-      orderid
       } = this.data;
     const { voucherUuid = "" } = selectTicket;
     const { userId } = app.globalData.userInfo;
@@ -326,7 +325,7 @@ Page({
         const data = res.data.data;
         const { usable, unusable } = data;
         _this.setData({
-          ticketDesc: usable.length > 0 ? '查看':'暂无优惠券',
+          ticketDesc: usable.length > 0 ? '查看' : '暂无优惠券',
           usable,
           unusable,
           selectTicket: {}
@@ -384,6 +383,7 @@ Page({
       this.setData({
         animationData: animation.export(),
         showModalStatus: false,
+        animation2: animation.export(),
       },200)
     })
   
@@ -408,8 +408,7 @@ Page({
           }
         })
       }
-        
     })
-  
-  }
+  },
+
 })

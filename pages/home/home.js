@@ -150,7 +150,6 @@ Page({
   },
   getSelectData:function(e){
     const _this = this;
-    const { pageIndex,pageSize } = this.data;
     wx.request({
       url: app.globalData.host + '/rest/s1/Goods/store/getStore',
       success: function (res) {

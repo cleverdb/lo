@@ -97,12 +97,13 @@
           </view>
           <block wx:for="{{usable}}" wx:key="index" wx:for-item='ticket'>
             <view 
-                class='ticket-view {{selectTicket.voucherUuid == ticket.voucherUuid ? "select": ""}}' 
+                class='ticket-view' 
                 bindtap='ticketTap'
                 data-voucherUuid='{{ticket.voucherUuid}}'
                 data-voucherName='{{ticket.voucherName}}'
                 data-parValue='{{ticket.parValue}}'
             >
+              <image wx:if="{{selectTicket.voucherUuid == ticket.voucherUuid}}" class="besel_flag" src="/images/icon/ensure_three.png"></image>
               <view class='ticket-view-left'>
                 <view class='hd'>
                   <text class='tname usable'>{{ticket.voucherName}}</text>
@@ -171,7 +172,5 @@
           </block>
           <view class="{{unusable.length>0 ? 'unusable_footer':'usable_footer'}}" ></view>
         </scroll-view>
-  </view>
-  <view class="popup-content-ft">
   </view>
 </view>

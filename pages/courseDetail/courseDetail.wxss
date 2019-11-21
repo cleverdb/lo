@@ -385,8 +385,12 @@ border-top-left-radius: 10rpx;
   text-align: center;
 }
 
-.select{
-  border:1px solid #fcc700;
+.besel_flag{
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 64rpx;
+  height: 64rpx;
 }
 .usable_title{
   font-size:28rpx;

@@ -8,8 +8,9 @@ view text{
 }
 .try_course_container{
   position: relative;
-    min-height: 100vh;
-    background-color: #ffffff;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-bottom: 110rpx;
 }
 .icon_down{
     margin-left: 20rpx;
@@ -69,7 +70,11 @@ view text{
     color: #E7355E;
 }
 .color_gary text{
-     color:  #9E9F9F;
+  color:  #9E9F9F;
+}
+.picker{
+  color:  #9E9F9F;
+  font-size: 27rpx;
 }
 .notic text{
  font-size: 20rpx;
@@ -84,7 +89,6 @@ view text{
     color: #3F3B3A;
 }
 .read{
-    margin-top: 40rpx;
     margin-bottom: 40rpx;
     padding-left:0 ;
     display: flex;
@@ -102,6 +106,7 @@ width: 22rpx;
 .read text{
     font-size: 22rpx;
     color: #3F3B3A;
+    display: block;
 }
 .content_item .hot{
     margin-top: 2rpx;
@@ -220,9 +225,9 @@ border-top-left-radius: 10rpx;
     border-right: 1rpx solid #B5B6B6;
 }
 .flex_container{
- opacity:1;
+  opacity:1;
   background-color:#ffffff;
-  position: absolute;
+  position: fixed;
   bottom:0;
   z-index: 999;
   max-height: 680rpx;
@@ -423,4 +428,185 @@ border-top-left-radius: 10rpx;
   height: 64rpx;
   right: 30rpx;
   position: absolute;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.popup-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #090000;
+  opacity: 0.2;
+  z-index: 500;
+  color: #fff;
+}
+
+.popup-content {
+  height: 600rpx;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 600;
+  color: #a0a0a0;
+  background-color: #EFEFEF;
+  padding-top: 20rpx;
+}
+.popup-content-bd {
+  width: 100%;
+  height: 600rpx;
+  position: relative;
+}
+
+.content-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ .sv {
+  height: 600rpx;
+  padding-bottom: 20rpx;
+
+}
+
+.no-ticket {
+  width: 100%;
+  text-align: center;
+  padding-top:100rpx;
+}
+
+.no-ticket-img {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.no-ticket .text {
+  font-size: 28rpx;
+  color: #a0a0a0;
+  text-align: center, ;
+}
+
+.ticket-view {
+  position: relative;
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx;
+  color: #3e3e3e;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+.ticket-view .ticket-view-left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rpx;
+  background-color: #ffffff;
+  border-top-right-radius: 17rpx;
+  border-bottom-right-radius: 17rpx;
+}
+.ticket-view-center{
+  padding: 10rpx 0;
+  width: 1px;
+  display: flex;
+}
+.ticket-view-center > view{
+  width: 1px;
+  border-right: 2rpx #ABACAC dashed;
+}
+.ticket-view-left .hd {
+  height: 70%;
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  font-weight: 900;
+  border-bottom: 2rpx #3e3e3e solid;
+}
+
+.ticket-view-left .bd {
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+}
+
+.ticket-view .ticket-view-right {
+  width: 30%;
+  background-color: #ffffff;
+  border-top-left-radius: 17rpx;
+  border-bottom-left-radius: 17rpx;
+}
+
+.ticket-view-right .hd {
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-view-right .hd .num {
+  font-size: 48rpx;
+  align-self: center;
+  font-weight: 900;
+}
+.ticket-view .usable{
+  color: #FCC700;
+}
+.ticket-view .disabled{
+  color: #9E9F9F
+}
+.ticket-view-right .hd .logo {
+  margin-bottom: 1rpx;
+  align-self: center;
+  font-size: 28rpx;
+  /* font-weight: 700; */
+}
+.ticket-view-right .bd {
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.besel_flag{
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 64rpx;
+  height: 64rpx;
+}
+.usable_title{
+  font-size:28rpx;
+  padding-left: 30rpx;
+}
+.unusable_title{
+  font-size:20rpx;
+  padding-left: 30rpx;
+}
+.unusable_footer{
+  height: 20rpx;
+}
+.usable_footer{
+  height: 1px;
+}
+.threshold_reason{
+  color: red;
+  font-size: 20rpx;
+  padding-left: 20rpx;
+  margin-top: 10rpx;
+}
+.unusable_view{
+  margin-bottom: 0;
 }
