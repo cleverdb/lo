@@ -1,29 +1,4 @@
 // pages/practiceCourses/practiceCourses.js
-const dat = {
-  address: "北京市朝阳区奥林匹克公园",
-  courseBg: "活动背景：这部分内容应根据策划书的特点在以下项目中选取内容重点阐述，具体项目有：基本情况简介、主要执行对象、近期状况、组织部门、活动开展原因、社会影响、以及相关目的动机。其次应说明问题的环境特征，主要考虑环境的内在优势、弱点、机会及威胁等因素，对其作好全面的分析（SWOT分析），将内容重点放在环境分析的各项因素上，对过去现在的情况进行详细的描述，并通过对情况的预测制定计划。如环境不明，则应该通过调查研究等方式进行分析加以补充。",
-  courseId: "100051",
-  courseName: "野蛮人障碍赛",
-  createDate: 1572625308102,
-  createUser: "John Doe",
-  currentNum: 2,
-  endTime: 1573536600000,
-  joinType: "报名类型：作为策划的正文部分，表现方式要简洁明了，使人容易理解，但表述方面要力求详尽，写出每一点能设想到的东西，没有遗漏。在此部分中，不仅仅局限于用文字表述，也可适当加入统计图表等。对策划的各工作项目，应按照时间的先后顺序排列，绘制实施时间表有助于方案核查。人员的组织配置、活动对象、相应权责及时间地点也应在这部分加以说明，执行的应变程序也应该在这部分加以考虑。",
-  lastUpdatedStamp: 1573659694070,
-  latitude: 39.882765,
-  longitude: 116.398981,
-  maxNum: 30,
-  navPicUrl: "/static/images/course/course_pulic_1572625308302.png",
-  picUrl: "/static/images/course/course_pulic_1572625308649.png",
-  place: "力偶健身俱乐部",
-  startTime: 1576123200000,
-  status: "Y",
-  storeId: "100000",
-  storeName: "力偶健身乐城店",
-  unitPrice: 100,
-  updateDate: 1572625308119,
-  updateUser: "John Doe",
-}
 const app = getApp()
 Page({
 
@@ -32,29 +7,70 @@ Page({
    */
   data: {
     isShow: true,
-    address: "北京市朝阳区奥林匹克公园",
-    storeName: "力偶健身乐城店",
-    storePhone:'18515111012',
     host: app.globalData.host,
-    courseName: "野蛮人障碍赛",
-    navPicUrl: "/static/images/course/course_pulic_1572625308302.png",
-    courseBg: "活动背景：这部分内容应根据策划书的特点在以下项目中选取内容重点阐述，具体项目有：基本情况简介、主要执行对象、近期状况、组织部门、活动开展原因、社会影响、以及相关目的动机。其次应说明问题的环境特征，主要考虑环境的内在优势、弱点、机会及威胁等因素，对其作好全面的分析（SWOT分析），将内容重点放在环境分析的各项因素上，对过去现在的情况进行详细的描述，并通过对情况的预测制定计划。如环境不明，则应该通过调查研究等方式进行分析加以补充。",
-    joinType: "报名类型：作为策划的正文部分，表现方式要简洁明了，使人容易理解，但表述方面要力求详尽，写出每一点能设想到的东西，没有遗漏。在此部分中，不仅仅局限于用文字表述，也可适当加入统计图表等。对策划的各工作项目，应按照时间的先后顺序排列，绘制实施时间表有助于方案核查。人员的组织配置、活动对象、相应权责及时间地点也应在这部分加以说明，执行的应变程序也应该在这部分加以考虑。",
+    address: "",
+    storeName: "",
+    phone:"",
+    courseName: "",
+    navPicUrl: "",
+    courseBg: "",
+    joinType: "",
+    bmiLevel:3
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { storeName,address } = this.data;
-    app.globalData.selectStore = [{
-      latitude: 39.882765,
-      longitude: 116.398981,
-      storeName,
-      address
-    }]
+    const { courseId } = options;
+    this.initData({
+      courseId
+    })
+  
   },
-
+  initData:function(param){
+    const _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/public/detail`,
+      data:param,
+      success: function (res) {
+        if (res.statusCode != 200) {
+          _this.setData({
+            pageState: {
+              message: '加载失败，请重新加载~',
+              state: 'error'
+            }
+          })
+        } else {
+          const dat = res.data.data;
+          const { latitude, longitude, storeName, address} =dat;
+          app.globalData.selectStore = [{
+            latitude,
+            longitude,
+            storeName,
+            address
+          }]
+          _this.setData({
+            ...dat,
+          })
+        }
+      },
+      fail: function () {
+        _this.setData({
+          pageState: {
+            message: '请检查您的网络连接~',
+            state: 'error'
+          }
+        })
+      },
+      complete: function (res) {
+        wx.hideLoading()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -101,7 +117,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    const { courseId} = this.data;
+    return {
+      title: '微信小程序联盟',
+      desc: '最具人气的小程序开发联盟!',
+      path: `/pages/practiceCourses/practiceCourses?courseId=${courseId}`
+    }
   },
   onshare: function () {
     
@@ -119,8 +140,125 @@ Page({
   },
   // 电话
   phoneTap: function () {
+    const { phone } = this.data;
     wx.makePhoneCall({
-      phoneNumber: storePhone,
+      phoneNumber: phone ,
+    })
+  },
+  // 支付 或 预约
+  payTap:function(){
+    const { userId } = app.globalData.userInfo;
+    const { courseId, unitPrice} = this.data;
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      method: 'POST',
+      data: {
+        courseId,
+        realPay: unitPrice > 0 ? unitPrice : 0,
+        openId: app.globalData.openId,
+        vipId: userId
+      },
+      success(res) {
+        const { errorCode = undefined, messages, errors } = res.data;
+        if (errorCode) {
+          wx.showToast({
+            title: errors,
+            duration: 2000,
+            icon: 'none'
+          })
+          return
+        }
+        if (unitPrice > 0) {
+          const result = res.data.data;
+          const { orderid } = result;
+          wx.requestPayment({
+            timeStamp: result.timeStamp,
+            nonceStr: result.nonceStr,
+            package: result.package,
+            signType: result.signType,
+            paySign: result.paySign,
+            success(res) {
+              _this.setData({
+                isShow:true
+              })
+            },
+            fail(res) {
+              wx.request({
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                data: {
+                  orderId: orderid,
+                }
+              })
+            }
+          })
+        } else {
+          _this.setData({
+            isShow: true
+          })
+        }
+
+      }
+    })
+  },
+  // 保存图片
+  loadImg:function(){
+    const _this = this;
+    //获取相册授权
+    _this.downLoadImg();
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success() {
+              console.log('授权成功');
+              _this.downLoadImg();
+            }
+          })
+        }else{
+          _this.downLoadImg();
+        }
+      }
+    })
+  },
+  downLoadImg:function(){
+    const { host, navPicUrl} = this.data;
+    wx.downloadFile({
+      url: `${host}${navPicUrl}`,
+      success: function (res) {
+        console.log(res);
+        //图片保存到本地
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: function (data) {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              duration: 2000
+            })
+          },
+          fail: function (err) {
+            console.log(err);
+            if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+              console.log("当初用户拒绝，再次发起授权")
+              wx.openSetting({
+                success(settingdata) {
+                  console.log(settingdata)
+                  if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                    console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+                  } else {
+                    console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+                  }
+                }
+              })
+            }
+          },
+          complete(res) {
+            console.log(res);
+          }
+        })
+      }
     })
   }
 })

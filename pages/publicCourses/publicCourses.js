@@ -103,9 +103,10 @@ Page({
   onShareAppMessage: function () {
 
   },
-  ondetail: function () {
+  ondetail: function (e) {
+    const { courseid } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/practiceCourses/practiceCourses`,
+      url: `/pages/practiceCourses/practiceCourses?courseId=${courseid}`,
     })
   },
   tabsChange: function (e) {
@@ -246,5 +247,66 @@ Page({
       //   complete: function () { }
       // })
     });
+  },
+  // 报名
+  payTap:function(e){
+    const { item } = e.currentTarget.dataset;
+    const { courseId, unitPrice=0,} = item;
+    const { userId } = app.globalData.userInfo;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      method: 'POST',
+      data: {
+        courseId,
+        realPay: unitPrice > 0 ? unitPrice : 0,
+        openId: app.globalData.openId,
+        vipId: userId
+      },
+      success(res) {
+        const { errorCode = undefined, messages, errors } = res.data;
+        if (errorCode) {
+          wx.showToast({
+            title: errors,
+            duration: 2000,
+            icon: 'none'
+          })
+          return
+        }
+        if (unitPrice > 0) {
+          const result = res.data.data;
+          const { orderid } = result;
+          wx.requestPayment({
+            timeStamp: result.timeStamp,
+            nonceStr: result.nonceStr,
+            package: result.package,
+            signType: result.signType,
+            paySign: result.paySign,
+            success(res) {
+              wx.showModal({
+                title: '预约成功',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#FCC800',
+              });
+            },
+            fail(res) {
+              wx.request({
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                data: {
+                  orderId: orderid,
+                }
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: messages,
+            duration: 2000,
+            icon: 'none'
+          })
+        }
+
+      }
+    })
   }
 })

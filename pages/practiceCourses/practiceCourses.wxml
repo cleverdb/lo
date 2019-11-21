@@ -7,18 +7,20 @@
         <view class="content_container_item  bor_bottom">
             <view class="">
                 <text class="typename">{{courseName}}</text>
-                <text class='typename_bottom'>燃脂指数:</text>
+                <text class='typename_bottom'>燃脂指数: {{bmiLevel}}/5</text>
                 <text>{{titleList.price}}</text>
             </view>
-            <view bindtip="onshare" class='item_details_view' >
-                <image class="position" src="/images/icon/share.png" mode="aspectFit"></image>
+            <view>
+                <button bindtip="onshare" class='item_details_view' open-type='share'>
+                    <image class="position" src="/images/icon/share.png" mode="aspectFit"></image>
+                </button>
             </view>
         </view>
         <view class="content_container_item">
             <view class="item-details_wrap">
                 <view class="item_details">
                     <text class='item_details_address'>{{address}}</text>
-                    <text>{{titleList.startTime}}</text>
+                    <text class='item_details_time'>{{courseDate}} {{startTime}}-{{endTime}}</text>
                 </view>
                 <view bindtap="storeAddressTap">
                     <image class="position position1" src="/images/icon/map_daohang.png" mode="aspectFit"></image>
@@ -49,7 +51,7 @@
     </view>
 </view>
 <view class="report_container">
-    <button class="report">立即报名</button>
+    <button class="report" bindtap="payTap">立即报名</button>
 </view>
 <view class="back" wx:if="{{isShow}}" catchtouchmove="true">
     <view class="modal" wx:if="{{isShow}}">
@@ -65,7 +67,7 @@
             <image src="/images/weixin.png"></image>
             <text>微信</text>
         </view>
-        <view class='footer_handle_div'>
+        <view class='footer_handle_div' bindtap='loadImg'>
             <image src="/images/save.png"></image>
             <text>保存到手机</text>
         </view>
