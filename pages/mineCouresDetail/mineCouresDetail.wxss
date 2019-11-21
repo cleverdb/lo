@@ -1,0 +1,39 @@
+/* pages/mineCouresDetail/mineCouresDetail.wxss */
+page{
+   background: #EFEFEF;
+   height: 100%; 
+}
+.container{
+    background: #EFEFEF;
+    height: 100%;
+}
+.item-card{
+    margin-bottom: 20rpx;
+    background: #ffffff;
+    padding:0 30rpx;
+}
+.item-title{
+    padding:24rpx 0;
+    border-bottom: 1px solid  #EBEBEB;
+}
+.item-time{
+    color:rgba(62,58,57,1);
+    font-size: 32rpx;
+    margin-right: 26rpx;
+}
+.item-statue{
+    color:rgba(62,58,57,1);
+    font-size: 17rpx;
+    margin-right: 10rpx;
+}
+.item-card-status{
+    padding:24rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid  #EBEBEB;
+    font-size:28rpx;
+}
+.item-card-top> text:first-child{
+    margin-right: 20rpx;
+}

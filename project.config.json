@@ -161,6 +161,34 @@
 					"id": -1,
 					"name": "pages/courses/courses",
 					"pathName": "pages/courses/courses",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineAppointment/mineAppointment",
+					"pathName": "pages/mineAppointment/mineAppointment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineCourse/mineCourse",
+					"pathName": "pages/mineCourse/mineCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineCourse/mineCourse",
+					"pathName": "pages/mineCourse/mineCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineCouresDetail/mineCouresDetail",
+					"pathName": "pages/mineCouresDetail/mineCouresDetail",
 					"scene": null
 				}
 			]

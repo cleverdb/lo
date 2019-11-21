@@ -33,7 +33,9 @@
     "pages/reserveTime/reserveTime",
     "pages/practiceCourses/practiceCourses",
     "pages/gymnasticsCourses/gymnasticsCourses",
-    "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail"
+    "pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail",
+    "pages/mineCourse/mineCourse",
+    "pages/mineCouresDetail/mineCouresDetail"
   ],
   "permission": {
     "scope.userLocation": {

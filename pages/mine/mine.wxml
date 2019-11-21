@@ -14,12 +14,9 @@
       <block wx:else>
         <button class='cell' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登陆/注册</button>
       </block>
-     
     </view>
-    <view class='container-hd_ft'>
-      <view class='cell' wx:if="{{user.weight}}">体重:{{user.weight}}kg</view>
-      <view class="cell" wx:if="{{user.bmi}}">BMI:{{user.bmi}}</view>
-    </view>
+  </view>
+  <view class='container-line'>
   </view>
   <view class='container-bd'>
     <navigator class="menu" wx:for="{{ bodyItems }}" wx:key="{{item}}" url="{{ item.path }}">
@@ -28,25 +25,10 @@
           <image src="{{item.icon}}" class="img"></image>
           <text>{{ item.text }}</text>
         </view>
-
       </view>
       <view class="arrow">
         <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
       </view>
     </navigator>
   </view>
-<view class='container-ft'>
-  <navigator class="menu" wx:for="{{ footItems }}" wx:key="{{item}}" url="{{ item.path }}">
-    <view class='menu-row'>
-      <view class="menu-cell">
-        <image src="{{item.icon}}" class="img"></image>
-        <text>{{ item.text }}</text>
-      </view>
-
-    </view>
-    <view class="arrow">
-      <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
-    </view>
-  </navigator>
-</view>
 </view>

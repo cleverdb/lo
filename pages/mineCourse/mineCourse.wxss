@@ -1,0 +1,85 @@
+/* pages/mineCourse/mineCourse.wxss */
+page{
+    background: #ffffff;
+}
+.container{
+    height: 100%;
+    padding: 0 30rpx;
+    background: #ffffff;
+}
+.list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 44rpx;
+    padding-bottom: 34rpx;
+    border-bottom: 1px solid #E7E7E7;
+}
+.item-left{
+    width: 40%;
+}
+.item-right{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+.left-top{
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(62,58,57,1);
+}
+.left-bottom{
+    font-size:24rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(114,113,113,1);
+}
+.center-top{
+    font-size:40rpx;
+    font-weight:600;
+    color:rgba(67,185,170,1);
+}
+.center-bottom{
+    font-size:32rpx;
+    font-weight:500;
+    color:rgba(159,160,160,1);
+}
+.left-gary{
+    color:rgba(114,113,113,1);
+}
+.list-catch{
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(201,202,202,1);
+}
+.item-catch{
+    position: relative;
+    padding-right: 40rpx;
+}
+.list-catch::after {
+  content: " ";
+  display: inline-block;
+  height: 12rpx;
+  width: 12rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #9FA0A0;
+  border-style: solid;
+  -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  /* position: relative; */
+  position: absolute;
+  top: 25rpx;
+  margin-top: -8rpx;
+  right: 4rpx;
+}
+.list-button{
+    width: 133rpx;
+    height: 66rpx;
+    background: #FCC800;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    justify-content: center;
+}

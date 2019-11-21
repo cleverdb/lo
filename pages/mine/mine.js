@@ -18,12 +18,12 @@ Page({
       {
         icon: '../../images/icon/kc.png',
         text: '我的课程',
-        path: '/pages/courses/courses'
+        path: '/pages/mineCourse/mineCourse'
       },
       {
         icon: '../../images/icon/yuyue.png',
         text: '我的预约',
-        path: '/pages/appointment/appointment'
+        path: '/pages/mineAppointment/mineAppointment'
       },
       {
         icon: '../../images/icon/quanbao.png',

@@ -10,14 +10,19 @@ Page({
     showModalStatus: true,
     year: 0,
     month: 0,
-    date: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    date: ['日', '一', '二', '三', '四', '五', '六'],
     dateArr: [],
     isToday: 0,
     selectedDay: 0,
     appointmentList: [],
-    selectItem:{},
-    hideAlert:true,
-    showModalStatus:false,
+    selectItem: {},
+    hideAlert: true,
+    showModalStatus: false,
+    courseYype: {
+      '团操课': '#3EBDE0',
+      '私教': '#43B9AA',
+      '活动':'#E8365F'
+    }
   },
 
   /**
@@ -176,13 +181,9 @@ Page({
     wx.request({
       data: params,
       method: 'GET',
-      url: app.globalData.host + '/rest/s1/Goods/appointment/getAppointment',
+      url: app.globalData.host + '/rest/s1/Goods/mine/appointment',
       success: function(res) {
         let result = res.data.data
-        result.forEach(item => {
-          item.startTime = item.startTime.substr(11, 5)
-          item.endTime = item.endTime.substr(11, 5)
-        })
         _this.setData({
           appointmentList: result
         })

@@ -6,7 +6,7 @@ page {
 
 .container {
   width: 100%;
-  background-color: #f6f6f6;
+  background: #ffffff;
   display: block;
 }
 
@@ -17,9 +17,9 @@ page {
   padding: 0 30rpx;
   box-sizing: border-box;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  background-color: #3e3e3e;
+  background-color: #ffffff;
+  justify-content: space-between;
 }
 
 .container-hd_bd {
@@ -34,6 +34,7 @@ page {
 .container-hd_bd .cell.name {
   color: #fcc700;
   font-size: 34rpx;
+  margin-bottom: 40rpx;
 }
 
 .container-hd_bd button {
@@ -41,9 +42,12 @@ page {
   width: 180rpx;
   font-size: 24rpx;
 }
-
+.container-line{
+  height: 40rpx;
+  background: #EEEFEF;
+}
 .container-hd_bd .cell.id {
-  color: #f6f6f6;
+  color: #AEAEAF;
   font-size: 24rpx;
 }
 
@@ -75,11 +79,7 @@ page {
 
 .container-bd {
   width: 100%;
-}
 
-.container-ft {
-  margin-top: 20rpx;
-  width: 100%;
 }
 
 .menu {

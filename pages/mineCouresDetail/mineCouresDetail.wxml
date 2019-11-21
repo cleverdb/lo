@@ -1,0 +1,131 @@
+<!--pages/mineCouresDetail/mineCouresDetail.wxml-->
+<!--pages/mineCourse/mineCourse.wxml-->
+<view class='container'>
+    <scroll-view scroll-y="true" style="height: 100%;">
+        <view class='item-card'>
+            <view class='item-title'>
+                <text class='item-time'>01月</text>
+                <text class='item-statue'>已完成:</text><text class='item-time'>04</text>
+                <text class='item-statue'>已取消:</text><text class='item-time'>01</text>
+            </view>
+            <view class='item-card-status' style="color:#3E3A39">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    待上课
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#727171">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已完成
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#C9CACA">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已取消
+                </view>
+            </view>
+        </view>
+        <view class='item-card'>
+            <view class='item-title'>
+                <text class='item-time'>01月</text>
+                <text class='item-statue'>已完成:</text><text class='item-time'>04</text>
+                <text class='item-statue'>已取消:</text><text class='item-time'>01</text>
+            </view>
+            <view class='item-card-status' style="color:#3E3A39">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    待上课
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#727171">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已完成
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#C9CACA">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已取消
+                </view>
+            </view>
+        </view>
+        <view class='item-card'>
+            <view class='item-title'>
+                <text class='item-time'>01月</text>
+                <text class='item-statue'>已完成:</text><text class='item-time'>04</text>
+                <text class='item-statue'>已取消:</text><text class='item-time'>01</text>
+            </view>
+            <view class='item-card-status' style="color:#3E3A39">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    待上课
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#727171">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已完成
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#C9CACA">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已取消
+                </view>
+            </view>
+        </view>
+        <view class='item-card'>
+            <view class='item-title'>
+                <text class='item-time'>01月</text>
+                <text class='item-statue'>已完成:</text><text class='item-time'>04</text>
+                <text class='item-statue'>已取消:</text><text class='item-time'>01</text>
+            </view>
+            <view class='item-card-status' style="color:#3E3A39">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    待上课
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#727171">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已完成
+                </view>
+            </view>
+            <view class='item-card-status' style="color:#C9CACA">
+                <view class='item-card-top'>
+                    <text>01.21</text><text>15:00-15:49</text>
+                </view>
+                <view class='status-text'>
+                    已取消
+                </view>
+            </view>
+        </view>
+        
+    </scroll-view>
+</view>

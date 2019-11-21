@@ -25,21 +25,20 @@
       </view>
     </view>
   </view>
+  <view class='container-line'>
+    
+  </view>
   <view class="container-bd">
     <view class="info">
       <block wx:for='{{appointmentList}}' wx:key='index'>
         <view class='tr'>
           <view class='td'>
             <view class='name'>
-              {{item.appCourseName}}
-            </view>
-            <view class='desc'>
-              <text>{{item.startTime}}-{{item.endTime}}</text>
-              <text></text>
+               <view class='course_name'> {{item.courseName}}</view><view class='course_type' style="background:{{courseYype[item.courseTypeName]}}">{{item.courseTypeName}}</view>
             </view>
             <view>
               <text class='badge'>{{item.coachName}}</text>
-              <text class='badge'>{{item.storeName}}</text>
+              <text class='badge'>{{item.startTime}}-{{item.endTime}}</text>
             </view>
           </view>
           <view class='td'>

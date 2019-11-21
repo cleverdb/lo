@@ -2,19 +2,24 @@
 
 page {
   height: 100%;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .container {
   width: 100%;
-  background-color: #ffffff;
+  background: #ffffff;
+
 }
 
 .container-hd {
-  background-color: #f6f6f6;
   padding: 20rpx;
+  background-color: #ffffff;
 }
-
+.container-line{
+  height: 40rpx;
+  width: 100%;
+  background-color: #EEEEEF
+}
 .date-show {
   position: relative;
   font-size: 34rpx;
@@ -24,7 +29,9 @@ page {
   margin-bottom:20rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
+  width: 60%;
+  margin:  0 auto;
 }
 
 .lt-arrow, .rt-arrow {
@@ -58,7 +65,6 @@ page {
   width: 100%;
   border-top-left-radius: 10rpx;
   border-top-right-radius: 10rpx;
-  background-color: #fcc700;
 }
 
 .header>view {
@@ -97,6 +103,8 @@ page {
   text-align: center;
   vertical-align: middle;
   margin: 10rpx 0;
+  border-radius: 50%;
+  border:transparent;
 }
 
 .date-head {
@@ -108,21 +116,24 @@ page {
 .nowDay .date-head {
   width: 60rpx;
   text-align: center;
-  border-radius: 10rpx;
-  background-color: #a0a0a0;
+  border-radius: 50%;
+  background-color: #fcc700 !important;
   margin: 0 auto;
+  color: #ffffff;
 }
 .selectedDay .date-head {
   width: 60rpx;
   text-align: center;
-  border-radius: 10rpx;
-  background-color: #fcc700;
+  border-radius: 50%;
   margin: 0 auto;
+  background-color: #DDDDDE;
 }
 .container-bd{
   width: 100%;
   padding: 20rpx;
+  padding-top:0;
   box-sizing: border-box;
+  background: #ffffff;
 }
 .info {
   width: 100%;
@@ -141,20 +152,32 @@ page {
 
 .td .name {
   font-size: 34rpx;
+  display: flex;
+  align-items: center;
 }
 .td>view{
   line-height: 50rpx;
   height: 50rpx
 }
-
-
+.course_name{
+  font-size:28rpx;
+  color:rgba(62,58,57,1);
+  margin-right: 20rpx;
+}
+.course_type{
+  padding:0 10rpx;
+  font-size:18rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .td .badge{
   min-height: 20rpx;
-  font-size: 22rpx;
-  background-color: #fcc700;
+  font-size: 24rpx;
   margin-right: 20rpx;
   border-radius: 5rpx;
-  color: #090000;
+  color: #858585;
   padding: 0 5rpx;
 }
 
