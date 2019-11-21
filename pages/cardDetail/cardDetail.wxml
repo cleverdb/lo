@@ -2,7 +2,7 @@
 <!-- pages/privateCoursesBuy/privateCoursesBuy.wxml -->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
-<view class="try_course_container">
+<view class="try_course_container" wx:if='{{!pageState.state}}'>
   <view class="head">
     <image wx:if='{{data.cardLogoUrl}}' src="{{host}}{{data.cardLogoUrl}}" alt="" />
   </view>
@@ -46,7 +46,7 @@
         <text>销售人员</text>
       </view>
       <view class="color_gary" bindtap="onSelSale">
-        <text>{{beSelSale.userFullName||"请选择销售人员"}}</text>
+        <text>{{selectSale.userFullName||"请选择销售人员"}}</text>
         <image class="arrow-right" src="../../images/icon/arrow-right.png" />
       </view>
     </view>
@@ -87,9 +87,10 @@
     <view class="sales_title">选择会籍销售人员</view>
     <view class="sales_list row-rap">
       <block wx:for="{{sales}}" wx:key="index" wx:if="{{sales}}">
-        <view class="sales_item row  height_center" bindtap="onSelSaler" data-id='{{item.id}}'>
-          <image wx:if="{{item.besel}}" class="besel_icon" src="../../images/icon/ensure_three.png" />
-          <image class="sales_item_img" src="{{item.iconUrl}}" wx:if="{{item.iconUrl}}" />
+        <view class='sales_item row  height_center' bindtap="onSelSaler" data-item='{{item}}'>
+          <image wx:if="{{item.userId == selectSale.userId}}" class="besel_icon" src="../../images/icon/ensure_three.png" />
+          <image class="sales_item_img" src="{{host}}{{item.iconUrl}}" wx:if="{{item.iconUrl}}" />
+          <text class="sales_item_img no_img" wx:else>暂无图片</text>
           <view>
             <text>{{item.userFullName}}</text>
             <text>工号:{{item.username}}</text>

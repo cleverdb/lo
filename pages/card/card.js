@@ -108,7 +108,7 @@ Page({
   navigateTo: function (e) {
     const cardId = e.currentTarget.dataset.id;
     const data = e.currentTarget.dataset.type;
-    data.type = "2";
+    data.type = "1";
     let urlMap = {
       '1': "/pages/cardDetail/cardDetail",
       "2": "/pages/tryCard/tryCard"

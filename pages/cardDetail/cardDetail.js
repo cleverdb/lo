@@ -86,8 +86,8 @@ Page({
     beSelTeacher: {
 
     },
+    selectSale:'',
     host: app.globalData.host,
-    host_j: app.globalData.host_j,
   },
 
   /**
@@ -97,7 +97,7 @@ Page({
     console.log('61', options);
     let { cardId } = options;
     this.initData(false, cardId);
-    this.initSales(cardId);
+    this.initSales();
   },
 
   /**
@@ -164,7 +164,7 @@ Page({
     this.setData({
       isShowsalesList: false
     })
-
+  
   },
   onselcoupon: function (e) {
     let { id } = e.target.dataset.item;
@@ -197,30 +197,21 @@ Page({
     }
   },
   onSelSaler: function (e) {
-    let { currentTarget: { dataset: id } } = e;
-    let { sales } = this.data;
-    let newSales = sales.map((item) => {
-      if (item.id == id.id) {
-        item.besel = true;
-      } else {
-        item.besel = false;
-      }
-      return item
-    });
-    let besel = sales.find((item) => {
-      return item.id == id.id
-    });
+    let { currentTarget: { dataset: item } } = e;
+    if (this.data.selectSale && this.data.selectSale.userId == item.item.userId){
+      this.setData({
+        selectSale: null
+      })
+      return
+    }
     this.setData({
-      sales: newSales,
-      beSelSale: besel
+      selectSale: item.item
     })
-
-
   },
-  initSales: function (id) {
+  initSales: function () {
     let _this = this;
     wx.request({
-      url: app.globalData.host_j + _apis.card_sales(id),
+      url: `${app.globalData.host}/rest/s1/Goods/employee`,
       method: 'GET',
       success: function (res) {
         if (res.statusCode != 200) {
@@ -315,7 +306,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-    let params = _this.data.queryParams
+    let params = { cardId: id}
     if (down) {
       params = {
         pageIndex: params.pageIndex + 1,
@@ -323,11 +314,10 @@ Page({
       }
     }
     wx.request({
-      url: app.globalData.host + _apis.card_getCardDetail(id),
+      url: `${app.globalData.host}/rest/s1/Goods/card/getCardDetail`,
       data: params,
       method: 'GET',
       success: function (res) {
-
         if (res.statusCode != 200) {
           _this.setData({
             pageState: {
