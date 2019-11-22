@@ -6,22 +6,35 @@
     </block>   
   </view>
   <view class='container-hd'>
-    <view class="nav-hd" bindtap='beforeTap'>
-        <image src="/images/icon/arrow-left-ok.png"></image>
-        <view class='nav-label'>前一天</view>
-    </view>
-    <view class="nav-bd">
-        <canvas canvas-id="bgCanvas" id="bgCanvas" class='canvas'></canvas>
-         <canvas canvas-id="stepCanvas" id="stepCanvas" class='canvas'></canvas>
-        <canvas canvas-id="arcCanvas" id="arcCanvas" class='canvas'></canvas>
-         <view class='bgCircle'>
-          运动值
+    <view class='nav-top'>
+        <view>
+           {{nowDate}}
+        </view>
+        <view bindtap="shareTap">
+          <image src="/images/icon/share.png" />
         </view>
     </view>
-    <view class='nav-ft' bindtap='nextTap'>
-        <view class='nav-label'>后一天</view>
-        <image src="/images/icon/arrow-right-ok.png"></image>
+    <view class='nav-center'>
+      <view class='bigCircle'></view>
+      <view class='littleCircle'></view>
+      <canvas canvas-id="runCanvas" id="runCanvas" class='canvas'></canvas>
+      <view class='nav-circle-bottm'>
+        <view class='circle-bottm-text'>
+          运动值
+        </view>
+      </view>
     </view>
+    <view class='nav-bottom'>
+      <view class="nav-hd" bindtap='beforeTap'>
+        <image src="/images/icon/arrow-left.png"></image>
+        <view class='nav-label'>前一{{dataObj[choose]}}</view>
+      </view>
+      <view class='nav-ft' bindtap='nextTap'>
+        <view class='nav-label'>后一{{dataObj[choose]}}</view>
+        <image src="/images/icon/arrow-right.png"></image>
+      </view>
+    </view>
+   
   </view>
   <view class='container-rank'>
       <view class="tr">
@@ -192,4 +205,28 @@
       </view>
     </view>
   </view>
+</view>
+<view class="back" wx:if="{{isShow}}" catchtouchmove="true">
+    <view class="modal" wx:if="{{isShow}}">
+        <view class="modal_top" bindtap="hideModalTap">
+            <view class="close">
+                <image src="/images/close.png"></image>
+            </view>
+            <image src="/images/modal.png"></image>   
+        </view>
+    </view>
+    <view class="footer_handle">
+        <view class='footer_handle_div'>
+            <image src="/images/weixin.png"></image>
+            <text>微信</text>
+        </view>
+        <view class='footer_handle_div' bindtap='loadImg'>
+            <image src="/images/save.png"></image>
+            <text>保存到手机</text>
+        </view>
+        <view class='footer_handle_div'>
+            <image src="/images/share.png"></image>
+            <text>分享到朋友圈</text>
+        </view>
+    </view>
 </view>

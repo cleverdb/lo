@@ -196,6 +196,13 @@
 					"id": -1,
 					"name": "pages/mineReport/mineReport",
 					"pathName": "pages/mineReport/mineReport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineReport/mineReport",
+					"pathName": "pages/mineReport/mineReport",
 					"scene": null
 				}
 			]

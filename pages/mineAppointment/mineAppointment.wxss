@@ -188,6 +188,7 @@ page {
   text-align: center;
   border-radius: 10rpx;
   background-color: #fcc700;
+  font-size: 28rpx;
 }
 .td .status{
   width: 150rpx;

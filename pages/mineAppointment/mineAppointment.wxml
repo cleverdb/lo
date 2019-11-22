@@ -42,8 +42,7 @@
             </view>
           </view>
           <view class='td'>
-            <view class='cancel' bindtap='cancelTap' data-item="{{item}}" wx:if='{{item.appointmentStatus == "appointment_start"}}'>取消</view>
-            <view class='cancel' wx:else>{{item.appointmentStatusName}}</view>
+            <button type="default" bindtap='cancelTap' class='cancel' disabled="{{item.appointmentStatus != 'appointment_start'}}" >{{item.appointmentStatusName}}</button>
           </view>
         </view>
       </block>

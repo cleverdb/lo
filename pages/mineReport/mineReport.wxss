@@ -30,15 +30,16 @@ page {
   border-bottom:1px solid #FBC700;
 }
 .container-hd {
-  padding: 40rpx 20rpx 0 20rpx;
+  padding: 26rpx 20rpx 40rpx 20rpx;
   width: 100%;
-  height: 320rpx;
-  display: flex;
   box-sizing: border-box;
   background: #3F3B3A;
-
 }
-
+.nav-top{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .container-bd {
   width: 100%;
   margin-top: 10rpx;
@@ -52,7 +53,6 @@ page {
 
 .nav-hd {
   height: 40rpx;
-  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -62,7 +62,6 @@ page {
 
 .nav-ft {
   height: 40rpx;
-  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -75,15 +74,76 @@ image {
 }
 
 .nav-label {
-  color: #fcc700;
+  color: #9E9F9F;
   text-align: right;
 }
-
+.nav-bottom{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 .nav-bd {
   width: 40%;
   position: relative;
 }
-
+.nav-center{
+  position: relative;
+  height: 300rpx;
+  margin-bottom: 10rpx;
+}
+.nav-circle-bottm{
+  position: absolute;
+  bottom: -30rpx;
+  left: 40%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20rpx;
+}
+.circle-bottm-text{
+  width: 128rpx;
+  height: 42rpx;
+  background: #FCC800;
+  border-radius: 4rpx;
+  font-size:24rpx;
+  text-align: center;
+  color: #3F3B3A;
+  line-height: 42rpx;
+}
+.bigCircle{
+  width: 248rpx;
+  height: 248rpx;
+  border-radius: 50%;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  background-color: #737272;
+}
+.littleCircle{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  background-color: #3F3B3A;
+}
+.canvas {
+  width: 250rpx;
+  height: 250rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom:0;
+  margin: auto auto;
+  z-index: 99;
+}
 .bgCircle {
   font-size: 26rpx;
   text-align: center;
@@ -96,16 +156,7 @@ image {
   padding: 2rpx 10rpx;
 }
 
-.canvas {
-  width: 250rpx;
-  height: 250rpx;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  margin: auto auto;
-  z-index: 99;
-}
+
 
 .container-rank{
   display: flex;
@@ -187,4 +238,73 @@ image {
   border-radius: 4rpx;
 }
 
-
+.back{
+    background:rgba(0,0,0,0.3);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+.modal {
+    z-index: 111;
+    position: absolute;
+    top:100rpx;
+    opacity: 1;
+}
+.modal_top{
+    height:849rpx;
+    width: 519rpx;
+}
+.modal image{
+    width: 100%;
+    height: 100%;
+}
+.modal .close{
+    background-color: #9F9FA0;
+    border-radius:48rpx;
+    width: 48rpx;
+    height: 48rpx;
+    z-index:112;
+    position: absolute;
+    right: -20rpx;
+    top:-20rpx;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.modal .close image{
+    width: 24rpx;
+    height: 24rpx;
+}
+.footer_handle{
+    position: fixed;
+    z-index: 116; 
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    height: 150rpx;
+    background: #FFFFFF;
+    opacity: 1;
+    align-items: center;
+    justify-content:space-around;
+    display: flex;
+}
+.footer_handle_div{
+    flex-direction: column;
+    display: flex;
+}
+.footer_handle view{
+    align-items: center;
+}
+.footer_handle text{
+    margin-top:20rpx;
+    font-size: 22rpx;
+}
+.footer_handle view image{
+    width: 68rpx;
+    height: 58rpx;
+}
