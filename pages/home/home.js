@@ -163,14 +163,21 @@ Page({
           })
         } else {
           const {data:dat=[]}=data;
-          const { storeId = '' } = dat[0] || {};
-          app.globalData.selectStore = [dat[0]];
-          app.globalData.storeId = storeId;
+          const dat2 = app.globalData.selectStore.length > 0 ? app.globalData.selectStore : dat[0];
+          const { storeName, address, storeId, storePhone } = dat2;
+          if (app.globalData.selectStore.length ==0){
+            app.globalData.selectStore = [dat2];
+            app.globalData.storeId = storeId;
+         }
           _this.getStoreArea(storeId);
           _this.setData({
             selectArray: dat,
-            storeId
+            storeName,
+            storeAddress: address,
+            storeId,
+            storePhone
           })
+       
         }
       },
       fail: function () {
