@@ -35,8 +35,21 @@ page {
   color: #fcc700;
   font-size: 34rpx;
   margin-bottom: 40rpx;
-}
+  display: flex;
+  align-items: center;
 
+}
+.show_edit{
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.show_edit image{
+  width: 23rpx;
+  height: 32rpx;
+  margin-left: 20rpx;
+  color: #fcc700;
+}
 .container-hd_bd button {
   background-color:#fcc700;
   width: 180rpx;

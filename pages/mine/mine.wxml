@@ -8,7 +8,15 @@
     </view>
     <view class='container-hd_bd'>  
       <block wx:if='{{user.userId}}'>
-        <view class='cell name'>{{user.nickName?user.nickName:wUser.nickName}}</view>
+        <view class='cell name'>
+          <text>{{user.nickName?user.nickName:wUser.nickName}}</text>
+          <view class='show_edit'>
+            <navigator class="" target="" url="/pages/mineInfo/mineInfo" hover-class="navigator-hover" open-type="navigate">
+                <image src='/images/icon/mine_edit.png' mode='scaleToFill'></image>
+            </navigator>
+          </view>
+            
+        </view>
         <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
       </block>
       <block wx:else>
