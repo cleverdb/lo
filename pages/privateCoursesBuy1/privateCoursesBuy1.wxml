@@ -3,7 +3,11 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="try_course_container">
     <view class="head">
-        <image wx:if='{{data.imgSrc}}' src="{{data.imgSrc}}" alt="" />
+        <image wx:if='{{courseNavPic}}' src="{{courseNavPic}}" alt="" />
+        <view wx:else>
+            暂无图片
+        </view>
+          
     </view>
     <view class="content">
         <view class="content_item">
@@ -18,16 +22,14 @@
                 <text>课程价格</text>
             </view>
             <view>
-                <text>{{data.coursePrice||""}}</text>
-                <text>{{data.courseUnit||""}}</text>
+                <text>{{unitPrice||""}}元/课</text>
             </view>
         </view>
-        <view class="content_item">
-            <view>
-                <text>优惠券</text>
-            </view>
-            <view class="color_gary">
-                <text>暂不可使用优惠券</text>
+        <view class="content_item" bindtap='showModal'>
+            <text class='name'>优惠券</text>
+            <view class='{{ticketDesc=="查看" ? "arrow" : ""}}'>
+                <text  class='value label' wx:if="{{selectTicket.voucherName}}">{{selectTicket.voucherName}}</text>
+                <text  class='value label' wx:else>{{ticketDesc}}</text>
             </view>
         </view>
         <view class="content_item color_red">
@@ -35,29 +37,116 @@
                 <text>待支付</text>
             </view>
             <view>
-                <text>￥{{data.coursePrice}}</text>
+                <text>￥{{unitPrice}}</text>
             </view>
         </view>
-        <view class="notic">
+        <view class="notic" wx:if='{{data.buyNote}}'>
             <view class="notice">
                 <text>购买须知</text>
             </view>
             <view>
-                <block wx:for="{{data.notice}}" wx:key="index" wx:if="{{data.notice}}">
-                    <view>
-                        <text>{{item}}</text>
-                    </view>
-                </block>
+                <text>{{data.buyNote}}</text>
             </view>
         </view>
+        <view class="agree_content {{radioChecked ? 'agree_content_checked' : ''}}">
+            请先阅读并勾选协议
+        </view>
         <view class="read">
-            <radio></radio>
-            <text>勾选即代表阅读并同意</text>
-            <text class="toEnsure">《LIOU电子协议》</text>
+            <radio checked="{{radioChecked}}" bindtap='radioTap'>
+                 <text>勾选即代表阅读并同意</text>
+            </radio>
+            <text class="toEnsure" bindtap="LiouTap">《LIOU电子协议》</text>
             <text>服务条款</text>
         </view>
     </view>
     <view class="footer">
-        <button class="buy_button">立即购买</button>
+        <button class="buy_button" disabled="{{!radioChecked}}"  bindtap="tapnPay">立即购买</button>
     </view>
+</view>
+
+<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}" catchtouchmove="true"></view>
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}" catchtouchmove="true">
+  <view class="popup-content-bd">
+        <scroll-view scroll-y class='sv'>
+          <view class="usable_title" wx:if="{{usable.length > 0}}">
+              可用优惠券
+          </view>
+          <block wx:for="{{usable}}" wx:key="index" wx:for-item='ticket'>
+            <view 
+                class='ticket-view' 
+                bindtap='ticketTap'
+                data-voucherUuid='{{ticket.voucherUuid}}'
+                data-voucherName='{{ticket.voucherName}}'
+                data-parValue='{{ticket.parValue}}'
+            >
+              <image wx:if="{{selectTicket.voucherUuid == ticket.voucherUuid}}" class="besel_flag" src="/images/icon/ensure_three.png"></image>
+              <view class='ticket-view-left'>
+                <view class='hd'>
+                  <text class='tname usable'>{{ticket.voucherName}}</text>
+                </view>
+                <view class='bd'>
+                  <view class='left'>
+                    <text>{{ticket.expireDate}}</text>
+                  </view>
+                  <view class='right'>
+                    <text>{{ticket.statusName}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class='ticket-view-center'>
+                  <view>
+                  </view>
+              </view>
+              <view class='ticket-view-right'>
+                <view class='hd'>
+                  <text class='logo usable'>¥</text>
+                  <text class='num usable'>{{ticket.parValue}}</text>
+                </view>
+                <view class='bd'>
+                  <text>{{ticket.scope}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="unusable_title" wx:if="{{unusable.length > 0}}">
+              不可用券
+          </view>
+          <block wx:for="{{unusable}}" wx:key="index" wx:for-item='ticket'>
+            <view 
+                class='ticket-view unusable_view' 
+            >
+              <view class='ticket-view-left'>
+                <view class='hd'>
+                  <text class='disabled'>{{ticket.voucherName}}</text>
+                </view>
+                <view class='bd disabled'>
+                  <view class='left'>
+                    <text>{{ticket.expireDate}}</text>
+                  </view>
+                  <view class='right'>
+                    <text>{{ticket.statusName}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class='ticket-view-center'>
+                  <view>
+                  </view>
+              </view>
+              <view class='ticket-view-right'>
+                <view class='hd disabled'>
+                  <text class='logo'>¥</text>
+                  <text class='num'>{{ticket.parValue}}</text>
+                </view>
+                <view class='bd disabled'>
+                  <text>{{ticket.scope}}</text>
+                </view>
+              </view>
+            </view>
+            <view class="threshold_reason">
+              不可用原因：付款金额未达到{{ticket.threshold}}
+            </view>
+          </block>
+          <view class="{{unusable.length>0 ? 'unusable_footer':'usable_footer'}}" ></view>
+        </scroll-view>
+  </view>
 </view>

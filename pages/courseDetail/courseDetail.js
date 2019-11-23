@@ -37,7 +37,6 @@ Page({
     oldTotal: 0,
     courseId:'',
     unusable:[],
-    orderid:'80020191111224816696994',
   },
   /**
    * 生命周期函数--监听页面加载
@@ -279,9 +278,6 @@ Page({
             }
             const result = res.data.data
             const { orderid} = result;
-            _this.setData({
-              orderid
-            })
             wx.requestPayment({
               timeStamp: result.timeStamp,
               nonceStr: result.nonceStr,
