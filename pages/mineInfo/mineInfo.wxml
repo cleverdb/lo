@@ -1,20 +1,5 @@
 <!--pages/mineInfo/mineInfo.wxml-->
 <view class='container'>
-  <view class='container-hd'>
-    <view class='container-hd_hd'>
-      <view class='avatar'>
-        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'../../images/logo.png'}}"></image>
-      </view>
-    </view>
-    <view class='container-hd_bd'>
-      <view class='cell name'>{{user.nickName?user.nickName:wUser.nickName}}</view>
-      <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
-    </view>
-    <view class='container-hd_ft'>
-      <view class='cell' wx:if="{{user.weight}}">体重:{{user.weight}}kg</view>
-      <view class="cell" wx:if="{{user.bmi}}">BMI:{{user.bmi}}</view>
-    </view>
-  </view>
   <view class='container-bd'>
     <view class='cell'>
       <view class='cell-hd'>
@@ -65,13 +50,14 @@
         性别
       </view>
       <view class='cell-bd'>
-        <picker mode="selector" range="{{sexArr}}" range-key="description" bindchange="sexChange">
-          <view class="picker">
-            {{user.sexName?user.sexName:'请选择'}}
-          </view>
-        </picker>
-      </view>
-      <view class='cell-ft'>
+          <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" color='#42B8AA' style="margin-right:20rpx">
+                    <text>男</text>
+                </radio>
+                 <radio class="radio" color='#E7365F'>
+                    <text>女</text>
+                </radio>
+          </radio-group>
       </view>
     </view>
     <view class='cell'>

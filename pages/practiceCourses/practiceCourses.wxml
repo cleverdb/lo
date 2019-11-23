@@ -11,7 +11,7 @@
                 <text>{{titleList.price}}</text>
             </view>
             <view>
-                <button bindtip="onshare" class='item_details_view' open-type='share'>
+                <button bindtip="onshare" class='item_details_view' bindtap='showModalTap'>
                     <image class="position" src="/images/icon/share.png" mode="aspectFit"></image>
                 </button>
             </view>

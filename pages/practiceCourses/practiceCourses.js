@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow: true,
+    isShow: false,
     host: app.globalData.host,
     address: "",
     storeName: "",
@@ -132,6 +132,11 @@ Page({
       isShow:false
     })
   },
+  showModalTap:function(){
+    this.setData({
+      isShow:true,
+    })
+  },
   // 地图
   storeAddressTap: function () {
     wx.navigateTo({
@@ -179,9 +184,12 @@ Page({
             signType: result.signType,
             paySign: result.paySign,
             success(res) {
-              _this.setData({
-                isShow:true
-              })
+              wx.showModal({
+                title: '报名成功',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#FCC800',
+              });
             },
             fail(res) {
               wx.request({
@@ -193,9 +201,11 @@ Page({
             }
           })
         } else {
-          _this.setData({
-            isShow: true
-          })
+          wx.showToast({
+            title:'报名成功',
+            icon: 'success',
+            duration: 2000
+          });
         }
 
       }

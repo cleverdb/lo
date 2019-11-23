@@ -3,7 +3,7 @@ page{
   height: 100%;
 }
 .container{
-  background-color: #3e3e3e
+  background-color: #ffffff;
 }
 .search-view{
   width: 100%;
@@ -13,7 +13,10 @@ page{
   flex-direction: row;
   /* line-height: 3; */
   height: 100rpx;
- 
+  box-sizing: border-box;
+  border-bottom: 1px solid #EEEFEF;
+  padding: 20rpx 0
+  
 
 }
 .search-view .input-view{
@@ -21,7 +24,6 @@ page{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 .search-view .text-view{
   display: flex;
@@ -30,6 +32,11 @@ page{
   justify-content: center;
   align-items: center;
   background-color: #fcc700;
+}
+.ticket-line{
+  height: 20rpx;
+  background: #EEEFEF;
+  width: 100%;
 }
 
 
@@ -61,11 +68,11 @@ page{
 }
 
 .content-wrapper{
-  padding-top: 20px;
   position: absolute;
   bottom: 0;
   right: 0;
   left: 0;
+  top:100rpx;
 }
 
 .no-ticket {

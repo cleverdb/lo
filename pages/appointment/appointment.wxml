@@ -143,7 +143,83 @@
                 </scroll-view>
           </swiper-item>
           <swiper-item>
-            <view id="demo3" class="scroll-view-item_H demo-text-3">3</view>
+            <scroll-view scroll-y="true" class="course-list" style="height:{{winHeight}}rpx">
+                <view class="activity_tab">
+                    <view class="tabs_container">
+                        <block wx:for="{{tabsList}}" wx:key="index">
+                            <view class="normal_border {{item.id==besel?'besel_border':null}}" data-id="{{item.id}}" bindtap="tabsChange">
+                                <text>{{item.title}}</text>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="main_container">
+                        <view wx:if="{{besel=='1'}}">
+                            <block wx:for="{{runningList}}" wx:key="index">
+                                <view class="list_item_container">
+                                    <image bindtap="ondetail" data-courseId="{{item.courseId}}" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
+                                    <view>
+                                        <view class='courseName_wrap'>
+                                            <view class='courseName_top'>
+                                                <text>{{item.courseName}}</text>
+                                                <text wx:if="{{item.unitPrice > 0}}" class='unitPrice_backgound'>￥{{item.unitPrice}}</text>
+                                                <text wx:else class='unitPrice_backgound'>免费</text>
+                                            </view>
+                                            <view class='courseName_bottom'>
+                                                <text>{{item.courseDate}}{{item.weakData}} {{item.startTime}}-{{item.endTime}}</text>
+                                            </view>
+                                        </view>
+                                        <view class="row  itemCenter">
+                                            <text class="bulge">{{item.currentNum}}</text>
+                                            <text>/</text>
+                                            <text>{{item.maxNum}}</text>
+                                        </view>
+                                    </view>
+                                    <view>
+                                        <text>{{item.date}}</text>
+                                    </view>
+                                    <view>
+                                        <text class="content">{{item.courseBg}}</text>
+                                    </view>
+                                    <view class="posend row  posendMar">
+                                        <button class="report" data-item="{{item}}" bindtap="payTap">报名</button>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                        <view wx:if="{{besel=='2'}}">
+                            <block wx:for="{{doneList}}" wx:key="index">
+                                <view class="list_item_container">
+                                    <image class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
+                                    <view>
+                                        <view>
+                                            <text>{{item.courseName}}</text>
+                                        </view>
+                                        <view class="row  itemCenter">
+                                            <text class="bulge">{{item.currentNum}}</text>
+                                            <text>/</text>
+                                            <text>{{item.maxNum}}</text>
+                                        </view>
+                                    </view>
+                                    <view>
+                                        <text>{{item.date}}</text>
+                                    </view>
+                                    <view>
+                                        <text>{{item.courseBg}}</text>
+                                    </view>
+                                    <view class="posend row  posendMar">
+                                        <button class="end">结束</button>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                <view class='bottomline' wx:if="{{moreFlag}}">
+                    <text class='baseline'></text>
+                    <text class='tip'>我是有底线的哟～</text>
+                    <text class='baseline'></text>
+                </view>
+            </scroll-view>
           </swiper-item>
         </swiper>
     </view>

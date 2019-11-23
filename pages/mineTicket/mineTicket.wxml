@@ -1,13 +1,6 @@
 <!--pages/mineTicket/mineTicket.wxml-->
 <view class='container'>
-  <view class='search-view'>
-    <view class='input-view'>
-      <input placeholder="输入兑换券码" bindinput='voucherCodeInput' maxlength="16"></input>
-    </view>
-    <view class='text-view' bindtap='voucherCodeTap'>
-      <text>立即兑换</text>
-    </view>
-  </view>
+ 
   <view class="navbar">
     <block wx:for="{{statusType}}" wx:key="index">
       <view class="navbar-item {{navbarActiveIndex ==index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" bindtap="onNavBarTap">
@@ -15,9 +8,23 @@
       </view>
     </block>
   </view>
+ 
   <swiper class="content-wrapper" style="height:{{winHeight}}rpx" duration="300" current="{{navbarActiveIndex}}" bindchange="onBindChange">
     <swiper-item wx:for="{{statusType}}" wx:key="index" wx:for-item="st">
+      
       <scroll-view scroll-y="true" class='sv'>
+        <view class='ticket-line'>
+        </view>
+        <view style='padding: 0 30rpx'>
+           <view class='search-view'>
+            <view class='input-view'>
+              <input placeholder='请输入兑换券码' bindinput='voucherCodeInput' maxlength="16"></input>
+            </view>
+            <view class='text-view' bindtap='voucherCodeTap'>
+              <text>立即兑换</text>
+            </view>
+          </view>
+        </view>
         <view class="no-ticket" hidden="{{tickets[st.status].length > 0? true : false}}">
           <!-- <view>
           <image src="/images/icon/quanbao.png" class="no-ticket-img"></image>
