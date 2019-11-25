@@ -573,62 +573,65 @@ Page({
       content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}${coachName}`,
       confirmColor: '#FCC800',
       success(res) {
-        wx.request({
-          url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
-          method: 'POST',
-          data: {
-            courseId,
-            coursePlanId,
-            realPay: unitPrice > 0 ? unitPrice : 0 ,
-            openId: app.globalData.openId,
-            vipId: userId
-          },
-          success(res) {
-            const { errorCode = '', messages, errors } = res.data;
-            if (errorCode) {
-              wx.showToast({
-                title: errors,
-                duration: 2000,
-                icon: 'none'
-              })
-              return
+        if (res.confirm) {
+          wx.request({
+            url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+            method: 'POST',
+            data: {
+              courseId,
+              coursePlanId,
+              realPay: unitPrice > 0 ? unitPrice : 0,
+              openId: app.globalData.openId,
+              vipId: userId
+            },
+            success(res) {
+              const { errorCode = '', messages, errors } = res.data;
+              if (errorCode) {
+                wx.showToast({
+                  title: errors,
+                  duration: 2000,
+                  icon: 'none'
+                })
+                return
+              }
+              if (unitPrice > 0) {
+                const result = res.data.data;
+                const { orderid } = result;
+                wx.requestPayment({
+                  timeStamp: result.timeStamp,
+                  nonceStr: result.nonceStr,
+                  package: result.package,
+                  signType: result.signType,
+                  paySign: result.paySign,
+                  success(res) {
+                    wx.showModal({
+                      title: '预约成功',
+                      showCancel: false,
+                      confirmText: '确定',
+                      confirmColor: '#FCC800',
+                    });
+                  },
+                  fail(res) {
+                    wx.request({
+                      url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                      data: {
+                        orderId: orderid,
+                      }
+                    })
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: messages,
+                  duration: 2000,
+                  icon: 'none',
+                });
+                
+              }
+
             }
-            if (unitPrice>0){
-              const result = res.data.data;
-              const { orderid } = result;
-              wx.requestPayment({
-                timeStamp: result.timeStamp,
-                nonceStr: result.nonceStr,
-                package: result.package,
-                signType: result.signType,
-                paySign: result.paySign,
-                success(res) {
-                  wx.showModal({
-                    title: '预约成功',
-                    showCancel: false,
-                    confirmText: '确定',
-                    confirmColor: '#FCC800',
-                  });
-                },
-                fail(res) {
-                   wx.request({
-                     url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
-                     data:{
-                       orderId: orderid,
-                     }
-                   })
-                 }
-              })
-            }else{
-              wx.showToast({
-                title: messages,
-                duration: 2000,
-                icon: 'none'
-              })
-            }
-            
-          }
-        })
+          })
+        }
       }
     })
   },
@@ -650,7 +653,8 @@ Page({
         _this.setData({
           modalVisible: true,
           array_time: resurl,
-          activeitem
+          activeitem,
+          timeDataSelected:-1
         })
         // wx.showModal({
         //   title: '请确认预约信息',
@@ -706,6 +710,9 @@ Page({
           title: messages,
           duration: 2000,
           icon: 'none'
+        });
+        _this.setData9({
+          modalVisible: false,
         })
       }
     })

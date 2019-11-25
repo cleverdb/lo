@@ -110,7 +110,7 @@
                 </view>
                 <view class='bd'>
                   <view class='left'>
-                    <text>{{ticket.expireDate}}</text>
+                    <text>有效期:{{ticket.expireDate}}</text>
                   </view>
                   <view class='right'>
                     <text>{{ticket.statusName}}</text>

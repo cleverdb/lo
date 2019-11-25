@@ -210,7 +210,7 @@ Page({
    */
   cancelTap: function(e) {
     var _this = this
-    let item = e.currentTarget.dataset.item
+    let item = e.currentTarget.dataset.item;
     this.setData({
       hideAlert:false,
       showModalStatus:true,
@@ -225,16 +225,16 @@ Page({
     _this.setData({
       hideAlert: true,
       showModalStatus: false,
-      })
+    });
+    const { userId, coursePlanId, op_status } = this.data.selectItem;
     let params = {
-      userId: this.data.selectItem.userId,
-      coursePlanId: this.data.selectItem.coursePlanId,
-      appointmentStatus: "appointment_cancel"
+      userId,
+      coursePlanId,
+      appointmentStatus: op_status
     }
     wx.request({
       data: params,
-      method: 'put',
-      url: app.globalData.host + '/rest/s1/Goods/appointment/updateAppointment',
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/private/status`,
       complete: function(res) {
         wx.showModal({
           title: '提示',

@@ -15,45 +15,45 @@
       <scroll-view scroll-y="true" class='sv'>
         <view class='ticket-line'>
         </view>
-        <view style='padding: 0 30rpx'>
+        <view style='padding: 0 30rpx' wx:if='{{st.status=="usable"}}'>
            <view class='search-view'>
             <view class='input-view'>
               <input placeholder='请输入兑换券码' bindinput='voucherCodeInput' maxlength="16"></input>
             </view>
-            <view class='text-view' bindtap='voucherCodeTap'>
+            <view class='text-view' bindtap='voucherCodeTap' style='background:{{voucherCode.length==16 ? "#fcc700": "#DDDDDE"}}'>
               <text>立即兑换</text>
             </view>
           </view>
         </view>
         <view class="no-ticket" hidden="{{tickets[st.status].length > 0? true : false}}">
-          <!-- <view>
-          <image src="/images/icon/quanbao.png" class="no-ticket-img"></image>
-        </view> -->
           <view class="text">暂无优惠券~</view>
         </view>
         <block wx:for="{{tickets[st.status]}}" wx:key="index" wx:for-item='ticket'>
-          <view class='ticket-view {{selectTicketId == ticket.voucherUuid ? "selected": ""}}' data-ticket-id='{{ticket.voucherUuid}}'>
-            <view class='ticket-view-left'>
+          <view class='ticket-view'>
+            <view class='ticket-view-left' style='background:{{st.status=="usable" ? "#FCC700" : "#EFEFEF"}}'>
               <view class='hd'>
-                <text class='tname'>{{ticket.voucherName}}</text>
-                <text class='label' wx:if="{{st.status == 'unusable'}}">{{ticket.statusName}}</text>
+                <text class='tname {{st.status=="unusable" ? "disabled" : ""}}'>{{ticket.voucherName}}</text>
               </view>
-              <view class='bd'>
+              <view class='bd {{st.status=="unusable" ? "disabled" : ""}}'>
                 <view class='left'>
-                  <text>有效期 {{ticket.activeDate}} 至 {{ticket.expireDate}}</text>
+                  <text>有效期:{{ticket.expireDate}}</text>
                 </view>
-                <!-- <view class='right'>
-                    <text>未过期</text>
-                  </view> -->
+                <view class='right'>
+                    <text>{{ticket.statusName}}</text>
+                </view>
               </view>
             </view>
-            <view class='ticket-view-right'>
-              <view class='hd'>
-                <text class='logo'>¥</text>
-                <text class='num'>{{ticket.parValue}}</text>
+            <view class='ticket-view-center'>
+                <view>
+                </view>
+            </view>
+            <view class='ticket-view-right' style='background:{{st.status=="usable" ? "#FCC700" : "#EFEFEF"}}'>
+              <view class='hd {{st.status=="unusable" ? "disabled" : ""}}'>
+                <text class='logo usable'>¥</text>
+                <text class='num usable'>{{ticket.parValue}}</text>
               </view>
-              <view class='bd'>
-                <text>通用</text>
+              <view class='bd {{st.status=="unusable" ? "disabled" : ""}}'>
+                <text>{{ticket.scope}}</text>
               </view>
             </view>
           </view>

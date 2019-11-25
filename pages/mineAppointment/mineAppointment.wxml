@@ -42,7 +42,7 @@
             </view>
           </view>
           <view class='td'>
-            <button type="default" bindtap='cancelTap' class='cancel' disabled="{{item.appointmentStatus != 'appointment_start'}}" >{{item.appointmentStatusName}}</button>
+            <button type="default" bindtap='cancelTap' class='cancel' data-item="{{item}}" disabled="{{item.appointmentStatus != 'appointment_start'}}" >{{item.appointmentStatusName}}</button>
           </view>
         </view>
       </block>
@@ -58,7 +58,7 @@
     <view class='alert-bd'>
       <view class="alert-bd_cell">
         <view class='point'></view>
-        <view>{{selectItem.appCourseName}}</view>
+        <view>{{selectItem.courseName}}</view>
       </view>
       <view class="alert-bd_cell">
         <view class='point'></view>

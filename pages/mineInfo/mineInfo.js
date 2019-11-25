@@ -117,10 +117,10 @@ Page({
       }
     })
   },
-  loadSex:function(){
+  loadSex:function(){ // 健身目标
     let _this = this
     wx.request({
-      data: { enumTypeId: 'SexEnum'},
+      data: { enumTypeId: 'ExerciseTarget'},
       method: 'GET',
       url: app.globalData.host + '/rest/s1/Goods/enum/getEnum',
       complete: function (res) {
@@ -134,7 +134,7 @@ Page({
   loadTarget:function(){
     let _this = this
     wx.request({
-      data: { enumTypeId: 'ExerciseTarget' },
+      data: { enumTypeId: 'SexEnum' },
       method: 'GET',
       url: app.globalData.host + '/rest/s1/Goods/enum/getEnum',
       complete: function (res) {
@@ -177,9 +177,12 @@ Page({
       'user.cellphone': value
     })
   },
+  // 这是 健身目标
   sexChange: function (e) {
-    let value = e.detail.value
-    let slect = this.data.sexArr[value]
+    let value = e.detail.value;
+    console.log(value);
+    let slect = this.data.sexArr[value];
+    console.log(this.data.sexArr,slect);
     this.setData({
       'user.sex': slect.enumId,
       'user.sexName': slect.description
@@ -191,9 +194,11 @@ Page({
       'user.birthDate': value
     })
   },
+  // 这是 性别
   targetChange: function (e) {
-    let value = e.detail.value
-    let slect = this.data.targetArr[value]
+    let value = e.detail.value;
+    let slect = this.data.targetArr[value];
+    console.log(this.data.targetArr);
     this.setData({
       'user.targetEnumId': slect.enumId,
       'user.targetEnumName': slect.description

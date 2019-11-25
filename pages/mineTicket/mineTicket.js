@@ -109,7 +109,7 @@ Page({
       navbarActiveIndex: e.detail.current
     })
   },
-  initData: function(parm) {
+  initData: function() {
     var _this = this
     wx.showLoading({
       title: '加载中...',
@@ -118,11 +118,12 @@ Page({
       userId: app.globalData.userInfo.userId
     }
     wx.request({
-      url: _this.data.host + '/rest/s1/Goods/voucher/getMineVoucher',
+      url: `${app.globalData.host}/rest/s1/Goods/voucher/getMineVoucher`,
       data: params,
       method: 'GET',
       success: function(res) {
-        const result = res.data
+        const result = res.data;
+        console.log(result);
         _this.setData({
           tickets: result
         })
@@ -136,15 +137,14 @@ Page({
     })
   },
   voucherCodeInput: function(e) {
-    if (e.detail.value.length == 16) {
-      this.setData({
-        voucherCode: e.detail.value
-      })
-    }
+    this.setData({
+      voucherCode: e.detail.value
+    })
   },
   voucherCodeTap: function() {
     var _this = this
-    const voucherCode = _this.data.voucherCode
+    const voucherCode = _this.data.voucherCode;
+    console.log(voucherCode);
     if (voucherCode.length == 0) {
       return
     }

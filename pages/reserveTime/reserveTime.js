@@ -30,7 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { courseId, coachName, courseName, orderid } = options;
+    const { courseId, coachName, courseName, orderid=undefined,id=undefined } = options;
     let now = new Date();
     let year = now.getFullYear();
     let month = now.getMonth() + 1;
@@ -44,7 +44,8 @@ Page({
       coachName,
       courseName,
       courseId,
-      orderid
+      orderid,
+      id
     });
     this.initData({
       courseId,
@@ -233,45 +234,48 @@ Page({
       coachName,
       timeDataSelected,
       array_time,
-      dateArr,
       selectedDay,
-      orderid
+      orderid,
+      id
     } = this.data;
     const { startTime, endTime, coursePlanId } = array_time[timeDataSelected];
     let startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
     console.log(startWeek);
     const { userId } = app.globalData.userInfo;
+    const data = orderid != undefined ? { orderid } : { id };
     wx.showModal({
       title: '请确认预约信息',
       content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
       confirmColor: '#FCC800',
       success(res) {
-        wx.request({
-          url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
-          method: "POST",
-          data: {
-            userId,
-            orderid,
-            appiontmentType:'course_appointment',
-            coursePlanId
-          },
-          success: function (res) {
-            const { errorCode = '', messages, errors} = res.data;
-            if (errorCode) {
+        if (res.confirm) {
+          wx.request({
+            url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
+            method: "POST",
+            data: {
+              userId,
+              appiontmentType: 'course_appointment',
+              coursePlanId,
+              ...data
+            },
+            success: function (res) {
+              const { errorCode = '', messages, errors } = res.data;
+              if (errorCode) {
+                wx.showToast({
+                  title: errors,
+                  duration: 2000,
+                  icon: 'none'
+                })
+                return
+              }
               wx.showToast({
-                title: errors,
+                title: messages,
                 duration: 2000,
                 icon: 'none'
               })
-              return
             }
-            wx.showToast({
-              title: messages,
-              duration: 2000,
-              icon: 'none'
-            })
-          }
-        })
+          })
+        }
       }
     })
     

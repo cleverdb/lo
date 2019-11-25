@@ -1,234 +1,27 @@
 <!--pages/mineCourse/mineCourse.wxml-->
 <view class='container'>
     <scroll-view scroll-y="true" style="height: 100%;">
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top">
-                    格斗健身课
+        <block wx:for="{{data}}">
+            <view class='list-item'>
+                <view class='item-left'>
+                    <view class="left-top">
+                        {{item.courseName}}
+                    </view>
+                    <view class="left-bottom">
+                        {{item.coachName }}
+                    </view>
                 </view>
-                <view class="left-bottom">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top'>20</text>
-                    <text class='center-bottom'>/50</text>
-                </view>
-                <view>
-                    <Button class='list-button'>预约</Button>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top">
-                    常规课
-                </view>
-                <view class="left-bottom">
-                    王教练
+                <view class='item-right'>
+                    <view>
+                        <text class='center-top'>{{item.remaining}}</text>
+                        <text class='center-bottom'>/{{item.totalNum}}</text>
+                    </view>
+                    <view class='{{item.remaining==0 ? "item-catch": ""}}' bindtap="courseTap" data-item="{{item}}">
+                        <button class='list-button' wx:if="{{item.remaining>0}}">预约</button>
+                        <text class='list-catch' wx:else>查看详情</text>
+                    </view>
                 </view>
             </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top'>20</text>
-                    <text class='center-bottom'>/50</text>
-                </view>
-                <view>
-                    <Button class='list-button'>预约</Button>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-        <view class='list-item'>
-            <view class='item-left'>
-                <view class="left-top left-gary">
-                    瑜伽课课
-                </view>
-                <view class="left-bottom left-gary">
-                    王教练
-                </view>
-            </view>
-            <view class='item-right'>
-                <view>
-                    <text class='center-top left-gary'>20</text>
-                    <text class='center-bottom left-gary'>/50</text>
-                </view>
-                <view class='item-catch'>
-                    <text class='list-catch'>查看详情</text>
-                </view>
-            </view>
-        </view>
-       
+        </block>
     </scroll-view>
 </view>
