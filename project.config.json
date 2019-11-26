@@ -4,12 +4,22 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"uglifyFileName": true
+		"coverView": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
@@ -210,6 +220,13 @@
 					"id": -1,
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineReport/mineReport",
+					"pathName": "pages/mineReport/mineReport",
 					"query": "",
 					"scene": null
 				},
