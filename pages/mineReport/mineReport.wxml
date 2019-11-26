@@ -15,8 +15,6 @@
         </view>
     </view>
     <view class='nav-center'>
-      <view class='bigCircle'></view>
-      <view class='littleCircle'></view>
       <canvas canvas-id="runCanvas" id="runCanvas" class='canvas'></canvas>
       <view class='nav-circle-bottm'>
         <view class='circle-bottm-text'>
@@ -212,7 +210,8 @@
             <view class="close">
                 <image src="/images/close.png"></image>
             </view>
-            <image src="/images/modal.png"></image>   
+            <image src="/images/icon/log_min.png" alt="" srcset="" style='display:none' bindload='checkwh'></image>
+            <canvas canvas-id="myCanvas" id="myCanvas" style='width:{{canWidth}}rpx;height:{{canHeight}}rpx'></canvas>
         </view>
     </view>
     <view class="footer_handle">

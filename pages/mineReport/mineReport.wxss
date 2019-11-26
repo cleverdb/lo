@@ -89,12 +89,11 @@ image {
 .nav-center{
   position: relative;
   height: 300rpx;
-  margin-bottom: 10rpx;
 }
 .nav-circle-bottm{
   position: absolute;
-  bottom: -30rpx;
-  left: 40%;
+  bottom: 8rpx;
+  left: 41%;
   display: flex;
   justify-content: center;
   padding-top: 20rpx;
@@ -109,30 +108,6 @@ image {
   color: #3F3B3A;
   line-height: 42rpx;
 }
-.bigCircle{
-  width: 248rpx;
-  height: 248rpx;
-  border-radius: 50%;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto auto;
-  background-color: #737272;
-}
-.littleCircle{
-  width: 220rpx;
-  height: 220rpx;
-  border-radius: 50%;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto auto;
-  background-color: #3F3B3A;
-}
 .canvas {
   width: 250rpx;
   height: 250rpx;
@@ -142,22 +117,7 @@ image {
   right: 0;
   bottom:0;
   margin: auto auto;
-  z-index: 99;
 }
-.bgCircle {
-  font-size: 26rpx;
-  text-align: center;
-  background-color: #fcc700;
-  color: #090000;
-  width: 100rpx;
-  margin: auto;
-  margin-top: 190rpx;
-  border-radius: 5rpx;
-  padding: 2rpx 10rpx;
-}
-
-
-
 .container-rank{
   display: flex;
   height: 144rpx;

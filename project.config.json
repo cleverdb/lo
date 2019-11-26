@@ -210,6 +210,13 @@
 					"id": -1,
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineReport/mineReport",
+					"pathName": "pages/mineReport/mineReport",
 					"scene": null
 				}
 			]
