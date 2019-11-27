@@ -124,6 +124,9 @@ function times(num1, num2) {
   checkBoundary(leftValue);
   return leftValue / Math.pow(10, baseNum);
 }
+function dataStr(params) {
+  return params.replace(/\-/g, '.');
+}
 const weekObj = {
   0:'日',
   1:'一',
@@ -145,5 +148,6 @@ module.exports = {
   nowDate: nowDate,
   formatTimestampToTime,
   times,
-  weekObj
+  weekObj,
+  dataStr
 }

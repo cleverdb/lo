@@ -37,32 +37,57 @@ Page({
     },
     choose: 0,
     isShow: false,
-    canWidth: '520',
-    canHeight:'830',
-    bgImgPath:''
+    canWidth: 520,
+    canHeight: 830,
+    bgImgPath: '',
+    qrCode: '',
+    qrCodePath: '',
+    weakDat: '',
+    endDate: '',
+    startDate:''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const nowDate = Utils.nowDate();
-    const weakDat = Utils.plusDate(this.data.nowDate, -7);
-    console.log(nowDate, weakDat);
     this.getReport();
-    this.setData({
-      nowDate: nowDate
-    })
-    this.initData({
-      userId:app.globalData.userInfo.userId,
-      startDate: '2019-11-05',
-      endDate: '2019-11-05',
-    })
+    this.getData();
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.getCode();
+    this.getCode();
+  },
+  getData: function (params) {
+    const nowDate = Utils.nowDate();
+    const weakDat = Utils.plusDate(nowDate, -7);
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+    let startDate = '';
+    let endDate = '';
+    if (params == 0) {
+      startDate = nowDate;
+      endDate = nowDate;
+    } else if (params === 1) {
+      startDate = `${year}.${month}`;
+      endDate = `${year}.${month}`;
+    } else {
+      startDate = nowDate;
+      endDate = nowDate;
+    }
+    this.setData({
+      nowDate: nowDate,
+      endDate: nowDate,
+      startDate: weakDat,
+      year,
+      month
+    });
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      startDate,
+      endDate,
+    })
   },
   /**
      * 生命周期函数--监听页面显示
@@ -123,7 +148,6 @@ Page({
       url: `${app.globalData.host}/rest/s1/Goods/mine/fitnessLog`,
       success: function (res) {
         let result = res.data.data;
-        console.log(result,'haha')
         _this.setData({
           report: result
         })
@@ -137,76 +161,145 @@ Page({
     })
   },
   nextTap: function () {
-    const { choose, nowDate} = this.data;
-    if (nowDate == Utils.nowDate()){
-      return;
+    const {
+      choose,
+      nowDate,
+      endDate: end,
+      year,
+      month,
+    } = this.data;
+    let startDate = '';
+    let endDate = '';
+    if (choose === 0) { // 后一天
+      const oldDate = Utils.nowDate();
+      if (nowDate === oldDate) return '';
+      const nextDate = Utils.plusDate(nowDate, 1);
+      startDate = nextDate;
+      endDate = nextDate;
+      this.setData({
+        nowDate: nextDate
+      });
+    } else if (choose == 1) { //后一个星期
+      const oldDate = Utils.nowDate();
+      if (end === oldDate) return '';
+      const startDataNow = Utils.plusDate(end, 1);
+      const endDataNow = Utils.plusDate(startDataNow, 7);
+      startDate = startDataNow;
+      endDate = endDataNow;
+      this.setData({
+        startDate: startDataNow,
+        endDate: endDataNow
+      });
+    } else { // 后一个月
+      const moth = new Date().getMonth() + 1;
+      if (month == moth) return;
+      const y = month > 11 ? year + 1 : year;
+      const m = month > 11 ? 0 : month;
+      startDate = `${y}-${m+1}`;
+      endDate = `${y}-${m+1}`;
+      this.setData({
+        year: y,
+        month: (m + 1)
+      });
     }
-    let nextDate = Utils.plusDate(nowDate, 1);
-    this.setData({
-      nowDate: nextDate
-    });
-    // this.initData({
-    //   userId: app.globalData.userInfo.userId,
-    //   reportDate: nextDate
-    // })
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      startDate,
+      endDate
+    })
   },
   beforeTap: function () {
-    let nextDate = Utils.plusDate(this.data.nowDate, -1)
-    this.setData({
-      nowDate: nextDate
+    const {
+      choose,
+      nowDate,
+      startDate: start, 
+      year,
+      month,
+    } = this.data;
+    let startDate = '';
+    let endDate = '';
+    if (choose===0) { // 前一天
+      const nextDate = Utils.plusDate(nowDate, -1);
+      startDate = nextDate;
+      endDate = nextDate;
+      this.setData({
+        nowDate: nextDate
+      });
+    } else if (choose == 1) { //前一个星期
+      const endDataNow = Utils.plusDate(start, -1);
+      const startDataNow = Utils.plusDate(endDataNow, -7);
+      startDate = startDataNow;
+      endDate = endDataNow;
+      this.setData({
+        startDate: startDataNow,
+        endDate: endDataNow
+      });
+    } else { // 前一个月
+      const y = month - 2 < 0 ? year - 1 : year;
+      const m = month - 2 < 0 ? 11 : month - 2;
+      startDate = `${y}-${m + 1}`;
+      endDate = `${y}-${m + 1}`;
+      this.setData({
+        year: y,
+        month: (m + 1)
+      });
+    }
+    this.initData({
+      userId: app.globalData.userInfo.userId,
+      startDate,
+      endDate
     })
-    // this.initData({
-    //   userId: app.globalData.userInfo.userId,
-    //   reportDate: nextDate
-    // })
   },
   // tabs change 
   tabsChange:function(e){
     const { index } = e.currentTarget.dataset;
-    let nextDate = '';
-    if (index == 0) {
-      nextDate = Utils.nowDate();
-    } else if (index == 1) {
-      nextDate = Utils.plusDate(this.data.nowDate, 1)
-    } else {
-
-    }
     this.setData({
-      choose:index
-    })
+      choose: index,
+      report: []
+    });
+    this.getData(index);
   },
   shareTap: function () {
     const _this = this;
-    _this.setData({
-      isShow: true
+    wx.showLoading({
+      title: '图片生成中...',
+    })
+    const promise1 = new Promise((resove, reject) => {
+      wx.downloadFile({
+        url: app.globalData.wUserInfo.avatarUrl,
+        success: function (res) {
+          //背景图
+          _this.setData({
+            bgImgPath: res.tempFilePath
+          })
+          resove();
+        }
+      })
     });
-    // wx.downloadFile({
-    //   url: app.globalData.wUserInfo.avatarUrl,
-    //   success: function (res) {
-    //     _this.drawReport(res.tempFilePath);
-    //   }
-    // })
+    const promise2 = new Promise((resove, reject) => {
+      const { qrCode } = _this.data;
+      wx.downloadFile({
+        url: `${app.globalData.host}${qrCode}`,
+        success: function (res) {
+          //背景图
+          _this.setData({
+            qrCodePath: res.tempFilePath
+          })
+          resove();
+        }
+      });
+    });
+    Promise.all([promise1, promise2]).then((res) => {
+      _this.drawReport();
+    })
   },
   addByclear:function(params){
     const { byclear} = this.data;
     return byclear*params;
   },
-  checkwh: function (e) {
-    const _this = this;
-    wx.downloadFile({
-      url: app.globalData.wUserInfo.avatarUrl,
-      success: function (res) {
-        //背景图
-        _this.setData({
-          bgImgPath: res.tempFilePath
-        })
-        _this.drawReport();
-      }
-    })
-  },
   drawReport:function(){
     const _this = this;
-    const { byclear, canWidth, canHeight, bgImgPath } = this.data;
+    const { byclear, canWidth, canHeight, bgImgPath, qrCodePath } = this.data;
     const w = canWidth / 2;
     const h = canHeight / 2;
     const ctx = wx.createCanvasContext('myCanvas', this);
@@ -282,6 +375,14 @@ Page({
     ctx.restore();
 
     ctx.beginPath();
+    ctx.setStrokeStyle("#FBC700"); //圆环线条的颜色
+    ctx.setLineWidth("1"); //圆环的粗细
+    ctx.arc(_this.addByclear(35), _this.addByclear(35), _this.addByclear(25), 0, 2 * Math.PI);
+    ctx.drawImage(qrCodePath, _this.addByclear(w-60), _this.addByclear(10), _this.addByclear(50), _this.addByclear(50));
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.beginPath();
     ctx.setStrokeStyle("#fff"); //圆环线条的颜色
     ctx.setLineWidth("1"); //圆环的粗细
     ctx.arc(_this.addByclear(35), _this.addByclear(35), _this.addByclear(25), 0, 2 * Math.PI);
@@ -289,15 +390,13 @@ Page({
     ctx.drawImage(bgImgPath, _this.addByclear(10), _this.addByclear(10), _this.addByclear(50), _this.addByclear(50));
     ctx.stroke();
     ctx.restore();
-
-   
-
-   
     ctx.draw();
-  
+    wx.hideLoading();
+    this.setData({
+      isShow:true
+    })
   },
   hideModalTap: function () {
-
     this.setData({
       isShow: false,
     })
@@ -305,72 +404,85 @@ Page({
   // 保存图片
   loadImg: function () {
     const _this = this;
-    //获取相册授权
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.writePhotosAlbum']) {
-          wx.authorize({
-            scope: 'scope.writePhotosAlbum',
-            success() {
-              console.log('授权成功');
+    const { canWidth, canHeight } = this.data;
+    wx.canvasToTempFilePath({
+      width: canWidth /2,
+      height: canHeight /2,
+      destWidth:canWidth,
+      destHeight: canHeight,
+      fileType: 'jpg',
+      canvasId: 'myCanvas',
+      success: function (res) {
+        let shareImg = res.tempFilePath;
+        _this.setData({
+          navPicUrl: shareImg
+        });
+        //获取相册授权
+        wx.getSetting({
+          success(res) {
+            if (!res.authSetting['scope.writePhotosAlbum']) {
+              wx.authorize({
+                scope: 'scope.writePhotosAlbum',
+                success() {
+                  _this.downLoadImg();
+                }
+              })
+            } else {
               _this.downLoadImg();
             }
-          })
-        } else {
-          _this.downLoadImg();
-        }
+          }
+        })
+      },
+      fail: function (res) {
       }
     })
   },
   downLoadImg: function () {
-    const { host, navPicUrl } = this.data;
-    wx.downloadFile({
-      url: `${host}${navPicUrl}`,
-      success: function (res) {
-        console.log(res);
-        //图片保存到本地
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success: function (data) {
-            wx.showToast({
-              title: '保存成功',
-              icon: 'success',
-              duration: 2000
-            })
-          },
-          fail: function (err) {
-            console.log(err);
-            if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
-              console.log("当初用户拒绝，再次发起授权")
-              wx.openSetting({
-                success(settingdata) {
-                  console.log(settingdata)
-                  if (settingdata.authSetting['scope.writePhotosAlbum']) {
-                    console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
-                  } else {
-                    console.log('获取权限失败，给出不给权限就无法正常使用的提示')
-                  }
-                }
-              })
-            }
-          },
-          complete(res) {
-            console.log(res);
-          }
+    const { navPicUrl } = this.data;
+    const _this = this;
+    //图片保存到本地
+    wx.saveImageToPhotosAlbum({
+      filePath: navPicUrl,
+      success: function (data) {
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 2000
+        });
+        _this.setData({
+          isShow:false
         })
+      },
+      fail: function (err) {
+        if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+          console.log("当初用户拒绝，再次发起授权")
+          wx.openSetting({
+            success(settingdata) {
+              console.log(settingdata)
+              if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                console.log('获取权限成功，给出再次点击图片保存到相册的提示。')
+              } else {
+                console.log('获取权限失败，给出不给权限就无法正常使用的提示')
+              }
+            }
+          })
+        }
+      },
+      complete(res) {
       }
     })
   },
-  getCode:function(){
-    const data = '27_9HndK55MduIlUBuSyFnx7CRRLtIcCHy_c7S-wGsVU5ho3w0b5qvBxUvNRuvtiFyh35KnD5vemeyY8iBV869lvHgSodbwzuH5AAduD8GrF-7tbfRh8MyE-49seMxuxhgv890OoFA28NHtfTD8WTEgAEABYJ';
-    const url = `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${data}`;
+  getCode: function () {
+    const _this = this;
+    const url = `${app.globalData.host}/rest/s1/Goods/qrCode`;
     wx.request({
       url,
-      data:{
-        page:'home/home',
-      },
       success(res){
         console.log(res);
+        const { qrCode } = res.data;
+        _this.setData({
+          qrCode
+        })
       }
     })
   },

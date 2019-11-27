@@ -10,6 +10,7 @@ Page({
     host: app.globalData.host,
     user:{},
     wUser: {},
+    isShow: false,
     bodyItems: [{
         icon: '../../images/icon/ka.png',
         text: '我的卡包',
@@ -45,7 +46,8 @@ Page({
     this.setData({
       user: app.globalData.userInfo,
       wUser: app.globalData.wUserInfo,
-    })
+    });
+    this.getVip();
   },
 
   /**
@@ -61,7 +63,7 @@ Page({
   onShow: function(e) {
     this.setData({
       user: app.globalData.userInfo
-    })
+    });
   },
 
   /**
@@ -129,6 +131,47 @@ Page({
       complete: function () {
         wx.hideLoading()
       }
+    })
+  },
+  getVip: function () {
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/mine/privatevip`,
+      data: {
+        userId: app.globalData.userInfo.userId
+      },
+      success: function(res) {
+        const { flag = false } = res.data.data;
+        _this.setData({
+            isShow:flag
+        })
+      }
+    })
+  },
+  setVipTap: function () {
+    const _this = this;
+    const { user } = this.data;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/mine/privatevip`,
+      method:'POST',
+      data: {
+        userId: user.userId
+      },
+      success: function (res) {
+        const { messages = '激活成功'} = res.data;
+        wx.showToast({
+          title: messages,
+          icon: 'success',
+        })
+        _this.setData({
+          isShow:false
+        })
+      }
+    })
+  },
+  hideModalTap: function () {
+    this.setData({
+      isShow:false
     })
   }
 })

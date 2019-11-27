@@ -12,10 +12,10 @@ Page({
     storeName: "",
     phone:"",
     courseName: "",
-    navPicUrl: "",
     courseBg: "",
     joinType: "",
-    bmiLevel:3
+    bmiLevel: 3,
+    sharePicUrl:''
   },
 
   /**
@@ -117,12 +117,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    const { courseId} = this.data;
-    return {
-      title: '微信小程序联盟',
-      desc: '最具人气的小程序开发联盟!',
-      path: `/pages/practiceCourses/practiceCourses?courseId=${courseId}`
-    }
+  
   },
   onshare: function () {
     
@@ -215,7 +210,6 @@ Page({
   loadImg:function(){
     const _this = this;
     //获取相册授权
-    _this.downLoadImg();
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.writePhotosAlbum']) {
@@ -233,9 +227,9 @@ Page({
     })
   },
   downLoadImg:function(){
-    const { host, navPicUrl} = this.data;
+    const { host, sharePicUrl} = this.data;
     wx.downloadFile({
-      url: `${host}${navPicUrl}`,
+      url: `${host}${sharePicUrl}`,
       success: function (res) {
         console.log(res);
         //图片保存到本地

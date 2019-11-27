@@ -185,6 +185,11 @@ image {
 .ml{
   margin-left: 50rpx;
 }
+.no-data-wrap{
+  background:#EFEFEF;
+  text-align: center;
+  padding: 50rpx 0;
+}
 .ft-item .ft-name{
   font-size:28rpx;
   color: #000000;
@@ -216,27 +221,30 @@ image {
     opacity: 1;
 }
 .modal_top{
-    height:849rpx;
-    width: 519rpx;
+  width: 519rpx;
+  position: relative;
 }
 .modal image{
     width: 100%;
     height: 100%;
 }
-.modal .close{
+ .close{
     background-color: #9F9FA0;
     border-radius:48rpx;
     width: 48rpx;
     height: 48rpx;
-    z-index:112;
+    z-index:999;
     position: absolute;
-    right: -20rpx;
-    top:-20rpx;
+    right:98rpx;
+    top:80rpx;
     justify-content: center;
     align-items: center;
     display: flex;
 }
-.modal .close image{
+.myCanvas{
+  z-index: 109;
+}
+.close image{
     width: 24rpx;
     height: 24rpx;
 }
