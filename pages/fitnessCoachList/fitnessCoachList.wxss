@@ -19,6 +19,7 @@ page{
     height: 244rpx;
     border-top-left-radius: 10rpx;
     border-top-right-radius: 10rpx;
+    overflow: hidden
 }
 .img_wrap image{
     width: 100%;

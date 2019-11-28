@@ -221,6 +221,8 @@ swiper  image{
 .scroll-view-forte{
   color: #9FA0A0;
   font-size:20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .scroll_conteiner{
   overflow: hidden;
@@ -233,4 +235,14 @@ swiper  image{
   font-size:28rpx;
   font-weight:400;
   color:rgba(62,58,57,1);
+}
+.scroll-view-item_img.coach_img{
+  height: 240rpx;
+  width: 200rpx
+}
+.scroll-view-item_H.coach_W{
+  width: 200rpx;
+}
+.navigator-hover {
+background-color: rgba(0, 0, 0, 0);
 }

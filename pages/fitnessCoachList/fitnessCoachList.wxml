@@ -5,7 +5,7 @@
         <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}" redirect hover-class="className">
             <view class="store_detail_item">
                 <view class="img_wrap">
-                    <image src="/images/test/test_store.png" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+                    <image src="{{host}}{{item.iconUrl}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="detail_text">
                     <text class="detail_text_left">{{item.userFullName}}</text>

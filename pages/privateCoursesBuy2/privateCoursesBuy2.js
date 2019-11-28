@@ -344,6 +344,7 @@ Page({
   },
   // 点击 支付按钮
   tapnPay: function () {
+    var _this = this;
     const {
       radioChecked,
       num,
