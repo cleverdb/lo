@@ -84,11 +84,11 @@
         scroll-with-animation="true" 
        >
           <block wx:for="{{coachList}}"  wx:key="*this">
-            <view class="scroll-view-item_H">
+            <view class="scroll-view-item_H coach_W">
               <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}" hover-class="navigator-hover">
                 <view class="scroll-view_continer">
-                  <view class="scroll-view-item_img">
-                    <image mode="widthFix" src="/images/sliber_test.png"></image>
+                  <view class="scroll-view-item_img coach_img">
+                    <image mode="widthFix" src="{{host}}{{item.iconUrl}}"></image>
                   </view>
                   <text>{{item.userFullName}}</text>
                   <text class="scroll-view-forte">擅长:{{item.forte}}</text>
