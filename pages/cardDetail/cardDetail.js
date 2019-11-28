@@ -448,6 +448,7 @@ Page({
   },
   // 点击 支付
   tapnPay: function () {
+    var _this = this;
     const {
       radioChecked,
       data,
