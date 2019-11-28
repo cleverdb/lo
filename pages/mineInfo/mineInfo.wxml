@@ -51,10 +51,10 @@
       </view>
       <view class='cell-bd'>
           <radio-group class="radio-group" bindchange="targetChange">
-                <radio class="radio" color='#42B8AA' style="margin-right:20rpx" value='0' checked="{{user.targetEnumName=='男'}}">
+                <radio class="radio" color='#42B8AA' style="margin-right:20rpx" value='0' checked="{{user.sexName=='男'}}">
                     <text>男</text>
                 </radio>
-                 <radio class="radio" color='#E7365F' value='1' checked="{{user.targetEnumName=='女'}}">
+                 <radio class="radio" color='#E7365F' value='1' checked="{{user.sexName=='女'}}">
                     <text>女</text>
                 </radio>
           </radio-group>
@@ -81,7 +81,7 @@
       <view class='cell-bd'>
         <picker mode="selector" range="{{sexArr}}" range-key="description" bindchange="sexChange">
           <view class="picker">
-            {{user.sexName?user.sexName:'请选择'}}
+            {{user.targetEnumName?user.targetEnumName:'请选择'}}
           </view>
         </picker>
       </view>

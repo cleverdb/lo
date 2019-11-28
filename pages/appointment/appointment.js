@@ -244,15 +244,15 @@ Page({
   initData: function(param) {
     let _this = this;
     let userId = app.globalData.userInfo.userId
-    // if (!userId) {
-    //   this.setData({
-    //     pageState: {
-    //       message: '请先登陆/注册哟~',
-    //       state: 'unlogin'
-    //     }
-    //   })
-    //   return
-    // }
+    if (!userId) {
+      this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return
+    }
     wx.showLoading({
       title: '加载中...',
     })
@@ -720,6 +720,9 @@ Page({
   getGroup: function (param) {
     console.log(param);
     const _this = this;
+    wx.showLoading({
+      title: '加载中...',
+    });
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
       data: param,
@@ -728,7 +731,8 @@ Page({
         const isShow = groupArr.reduce((nex,current)=>{
           const { plans} = current;
           return [...nex, ...plans]
-        },[]);
+        }, []);
+        wx.hideLoading();
         _this.setData({
           groupArr,
           isShow: isShow.length===0

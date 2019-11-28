@@ -126,7 +126,7 @@ Page({
       complete: function (res) {
         let result = res.data.data
         _this.setData({
-          sexArr: result
+          targetArr: result
         })
       }
     })
@@ -134,13 +134,13 @@ Page({
   loadTarget:function(){
     let _this = this
     wx.request({
-      data: { enumTypeId: 'SexEnum' },
+      data: { enumTypeId: 'SexEnum' }, // 这是男和女
       method: 'GET',
       url: app.globalData.host + '/rest/s1/Goods/enum/getEnum',
       complete: function (res) {
         let result = res.data.data
         _this.setData({
-          targetArr: result
+          sexArr: result
         })
       }
     })

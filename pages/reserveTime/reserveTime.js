@@ -251,7 +251,6 @@ Page({
         if (res.confirm) {
           wx.request({
             url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
-            method: "POST",
             data: {
               userId,
               appiontmentType: 'course_appointment',

@@ -46,6 +46,9 @@
           </view>
         </view>
       </block>
+      <view wx:if='{{appointmentList.length == 0}}' class='no_data_wrap'>
+          暂无数据
+      </view>
     </view>
   </view>
   <view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
