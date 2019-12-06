@@ -4,7 +4,7 @@ const app = getApp();
 const textPosition = {
   one: {
     left: 60,
-    top:180
+    top: 180
   },
   two: {
     left: 196,
@@ -14,13 +14,20 @@ const textPosition = {
     left: 356,
     top: 180
   }
+};
+const typeObj = {
+  0: 'day',
+  1: 'week',
+  2:'month'
 }
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    host:app.globalData.host,
+    host: app.globalData.host,
+    user: app.globalData.userInfo,
+    wUser: app.globalData.wUserInfo,
     report: {},
     nowDate: Utils.nowDate(),
     dateArr:[{
@@ -50,14 +57,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getReport();
-    this.getData();
+    
+    this.getData(0);
+    this.getDataDay();
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      user: app.globalData.userInfo
+    });
     this.getCode();
+  },
+  // 获得 健身房每天的数据
+  getDataDay: function (params = { reportDate: Utils.nowDate() }, type = 'day') {
+    const _this = this;
+    const url = `${app.globalData.host}/rest/s1/Goods/fitnessreport/${type}`;
+    const data = {
+      userId: app.globalData.userInfo.userId,
+      ...params
+    }
+    wx.request({
+      url,
+      data,
+      success: function(res) {
+        console.log(res);
+        const { score, calorie, howlong, ranking } = res.data;
+        _this.setData({
+          calorie,
+          howlong,
+          ranking,
+          score
+        })
+        _this.getReport({ score });
+      }
+    })
   },
   getData: function (params) {
     const nowDate = Utils.nowDate();
@@ -70,23 +105,29 @@ Page({
       startDate = nowDate;
       endDate = nowDate;
     } else if (params === 1) {
-      startDate = `${year}.${month}`;
-      endDate = `${year}.${month}`;
+      startDate = weakDat;
+      endDate = nowDate;
     } else {
-      startDate = nowDate;
+      startDate = `${year}-${month}`;
       endDate = nowDate;
     }
+    const param = params === 2 ? {
+      data: startDate,
+      isMonth:'Y'
+    } : {
+        startDate,
+        endDate,
+    }
     this.setData({
-      nowDate: nowDate,
-      endDate: nowDate,
-      startDate: weakDat,
+      nowDate,
+      endDate,
+      startDate,
       year,
       month
     });
     this.initData({
       userId: app.globalData.userInfo.userId,
-      startDate,
-      endDate,
+      ...param,
     })
   },
   /**
@@ -176,8 +217,11 @@ Page({
       const nextDate = Utils.plusDate(nowDate, 1);
       startDate = nextDate;
       endDate = nextDate;
+     
       this.setData({
-        nowDate: nextDate
+        nowDate: nextDate,
+        endDate,
+        startDate
       });
     } else if (choose == 1) { //后一个星期
       const oldDate = Utils.nowDate();
@@ -196,16 +240,25 @@ Page({
       const y = month > 11 ? year + 1 : year;
       const m = month > 11 ? 0 : month;
       startDate = `${y}-${m+1}`;
-      endDate = `${y}-${m+1}`;
+      endDate = `${y}-${m + 1}`;
       this.setData({
         year: y,
-        month: (m + 1)
+        month: (m + 1),
+        startDate,
+        endDate
       });
-    }
+    };
+    const param = choose === 2 ? {
+      date: startDate,
+      isMonth: 'Y'
+    } : {
+        startDate,
+        endDate,
+      };
+    this.getDataDay({ reportDate: startDate},typeObj[choose]);
     this.initData({
       userId: app.globalData.userInfo.userId,
-      startDate,
-      endDate
+      ...param
     })
   },
   beforeTap: function () {
@@ -223,7 +276,9 @@ Page({
       startDate = nextDate;
       endDate = nextDate;
       this.setData({
-        nowDate: nextDate
+        nowDate: nextDate,
+        startDate,
+        endDate
       });
     } else if (choose == 1) { //前一个星期
       const endDataNow = Utils.plusDate(start, -1);
@@ -241,13 +296,22 @@ Page({
       endDate = `${y}-${m + 1}`;
       this.setData({
         year: y,
-        month: (m + 1)
+        month: (m + 1),
+        startDate,
+        endDate
       });
-    }
+    };
+    const param = choose === 2 ? {
+      date: startDate,
+      isMonth: 'Y'
+    } : {
+        startDate,
+        endDate,
+      };
+    this.getDataDay({ reportDate: startDate}, typeObj[choose]);
     this.initData({
       userId: app.globalData.userInfo.userId,
-      startDate,
-      endDate
+      ...param
     })
   },
   // tabs change 
@@ -299,6 +363,18 @@ Page({
   },
   drawReport:function(){
     const _this = this;
+    const {storeName} =app.globalData.selectStore[0] || 'LIOU健身俱乐部';
+    const { score, howlong, ranking, calorie, user, wUser, choose, startDate, endDate } = _this.data;
+    let date = '';
+    console.log(_this.data);
+    if (choose === 0) {
+      date = startDate;
+    } else if (choose === 1) {
+      date = `${startDate}至${endDate}`
+    } else {
+      date = startDate
+    }
+    const name = user.nickName ? user.nickName : wUser.nickName;
     const { byclear, canWidth, canHeight, bgImgPath, qrCodePath } = this.data;
     const w = canWidth / 2;
     const h = canHeight / 2;
@@ -312,27 +388,27 @@ Page({
     ctx.drawImage('/images/icon/log_min.png', 0, 0, this.addByclear(w),this.addByclear(h));
     ctx.setFontSize(this.addByclear(20));
     ctx.fillStyle = '#000';
-    ctx.fillText("190", textOneLeft, textOneTop);
-    ctx.fillText("100", textTwoLeft, textOneTop);
-    ctx.fillText("2671", textThereLeft, textOneTop);
-    const txtWidth = ctx.measureText('100').width;
-    const txtWidth7 = ctx.measureText('2671').width;
-    const txtWidth8 = ctx.measureText('190').width;
+    ctx.fillText(ranking, textOneLeft, textOneTop);
+    ctx.fillText(howlong, textTwoLeft, textOneTop);
+    ctx.fillText(calorie, textThereLeft, textOneTop);
+    const txtWidth8 = this.addByclear(ctx.measureText(`${ranking}`).width); // 排名
+    const txtWidth2 = this.addByclear(ctx.measureText(`${howlong}`).width); // 锻炼
+    const txtWidth3 = this.addByclear(ctx.measureText(`${calorie}`).width); // 累计消耗
+    // const txtWidth = ctx.measureText(howlong).width;
+    // const txtWidth7 = ctx.measureText(calorie).width;
     ctx.setFontSize(15 * byclear);
-    ctx.fillText("min", textTwoLeft + txtWidth, textOneTop);
-    ctx.fillText("kcal", textThereLeft + txtWidth7, textOneTop);
-    ctx.fillText("LIOU健身俱乐部", (152 / 2) * byclear, (800 / 2) * byclear);
-    const txtWidth2 = ctx.measureText('2671min').width;
-    const txtWidth3 = ctx.measureText('2671kcal').width;
+    // ctx.fillText("min", textTwoLeft + txtWidth, textOneTop);
+    // ctx.fillText("kcal", textThereLeft + txtWidth7, textOneTop);
+    ctx.fillText(`${storeName}`, (152 / 2) * byclear, (800 / 2) * byclear);
     ctx.setFontSize(10 * byclear);
-    const txtWidth4 = ctx.measureText('锻炼总时长').width;
-    const txtWidth5 = ctx.measureText('累计总消耗').width;
-    const txtWidth9 = ctx.measureText('月排名').width;
-    ctx.fillText("月排名", textOneLeft + (txtWidth8 - txtWidth9) / 2, textOneTop + 20);
-    ctx.fillText("锻炼总时长", textTwoLeft + (txtWidth2 - txtWidth4) / 2, textOneTop + 20);
-    ctx.fillText("累计总消耗", textThereLeft + (txtWidth3 - txtWidth5) / 2, textOneTop + 20);
-    ctx.fillText("刘石磊", this.addByclear(50+20), this.addByclear(30));
-    ctx.fillText("2019.9", this.addByclear(50+20), this.addByclear(30+20));
+    const txtWidth9 = this.addByclear(ctx.measureText('月排名').width);
+    const txtWidth4 = this.addByclear(ctx.measureText('锻炼总时长(min)').width);
+    const txtWidth5 = this.addByclear(ctx.measureText('累计总消耗(kcal)').width);
+    ctx.fillText("月排名", textOneLeft +  (txtWidth8 - txtWidth9)/2, textOneTop + 20);
+    ctx.fillText("锻炼总时长(min)", textTwoLeft + (txtWidth2 - txtWidth4) / 2, textOneTop + 20);
+    ctx.fillText("累计总消耗(kcal)", textThereLeft + (txtWidth3 - txtWidth5)/2, textOneTop + 20);
+    ctx.fillText(`${name}`, this.addByclear(50+20), this.addByclear(30));
+    ctx.fillText(`${date}`, this.addByclear(50+20), this.addByclear(30+20));
     ctx.stroke();
     ctx.restore();
 
@@ -357,7 +433,7 @@ Page({
     ctx.setTextAlign("center"); // 字体位置
     ctx.setTextBaseline("middle"); // 字体对齐方式
     ctx.setFontSize(this.addByclear(20)); // 字体大小 注意不要加引号
-    ctx.fillText("40", this.addByclear((w / 2) + 10), this.addByclear((h - 80) / 2)); // 文字内容和文字坐标
+    ctx.fillText(score, this.addByclear((w / 2) + 10), this.addByclear((h - 80) / 2)); // 文字内容和文字坐标
 
     ctx.setFontSize(this.addByclear(8)); // 字体大小 注意不要加引号
     ctx.fillText("运动等级:B", this.addByclear((w / 2) + 10), this.addByclear((h - 40) / 2)); // 文字内容和文字坐标
@@ -486,35 +562,36 @@ Page({
       }
     })
   },
-  getReport:function(){
-      const ctx = wx.createCanvasContext('runCanvas');
-      wx.createSelectorQuery().select('#runCanvas').boundingClientRect(function (rect) { //监听canvas的宽高
-        const w = parseInt(rect.width / 2); //获取canvas宽的的一半
-        const h = parseInt(rect.height / 2); //获取canvas高的一半，
-        ctx.beginPath();
-        ctx.setStrokeStyle('#727171');
-        ctx.setLineWidth("7"); //圆环的粗细
-        ctx.arc(w, h, w - 4, 0.7 * Math.PI, 2.3 * Math.PI);
-        ctx.stroke();
-        ctx.restore();
+  getReport: function (params) {
+    const { score = 0 } = params || {};
+    const ctx = wx.createCanvasContext('runCanvas');
+    wx.createSelectorQuery().select('#runCanvas').boundingClientRect(function (rect) { //监听canvas的宽高
+      const w = parseInt(rect.width / 2); //获取canvas宽的的一半
+      const h = parseInt(rect.height / 2); //获取canvas高的一半，
+      ctx.beginPath();
+      ctx.setStrokeStyle('#727171');
+      ctx.setLineWidth("7"); //圆环的粗细
+      ctx.arc(w, h, w - 4, 0.7 * Math.PI, 2.3 * Math.PI);
+      ctx.stroke();
+      ctx.restore();
 
-        ctx.beginPath();
-        ctx.setStrokeStyle("#FBC700"); //圆环线条的颜色
-        ctx.setLineWidth("7"); //圆环的粗细
-        ctx.setLineCap("round"); //圆环结束断点的样式 butt为平直边缘 round为圆形线帽 square为正方
-        ctx.arc(w, h, w - 4, 0.7 * Math.PI, 1 * Math.PI);
-        ctx.stroke();
-        ctx.restore();
-        //开始绘制百分比数字
-        ctx.beginPath();
-        ctx.setFillStyle("#FBC700"); // 字体颜色
-        ctx.setTextAlign("center"); // 字体位置
-        ctx.setTextBaseline("middle"); // 字体对齐方式
-        ctx.setFontSize(40); // 字体大小 注意不要加引号
-        ctx.fillText("40", w, h - 20); // 文字内容和文字坐标
-        ctx.setFontSize(14); // 字体大小 注意不要加引号
-        ctx.fillText("运动等级:B", w, h + 20); // 文字内容和文字坐标
-        ctx.draw();
-      }).exec();
+      ctx.beginPath();
+      ctx.setStrokeStyle("#FBC700"); //圆环线条的颜色
+      ctx.setLineWidth("7"); //圆环的粗细
+      ctx.setLineCap("round"); //圆环结束断点的样式 butt为平直边缘 round为圆形线帽 square为正方
+      ctx.arc(w, h, w - 4, 0.7 * Math.PI, 1 * Math.PI);
+      ctx.stroke();
+      ctx.restore();
+      //开始绘制百分比数字
+      ctx.beginPath();
+      ctx.setFillStyle("#FBC700"); // 字体颜色
+      ctx.setTextAlign("center"); // 字体位置
+      ctx.setTextBaseline("middle"); // 字体对齐方式
+      ctx.setFontSize(40); // 字体大小 注意不要加引号
+      ctx.fillText(score, w, h - 20); // 文字内容和文字坐标
+      ctx.setFontSize(14); // 字体大小 注意不要加引号
+      ctx.fillText("运动等级:B", w, h + 20); // 文字内容和文字坐标
+      ctx.draw();
+    }).exec();
   }
 })

@@ -41,15 +41,15 @@
   </view>
   <view class='container-rank'>
       <view class="tr">
-        <view class='td-top'>190</view>
+        <view class='td-top'>{{ranking||0}}</view>
         <view class="label">运动排名</view>
       </view>
       <view class="tr">
-        <view class='td-top'>120</view>
+        <view class='td-top'>{{howlong||0}}</view>
         <view class="label">运动时长(分钟)</view>
       </view>
       <view class="tr noboder">
-        <view class='td-top'>120</view>
+        <view class='td-top'>{{calorie||0}}</view>
         <view class="label">消耗(大卡))</view>
       </view>
   </view>
