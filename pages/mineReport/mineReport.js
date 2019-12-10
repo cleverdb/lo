@@ -26,8 +26,6 @@ Page({
    */
   data: {
     host: app.globalData.host,
-    user: app.globalData.userInfo,
-    wUser: app.globalData.wUserInfo,
     report: {},
     nowDate: Utils.nowDate(),
     dateArr:[{
@@ -51,7 +49,11 @@ Page({
     qrCodePath: '',
     weakDat: '',
     endDate: '',
-    startDate:''
+    startDate: '',
+    ranking: '',
+    howlong: '',
+    calorie: '',
+    level: '-'
   },
   /**
    * 生命周期函数--监听页面加载
@@ -60,6 +62,8 @@ Page({
     
     this.getData(0);
     this.getDataDay();
+    console.log(app.globalData);
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -82,15 +86,15 @@ Page({
       url,
       data,
       success: function(res) {
-        console.log(res);
-        const { score, calorie, howlong, ranking } = res.data;
+        const { score, calorie, howlong, ranking,level } = res.data;
         _this.setData({
           calorie,
           howlong,
           ranking,
-          score
-        })
-        _this.getReport({ score });
+          score,
+          level
+        });
+        _this.countInterval(score, level);
       }
     })
   },
@@ -112,7 +116,7 @@ Page({
       endDate = nowDate;
     }
     const param = params === 2 ? {
-      data: startDate,
+      date: startDate,
       isMonth:'Y'
     } : {
         startDate,
@@ -321,7 +325,10 @@ Page({
       choose: index,
       report: []
     });
+   
     this.getData(index);
+    const data = index === 2 ? `${new Date().getFullYear()}-${new Date().getMonth() + 1}` : Utils.nowDate();
+    this.getDataDay({ reportDate: data}, typeObj[index]);
   },
   shareTap: function () {
     const _this = this;
@@ -364,9 +371,10 @@ Page({
   drawReport:function(){
     const _this = this;
     const {storeName} =app.globalData.selectStore[0] || 'LIOU健身俱乐部';
-    const { score, howlong, ranking, calorie, user, wUser, choose, startDate, endDate } = _this.data;
+    const { score, howlong, ranking, calorie, choose, startDate, endDate, level } = _this.data;
     let date = '';
-    console.log(_this.data);
+    const dat = score * (1.6 / 100) + 0.7;
+    const { userInfo,wUserInfo } = app.globalData;
     if (choose === 0) {
       date = startDate;
     } else if (choose === 1) {
@@ -374,7 +382,7 @@ Page({
     } else {
       date = startDate
     }
-    const name = user.nickName ? user.nickName : wUser.nickName;
+    const name = userInfo.nickName ? userInfo.nickName : wUserInfo.nickName;
     const { byclear, canWidth, canHeight, bgImgPath, qrCodePath } = this.data;
     const w = canWidth / 2;
     const h = canHeight / 2;
@@ -420,7 +428,7 @@ Page({
     ctx.restore();
 
     ctx.beginPath();
-    ctx.arc(this.addByclear((w / 2) + 10), this.addByclear((h - 55) / 2), this.addByclear(30), 0.7 * Math.PI, 1 * Math.PI);
+    score ===0 ? "" : ctx.arc(this.addByclear((w / 2) + 10), this.addByclear((h - 55) / 2), this.addByclear(30), 0.7 * Math.PI, dat * Math.PI);
     ctx.setStrokeStyle("#FBC700"); //圆环线条的颜色
     ctx.setLineWidth("7"); //圆环的粗细
     ctx.setLineCap("round"); //圆环结束断点的样式 butt为平直边缘 round为圆形线帽 square为正方
@@ -436,7 +444,7 @@ Page({
     ctx.fillText(score, this.addByclear((w / 2) + 10), this.addByclear((h - 80) / 2)); // 文字内容和文字坐标
 
     ctx.setFontSize(this.addByclear(8)); // 字体大小 注意不要加引号
-    ctx.fillText("运动等级:B", this.addByclear((w / 2) + 10), this.addByclear((h - 40) / 2)); // 文字内容和文字坐标
+    ctx.fillText(`运动等级:${level === '-' ? 'B' : level}`, this.addByclear((w / 2) + 10), this.addByclear((h - 40) / 2)); // 文字内容和文字坐标
 
     ctx.beginPath();
     ctx.setFillStyle('#FBC700');
@@ -563,7 +571,7 @@ Page({
     })
   },
   getReport: function (params) {
-    const { score = 0 } = params || {};
+    const { score = 0, process, level } = params || {};
     const ctx = wx.createCanvasContext('runCanvas');
     wx.createSelectorQuery().select('#runCanvas').boundingClientRect(function (rect) { //监听canvas的宽高
       const w = parseInt(rect.width / 2); //获取canvas宽的的一半
@@ -574,12 +582,11 @@ Page({
       ctx.arc(w, h, w - 4, 0.7 * Math.PI, 2.3 * Math.PI);
       ctx.stroke();
       ctx.restore();
-
       ctx.beginPath();
       ctx.setStrokeStyle("#FBC700"); //圆环线条的颜色
       ctx.setLineWidth("7"); //圆环的粗细
       ctx.setLineCap("round"); //圆环结束断点的样式 butt为平直边缘 round为圆形线帽 square为正方
-      ctx.arc(w, h, w - 4, 0.7 * Math.PI, 1 * Math.PI);
+      score ? ctx.arc(w, h, w - 4, 0.7 * Math.PI, process * Math.PI) : '';
       ctx.stroke();
       ctx.restore();
       //开始绘制百分比数字
@@ -590,8 +597,24 @@ Page({
       ctx.setFontSize(40); // 字体大小 注意不要加引号
       ctx.fillText(score, w, h - 20); // 文字内容和文字坐标
       ctx.setFontSize(14); // 字体大小 注意不要加引号
-      ctx.fillText("运动等级:B", w, h + 20); // 文字内容和文字坐标
+      ctx.fillText(`运动等级:${level==='-'?'B':level}`, w, h + 25); // 文字内容和文字坐标
       ctx.draw();
     }).exec();
+  },
+  countInterval: function (param, level) {
+    const _this = this;
+    let count = 0;
+    if (param !== 0) {
+      _this.countTimer = setInterval(() => {
+        if (count < param) {
+          count++;
+        } else {
+          clearInterval(_this.countTimer);
+        };
+        const dat = count * (1.6 / 100) + 0.7;
+        _this.getReport({ score: param, process: dat, level });
+      }, 50);
+    }
+    _this.getReport({ score: param, process: param, level });
   }
 })

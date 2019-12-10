@@ -36,12 +36,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.initData()
-    this.getSelectData();
-    this.getCoach();
-    app.userInfoReadyCallback = res => {
-      app.globalData.wUserInfo = res.userInfo
-    };
+    // this.initData()
+    // this.getSelectData();
+    // this.getCoach();
+    // app.userInfoReadyCallback = res => {
+    //   app.globalData.wUserInfo = res.userInfo
+    // };
   },
 
   /**
@@ -54,8 +54,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: function () {
+    console.log('asdsadsadsa');
+    this.initData()
+    this.getSelectData();
+    this.getCoach();
+    app.userInfoReadyCallback = res => {
+      app.globalData.wUserInfo = res.userInfo
+    };
   },
 
   /**
@@ -162,13 +168,12 @@ Page({
             }
           })
         } else {
-          const {data:dat=[]}=data;
-          const dat2 = app.globalData.selectStore.length > 0 ? app.globalData.selectStore : dat[0];
+          const { data: dat = [] } = data;
+          console.log(app.globalData.selectStore);
+          const dat2 = app.globalData.selectStore.length > 0 ? app.globalData.selectStore[0] : dat[0];
           const { storeName, address, storeId, storePhone } = dat2;
-          if (app.globalData.selectStore.length ==0){
-            app.globalData.selectStore = [dat2];
-            app.globalData.storeId = storeId;
-         }
+          app.globalData.selectStore = [dat2];
+          app.globalData.storeId = storeId;
           _this.getStoreArea(storeId);
           _this.setData({
             selectArray: dat,

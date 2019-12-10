@@ -228,6 +228,11 @@ swiper  image{
   overflow: hidden;
   white-space:nowrap;
   padding-left: 30rpx;
+ min-height:100rpx; 
+  
+}
+.scroll_conteiner_view{
+ min-height:100rpx; 
 }
 .scroll-view_continer{
   display: flex;

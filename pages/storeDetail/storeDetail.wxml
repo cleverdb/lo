@@ -20,6 +20,9 @@
             </view>
         </view>
     </block>
+    <view wx:if="{{storeDetailList.length === 0}}" class='no_data'>
+        暂无数据
+    </view>
     <view class='bottomline' wx:if="{{moreFlag}}">
         <text class='baseline'></text>
         <text class='tip'>我是有底线的哟～</text>
