@@ -127,7 +127,7 @@ page{
   margin: 0 auto;
 }
 .show_data_wrap{
-  height: 270rpx;
+  height: 280rpx;
   overflow: hidden;
 }
 .one_top_wrap{
@@ -151,7 +151,7 @@ page{
 }
 .footer-view{
   width: 30rpx;
-  height: 40rpx;
+  height: 34rpx;
 }
 .footer-view image{
   width: 100%;

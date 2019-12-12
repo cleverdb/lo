@@ -25,7 +25,7 @@
     <view  class="fitness_coach_end">
         <view class="end_left">
             <navigator class="" target="" url="/pages/privateCoursesBuy1/privateCoursesBuy1?coachId={{userId}}" hover-class="navigator-hover" open-type="navigate">
-                体验TA
+                体验课
             </navigator>
         </view>
         <view class="end_rihgt">

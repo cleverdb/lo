@@ -2,7 +2,7 @@
 <!-- pages/storeDetail/storeDetail.wxml -->
 <view class="store_detail_wrap">
     <block wx:for="{{coachList}}">
-        <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}" redirect hover-class="className">
+        <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}"  hover-class="className">
             <view class="store_detail_item">
                 <view class="img_wrap">
                     <image src="{{host}}{{item.iconUrl}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
