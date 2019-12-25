@@ -164,6 +164,7 @@ swiper  image{
   font-family:PingFangSC;
   font-weight:400;
   color:rgba(62,58,57,1);
+  max-width: 450rpx;
 }
 .address_low{
   font-size:20rpx;
