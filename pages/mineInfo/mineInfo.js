@@ -181,11 +181,11 @@ Page({
   sexChange: function (e) {
     let value = e.detail.value;
     console.log(value);
-    let slect = this.data.sexArr[value];
+    let slect = this.data.targetArr[value];
     console.log(this.data.sexArr,slect);
     this.setData({
-      'user.sex': slect.enumId,
-      'user.sexName': slect.description
+      'user.targetEnumId': slect.enumId,
+      'user.targetEnumName': slect.description
     })
   },
   birthDateChange: function (e) {
@@ -197,11 +197,11 @@ Page({
   // 这是 性别
   targetChange: function (e) {
     let value = e.detail.value;
-    let slect = this.data.targetArr[value];
+    let slect = this.data.sexArr[value];
     console.log(this.data.targetArr);
     this.setData({
-      'user.targetEnumId': slect.enumId,
-      'user.targetEnumName': slect.description
+      'user.sex': slect.enumId,
+      'user.sexName': slect.description
     })
   },
   saveTap:function(){

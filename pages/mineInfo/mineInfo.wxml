@@ -79,7 +79,7 @@
         健身目标
       </view>
       <view class='cell-bd'>
-        <picker mode="selector" range="{{sexArr}}" range-key="description" bindchange="sexChange">
+        <picker mode="selector" range="{{targetArr}}" range-key="description" bindchange="sexChange">
           <view class="picker">
             {{user.targetEnumName?user.targetEnumName:'请选择'}}
           </view>

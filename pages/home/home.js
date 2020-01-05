@@ -62,10 +62,6 @@ Page({
     app.userInfoReadyCallback = res => {
       app.globalData.wUserInfo = res.userInfo
     };
-    const _title = app.globalData.selectStore[0] || { storeName:"力偶健身俱乐部"};
-    wx.setNavigationBarTitle({
-      title: _title.storeName
-    });
   },
 
   /**
@@ -179,9 +175,6 @@ Page({
           app.globalData.selectStore = [dat2];
           app.globalData.storeId = storeId;
           _this.getStoreArea(storeId);
-          wx.setNavigationBarTitle({
-            title: dat2.storeName
-          });
           _this.setData({
             selectArray: dat,
             storeName,
@@ -213,9 +206,6 @@ Page({
     app.globalData.selectStore = [selectArray[value]];
     console.log(app.globalData.selectStore);
     this.getStoreArea(storeId);
-    wx.setNavigationBarTitle({
-      title: storeName
-    });
     this.setData({
       storeName,
       storeAddress: address,
