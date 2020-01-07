@@ -252,9 +252,10 @@ Page({
   payTap:function(e){
     const { item } = e.currentTarget.dataset;
     const { courseId, unitPrice=0,} = item;
+    debugger;
     const { userId } = app.globalData.userInfo;
     wx.request({
-      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/public`,
       method: 'POST',
       data: {
         courseId,
@@ -291,7 +292,7 @@ Page({
             },
             fail(res) {
               wx.request({
-                url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/public/disabled`,
                 data: {
                   orderId: orderid,
                 }

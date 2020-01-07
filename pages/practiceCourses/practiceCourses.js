@@ -151,7 +151,7 @@ Page({
     const { courseId, unitPrice} = this.data;
     const _this = this;
     wx.request({
-      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/public`,
       method: 'POST',
       data: {
         courseId,
