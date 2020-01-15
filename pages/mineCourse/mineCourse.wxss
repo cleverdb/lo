@@ -83,3 +83,7 @@ page{
     font-size: 28rpx;
     justify-content: center;
 }
+.container_no_data_wrap{
+    height: 400rpx;
+    line-height: 400rpx;
+}

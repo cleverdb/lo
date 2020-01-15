@@ -2,7 +2,7 @@
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
 <view class='container' wx:if='{{!pageState.state}}'>
-    <scroll-view scroll-y="true" style="height: 100%;">
+    <scroll-view scroll-y="true" style="height: 100%;" wx:if='{{data.length>0}}'>
         <block wx:for="{{data}}">
             <view class='list-item'>
                 <view class='item-left'>
@@ -26,4 +26,7 @@
             </view>
         </block>
     </scroll-view>
+    <view  class='container_no_data_wrap' wx:else>
+        暂无课程
+    </view>
 </view>
