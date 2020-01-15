@@ -14,6 +14,7 @@ page{
 .fitness_coach_img image{
     width: 100%;
     display: block;
+    height: 100%;
 }
 .fitness_no_img{
     height: 50%;
