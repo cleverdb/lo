@@ -1,6 +1,8 @@
 <!--pages/reserveTime/reserveTime.wxml-->
 <!-- pages/mineAppointment/mineAppointment.wxml -->
-<view class="container">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="container" wx:if='{{!pageState.state}}'>
     <view class="container-hd">
         <view class='date-show'>
             <view class='lt-arrow' bindtap='lastMonth'>

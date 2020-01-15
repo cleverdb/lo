@@ -35,8 +35,9 @@ Page({
     _this.initData()
     if (app.globalData.userInfo.userId) {
       _this.initActivityDeductData();
+    } else {
+      this.joinActivity();
     }
-
   },
 
   /**

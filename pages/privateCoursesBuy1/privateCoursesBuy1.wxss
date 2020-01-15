@@ -1,5 +1,5 @@
 /* pages/privateCoursesBuy/privateCoursesBuy.wxss */
-
+@import '../template/pageAlert/pageAlert.wxss';
 page{
     height: 100%;
 }

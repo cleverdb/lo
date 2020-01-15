@@ -68,12 +68,10 @@ Page({
       selectedDay: nowDay,
       isToday: nowDay
     })
-    this.initData({
-      userId: '100000',
-    });
+    this.initData();
     this.getGroup({
       date: nowDay,
-      storeId: '100000'
+      storeId: app.globalData.storeId
     });
     this.getDoingData({
       pageIndex: runningPageIndex,

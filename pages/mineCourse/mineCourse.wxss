@@ -1,4 +1,5 @@
 /* pages/mineCourse/mineCourse.wxss */
+@import '../template/pageAlert/pageAlert.wxss';
 page{
     background: #ffffff;
 }

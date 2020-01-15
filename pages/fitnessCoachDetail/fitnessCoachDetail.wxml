@@ -1,4 +1,6 @@
-<view class="fitness_coach">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="fitness_coach" wx:if='{{!pageState.state}}'>
     <view class="fitness_coach_img">
        <image src="{{host}}{{iconUrl}}"  wx:if="{{iconUrl}}" />
        <text class="fitness_no_img" wx:else>暂无图片</text>

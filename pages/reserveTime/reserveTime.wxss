@@ -1,5 +1,5 @@
 /* pages/mineAppointment/mineAppointment.wxss */
-
+@import '../template/pageAlert/pageAlert.wxss';
 page {
   height: 100%;
   background-color: #fff;

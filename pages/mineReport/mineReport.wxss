@@ -1,5 +1,5 @@
 /* pages/mineReport/mineReport.wxss */
-
+@import '../template/pageAlert/pageAlert.wxss';
 page {
   min-height: 100%;
   background: #EFEFEF;

@@ -1,4 +1,5 @@
 /* pages/practiceCourses/practiceCourses.wxss */
+@import '../template/pageAlert/pageAlert.wxss';
 .show_image{
     height:401rpx;
     width: 100%;

@@ -1,5 +1,7 @@
 <!--pages/mine/mine.wxml-->
-<view class='container'>
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class='container' wx:if='{{!pageState.state}}'>
   <view class='container-hd'>
     <view class='container-hd_hd'>
       <view class='avatar'>

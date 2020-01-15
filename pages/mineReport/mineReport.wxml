@@ -1,5 +1,7 @@
 <!--pages/mineReport/mineReport.wxml-->
-<view class='container'>
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class='container' wx:if='{{!pageState.state}}'>
   <view class='mine-report-top'>
     <block wx:for="{{dateArr}}">
       <view class="{{choose==index ? 'active' : ''}}" data-index='{{index}}' bindtap='tabsChange'>{{item.text}}</view>

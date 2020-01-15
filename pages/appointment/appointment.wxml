@@ -1,4 +1,6 @@
-<view class="appoint_wrap">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="appoint_wrap" wx:if='{{!pageState.state}}'>
    <view class="appoint_tab">
      <block wx:for="{{tabArray}}">
         <view class="{{tabsIndex==index ? 'active' : ''}}" bindtap="tapChange" data-id='{{index}}'>
