@@ -267,19 +267,10 @@ Page({
           })
         } else {
           let result = res.data.data
-          if (result.length == 0) {
-            _this.setData({
-              pageState: {
-                message: '暂无课程预约哟~',
-                state: 'empty'
-              }
-            })
-          } else {
-            _this.setData({
-              courseList: result,
-              pageState: {}
-            })
-          }
+          _this.setData({
+            courseList: result,
+            pageState: {}
+          })
 
         }
       },
