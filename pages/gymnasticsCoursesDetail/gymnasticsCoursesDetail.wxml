@@ -9,7 +9,7 @@
         }
     }
 </wxs>
-<view class="container">
+<view class="container" wx:if='{{!pageState.state}}'>
     <image src="../../images/icon/next.png" class="moveright" bindtap="onnext"></image>
     <scroll-view scroll-x>
         <view class="_table">

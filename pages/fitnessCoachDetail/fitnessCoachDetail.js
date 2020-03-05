@@ -24,6 +24,15 @@ Page({
   onLoad: function (options) {
     const { userId } = options;
     const _this = this;
+    if (!userId) {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      });
+      return;
+    }
     this.getDataSelect();
     wx.showLoading({
       title: '加载中...',
@@ -87,7 +96,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.userInfo.userId) {
+      this.setData({
+        pageState: {}
+      })
+    } else {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+    }
   },
 
   /**

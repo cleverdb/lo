@@ -1,3 +1,4 @@
+@import '../template/pageAlert/pageAlert.wxss';
 page{
     height: 100%;
 }
@@ -14,6 +15,7 @@ page{
 .fitness_coach_img image{
     width: 100%;
     display: block;
+    height: 100%;
 }
 .fitness_no_img{
     height: 50%;

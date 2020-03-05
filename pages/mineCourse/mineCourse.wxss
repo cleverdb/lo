@@ -1,4 +1,5 @@
 /* pages/mineCourse/mineCourse.wxss */
+@import '../template/pageAlert/pageAlert.wxss';
 page{
     background: #ffffff;
 }
@@ -81,4 +82,8 @@ page{
     align-items: center;
     font-size: 28rpx;
     justify-content: center;
+}
+.container_no_data_wrap{
+    height: 400rpx;
+    line-height: 400rpx;
 }

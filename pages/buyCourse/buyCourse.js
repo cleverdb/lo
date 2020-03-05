@@ -58,6 +58,13 @@ Page({
       this.setData({
         pageState: {}
       })
+    } else {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
     }
   },
 

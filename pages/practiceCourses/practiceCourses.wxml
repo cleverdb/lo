@@ -1,7 +1,7 @@
 <!-- pages/practiceCourses/practiceCourses.wxml -->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
-<view class="container">
+<view class="container" wx:if='{{!pageState.state}}'>
     <image class="show_image" src="{{host}}{{navPicUrl}}"></image>
     <view class="content_container">
         <view class="content_container_item  bor_bottom">

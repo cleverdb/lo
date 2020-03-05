@@ -52,7 +52,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.userInfo.userId) {
+      this.setData({
+        pageState: {}
+      })
+    } else {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+    }
   },
 
   /**
@@ -252,9 +263,10 @@ Page({
   payTap:function(e){
     const { item } = e.currentTarget.dataset;
     const { courseId, unitPrice=0,} = item;
+    debugger;
     const { userId } = app.globalData.userInfo;
     wx.request({
-      url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/public`,
       method: 'POST',
       data: {
         courseId,
@@ -291,7 +303,7 @@ Page({
             },
             fail(res) {
               wx.request({
-                url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/public/disabled`,
                 data: {
                   orderId: orderid,
                 }

@@ -1,7 +1,7 @@
 <!-- pages/privateCoursesBuy/privateCoursesBuy.wxml -->
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
-<view class="try_course_container">
+<view class="try_course_container" wx:if='{{!pageState.state}}'>
     <view class="head">
         <image wx:if='{{courseNavPic}}' src="{{courseNavPic}}" alt="" />
         <view wx:else>

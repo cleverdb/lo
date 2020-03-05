@@ -16,7 +16,20 @@ Page({
     const _this = this;
     wx.showLoading({
       title: '加载中...',
-    })
+    });
+    if (app.globalData.userInfo.userId) {
+      this.setData({
+        pageState: {}
+      })
+    } else {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      });
+      return;
+    }
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/mine/course`,
       data: {

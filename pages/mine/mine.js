@@ -60,10 +60,21 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function(e) {
-    this.setData({
-      user: app.globalData.userInfo
-    });
+  onShow: function (e) {
+    if (app.globalData.userInfo.userId) {
+      this.setData({
+        pageState: {},
+        user: app.globalData.userInfo
+      });
+    } else {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+    }
+    
   },
 
   /**
