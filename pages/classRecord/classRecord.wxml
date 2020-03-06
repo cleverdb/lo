@@ -1,0 +1,29 @@
+<!--pages/classRecord/classRecord.wxml-->
+<view class="class_record_page">
+    <i-tabs current="{{current}}" bindchange="onTabsChange">
+        <i-tab key="1" title="全部"></i-tab>
+        <i-tab key="2" title="待上课"></i-tab>
+        <i-tab key="3" title="已完成"></i-tab>
+        <i-tab key="4" title="已取消"></i-tab>
+    </i-tabs>
+    <view class='class_record_swiper' style="height:{{winHeight}}rpx">
+        <swiper current="{{ current-1 }}" bindchange="onSwiperChange">
+            <swiper-item>
+                <view class="content">
+                    
+                </view>
+            </swiper-item>
+            <swiper-item>
+                <view class="content">2</view>
+            </swiper-item>
+            <swiper-item>
+                <view class="content">3</view>
+            </swiper-item>
+            <swiper-item>
+                <view class="content">4</view>
+            </swiper-item>
+        </swiper>
+    </view>
+      
+    
+</view>

@@ -1,52 +1,110 @@
 <!--pages/mine/mine.wxml-->
 <view class='container'>
-  <view class='container-hd'>
-    <view class='container-hd_hd'>
+  <view class='mine_top'>
       <view class='avatar'>
-        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'../../images/logo.png'}}"></image>
+        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'/images/logo.png'}}"></image>
       </view>
-    </view>
-    <view class='container-hd_bd'>  
-      <block wx:if='{{user.userId}}'>
-        <view class='cell name'>{{user.nickName?user.nickName:wUser.nickName}}</view>
-        <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
-      </block>
-      <block wx:else>
-        <button class='cell' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登陆/注册</button>
-      </block>
-     
-    </view>
-    <view class='container-hd_ft'>
-      <view class='cell' wx:if="{{user.weight}}">体重:{{user.weight}}kg</view>
-      <view class="cell" wx:if="{{user.bmi}}">BMI:{{user.bmi}}</view>
-    </view>
-  </view>
-  <view class='container-bd'>
-    <navigator class="menu" wx:for="{{ bodyItems }}" wx:key="{{item}}" url="{{ item.path }}">
-      <view class='menu-row'>
-        <view class="menu-cell">
-          <image src="{{item.icon}}" class="img"></image>
-          <text>{{ item.text }}</text>
+      <view class='mine_right'>
+        <view class='mine_right_top'>
+          <view>
+            刘石磊
+          </view>
+          <view class='mine_right_two'>
+            教练部
+          </view>
         </view>
-
+        <view class='mine_right_bottom'>
+          <view>
+              工号:<text>121311</text>
+          </view>
+          <view>
+            LIOU健身乐城店
+          </view>
+        </view>
       </view>
-      <view class="arrow">
-        <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
-      </view>
-    </navigator>
+         
   </view>
-<view class='container-ft'>
-  <navigator class="menu" wx:for="{{ footItems }}" wx:key="{{item}}" url="{{ item.path }}">
-    <view class='menu-row'>
-      <view class="menu-cell">
-        <image src="{{item.icon}}" class="img"></image>
-        <text>{{ item.text }}</text>
+  <view class='mine_center'>
+    <view class='center_left' >
+      <view bindtap="onCentetChange">{{numdata}}</view>
+      <i-icon type="{{is_show ? 'packup' : 'unfold'}}" size="15" color="#80848f" />
+      <view class='center_left_position' wx:if="{{is_show}}">
+        <view class='center_position_top' data-numData="上月数据"  bindtap="chooseTap">
+          上月数据
+        </view>
+        <view class='line'></view>
+        <view class='center_position_top' data-numData="今日数据"  bindtap="chooseTap">
+          今日数据
+        </view>
+            
       </view>
+    </view>
+    
+      
+    <view class='center_right'>
+      <view class='center_right_item'>
+        <text>78</text>
+        <text class='center_text'>消课量</text>
+      </view>
+      <view class='center_right_item'>
+        <text>78</text>
+        <text class='center_text'>消课量</text>
+      </view>
+      <view class='center_right_item'>
+        <text>78</text>
+        <text class='center_text'>消课量</text>
+      </view>
+    </view>
+  </view>
 
+  <view class='mine_footer'>
+        <i-cell-group>
+          <i-cell is-link>
+            <view class='mine_list'>
+              <image src="/images/icon/mine_reservation.png" mode='aspectFit' class='mine_img'></image>
+              <view>
+                   预约信息
+              </view>
+            </view>
+          </i-cell>
+          <i-cell is-link>
+          <view class='mine_list'>
+              <image src="/images/icon/mine_edit.png" mode='aspectFit' class='mine_img'></image>
+              <view>
+                优惠券管理
+              </view>
+          </view>
+          </i-cell>
+          <i-cell is-link>
+          <view class='mine_list'>
+              <image src="/images/icon/mine_message.png" mode='aspectFit' class='mine_img'></image>
+              <view>
+                基本信息
+              </view>
+          </view>
+          </i-cell>
+          <i-cell is-link>
+          <view class='mine_list'>
+              <image src="/images/icon/mine_Store.png" mode='aspectFit' class='mine_img'></image>
+              <view>
+                更换门店
+              </view>
+          </view>
+          </i-cell>
+          <i-cell is-link>
+          <view class='mine_list_last'>
+              <view class='mine_list_top'>
+                  <image src="/images/icon/mine_iphone.png" mode='aspectFit' class='mine_img'></image>
+                  <view>
+                    更换手机号
+                  </view>
+              </view>
+              <view>
+                185****1012
+              </view>
+          </view>
+          </i-cell>
+        </i-cell-group>
     </view>
-    <view class="arrow">
-      <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
-    </view>
-  </navigator>
-</view>
+
 </view>

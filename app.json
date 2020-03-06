@@ -19,7 +19,8 @@
     "pages/mineTicket/mineTicket",
     "pages/mineActivity/mineActivity",
     "pages/stores/stores",
-    "pages/template/pageAlert/pageAlert"
+    "pages/classRecord/classRecord",
+    "pages/mineReserve/mineReserve"
   ],
   "permission": {
     "scope.userLocation": {
@@ -43,25 +44,24 @@
         "pagePath": "pages/home/home",
         "iconPath": "images/icon/home.png",
         "selectedIconPath": "images/icon/home-ok.png",
-        "text": "首页"
+        "text": "日程"
       },
       {
         "pagePath": "pages/courses/courses",
         "iconPath": "images/icon/kc.png",
         "selectedIconPath": "images/icon/kc-ok.png",
-        "text": "课程"
+        "text": "工作"
       },
       {
         "pagePath": "pages/card/card",
         "iconPath": "images/icon/ka.png",
-        "selectedIconPath": "images/icon/ka-ok.png",
-        "text": "卡服务"
+        "selectedIconPath": "images/icon/ka-ok.png"
       },
       {
         "pagePath": "pages/appointment/appointment",
         "iconPath": "images/icon/yuyue.png",
         "selectedIconPath": "images/icon/yuyue-ok.png",
-        "text": "预约"
+        "text": "数据"
       },
       {
         "pagePath": "pages/mine/mine",
@@ -70,5 +70,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

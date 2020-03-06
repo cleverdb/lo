@@ -1,0 +1,9 @@
+/* pages/classRecord/classRecord.wxss */
+.class_record_page{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.class_record_swiper{
+    height: 100%;
+}

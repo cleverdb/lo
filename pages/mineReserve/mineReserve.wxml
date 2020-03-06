@@ -1,0 +1,90 @@
+<!--pages/mineReserve/mineReserve.wxml-->
+<view class='mine_reserve_wrap'>
+    <view class='search_wrap'>
+        <image class="search_title" src="/images/icon/mine_search.png" mode="aspectFit" lazy-load="false" />
+        <i-input value="{{ value1 }}" placeholder="请输入姓名、手机号" />
+    </view>
+    <view>
+        <i-tabs current="{{ current }}" bindchange="handleChange">
+            <i-tab key="1" title="预约会员"></i-tab>
+            <i-tab key="2" title="预约历史"></i-tab>
+        </i-tabs>
+    </view>
+    <view wx:if="{{current==1}}" class='wrap'>
+        <!--<view class='swipeout_warp'>
+             <i-swipeout operateWidth="{{80}}">
+                <view slot="content">
+                    <view class='mine_swipeout_item'>
+                        <view class='mine_item_left'>
+                            <view>
+                                2019.01.21  13:00
+                            </view>
+                            <view class="mine_swipeout_center">
+                                <text class='mine_name'>刘石磊</text><text>老会员</text>
+                            </view>
+                            <view class='mine_item_bottom'>
+                                无备注
+                            </view>
+                        </view>
+                        <view class='swipeout_right'>
+                            <image class="swipeout_right_img" src="/images/icon/mine_reserve_tall.png" mode="aspectFit" lazy-load="false"/>
+                        </view> 
+                    </view>
+                </view>
+                <view slot="button" class="i-swipeout-demo-button-group mine_button_item">
+                    <view class="i-swipeout-demo-button">删除</view>
+                </view>
+            </i-swipeout>
+        </view>-->
+        <view>
+            <view class='mine_no_top_wrap'>
+                <image class="reserve_no_img_top" src="/images/icon/mine_res_top.png" mode="aspectFit" lazy-load="false"/>
+                <text class='reserve_no_text'>快去预约客户吧</text>
+            </view>
+            <view class='mine_no_top_wrap'>
+                <image class="reserve_no_img_bottom" src="/images/icon/mine_res_bottom.png" mode="aspectFit" lazy-load="false"/>
+                <text class='reserve_no_text'>点击预约客户</text>
+            </view>   
+        </view>
+        <!--<view class="mine_reserve_footer">
+        <image class="reserve_footer_img" src="/images/icon/mine_reserve_add.png" mode="aspectFit" lazy-load="false"/>
+        <text class='footer_text'>添加</text>
+        </view>-->
+    </view>
+    <view wx:else class='wrap'>
+         <view class='swipeout_warp'>
+            <view class='mine_history_item'>
+                <view class='mine_swipeout_item history_item'>
+                    <view class='mine_item_left'>
+                        <view>
+                            2019.01.21  13:00
+                        </view>
+                        <view class="mine_swipeout_center">
+                            <text class='mine_name'>刘石磊</text><text>老会员</text>
+                        </view>
+                        <view class='mine_item_bottom'>
+                            无备注
+                        </view>
+                    </view>
+                    <view class='swipeout_right' wx:if="{{!showDelete}}">
+                        <image class="swipeout_right_img" src="/images/icon/mine_reserve_tall.png" mode="aspectFit" lazy-load="false"/>
+                    </view> 
+                    <view wx:else class='swipeout_checkbox_right'>
+                        <i-checkbox  value="{{animal}}" checked="{{checked}}" bindchange="handleAnimalChange"></i-checkbox>
+                    </view>
+                      
+                </view>
+            </view>
+    
+            <view bindtap="deleteTap" wx:if="{{!showDelete}}" class="mine_reserve_footer">
+                <image class="reserve_footer_img" src="/images/icon/delete_all.png" mode="aspectFit" lazy-load="false"/>
+                <text class='footer_text'>批量删除</text>
+            </view>
+            <view wx:else class="mine_reserve_footer delete_footer">
+                <text class='delete_text'>删 除</text>
+            </view>
+        </view>
+    </view>
+      
+</view>
+  

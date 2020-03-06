@@ -44,7 +44,9 @@ Page({
       icon: '../../images/icon/address.png',
       text: '门店导航',
       path: '/pages/stores/stores'
-    }, ]
+    }, ],
+    is_show:false,
+    numdata:'今日数据'
   },
 
   /**
@@ -139,5 +141,19 @@ Page({
         wx.hideLoading()
       }
     })
+  },
+  onCentetChange:function(){
+      this.setData({
+        is_show: !this.data.is_show
+      })
+  },
+  chooseTap:function(e){
+    console.log('e', e.currentTarget.dataset);
+    const { numdata } = e.currentTarget.dataset;
+    this.setData({
+      numdata, 
+      is_show:false
+    })
+    
   }
 })

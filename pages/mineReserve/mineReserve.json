@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText":"预约信息",
+  "usingComponents": {
+    "i-input": "../../dist/iview/input/index",
+    "i-tabs": "../../dist/iview/tabs/index",
+    "i-tab": "../../dist/iview/tab/index",
+    "i-swipeout": "../../dist/iview/swipeout/index",
+    "i-checkbox": "../../dist/iview/checkbox/index"
+  }
+}

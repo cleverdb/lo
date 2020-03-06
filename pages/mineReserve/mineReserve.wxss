@@ -1,0 +1,126 @@
+/* pages/mineReserve/mineReserve.wxss */
+page{
+    height: 100%;
+}
+.mine_reserve_wrap{
+    height: 100%;
+    background: #EFECF0;
+}
+.search_wrap{
+    height: 96rpx;
+    display: flex;
+    background: #ffffff;
+    align-items: center;
+    padding: 0 30rpx;
+    margin-bottom: 20rpx;
+}
+.search_title{
+    width: 36rpx;
+    height: 36rpx;
+}
+.mine_item{
+    height: 100rpx;
+}
+.class_record_swiper{
+    width: 100%;
+    overflow: hidden;
+}
+.swipeout_warp{
+    padding-bottom: 110rpx;
+}
+.mine_swipeout_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #727171;
+    font-size:24rpx;
+}
+.mine_button_item{
+    height: 100%;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    background: #E93562;
+    
+}
+.mine_item_left{
+    flex: 1;
+}
+.mine_swipeout_center{
+    margin: 5rpx;
+}
+.mine_item_bottom{
+    word-wrap: break-word;
+    white-space:normal;
+    max-width: 100%;
+}
+.mine_name{
+    color:rgba(62,58,57,1);
+    font-size: 28rpx;
+    margin-right: 8rpx;
+}
+.swipeout_right{
+    width: 42rpx;
+    height: 65rpx;
+}
+.swipeout_right_img{
+    width: 42rpx;
+    height: 65rpx;
+}
+.mine_reserve_footer{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 0;
+    align-items: center;
+    background: #ffffff;
+    height: 110rpx;
+    border-top: 1px solid #EAE8EB;
+    width: 100%;
+}
+.delete_footer{
+    background: #E93562;
+}
+.reserve_footer_img{
+    width: 49rpx;
+    height: 44rpx;
+}
+.footer_text{
+    color:rgba(62,58,57,1);
+    font-size: 22rpx;
+}
+.mine_no_top_wrap{
+    width: 100%;
+    margin-top: 200rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reserve_no_img_top{
+    width: 289rpx;
+    height: 158rpx;
+}
+.reserve_no_img_bottom{
+    width: 80rpx;
+    height: 80rpx;
+}
+.reserve_no_text{
+    font-size: 26rpx;
+    color: #9FA0A0;
+}
+.history_item{
+    background: #ffffff;
+    padding: 30rpx;
+    border-bottom: 1px solid #F5F2F5;
+}
+.delete_text{
+    color: #ffffff;
+}
+.swipeout_checkbox_right{
+    width: 80rpx;
+    height: 80rpx;
+}
