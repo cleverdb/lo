@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-input": "../../dist/iview/input/index",
+    "i-modal": "../../dist/iview/modal/index"
+  }
+}

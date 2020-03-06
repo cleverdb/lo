@@ -1,0 +1,40 @@
+<!--pages/mineChangeIphone/mineChangeIphone.wxml-->
+<view class='mine_change_warp'>
+    <view class='change_top'>
+        <view>
+            <i-input value="{{ value }}"  title="输入新手机号：" placeholder="请输入新手机号" maxlength='11' bindchange="inputChange" />
+        </view>
+        <view class='change_line'></view>
+        <view class='change_get_code'>
+            <i-input value="{{ value2 }}" type="number" title="输入验证码：" />
+            <button 
+                class='get_code_button {{disabled1?"":"change_submit1"}}' 
+                disabled="{{disabled1}}"
+                style="font-size:{{showTime?'20rpx':'26rpx'}}"
+                bindtap="getCode"
+            >
+                {{showTime ? time + '秒后重新发送':'获取验证码'}}
+            </button>
+        </view>
+    </view>
+    <view>
+        <button class='change_footer {{disabled2?"":"change_submit2"}}'  disabled="{{disabled2}}">确认更换</button>
+    </view>
+    <i-modal visible="{{ visible }}" bindtap="handleClose" show-cancel="{{false}}">
+        <view class='change_modal_warp'>
+            <view wx:if="{{is_success}}">
+                <view class='success_title'>成功更换手机号</view>
+                <view class='success_text'>
+                    <text>当前更换新手机号：</text><text>135 1230 1230</text>
+                </view>
+            </view>
+            <view wx:else>
+                <view class='error_title'>验证码输入错误</view>
+                <view class='success_text'>
+                    请重新有效输入验证码
+                </view>
+            </view>
+        </view>
+    </i-modal>
+</view>
+  

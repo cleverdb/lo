@@ -1,0 +1,66 @@
+/* pages/mineChangeIphone/mineChangeIphone.wxss */
+page{
+    height: 100%;
+    background: #F0EDF1;
+}
+.mine_change_warp{
+    height: 100%;
+}
+.change_top{
+    background: #ffffff;
+    margin-bottom: 36rpx;
+}
+.change_line{
+    height: 1px;
+    background: #EFEFEF;
+}
+.change_get_code{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.get_code_button{
+    min-width: 170rpx;
+    height: 58rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:26rpx;
+    padding-left: 10rpx;
+    color:rgba(159,160,160,1);
+    padding-right: 10rpx;
+}
+.change_submit1{
+    background: #FAC803;
+}
+.change_submit2{
+    background: #FAC803;
+    font-size:20rpx;
+}
+.change_footer{
+    height: 80rpx;
+    width: 690rpx;
+    color:rgba(114,113,113,1);
+    font-size: 32rpx;
+}
+.change_modal_warp{
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.success_title{
+    color:rgba(62,58,57,1);
+    font-weight: bold;
+    font-size:32rpx;
+}
+.error_title{
+    font-weight: bold;
+    font-size:32rpx;
+    color: #E7355F;
+}
+.success_text{
+    color:rgba(159,160,160,1);
+    margin-top: 10rpx;
+    font-size: 26rpx;
+}

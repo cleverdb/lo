@@ -20,7 +20,8 @@
     "pages/mineActivity/mineActivity",
     "pages/stores/stores",
     "pages/classRecord/classRecord",
-    "pages/mineReserve/mineReserve"
+    "pages/mineReserve/mineReserve",
+    "pages/mineChangeIphone/mineChangeIphone"
   ],
   "permission": {
     "scope.userLocation": {
