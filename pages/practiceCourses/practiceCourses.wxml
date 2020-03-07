@@ -2,7 +2,8 @@
 <import src="../template/pageAlert/pageAlert.wxml" />
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="container" wx:if='{{!pageState.state}}'>
-    <image class="show_image" src="{{host}}{{navPicUrl}}"></image>
+    <image class="show_image" wx:if='{{picUrl}}' src="{{host}}{{picUrl}}"></image>
+    <image class="show_image" wx:else src="{{host}}{{navPicUrl}}"></image>
     <view class="content_container">
         <view class="content_container_item  bor_bottom">
             <view class="">

@@ -27,7 +27,6 @@ page {
   flex-direction: row;
   margin: 0 30rpx;
   padding: 20rpx 0;
-  color: #ffffff;
   border-bottom: 1rpx rgba(168,168,168,0.2) solid;
   align-items: center;
 }

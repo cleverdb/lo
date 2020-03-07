@@ -263,7 +263,6 @@ Page({
   payTap:function(e){
     const { item } = e.currentTarget.dataset;
     const { courseId, unitPrice=0,} = item;
-    debugger;
     const { userId } = app.globalData.userInfo;
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/appointment/public`,
@@ -277,11 +276,13 @@ Page({
       success(res) {
         const { errorCode = undefined, messages, errors } = res.data;
         if (errorCode) {
-          wx.showToast({
-            title: errors,
-            duration: 2000,
-            icon: 'none'
-          })
+          wx.showModal({
+            title: '预约提示',
+            content: errors,
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
           return
         }
         if (unitPrice > 0) {
@@ -295,7 +296,8 @@ Page({
             paySign: result.paySign,
             success(res) {
               wx.showModal({
-                title: '预约成功',
+                title: '预约提示',
+                content: messages,
                 showCancel: false,
                 confirmText: '确定',
                 confirmColor: '#FCC800',
@@ -311,11 +313,13 @@ Page({
             }
           })
         } else {
-          wx.showToast({
-            title: messages,
-            duration: 2000,
-            icon: 'none'
-          })
+          wx.showModal({
+            title: '预约提示',
+            content: messages,
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
         }
 
       }
