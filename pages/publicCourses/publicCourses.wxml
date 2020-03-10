@@ -48,7 +48,7 @@
                 <view wx:if="{{besel=='2'}}">
                     <block wx:for="{{doneList}}" wx:key="index">
                         <view class="list_item_container">
-                            <image class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
+                            <image class="imgs_item" src="{{host}}{{item.navPicUrl}}" bindtap="ondetail" data-courseId="{{item.courseId}}" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />
                             <view>
                                 <view>
                                     <text>{{item.courseName}}</text>
