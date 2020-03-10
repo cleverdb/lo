@@ -52,7 +52,7 @@
     </view>
 </view>
 <view class="report_container">
-    <button style="color: #9F9FA0;background-color: #DDDDDE" wx:if="{{expire == 1}}" >活动结束</button>
+    <button style="color: #9F9FA0;background-color: #DDDDDE" wx:if="{{expire == 0}}" >活动结束</button>
     <button class="report" wx:else bindtap="payTap">立即报名</button>
 </view>
 <view class="back" wx:if="{{isShow}}" catchtouchmove="true">
