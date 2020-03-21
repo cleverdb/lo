@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "基本信息",
+  "usingComponents": {
+    "i-input": "../../dist/iview/input/index",
+    "i-radio-group": "../../dist/iview/radio-group/index",
+    "i-radio": "../../dist/iview/radio/index"
+  }
+}
