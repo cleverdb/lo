@@ -1,0 +1,24 @@
+<view class="pr_container">
+  <view class="pr_items">
+    <view wx:for="{{phoneRecordInfos}}" class="pr_item {{item.prStatus?'':'pr_color_invalid'}} {{index==phoneRecordInfos.length-1?'':'pr_item_bottom_line'}}">
+      <view class="pr_item_c pr_item_1">
+        <view class="pr_item_1_l">{{item.prTime}}</view>
+        <view class="pr_item_1_r">{{item.prClient}}</view>
+      </view>
+      <view class="pr_item_c pr_item_2">
+        {{item.prContent}}
+      </view>
+      <view class="pr_item_c pr_item_3">
+      <view>
+        下次联系时间：{{item.nextTime!=''?item.nextTime:'————'}}
+      </view>
+      <view class="pr_item_3_r_c {{item.prStatus?'pr_item_3_r_valid':'pr_item_3_r_invalid'}}">{{item.prStatus?'有效':'无效'}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="pr_bottom_btn" >
+<view bindtap="goPhoneRecordAdd">
+   <image src="/images/icon/phone_record_img_1.png" mode='aspectFit' class="phone_record_img_1"></image>
+  <view class="pr_bottom_btn_text">添加</view></view>
+</view>

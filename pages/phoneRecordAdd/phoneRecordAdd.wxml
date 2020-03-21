@@ -1,0 +1,26 @@
+<view class="pra_container">
+  <view class="pra_card_container">
+    <view class="pra_card_header">
+    记录对话关键信息
+    </view>
+    <view class="pra_card_content">
+      <textarea class="pra_card_content_textarea" maxlength="-1"/>
+    </view>
+  </view>
+</view>
+<view class="pra_container">
+  <view class="pra_item_container1">
+    <view class="pra_item1">
+      <view>联系是否有效</view>
+      <view class="pra_item1_1"><radio-group><radio class="pra_radio" color="#E7355E">有效</radio><radio class="pra_radio"  color="#E7355E">无效</radio></radio-group></view>
+    </view>
+    <view class="pra_item2">
+      <view>下次联系时间</view>
+      <view class="pra_font_1">请选择时间</view>
+      <view class="pra_arrow_1"><image src="/images/icon/phone_record_add_img_1.png" mode='aspectFit' class="pra_img_1"></image></view>
+      </view>
+  </view>
+</view>
+<view class="pra_bottom_btn">
+  <i-button i-class="pra_i_btn" type="warning" long>确认提交</i-button>
+</view>

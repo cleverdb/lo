@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加联系记录",
+  "usingComponents": {
+    "i-button": "../../dist/iview/button/index",
+    "i-input": "../../dist/iview/input/index"
+  }
+}

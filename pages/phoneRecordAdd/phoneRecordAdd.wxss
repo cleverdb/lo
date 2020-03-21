@@ -1,0 +1,90 @@
+page{
+  background-color:#EEEFEF; 
+}
+/*添加联系记录，对话关键信息最外层容器 */
+.pra_container{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  color: #3E3A39;
+  font-family: PingFang-SC-Medium;
+  margin-bottom: 10rpx;
+}
+/*记录对话关键信息，外层外层容器*/
+.pra_card_container{
+  width: cal(100%-60rpx);
+  height: 501rpx;
+  margin: 0 30rpx;
+}
+.pra_card_header{
+  width: 100%;
+  height: 105rpx;
+  border-bottom: 1rpx solid #EEEFEF;
+  display: flex;
+  align-items: center;
+}
+.pra_card_content{
+  width: 100%;
+  height: 394rpx;
+  overflow: hidden;
+}
+.pra_card_content_textarea{
+  width: 100%;
+  height: 394rpx;
+  overflow: auto;
+}
+/*联系是否有效，外层外层容器*/
+.pra_item_container1{
+  width: cal(100%-60rpx);
+  height: 180rpx;
+  margin: 0 30rpx;
+}
+.pra_item1{
+  width: 100%;
+  height: 89rpx;
+  border-bottom: 1rpx solid #EEEFEF;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pra_item2{
+  width: 100%;
+  height: 89rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pra_item1_1{
+  position: absolute;
+  right: 0rpx;
+
+}
+.pra_radio{
+  transform:scale(0.7)
+}
+.pra_img_1{
+  width: 15rpx;
+  height: 26rpx;
+}
+.pra_font_1{
+  font-size:26rpx;
+  color: #9FA0A0; 
+  position: absolute;
+  right: 29rpx;
+}
+.pra_arrow_1{
+  position: absolute;
+  right: 5rpx;
+}
+
+.pra_bottom_btn{
+  position: absolute;
+  bottom: 0rpx;
+  width: 100%;
+  height: auto;
+}
+.pra_i_btn{
+  color: #3E3A39;
+}
