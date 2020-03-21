@@ -1,0 +1,44 @@
+<!--pages/mineMessage/mineMessage.wxml-->
+<view class='mine_message_warp'>
+    <view class='img_warp'>
+        <image class="mine_message_img" src="/images/logo.png" mode="aspectFit" lazy-load="false" />
+    </view>
+    <view class='img_conter'>
+        <view class='phote_warp'>
+            <image class="mine_photo" src="/images/icon/mine_photograph.png" mode="aspectFit" lazy-load="false" />
+            <text class='img_text'>拍照</text>
+        </view>
+        <view class='phote_warp'>
+            <image class="mine_photo" src="/images/icon/mine_album.png" mode="aspectFit" lazy-load="false" />
+            <text class='img_text'>从相册中选取</text>
+        </view>
+    </view>
+    <view class='mine_footer_warp'>
+        <view class='mine_panel_warp'>
+            <span class='mine_panel_title'>姓名</span>
+            <i-input value="{{ value6 }}" i-class='mine_input'/>
+        </view>
+        <view class='mine_panel_warp'>
+        <span class='mine_panel_title'>工号</span>
+            <i-input value="{{ value6 }}" i-class='mine_input'/>
+        </view>
+        <view class='mine_panel_warp'>
+            <span class='mine_panel_title'>职位</span>
+            <i-input value="{{ value6 }}" i-class='mine_input'/>
+        </view>
+        <view class='mine_panel_warp'>
+            <span class='mine_panel_title'>是否关闭体验课</span>
+            <view>
+                <i-radio-group current="{{current}}" bindchange="handleFruitChange">
+                    <i-radio  key="开启" value="{{item.name}}">
+                    </i-radio>
+                    <i-radio  key="不开启" value="{{item.name}}">
+                    </i-radio>
+                </i-radio-group>
+            </view>
+        </view>
+    </view>
+        
+      
+</view>
+  

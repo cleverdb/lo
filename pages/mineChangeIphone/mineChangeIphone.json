@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "更换手机号",
   "usingComponents": {
     "i-input": "../../dist/iview/input/index",
     "i-modal": "../../dist/iview/modal/index"
