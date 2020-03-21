@@ -1,0 +1,44 @@
+<view class="nca_container">
+<i-input value="" right type="text" title="姓名" placeholder="请输入姓名"/>
+<view class="nca_line"></view>
+<i-input value="" right type="number" title="手机号" placeholder="请输入电话"/>
+<view class="nca_line"></view>
+<i-input value="" right type="text" title="微信号" placeholder="请输入微信号"/>
+<view class="nca_block"></view>
+<view class="nca_item1">
+      <view class="nca_item1_0">性别</view>
+      <view class="nca_item1_1"><radio-group><radio class="nca_radio" color="#E7355E">男</radio><radio class="nca_radio"  color="#E7355E">女</radio></radio-group></view>
+</view>
+<view class="nca_line"></view>
+<view class="nca_item1">
+      <view class="nca_item1_0">是否电话来访</view>
+      <view class="nca_item1_1"><radio-group><radio class="nca_radio" color="#E7355E">是</radio><radio class="nca_radio"  color="#E7355E">否</radio></radio-group></view>
+</view>
+<view class="nca_line"></view>
+<view>
+<i-cell-group>
+<i-cell title="信息来源" value="{{chooseSourceName==''?'请选择信息来源':chooseSourceName}}" is-link bind:click="handleOpen1"></i-cell>
+</i-cell-group>
+</view>
+<view class="nca_block"></view>
+<view class="nca_card_header">
+<view class="nca_item1">
+      <view class="nca_item1_0">备注</view></view>
+<view class="nca_line"></view>
+<view class="nca_card_content">
+<textarea class="nca_card_content_textarea" placeholder="请输入备注信息" maxlength="-1"/>
+</view>
+</view>
+</view>
+<view wx:if="{{visible1}}"  class="nca_shadow">
+  <view bindtap="handleCancle1" class="nca_shadow_item1"></view>
+  <view class="nca_shadow_item2">
+    <view class="nca_shadow_item2_text">信息来源</view>
+    <view class="nac_shadow_item2_btns" wx:for="{{infoSource}}" wx:for-item="items" wx:key="index">
+      <view  bindtap="chooseToPush" wx:for="{{items}}" wx:for-item="item" id="{{item.id}}" data-name="{{item.name}}" data-id="{{item.id}}" wx:key="item" class="nac_block_1 {{chooseSource==item.id?'nac_active':''}}">{{item.name}}</view>
+    </view>
+    <view class="nca_bottom_btn">
+  <i-button bind:click="handleClick" i-class="nca_i_btn" type="warning" long>确认</i-button>
+</view>
+  </view>
+</view>

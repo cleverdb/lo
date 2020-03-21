@@ -1,0 +1,85 @@
+<view class="work_container">
+  <view class="card_container0 margin_bottom_19">
+    <view class="card_title">
+      <image src="/images/icon/work_card_title_1.png" mode='aspectFit' class="card_title_img"></image>
+      <view>会籍功能</view>
+    </view>
+    <view class="card_content">
+      <i-cell-group>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_1.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>客户管理</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_2.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>会员动态</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_3.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>进店管理</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="" mode='aspectFit' class="card_item_1_img"></image>
+        <view>添加优惠券</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="" mode='aspectFit' class="card_item_1_img"></image>
+        <view>公共资源库</view>
+        <view class="card_item_note">仅店长或经理可使用</view>
+      </view>
+    </i-cell>
+</i-cell-group>
+    </view>
+  </view>
+  <view class="card_container0">
+    <view class="card_title">
+      <image src="/images/icon/work_card_title_2.png" mode='aspectFit' class="card_title_img"></image>
+      <view>教练功能</view>
+    </view>
+    <view class="card_content">
+      <i-cell-group>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_11.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>客户管理</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_22.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>预约管理</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_33.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>新课发布</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_44.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>添加优惠券</view>
+      </view>
+    </i-cell>
+    <i-cell is-link>
+      <view class="card_item">
+        <image src="/images/icon/work_card_item_55.png" mode='aspectFit' class="card_item_1_img"></image>
+        <view>公共资源库</view>
+        <view class="card_item_note">仅店长或经理可使用</view>
+      </view>
+    </i-cell>
+</i-cell-group>
+    </view>
+  </view>
+  <i-toast id="toast" />
+</view>

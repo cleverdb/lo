@@ -1,0 +1,110 @@
+page{
+  background-color:#EEEFEF; 
+}
+/*联系记录，最外层容器 */
+.pr_container{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  color: #3E3A39;
+  font-family: PingFang-SC-Medium;
+}
+/*存放记录集合容器*/
+.pr_items{
+  width: cal(100%-60rpx);
+  height: auto;
+  margin:0 30rpx;
+  background-color: #ffffff;
+}
+/*每条记录*/
+.pr_item{
+  width: 100%;
+  height: 180rpx;
+  background-color: #ffffff;
+}
+/*每条记录分为三块，通用部分*/
+.pr_item_c{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  position: relative;
+}
+/*记录第一部分，时间+名称*/
+.pr_item_1{
+  align-items: flex-end;
+}
+.pr_item_1_l{
+  font-family: PingFang-SC-Medium;
+  font-weight: Medium;
+  font-size: 28rpx;
+}
+.pr_item_1_r{
+  position: absolute;
+  right: 2rpx;
+  color: #9FA0A0;
+}
+/*记录第二部分，记录详情*/
+.pr_item_2{
+  align-items: flex-end;
+  font-size: 26rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/*记录第三部分，下次联系时间+有效/无效*/
+.pr_item_3{
+  align-items: center;
+  font-size: 24rpx;
+  color: #9FA0A0;
+}
+/*记录bottom line*/
+.pr_item_bottom_line{
+  border-bottom: 1rpx solid #EEEEEF;
+}
+/*无效状态下大部分字体颜色*/
+.pr_color_invalid{
+  color: #9FA0A0;
+}
+/*有效状态下大部分字体颜色*/
+.pr_color_valid{
+  color:#3E3A39;
+}
+/*第三部分右侧 有效/无效标识*/
+.pr_item_3_r_c{
+  height: 37rpx;
+  width: 81rpx;
+  text-align: center;
+  border-radius: 8%;
+  position: absolute;
+  right: 0rpx;
+}
+.pr_item_3_r_valid{
+  border: 1rpx solid #3FBDE0;
+  color:#3FBDE0;
+}
+.pr_item_3_r_invalid{
+  border: 1rpx solid #9FA0A0;
+  color: #9FA0A0;
+}
+
+/*底部添加按钮*/
+.pr_bottom_btn{
+  position: absolute;
+  bottom: 0rpx;
+  width: 100%;
+  height: 111rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pr_bottom_btn_text{
+  color: #3E3A39;
+  font-size: 22rpx;
+}
+.phone_record_img_1{
+  height: 43rpx;
+  width:49rpx ;
+}
