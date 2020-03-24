@@ -21,7 +21,10 @@
     "pages/stores/stores",
     "pages/classRecord/classRecord",
     "pages/mineReserve/mineReserve",
-    "pages/mineChangeIphone/mineChangeIphone"
+    "pages/mineChangeIphone/mineChangeIphone",
+    "pages/mineMessage/mineMessage",
+    "pages/mineCoupon/mineCoupon",
+    "pages/publishCourse/publishCoures"
   ],
   "permission": {
     "scope.userLocation": {
@@ -48,7 +51,7 @@
         "text": "日程"
       },
       {
-        "pagePath": "pages/courses/courses",
+        "pagePath": "pages/work/work",
         "iconPath": "images/icon/kc.png",
         "selectedIconPath": "images/icon/kc-ok.png",
         "text": "工作"
