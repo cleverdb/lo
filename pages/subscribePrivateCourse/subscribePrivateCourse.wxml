@@ -1,0 +1,74 @@
+<view>
+<wux-search-bar wux-class="spc_search" clear value="{{ value }}" controlled placeholder="请输入会员姓名、手机号" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+<view class="spc_block"></view>
+<view wx:if="{{value==''}}">
+<view class="spc_container1">
+  <view class="spc_container2">
+    <view class="spc_bottom_line">
+      <view class="spc_font26 spc_margin">近七天上课会员</view>
+    </view>
+    <view wx:for="{{lessSev}}" wx:for-item="item" wx:key="{{item.phone}}" class="{{index<lessSev.length-1?'spc_bottom_line':''}}">
+    <view class="spc_item">
+        <view class="spc_item_avatar">
+          <wux-avatar src="{{item.avatar}}" wux-class="spc_item_avatar_size"></wux-avatar>
+        </view>
+        <view class="spc_item_info1">
+          <view class="spc_item_info1_1">V {{item.name}}</view>
+          <view >{{item.phone}}</view>
+        </view>
+        <view class="spc_item_info2">
+          <view class="spc_item_info2_1">{{item.coursetime}}</view>
+          <view class="spc_item_info2_2">{{item.classhour}}</view>
+        </view>
+      </view>
+      </view>
+  </view>
+</view >
+<view class="spc_block"></view>
+<view class="spc_container1">
+  <view class="spc_container2">
+    <view class="spc_bottom_line">
+      <view class="spc_font26 spc_margin">七天前会员</view>
+    </view>
+    <view wx:for="{{largeSev}}" wx:for-item="item" wx:key="item.phone" class="{{index<largeSev.length-1?'spc_bottom_line':''}}">
+    <view class="spc_item">
+        <view class="spc_item_avatar">
+          <wux-avatar src="{{item.avatar}}" wux-class="spc_item_avatar_size"></wux-avatar>
+        </view>
+        <view class="spc_item_info1">
+          <view class="spc_item_info1_1">V {{item.name}}</view>
+          <view >{{item.phone}}</view>
+        </view>
+        <view class="spc_item_info2">
+          <view class="spc_item_info2_1">{{item.coursetime}}</view>
+          <view class="spc_item_info2_2">{{item.classhour}}</view>
+        </view>
+      </view>
+      </view>
+  </view>
+</view >
+</view>
+<view wx:elif="{{searchRes.length>0}}" class="spc_container1">
+  <view class="spc_container2">
+  <view wx:for="{{searchRes}}" wx:for-item="item" wx:key="item.phone" class="{{index<searchRes.length-1?'spc_bottom_line':''}}">
+    <view class="spc_item">
+        <view class="spc_item_avatar">
+          <wux-avatar src="{{item.avatar}}" wux-class="spc_item_avatar_size"></wux-avatar>
+        </view>
+        <view class="spc_item_info1">
+          <view class="spc_item_info1_1" wx:if="{{item.namemiddle&&item.namemiddle!=''}}">V <i class="spc_item_text_mid">{{item.namestart}}</i>{{item.namemiddle}}<i class="spc_item_text_mid">{{item.nameend}}</i></view>
+          <view class="spc_item_info1_1" wx:else>V {{item.name}}</view>
+          <view wx:if="{{item.phonemiddle&&item.phonemiddle!=''}}"><i class="spc_item_text_mid">{{item.phonestart}}</i>{{item.phonemiddle}}<i class="spc_item_text_mid">{{item.phoneend}}</i></view>
+          <view wx:else>{{item.phone}}</view>
+        </view>
+        <view class="spc_item_info2">
+          <view class="spc_item_info2_1">{{item.coursetime}}</view>
+          <view class="spc_item_info2_2">{{item.classhour}}</view>
+        </view>
+      </view>
+      </view>
+      </view>
+</view>
+<view wx:else class="spc_search_nothing">
+<wux-prompt visible="true" icon="{{msg2.icon}}" title="{{ msg2.title }}" text="{{ msg2.text }}" /></view>
+</view>

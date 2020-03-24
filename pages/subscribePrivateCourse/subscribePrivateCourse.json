@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "预约私教课程",
+  "usingComponents": {
+    "wux-search-bar": "../../dist/wux/search-bar/index",
+    "wux-avatar": "../../dist/wux/avatar/index",
+    "wux-prompt": "../../dist/wux/prompt/index"
+  }
+}

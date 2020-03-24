@@ -1,0 +1,87 @@
+<view class="cbd_container">
+  <view class="cbd_container1">
+    <view class="cbd_avatar_container">
+      <wux-avatar src="{{bookingCourse.userImg}}" wux-class="cbd_avatar_size"></wux-avatar>
+      <image class="cbd_avatar_img" src="../../images/icon/cbd_course_detail_1.png"></image>
+    </view>
+    <view class="cbd_name_container">V {{bookingCourse.user}}</view>
+    <view class="cbd_course_info">
+      <view class="cbd_course_info_item">
+        <view class="cbd_course_item1">{{bookingCourse.courseMoney!=''?bookingCourse.courseMoney:'--'}}</view>
+        <view class="cbd_course_item2">课程单价</view>
+      </view>
+      <view class="cbd_course_info_item">
+        <view class="cbd_course_item1">{{bookingCourse.courseLength!=''?bookingCourse.courseLength:'--'}}</view>
+        <view class="cbd_course_item2">课程时长/分钟</view>
+      </view>
+      <view class="cbd_course_info_item">
+        <view class="cbd_course_item1">{{bookingCourse.coursePerson!=''?bookingCourse.coursePerson:'--'}}</view>
+        <view class="cbd_course_item2">上课人数</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cbd_block"></view>
+<view class="cbd_container">
+  <view class="cbd_container2">
+    <wux-cell-group wux-class="cbd_no_padding">
+      <wux-cell wux-class="cbd_cell_no_padding" title="课程名称" extra="{{chosedCourseShow==''?'请选择课程':chosedCourseShow}}" bind:click="chooseCourse" is-link></wux-cell>
+      <wux-cell wux-class="cbd_cell_no_padding" title="请选择课程" extra="{{chosedStoreShow==''?'请选择门店':chosedStoreShow}}" bind:click="chooseStore" is-link></wux-cell>
+      <wux-cell wux-class="cbd_cell_no_padding" title="上课时间" extra="请选择时间" is-link></wux-cell>
+      <wux-cell wux-class="cbd_cell_no_padding" title="课程状态" extra="待预约"></wux-cell>
+    </wux-cell-group>
+  </view>
+</view>
+<view wx:if="{{shadow1}}"  class="cbd_shadow">
+  <view bindtap="handleCancle1" class="cbd_shadow_item1"></view>
+  <view class="cbd_shadow_item2">
+  <view class="cbd_shadow_item2_c">
+    <view wx:for="{{courses}}" wx:for-item="item" wx:key="{{item.name}}" class="{{index<courses.length-1?'cbd_bottom_line':''}}">
+    <view class="cbd_item" data-name="{{item.name}}" bindtap="handleRadio">
+        <view >
+          <image wx:if="{{chosedCourse!=item.name}}" class="cbd_item_avatar" src="../../images/icon/course_booking_detail_2.png"></image>
+          <image wx:else class="cbd_item_avatar" src="../../images/icon/course_booking_detail_1.png"></image>
+        </view>
+        <view class="cbd_item_info1">
+          <view class="cbd_item_info1_1">{{item.name}}</view>
+          <view class="cbd_item_info1_2">￥{{item.money}}<i class="cbd_item_info1_2_1">元</i>/节</view>
+        </view>
+        <view class="cbd_item_info2">
+          <view class="cbd_item_info2_1">
+            <view class="cbd_item_info2_1_1">剩余：</view><view >{{item.surplus}}/</view><view class="cbd_item_info2_1_1">{{item.total}}</view></view>
+          <view class="cbd_item_info2_2">{{item.expire}}到期</view>
+        </view>
+      </view>
+      </view>
+      </view>
+  </view>
+  <view class="cbd_shadow_item3">
+  <i-button bind:click="handleClick" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
+</view>
+<view wx:if="{{shadow2}}"  class="cbd_shadow">
+  <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>
+  <view class="cbd_shadow_item2">
+  <view class="cbd_shadow_item2_c">
+    <view class="cbd_store_1"><view>选择上课门店</view></view>
+    <view wx:for="{{stores}}" wx:for-item="item" wx:key="{{item.name}}" class="{{index<stores.length-1?'cbd_bottom_line':''}} cbd_store_2" data-name="{{item.name}}" bindtap="handleRadio2">
+      <view><image wx:if="{{chosedStore==item.name}}" class="cbd_item_avatar" src="../../images/icon/course_booking_detail_1.png"></image><image wx:else class="cbd_item_avatar" src="../../images/icon/course_booking_detail_2.png"></image></view>
+      <view class="cbd_store_2_2 {{chosedStore==item.name?'cbd_store_2_2_chosed':''}}">{{item.name}}</view>
+    </view>
+  </view>
+  </view>
+  <view class="cbd_shadow_item3">
+  <i-button bind:click="handleClick2" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
+</view>
+<view wx:if="true"  class="cbd_shadow">
+  <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>
+  <view class="cbd_shadow_item00">
+    <view class="cbd_shadow_item00_c">
+    <wux-multi-picker-view value="{{ multisChosed }}" options="{{ multis }}" bind:valueChange="onValueChange" />
+    </view>
+  </view>
+  <view class="cbd_shadow_item3">
+  <i-button bind:click="handleClick3" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
+</view>  

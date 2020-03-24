@@ -1,0 +1,250 @@
+page{
+  background: #F0EDF1;
+}
+/*从上至下，第一部分*/
+.cbd_container{
+  width: 100%;
+  background-color: #fff;
+}
+.cbd_container1{
+  width:cal(100%-60rpx);
+  height: 452rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cbd_avatar_container{
+  width: 151rpx;
+  height: 151rpx;
+  margin-top:45rpx;
+  position: relative;
+}
+.cbd_avatar_size{
+  width: 151rpx !important;
+  height: 151rpx !important;
+  line-height: 151rpx !important;
+  border-radius: 75rpx !important;
+  font-size: 40rpx !important;
+}
+.cbd_avatar_img{
+  width: 63rpx;
+  height: 51rpx;
+  position: absolute;
+  right: -17rpx;
+  top: -19rpx;
+}
+.cbd_name_container{
+  height: 31rpx;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.cbd_course_info{
+  height: 215rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.cbd_course_info_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cbd_course_item1{
+  font-size: 58rpx;
+  color: #3E3A39;
+}
+.cbd_course_item2{
+  margin-top: 19rpx;
+  font-size: 20rpx;
+  color: #727171;
+}
+/*第二部分分界线*/
+.cbd_block{
+  width: 100%;
+  height: 18rpx;
+  background-color: #F0EDF1;
+}
+.cbd_container2{
+  width:cal(100%-60rpx);
+  height: auto;
+  margin: 0 30rpx;
+  padding: 2rpx 0 0 0;
+}
+.cbd_no_padding{
+  padding: 0rpx 0rpx !important;
+}
+.cbd_cell_no_padding{
+  font-size: 26rpx !important;
+  padding: 26rpx 0 !important;
+  border-bottom: 1rpx solid #F0EDF1 !important;
+}
+/*遮挡层*/
+.cbd_shadow{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display:flex;
+  flex-direction: column;
+}
+.cbd_shadow_item1{
+  background: #000000;
+  opacity: 0.5;
+  flex-grow: 1;
+}
+.cbd_shadow_item2{
+  max-height: 416rpx;
+  background: #FFFEFF;
+  width: 100%;
+  overflow: auto;
+}
+.cbd_shadow_item2_c{
+  width: cal(100%-60rpx);
+  margin: 0rpx 30rpx;
+}
+.cbd_shadow_item2_text{
+  font-size: 28rpx;
+  margin: 30rpx 0 0 30rpx;
+}
+.cbd_shadow_item2_btns{
+  margin: 45rpx 0 0 0;
+  height:57rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.cbd_shadow_item3{
+  width: 100%;
+  height: 111rpx;
+}
+.cbd_bottom_btn{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 111rpx;
+}
+.cbd_i_btn{
+  color: #3E3A39;
+}
+.cbd_block_1{
+  height: 55rpx;
+  width: 198rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #EEEFEF;
+  font-size: 26rpx;
+}
+.cbd_active{
+  color: #FCC800;
+}
+/*radio条目*/
+.cbd_item{
+  width: 100%;
+  height: 101rpx;
+  margin: 24rpx 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cbd_item_avatar{
+  width: 26rpx;
+  height: 26rpx;
+}
+.cbd_item_avatar_size{
+  width: 100rpx !important;
+  height: 100rpx !important;
+  line-height: 100rpx !important;
+  border-radius: 50rpx !important;
+  font-size: 40rpx !important;
+}
+.cbd_item_info1{
+  color: #3E3A39;
+  height: 101rpx;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+.cbd_item_info1_1{
+  margin: 10rpx 0 15rpx 0;
+  font-size: 32rpx;
+  
+}
+.cbd_item_info1_2{
+  font-size:26rpx;
+}
+.cbd_item_info1_2_1{
+  font-size: 24rpx;
+}
+.cbd_item_info2{
+  height: 101rpx;
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+.cbd_item_info2_1{
+  margin: 12rpx 0 15rpx 0;
+  font-size: 28rpx;
+  color: #E7355F;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+.cbd_item_info2_1_1{
+  font-size: 20rpx;
+}
+.cbd_item_info2_2{
+  padding-top: 8rpx;
+  font-size: 20rpx;
+  color: #9FA0A0;
+}
+.cbd_item_text_mid{
+  color: #CCCCCC
+}
+.cbd_search_nothing{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top:100rpx;
+}
+/*店铺*/
+.cbd_store_1{
+  width: 100%;
+  padding: 27rpx 0;
+  color: #9FA0A0;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #9FA0A0;
+}
+.cbd_store_2{
+  width: 100%;
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #9FA0A0;
+}
+.cbd_store_2_2{
+  margin-left: 31rpx;
+  color: #727171;
+  font-size: 28rpx;
+  font-weight: Medium;
+}
+.cbd_store_2_2_chosed{
+  color: #3E3A39;
+  font-weight: Bold;
+  font-size: 32rpx;
+}
+.cbd_shadow_item00{
+  max-height: 416rpx;
+  background: #FFFEFF;
+  width: 100%;
+  overflow: auto;
+}
+.cbd_shadow_item00_c{
+  width: cal(100%-60rpx);
+  margin: 40rpx 15rpx;
+}
