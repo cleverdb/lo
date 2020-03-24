@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/courseBookingDetail/courseBookingDetail",
+    "pages/subscribePrivateCourse/subscribePrivateCourse",
+    "pages/newClientAdd/newClientAdd",
+    "pages/phoneRecordAdd/phoneRecordAdd",
+    "pages/phoneRecord/phoneRecord",
+    "pages/work/work",
     "pages/home/home",
     "pages/card/card",
     "pages/mine/mine",
@@ -48,7 +54,7 @@
         "text": "日程"
       },
       {
-        "pagePath": "pages/courses/courses",
+        "pagePath": "pages/courseBookingDetail/courseBookingDetail",
         "iconPath": "images/icon/kc.png",
         "selectedIconPath": "images/icon/kc-ok.png",
         "text": "工作"
