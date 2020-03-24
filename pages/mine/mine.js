@@ -9,7 +9,9 @@ Page({
   data: {
     host: app.globalData.host,
     user:{},
+    index:0,
     wUser: {},
+    array: ['美国', '中国', '巴西', '日本'],
     bodyItems: [{
         icon: '../../images/icon/ka.png',
         text: '我的会员卡',
@@ -155,5 +157,10 @@ Page({
       is_show:false
     })
     
-  }
+  },
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
 })

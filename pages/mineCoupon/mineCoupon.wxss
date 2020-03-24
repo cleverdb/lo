@@ -1,0 +1,16 @@
+/* pages/mineCoupon/mineCoupon.wxss */
+page{
+    height: 100%;
+}
+.mine_coupon_warop{
+    height: 100%;
+}
+.content{
+    height: 100%;
+    padding: 30rpx;
+    background: #F0EDF1;
+}
+.swiper_content{
+    background: #ffffff;
+    height: 100%;
+}

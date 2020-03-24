@@ -56,3 +56,17 @@ page{
 .mine_footer_warp{
     margin-top: 50rpx;
 }
+.mine_panel_radio{
+    display: flex;
+    font-size: 24rpx;
+}
+.mine_panel{
+    margin-right: 10rpx;
+}
+.last_panel{
+    border-top: 1px solid #ABABAB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20rpx;
+}

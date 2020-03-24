@@ -26,15 +26,14 @@
             <span class='mine_panel_title'>职位</span>
             <i-input value="{{ value6 }}" i-class='mine_input'/>
         </view>
-        <view class='mine_panel_warp'>
+        <view class='last_panel'>
             <span class='mine_panel_title'>是否关闭体验课</span>
-            <view>
-                <i-radio-group current="{{current}}" bindchange="handleFruitChange">
-                    <i-radio  key="开启" value="{{item.name}}">
-                    </i-radio>
-                    <i-radio  key="不开启" value="{{item.name}}">
-                    </i-radio>
-                </i-radio-group>
+            <view class='mine_panel_radio'>
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <radio class="radio mine_panel" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                        <text>{{item.value}}</text>
+                    </radio>
+                </radio-group>
             </view>
         </view>
     </view>

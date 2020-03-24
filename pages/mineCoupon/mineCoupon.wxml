@@ -1,0 +1,52 @@
+<!--pages/mineCoupon/mineCoupon.wxml-->
+<view class='mine_coupon_warop'>
+    <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
+        <block wx:for="{{ tabs }}" wx:key="key">
+            <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+        </block>
+    </wux-tabs>
+    <swiper
+        current="{{ index }}"
+        bindchange="onSwiperChange"
+        style="height:{{winHeight}}rpx"
+    >
+        <swiper-item key="1">
+            <view class="content">
+              <view class='swiper_content'>
+                  1
+              </view>
+              <view class='swiper_content_footer'>
+                  <view>
+                      12
+                  </view>
+                  <view>
+                      12
+                  </view> 
+              </view>
+                
+            </view>
+        </swiper-item>
+        <swiper-item key="2">
+            <view class="content">
+                <view class='swiper_content'>
+                  1
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item key="3">
+            <view class="content">
+                <view class='swiper_content'>
+                  1
+               </view>
+            </view>
+        </swiper-item>
+        <swiper-item key="4">
+            <view class="content">
+                 <view class='swiper_content'>
+                  1
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+  

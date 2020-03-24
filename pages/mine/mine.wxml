@@ -59,7 +59,7 @@
 
   <view class='mine_footer'>
         <i-cell-group>
-          <i-cell is-link>
+          <i-cell is-link url="/pages/mineReserve/mineReserve">
             <view class='mine_list'>
               <image src="/images/icon/mine_reservation.png" mode='aspectFit' class='mine_img'></image>
               <view>
@@ -67,7 +67,7 @@
               </view>
             </view>
           </i-cell>
-          <i-cell is-link>
+          <i-cell is-link  url="/pages/mineCoupon/mineCoupon">
           <view class='mine_list'>
               <image src="/images/icon/mine_edit.png" mode='aspectFit' class='mine_img'></image>
               <view>
@@ -75,7 +75,7 @@
               </view>
           </view>
           </i-cell>
-          <i-cell is-link>
+          <i-cell is-link url="/pages/mineMessage/mineMessage">
           <view class='mine_list'>
               <image src="/images/icon/mine_message.png" mode='aspectFit' class='mine_img'></image>
               <view>
@@ -86,12 +86,21 @@
           <i-cell is-link>
           <view class='mine_list'>
               <image src="/images/icon/mine_Store.png" mode='aspectFit' class='mine_img'></image>
-              <view>
-                更换门店
+              <view class='mine_picker'>
+                  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                    <view class='mine_chagne_sel'>
+                      <view>
+                        更换门店
+                      </view>
+                      <view>
+                        {{array[index]}}
+                      </view>
+                    </view>
+                  </picker>
               </view>
           </view>
           </i-cell>
-          <i-cell is-link>
+          <i-cell is-link url="/pages/mineChangeIphone">
           <view class='mine_list_last'>
               <view class='mine_list_top'>
                   <image src="/images/icon/mine_iphone.png" mode='aspectFit' class='mine_img'></image>
