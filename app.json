@@ -30,7 +30,7 @@
     "pages/mineChangeIphone/mineChangeIphone",
     "pages/mineMessage/mineMessage",
     "pages/mineCoupon/mineCoupon",
-    "pages/publishCourse/publishCoures"
+    "pages/publishCourse/publishCourse"
   ],
   "permission": {
     "scope.userLocation": {
