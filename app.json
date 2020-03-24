@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/courseBookingDetail/courseBookingDetail",
+    "pages/subscribePrivateCourse/subscribePrivateCourse",
+    "pages/newClientAdd/newClientAdd",
+    "pages/phoneRecordAdd/phoneRecordAdd",
+    "pages/phoneRecord/phoneRecord",
+    "pages/work/work",
     "pages/home/home",
     "pages/card/card",
     "pages/mine/mine",

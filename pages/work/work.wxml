@@ -59,7 +59,7 @@
         <view>预约管理</view>
       </view>
     </i-cell>
-    <i-cell is-link>
+    <i-cell is-link url="/pages/publishCourse/publishCourse">
       <view class="card_item">
         <image src="/images/icon/work_card_item_33.png" mode='aspectFit' class="card_item_1_img"></image>
         <view>新课发布</view>
