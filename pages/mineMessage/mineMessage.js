@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    items:[{
+      name:'close',
+      value:'关闭',
+    },{
+      name:'open',
+      value:'开启'
+    }],
+    value6:'刘石磊'
   },
 
   /**
@@ -62,5 +69,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  radioChange:function(e){
+    console.log('e', e.detail.value);
+    
   }
 })

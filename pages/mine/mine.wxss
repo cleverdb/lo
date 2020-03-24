@@ -132,3 +132,11 @@ page {
 .mine_list_top{
   display: flex;
 }
+.mine_chagne_sel{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.mine_picker{
+  width: 100%;
+}
