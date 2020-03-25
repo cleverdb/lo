@@ -1,3 +1,13 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "新课发布",
+  "usingComponents": {
+    "wux-tabs": "../../dist/wux/tabs/index",
+    "wux-tab": "../../dist/wux/tab/index",
+    "wux-swipe-action-group": "../../dist/wux/swipe-action-group/index",
+    "wux-swipe-action": "../../dist/wux/swipe-action/index",
+    "i-input": "../../dist/iview/input/index",
+    "i-cell-group": "../../dist/iview/cell-group/index",
+    "i-cell": "../../dist/iview/cell/index",
+    "i-modal": "../../dist/iview/modal/index"
+  }
 }
