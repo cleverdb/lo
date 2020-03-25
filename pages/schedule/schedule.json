@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-timeline": "../../dist/wux/timeline/index",
+    "wux-timeline-item": "../../dist/wux/timeline-item/index"
+  }
 }

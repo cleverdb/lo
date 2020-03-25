@@ -1,12 +1,9 @@
-<view class="appoint_wrap" >
+<view class="schedule_wrap" >
     <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
         <view class='date-show'>
-            <view class='lt-arrow' bindtap='lastMonth'>
-            <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
-            </view>
             <view class="date-content">{{year}}年{{month}}月</view>
-            <view class='rt-arrow' bindtap='nextMonth'>
-            <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+            <view class='data-today'>
+                今
             </view>
         </view>
         <view class="date-br">
@@ -27,5 +24,27 @@
             </view>
         </view>
     </view>
+    <view class='schedule_timeline_warp'>
+         <wux-timeline>
+            <wux-timeline-item>
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+            <wux-timeline-item dotStyle="border-color: #33cd5f; color: #33cd5f" position="left">
+                <view>2018-10-24</view>
+                <view class='schedule_item'>
+                        <view class="schedule_class_name">
+                            常规私教课
+                        </view>
+                        <view class="schedule_per_name">
+                            刘悦
+                        </view>
+                </view>
+            </wux-timeline-item>
+            <wux-timeline-item dotStyle="border-color: #ef473a; color: #ef473a">
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+        </wux-timeline>
+    </view>
+      
 </view>
   

@@ -105,6 +105,13 @@
 					"id": -1,
 					"name": "pages/publishCourse/publishCourse",
 					"pathName": "pages/publishCourse/publishCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/schedule/schedule",
+					"pathName": "pages/schedule/schedule",
 					"scene": null
 				}
 			]
