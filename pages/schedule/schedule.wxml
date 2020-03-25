@@ -1,2 +1,31 @@
-<!--pages/schedule/schedule.wxml-->
-<text>pages/schedule/schedule.wxml</text>
+<view class="appoint_wrap" >
+    <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+        <view class='date-show'>
+            <view class='lt-arrow' bindtap='lastMonth'>
+            <image src='/images/icon/arrow-left.png' mode='aspectFit'></image>
+            </view>
+            <view class="date-content">{{year}}年{{month}}月</view>
+            <view class='rt-arrow' bindtap='nextMonth'>
+            <image src='/images/icon/arrow-right.png' mode='aspectFit'></image>
+            </view>
+        </view>
+        <view class="date-br">
+            <view class='header'>
+            <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+            </view>
+            <view class='date-box'>
+            <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                <view class='date-head'>
+                <view>{{item.dateNum}}</view>
+                </view>
+            </view>
+            </view>
+        </view>
+        <view class="date-show-footer" bindtap="showDataTap">
+            <view class="footer-view">
+                <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+            </view>
+        </view>
+    </view>
+</view>
+  
