@@ -30,7 +30,8 @@
     "pages/mineChangeIphone/mineChangeIphone",
     "pages/mineMessage/mineMessage",
     "pages/mineCoupon/mineCoupon",
-    "pages/publishCourse/publishCourse"
+    "pages/publishCourse/publishCourse",
+    "pages/add/add"
   ],
   "permission": {
     "scope.userLocation": {
@@ -52,25 +53,25 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "iconPath": "images/icon/home.png",
-        "selectedIconPath": "images/icon/home-ok.png",
+        "iconPath": "images/icon/schedule.png",
+        "selectedIconPath": "images/icon/schedule.png",
         "text": "日程"
       },
       {
         "pagePath": "pages/work/work",
-        "iconPath": "images/icon/kc.png",
-        "selectedIconPath": "images/icon/kc-ok.png",
+        "iconPath": "images/icon/work.png",
+        "selectedIconPath": "images/icon/work.png",
         "text": "工作"
       },
       {
-        "pagePath": "pages/card/card",
-        "iconPath": "images/icon/ka.png",
-        "selectedIconPath": "images/icon/ka-ok.png"
+        "pagePath": "pages/add/add",
+        "iconPath": "images/icon/add.png",
+        "selectedIconPath": "images/icon/add_select.png"
       },
       {
         "pagePath": "pages/appointment/appointment",
-        "iconPath": "images/icon/yuyue.png",
-        "selectedIconPath": "images/icon/yuyue-ok.png",
+        "iconPath": "images/icon/data.png",
+        "selectedIconPath": "images/icon/data_ok.png",
         "text": "数据"
       },
       {

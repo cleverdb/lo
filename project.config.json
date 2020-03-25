@@ -91,6 +91,20 @@
 					"id": -1,
 					"name": "pages/mineChangeIphone/mineChangeIphone",
 					"pathName": "pages/mineChangeIphone/mineChangeIphone",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mineMessage/mineMessage",
+					"pathName": "pages/mineMessage/mineMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/publishCourse/publishCourse",
+					"pathName": "pages/publishCourse/publishCourse",
 					"scene": null
 				}
 			]

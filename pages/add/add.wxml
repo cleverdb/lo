@@ -1,0 +1,17 @@
+<view class='add_warp'>
+    <view class='add_content_warp'>
+        <block wx:for="{{arr1}}">
+            <navigator url="{{item.url}}" hover-class="none">
+                <view class='add_item'>
+                    <view class='add_img_wrap'>
+                        <image class="" src="{{item.img}}" mode="aspectFill" lazy-load="false" />
+                    </view>
+                    <view class='add_text'>
+                        {{item.text}}
+                    </view>
+                </view>    
+            </navigator> 
+        </block>
+    </view>
+</view>
+  
