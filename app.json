@@ -31,7 +31,8 @@
     "pages/mineMessage/mineMessage",
     "pages/mineCoupon/mineCoupon",
     "pages/publishCourse/publishCourse",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/schedule/schedule"
   ],
   "permission": {
     "scope.userLocation": {
@@ -52,7 +53,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/schedule/schedule",
         "iconPath": "images/icon/schedule.png",
         "selectedIconPath": "images/icon/schedule.png",
         "text": "日程"
