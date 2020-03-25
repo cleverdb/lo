@@ -47,7 +47,7 @@
     </view>
     <view class="card_content">
       <i-cell-group>
-    <i-cell is-link>
+    <i-cell is-link url='/pages/customer_coach/customer_coach'>
       <view class="card_item">
         <image src="/images/icon/work_card_item_11.png" mode='aspectFit' class="card_item_1_img"></image>
         <view>客户管理</view>
