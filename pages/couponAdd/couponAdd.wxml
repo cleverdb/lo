@@ -1,0 +1,67 @@
+<view class="ca_container">
+  <view class="ca_container1">
+    <view class="ca_container1_item1">
+      <view class="ca_container1_item1_text ca_margin_right_50">满</view>
+      <view class="ca_container1_item1_input ca_margin_right_50"><input type="number" value="" /></view>
+      <view class="ca_container1_item1_text ca_margin_right_50">减</view>
+      <view class="ca_container1_item1_input1"><input type="number" value="" /></view>
+    </view>
+    <view class="ca_container1_item2">
+      <view class="ca_container1_item2_1">优惠券有效期</view>
+      <view class="ca_container1_item2_2" bindtap="chooseTime">仅限当日</view>
+      <image src="../../images/icon/coupon_add_1.png" class="ca_container1_item2_3"></image>
+    </view>
+    <view class="ca_container1_item2">
+      <view class="ca_container1_item2_1">使用范围</view>
+      <view class="ca_container1_item2_4">仅限于购买课程</view>
+    </view>
+    <view class="ca_container1_item3" bindtap="chooseStore">
+      <view class="ca_container1_item2_1">使用门店</view>
+      <view class="ca_container1_item2_2">LIOU健身乐城店</view>
+      <image src="../../images/icon/coupon_add_1.png" class="ca_container1_item2_3"></image>
+    </view>
+  </view>
+  <i-button bind:click="handleClick3" i-class="nca_i_btn" type="warning" long>确认</i-button>
+</view>
+<view wx:if="{{shadow1}}"  class="cbd_shadow">
+  <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>
+  <view class="cbd_shadow_item00">
+    <view class="ca_shadow_item00_1">
+      <view class="ca_shadow_item00_1_1">2019.01.20<i class="font12">周一</i></view>
+      <view><image src="../../images/icon/coupon_add_2.png" class="ca_shadow_img"></image></view>
+      <view class="ca_shadow_item00_1_1">2019.01.20<i class="font12">周一</i></view>
+    </view>
+    <view class="ca_shadow_item00_2">
+      <view class="ca_shadow_item00_2_c ca_shadow_item00_2_1">
+        <view class="ca_shadow_item00_2_font">开始时间</view>
+        <view>
+          <wux-picker-view value="{{ value1 }}" controlled options="{{ options[0] }}" bind:valueChange="onValueChange1" />
+        </view>
+      </view>
+      <view class="ca_shadow_item00_2_c">
+        <view class="ca_shadow_item00_2_font">失效时间</view>
+        <view>
+          <wux-picker-view value="{{ value2 }}" controlled options="{{ options[0] }}" bind:valueChange="onValueChange2" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cbd_shadow_item3">
+  <i-button bind:click="handleClick3" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
+</view>
+<view wx:if="{{shadow2}}"  class="cbd_shadow">
+  <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>
+  <view class="cbd_shadow_item2">
+  <view class="cbd_shadow_item2_c">
+    <view class="cbd_store_1"><view>选择上课门店</view></view>
+    <view wx:for="{{stores}}" wx:for-item="item" wx:key="{{item.name}}" class="{{index<stores.length-1?'cbd_bottom_line':''}} cbd_store_2" data-name="{{item.name}}" bindtap="handleRadio2">
+      <view><image wx:if="{{chosedStore==item.name}}" class="cbd_item_avatar" src="../../images/icon/course_booking_detail_1.png"></image><image wx:else class="cbd_item_avatar" src="../../images/icon/course_booking_detail_2.png"></image></view>
+      <view class="cbd_store_2_2 {{chosedStore==item.name?'cbd_store_2_2_chosed':''}}">{{item.name}}</view>
+    </view>
+  </view>
+  </view>
+  <view class="cbd_shadow_item3">
+  <i-button bind:click="handleClick2" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
+</view>

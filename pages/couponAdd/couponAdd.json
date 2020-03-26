@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加优惠券",
+  "usingComponents": {
+    "i-button": "../../dist/iview/button/index",
+    "wux-picker-view": "../../dist/wux/picker-view/index"
+  }
+}
