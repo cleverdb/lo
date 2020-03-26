@@ -1,0 +1,266 @@
+<view>
+     <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+        <view class='date-show'>
+            <view class="date-content">{{year}}年{{month}}月</view>
+            <view class='data-today'>
+                今
+            </view>
+        </view>
+        <view class="date-br">
+            <view class='header'>
+            <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+            </view>
+            <view class='date-box'>
+            <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                <view class='date-head'>
+                <view>{{item.dateNum}}</view>
+                </view>
+            </view>
+            </view>
+        </view>
+        <view class="date-show-footer" bindtap="showDataTap">
+            <view class="footer-view">
+                <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+            </view>
+        </view>
+    </view>
+    <view class='line'></view>
+    <view class='appoint_management_list_warp'>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='appoint_management_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='appoint_management_right_warp'>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_text_name">
+                        <text class="appoint_management_class appoint_management_t">14:00-14:59</text>
+                        <text class="appoint_management_class">常规课</text>
+                   </view>
+                    <view class="appoint_management_store_type">
+                       待上课
+                    </view>   
+                </view>
+                <view class='appoint_management_right'>
+                   <view class="appoint_management_time">
+                       刘石磊
+                   </view>
+                    <view>
+                        <text class="appoint_management_class">剩余课时：</text>
+                        <text class="appoint_management_class">05/50</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+    </view>
+    <view class='appoint_management_footer'>
+        <view class="management_footer">
+            <image src="/images/icon/phone_record_img_1.png" mode="aspectFill" lazy-load="false"/>
+            <view>
+                添加
+            </view>
+        </view>
+          
+    </view>
+        
+</view>
+  

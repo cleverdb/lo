@@ -5,30 +5,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [{
-      type: 'radio',
-      label: 'Updated',
-      value: 'updated',
-      checked: true,
-      children: [{
-        label: 'Recently updated',
-        value: 'desc',
-        checked: true, // 默认选中
-      },
-      {
-        label: 'Least recently updated',
-        value: 'asc',
-      },
-      ],
-      groups: ['001'],
+    filterChildren:[{
+      key:1,
+      value:'最近联系',
     },{
-        type: 'sort',
-        label: 'Stars',
-        value: 'stars',
-        groups: ['003'],
-    }]
+      key:2,
+      value:'最近上课'
+    },{
+      key:3,
+      value:'剩余课时'
+    }],
+    active:{
+      key: 1,
+      value: '最近联系',
+    },
+    threeShow:false,
+    activeKey: 1,
+    show : false,
+    /***上面是筛选用的 */
+    itemArr: [
+      { name: 'man', value: '男' },
+      { name: 'wonam', value: '女' }
+    ],
+    vipType:[{
+      key:1,
+      value:'正式'
+    },{
+        key: 2,
+        value: '历史'
+    },{
+        key: 3,
+        value: 'VIP'
+    }],
+    storeArr:[{
+      key:1,
+      value:'LIOU健身乐城店'
+    },{
+        key: 2,
+        value: 'LIOU STUDIO健身工作室'
+      }, {
+        key: 3,
+        value: 'LIOU STUDIO健身工作室'
+      }],
+    typeAcive:{},
+    soreAcive:{}
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,5 +105,58 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  typeClick:function(e){
+    const { dataset } = e.currentTarget;
+    const { item } = dataset;
+    this.setData({
+      typeAcive: item
+    })
+  },
+  // 选择健身房
+  storeClick: function (e) {
+    const { dataset } = e.currentTarget;
+    const { item } = dataset;
+    this.setData({
+      soreAcive: item
+    })
+  },
+
+  /**
+   * 筛选条件
+   */
+  click:function(e){
+    const { dataset } = e.currentTarget;
+    const { activekey } = dataset;
+    this.setData({
+      activeKey: activekey,
+      threeShow: activekey == 3,
+      show: activekey == 1,
+    })
+    console.log('e', e);
+  },
+  showModal:function() {
+    const { show } = this.data;
+    this.setData({
+      show: !show,
+      activeKey:1,
+      threeShow:false
+    })
+  },
+  clickActive:function(e){
+    const { dataset } = e.currentTarget;
+    const { modalitem } = dataset;
+    this.setData({
+      active: modalitem,
+      show:false
+    })
+  },
+  // 关闭modal
+  hideModal:function(){
+    this.setData({
+      threeShow: false,
+      show: false
+    })
+  },
+  catchtapModal:function(){}
 })

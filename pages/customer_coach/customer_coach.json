@@ -2,6 +2,7 @@
   "navigationBarTitleText":"教练客户管理",
   "usingComponents": {
     "wux-search-bar": "../../dist/wux/search-bar/index",
-    "wux-filterbar": "../../dist/wux/filterbar/index"
+    "wux-filterbar": "../../dist/wux/filterbar/index",
+    "i-icon": "../../dist/iview/icon/index"
   }
 }

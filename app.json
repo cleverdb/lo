@@ -18,7 +18,8 @@
     "pages/publishCourse/publishCourse",
     "pages/add/add",
     "pages/schedule/schedule",
-    "pages/customer_coach/customer_coach"
+    "pages/customer_coach/customer_coach",
+    "pages/appointmentManagement/appointmentManagement"
   ],
   "permission": {
     "scope.userLocation": {
