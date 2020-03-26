@@ -1,0 +1,54 @@
+<view class="membershipManagement_warp">
+    <view class="membershipManagement_top">
+        <view class='membershipManagement_top_left'>
+            <view class='left'>
+                <view class="left_name">
+                    LIOU STUDIO健身工作室
+                </view>
+                <i-icon type="{{show ? 'packup' :'unfold'}}" />
+                <view class='left_name_modal'>
+                    <view>
+                        我的客户
+                    </view>
+                    <view class='content_item_line'></view>
+                    <view>
+                        我的客户
+                    </view>
+                    <view class='content_item_line'></view>
+                    <view>
+                        我的客户
+                    </view>
+                </view>
+            </view>
+            <view class='center'>
+                <i-icon type="search" class="center_search" />
+                <input class="weui-input" auto-focus placeholder="请输入会员名、手机号"/>
+            </view>  
+        </view>
+        <view class="right">
+            <i-icon type="switch" size="28" /> 
+            <view class="right_content">
+                <view class='right_content_item'>
+                   <image class="right_content_img" src="/images/icon/add_new_per.png" mode="aspectFill" lazy-load="false" />
+                    <view>
+                        添加新客户
+                    </view>
+                </view>
+                <view class='content_item_line'></view>
+                <view class='right_content_item'>
+                    <image class="right_content_img" src="/images/icon/change_person.png" mode="aspectFill" lazy-load="false" />
+                    <view>
+                        更换会籍顾问
+                    </view>
+                </view>
+                   
+            </view>
+        </view>
+        <view class='membershi_top_bg'>
+            adsadaad
+        </view>
+          
+    </view>
+      
+</view>
+  

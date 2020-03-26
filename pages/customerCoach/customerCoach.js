@@ -1,4 +1,4 @@
-// pages/customer_coach/customer_coach.js
+// pages/customerCoach/customerCoach.js
 Page({
 
   /**

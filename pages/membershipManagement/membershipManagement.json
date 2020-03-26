@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "客户管理",
+  "usingComponents": {
+    "i-icon": "../../dist/iview/icon/index"
+  }
+}

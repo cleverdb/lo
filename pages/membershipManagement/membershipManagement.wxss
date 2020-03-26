@@ -1,0 +1,102 @@
+/* pages/membershipManagement/membershipManagement.wxss */
+page{
+    height: 1005;
+    background: #ffffff;
+}
+.membershipManagement_warp{
+    height: 100%;
+}
+.membershipManagement_top{
+    height: 114rpx;
+    display: flex;
+    background: #F0EDF1;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30rpx;
+    align-items: center;
+}
+.membershipManagement_top_left{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.membershipManagement_top_left .left{
+    display: flex;
+    font-size:28rpx;
+    position: relative;
+    padding-left: 30rpx;
+}
+.left_name{
+    flex: 1;
+    max-width: 210rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.left_name_modal{
+    position: absolute;
+    width: 100%;
+    height: 200rpx;
+    background: #ffffff;
+    top:77rpx;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 30rpx;
+}
+.membershipManagement_top_left .center{
+    height: 78rpx;
+    background: #ffffff;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    padding-left: 22rpx;
+}
+.center_search{
+    margin-right: 20rpx;
+}
+.membershipManagement_top_left .right{
+    position: relative;
+}
+.membershipManagement_top .right_content{
+    position: absolute;
+    top:114rpx;
+    height: 200rpx;
+    background: #ffffff;
+    width: 230rpx;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 30rpx;
+}
+.membershi_top_bg{
+    position: fixed;
+    top:114rpx;
+    background: rgba(68, 65, 68, 0.6);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 10;
+}
+.right_content_item{
+    display: flex;
+    font-size:26rpx;
+}
+.right_content_img{
+    width: 42rpx;
+    height: 42rpx;
+    margin-right: 10rpx;
+}
+.content_item_line{
+    height: 1px;
+    background: #ECECEC;
+    width: 100%;
+}

@@ -1,4 +1,4 @@
-/* pages/customer_coach/customer_coach.wxss */
+/* pages/customerCoach/customerCoach.wxss */
 page{
     background: #F0EDF1;
     height: 100%;
