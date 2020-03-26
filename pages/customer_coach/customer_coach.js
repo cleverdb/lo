@@ -1,25 +1,46 @@
-const app = getApp();
-const { $Toast } = require('../../dist/iview/base/index');
+// pages/customer_coach/customer_coach.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    duration:1
+    items: [{
+      type: 'radio',
+      label: 'Updated',
+      value: 'updated',
+      checked: true,
+      children: [{
+        label: 'Recently updated',
+        value: 'desc',
+        checked: true, // 默认选中
+      },
+      {
+        label: 'Least recently updated',
+        value: 'asc',
+      },
+      ],
+      groups: ['001'],
+    },{
+        type: 'sort',
+        label: 'Stars',
+        value: 'stars',
+        groups: ['003'],
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // toastNoOperation();
+
   },
 
   /**
@@ -62,11 +83,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  toastNoOperation:function(){
-    $Toast({
-      content: "无权限",
-      duration: 1
-    });
   }
 })

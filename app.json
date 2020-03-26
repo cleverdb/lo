@@ -6,31 +6,19 @@
     "pages/phoneRecordAdd/phoneRecordAdd",
     "pages/phoneRecord/phoneRecord",
     "pages/work/work",
-    "pages/home/home",
-    "pages/card/card",
     "pages/mine/mine",
-    "pages/courses/courses",
     "pages/login/login",
-    "pages/buyCourse/buyCourse",
-    "pages/activity/activity",
-    "pages/mineInfo/mineInfo",
-    "pages/appointment/appointment",
-    "pages/cardDetail/cardDetail",
-    "pages/curoseDetail/curoseDetail",
     "pages/logs/logs",
-    "pages/mineAppointment/mineAppointment",
-    "pages/mineReport/mineReport",
-    "pages/mineCard/mineCard",
-    "pages/activityDetail/activityDetail",
-    "pages/mineTicket/mineTicket",
-    "pages/mineActivity/mineActivity",
     "pages/stores/stores",
     "pages/classRecord/classRecord",
     "pages/mineReserve/mineReserve",
     "pages/mineChangeIphone/mineChangeIphone",
     "pages/mineMessage/mineMessage",
     "pages/mineCoupon/mineCoupon",
-    "pages/publishCourse/publishCourse"
+    "pages/publishCourse/publishCourse",
+    "pages/add/add",
+    "pages/schedule/schedule",
+    "pages/customer_coach/customer_coach"
   ],
   "permission": {
     "scope.userLocation": {
@@ -51,26 +39,26 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/home",
-        "iconPath": "images/icon/home.png",
-        "selectedIconPath": "images/icon/home-ok.png",
+        "pagePath": "pages/schedule/schedule",
+        "iconPath": "images/icon/schedule.png",
+        "selectedIconPath": "images/icon/schedule.png",
         "text": "日程"
       },
       {
         "pagePath": "pages/work/work",
-        "iconPath": "images/icon/kc.png",
-        "selectedIconPath": "images/icon/kc-ok.png",
+        "iconPath": "images/icon/work.png",
+        "selectedIconPath": "images/icon/work.png",
         "text": "工作"
       },
       {
-        "pagePath": "pages/card/card",
-        "iconPath": "images/icon/ka.png",
-        "selectedIconPath": "images/icon/ka-ok.png"
+        "pagePath": "pages/add/add",
+        "iconPath": "images/icon/add.png",
+        "selectedIconPath": "images/icon/add_select.png"
       },
       {
-        "pagePath": "pages/appointment/appointment",
-        "iconPath": "images/icon/yuyue.png",
-        "selectedIconPath": "images/icon/yuyue-ok.png",
+        "pagePath": "pages/add/add",
+        "iconPath": "images/icon/data.png",
+        "selectedIconPath": "images/icon/data_ok.png",
         "text": "数据"
       },
       {

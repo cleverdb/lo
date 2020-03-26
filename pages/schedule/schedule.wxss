@@ -1,0 +1,183 @@
+page{
+  background: #EEEEEE;
+}
+.schedule_wrap{
+    background: #F0EDF1;
+}
+.schedule_timeline_warp{
+    margin-top:30rpx;
+    padding-left: 30rpx;
+}
+.schedule_item{
+    width: 490rpx;
+    background: #ffffff;
+    height: 106rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+}
+.timeline_item_content{
+    display: flex;
+    align-items: center;
+    color: #727171;
+}
+.schedule_class_name{
+    font-size: 32rpx;
+    margin-right: 10rpx;
+}
+.schedule_per_name{
+    font-size: 28rpx;   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+* 以下是 日历的样式
+**/
+.date-show {
+  position: relative;
+  font-size: 34rpx;
+  color: #090000;
+  text-align: center;
+  height: 60rpx;
+  margin-bottom:20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+.data-today{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    border: 1px solid #E0DDE0;
+    color: #E0DDE0;
+}
+.date-br {
+  background-color: #ffffff;
+}
+
+.header {
+  font-size: 0;
+  width: 100%;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  
+}
+
+.header>view {
+  display: inline-block;
+  width: 14.285%;
+  color: #090000;
+  font-size: 28rpx;
+  text-align: center;
+  color: #9E9F9F;
+  /* border-bottom: 1px solid #666; */
+  padding: 20rpx 0;
+}
+
+.weekMark {
+  position: relative;
+}
+
+.weekMark view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* border-bottom: 1px solid #F2873B; */
+}
+
+.date-box {
+  font-size: 0;
+  padding: 10rpx 0;
+  color: #090000;
+}
+
+.date-box>view {
+  position: relative;
+  display: inline-block;
+  width: 14.285%;
+  font-size: 34rpx;
+  text-align: center;
+  vertical-align: middle;
+  margin: 10rpx 0;
+}
+
+.date-head {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+}
+
+.nowDay .date-head {
+  width: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #a0a0a0;
+  margin: 0 auto;
+}
+.selectedDay .date-head {
+  width: 60rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fcc700;
+  margin: 0 auto;
+}
+.show_data_wrap{
+  height: 280rpx;
+  overflow: hidden;
+}
+.one_top_wrap{
+  padding-top: 10px;
+  background: #ffffff;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.all_data_wrap{
+  padding-bottom: 20rpx;
+}
+.date-show-footer{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+
+}
+.footer-view{
+  width: 30rpx;
+  height: 34rpx;
+}
+.footer-view image{
+  width: 100%;
+  height: 100%;
+}

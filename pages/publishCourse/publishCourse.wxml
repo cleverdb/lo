@@ -1,2 +1,100 @@
 <!--pages/publishCourse/publishCoures.wxml-->
-<text>pages/publishCourse/publishCoures.wxml</text>
+<view class='publish_warp'>
+    <view>
+        <wux-tabs wux-class="bordered" controlled current="{{ current }}" bindchange="onChange">
+            <wux-tab key="1" class='publish_tab' title="新课"></wux-tab>
+            <wux-tab key="2" class='publish_tab' title="课程管理"></wux-tab>
+        </wux-tabs>
+    </view>
+    <view wx:if="{{current == 1}}">
+        <view class="container-hd">
+            <swiper indicator-dots="true" autoplay="true">
+                <block wx:for="{{banner}}" wx:key="*this">
+                    <swiper-item>
+                    <image src="{{item}}" data-item='{{item}}' class="slide-image" mode="scaleToFill" bindtap='bannerTap' />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class='class_warp'>
+            <block wx:for="{{classArr}}" wx:key="*this">
+                <view class='class_item {{item.key == activityIndex ? "active" : ""}}' data-item='{{item}}' bindtap="classItemClick">
+                    {{item.value}}
+                </view>
+            </block>
+        </view>
+        <view class='list_warp'>
+            <view class='list_item'>
+                <i-input value="{{ inputValue }}" i-class='list_input' type="number" maxlength='100' bindchange="inputChange" right class='publish_input' title="课程单价" placeholder="请输入价格" />
+            </view>
+            <i-cell-group>
+                <i-cell is-link>
+                    <view class='mine_list'>
+                        <view class='mine_picker'>
+                            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                                <view class='mine_chagne_sel'>
+                                    <view>
+                                        上课门店
+                                    </view>
+                                    <view>
+                                        {{array[index]}}
+                                    </view>
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                </i-cell>
+            </i-cell-group>
+        </view>
+        
+        <view class='publish_footer' bindtap="sumbit">
+            确认发布
+        </view>
+    </view>
+    <view wx:else class='class_manage'>
+        <wux-swipe-action-group>
+            <wux-swipe-action autoClose right="{{ right }}">
+                <view class="publish_swipe_item">
+                    <view class='publish_swipe_left'>
+                        <image src="/images/test.png" mode="aspectFill" lazy-load="false" />
+                    </view>
+                     <view class='publish_swipe_right'>
+                        <view>
+                            <view>
+                                <view class="publish_flex">
+                                    <text class='publish_name'>拳击课</text>
+                                    <text class='publish_num'>￥500元/课</text>
+                                </view>
+                                 <view class="publish_flex name_warp">
+                                    <text class='person_name'>明昊</text>
+                                    <text>已完成：15节</text>
+                                </view> 
+                            </view>
+                        </view>
+                        <view class='right_bottom'>
+                            <text>
+                                2019.01.05发布
+                            </text>
+                            <text>
+                                LIOU健身乐城店
+                            </text>  
+                        </view>
+                           
+                     </view>
+                        
+                </view>
+            </wux-swipe-action>
+        </wux-swipe-action-group>
+    </view>
+       
+    
+</view>
+<i-modal title="课程发布" visible="{{ visible }}" bind:ok="modalOk" bind:cancel="modalCancel">
+    <view>
+        <view>
+            拳击私教课
+        </view>
+        <view>LIOU健身乐城店</view>  
+    </view>
+</i-modal>
+  

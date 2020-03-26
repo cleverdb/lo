@@ -1,0 +1,15 @@
+<view>
+    <view>
+        <wux-search-bar showCancel="false" placeholder='请输入会员姓名、手机号'/>
+    </view>
+    <view class='filterbar_coach'>
+        <view class='left'>
+            <wux-filterbar wux-class='filterbar_coach' items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
+        </view>
+        <view class='right'>
+          adas  
+        </view>
+    </view>
+      
+</view>
+  

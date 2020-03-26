@@ -100,7 +100,7 @@
               </view>
           </view>
           </i-cell>
-          <i-cell is-link url="/pages/mineChangeIphone">
+          <i-cell is-link url="/pages/mineChangeIphone/mineChangeIphone">
           <view class='mine_list_last'>
               <view class='mine_list_top'>
                   <image src="/images/icon/mine_iphone.png" mode='aspectFit' class='mine_img'></image>

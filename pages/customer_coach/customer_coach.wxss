@@ -1,0 +1,16 @@
+/* pages/customer_coach/customer_coach.wxss */
+.filterbar_coach{
+    display: flex;
+}
+.filterbar_coach .left{
+    width: 70%;
+}
+.filterbar_coach .right{
+    width: 30%;
+}
+.filterbar_coach .wux-filterbar__item{
+    color: #9FA0A0;
+}
+.filterbar_coach .wux-filterbar__item--checked{
+    color: #3E3A39;
+}
