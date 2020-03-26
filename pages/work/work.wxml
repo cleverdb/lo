@@ -65,7 +65,7 @@
         <view>新课发布</view>
       </view>
     </i-cell>
-    <i-cell is-link>
+    <i-cell is-link url="/pages/couponAdd/couponAdd">
       <view class="card_item">
         <image src="/images/icon/work_card_item_44.png" mode='aspectFit' class="card_item_1_img"></image>
         <view>添加优惠券</view>
