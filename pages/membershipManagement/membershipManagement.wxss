@@ -6,13 +6,19 @@ page{
 .membershipManagement_warp{
     height: 100%;
 }
+.membershipManagement_hide{
+    display: none !important;
+}
+.center_search_width{
+    width: 100%;
+}
 .membershipManagement_top{
     height: 114rpx;
     display: flex;
     background: #F0EDF1;
     align-items: center;
     justify-content: space-between;
-    padding-right: 30rpx;
+    padding: 0 30rpx;
     align-items: center;
 }
 .membershipManagement_top_left{
@@ -25,7 +31,6 @@ page{
     display: flex;
     font-size:28rpx;
     position: relative;
-    padding-left: 30rpx;
 }
 .left_name{
     flex: 1;
@@ -40,7 +45,7 @@ page{
     height: 200rpx;
     background: #ffffff;
     top:77rpx;
-    left: 0;
+    left: -30rpx;
     z-index: 20;
     display: flex;
     flex-direction: column;
@@ -51,11 +56,11 @@ page{
 .membershipManagement_top_left .center{
     height: 78rpx;
     background: #ffffff;
-    width: 60%;
     display: flex;
     align-items: center;
     font-size: 26rpx;
     padding-left: 22rpx;
+    border-radius: 6rpx;
 }
 .center_search{
     margin-right: 20rpx;
@@ -99,4 +104,80 @@ page{
     height: 1px;
     background: #ECECEC;
     width: 100%;
+}
+
+
+
+
+
+
+.filterbar_coach{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ECECEC;
+    height: 80rpx;
+    background: #ffffff;
+}
+.filterbar_item{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 28rpx;
+    color: #9FA0A0;
+    align-items: center;
+}
+.acive_filter{
+    color: #3E3A39;
+    border-bottom: 1px solid #FDC600;
+}
+.filterbar_coach  .left{
+  position: relative;
+}
+.left_content{
+    margin-left: 28rpx;
+}
+.filterbar_modal{
+    position: absolute;
+    width: 100%;
+    height: 300rpx;
+    background: #ffffff;
+    z-index: 100;
+    top:83rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    left: -1rpx;
+    color: #9FA0A0;
+}
+.filterbar_modal .active{
+    color: #3E3A39;
+}
+.filterbar_bg{
+    position: fixed;
+    height: 100%;
+    background: rgba(68, 65, 68, 0.6);
+    width: 100%;
+}
+/**
+* 这是右边的筛选
+*
+*/
+.filter_bg_content{
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bg_content_top{
+    flex: 1;
+}
+.bg_content_footer{
+    background: #FDC600;
+    height: 113rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
 }

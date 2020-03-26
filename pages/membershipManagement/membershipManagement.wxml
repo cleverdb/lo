@@ -1,7 +1,7 @@
 <view class="membershipManagement_warp">
     <view class="membershipManagement_top">
         <view class='membershipManagement_top_left'>
-            <view class='left'>
+            <view class='left' wx:if="{{!inputfocus}}">
                 <view class="left_name">
                     LIOU STUDIO健身工作室
                 </view>
@@ -20,12 +20,13 @@
                     </view>
                 </view>
             </view>
-            <view class='center'>
+            <view class='center {{inputfocus ? "center_search_width" : ""}}'>
                 <i-icon type="search" class="center_search" />
-                <input class="weui-input" auto-focus placeholder="请输入会员名、手机号"/>
+                <input wx:if="{{!inputfocus}}" class="weui-input" placeholder="请输入会员名、手机号" bindfocus="inputFocus"/>
+                <input wx:else class="weui-input" auto-focus placeholder="请输入会员名、手机号" bindblur="bindblur" bindfocus="inputFocusTow"/>
             </view>  
         </view>
-        <view class="right">
+        <view class="right" wx:if="{{!inputfocus}}">
             <i-icon type="switch" size="28" /> 
             <view class="right_content">
                 <view class='right_content_item'>
@@ -49,6 +50,74 @@
         </view>
           
     </view>
-      
+    <view>
+      <view class='filterbar_coach'>
+            <view class='left filterbar_item {{activeKey ==1 ? "acive_filter" : ""}}' data-activeKey="1" bindtap="click">
+                <view class='left_content' catchtap="showModal">
+                    {{active.value}}
+                </view>
+                <i-icon type="{{show ? 'packup' :'unfold'}}" />
+                <view class='filterbar_modal' wx:if="{{show}}">
+                    <block wx:for="{{filterChildren}}">
+                        <view class="{{item.key == active.key ? 'active' : ''}}" data-modalItem="{{item}}" catchtap="clickActive">
+                            {{item.value}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!---<view class='center filterbar_item {{activeKey ==2 ? "acive_filter" : ""}}' data-activeKey="2" bindtap="click">
+                顺序排列
+            </view>--->
+            <view class='right filterbar_item {{activeKey ==3 ? "acive_filter" : ""}}' data-activeKey="3" bindtap="click">
+                筛选
+            </view>
+        </view>
+        <view class='filterbar_bg' wx:if="{{(show || threeShow)}}" catchtap="hideModal">
+            <view class='filter_bg_content' wx:if="{{threeShow}}" catchtap="catchtapModal">
+                <view class='bg_content_top'>
+                    <view class='modal_line'>
+                        <view>
+                            会员性别
+                        </view>
+                        <radio-group class="radio-group" catchtap="radioChange" >
+                            <radio class="radio modal_radio" coler="#F8C700" wx:for-items="{{itemArr}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text>{{item.value}}</text>
+                            </radio>
+                        </radio-group> 
+                    </view>
+                    <view class='modal_line'>
+                        <view>
+                            会员类型
+                        </view>
+                        <view class='modal_line_right'>
+                            <block wx:for="{{vipType}}">
+                              <view class='right_item {{item.key == typeAcive.key ? "type_active" : ""}}' bindtap="typeClick" data-item="{{item}}">
+                                  {{item.value}}
+                              </view>
+                            </block>
+                              
+                        </view>
+                    </view>
+                    <view class='store_view'>
+                        <view>
+                            选择门店 
+                        </view>
+                        <view class='store_warp'>
+                            <block wx:for="{{storeArr}}">
+                              <view class='right_item {{item.key == soreAcive.key ? "type_active" : ""}}' bindtap="storeClick" data-item="{{item}}">
+                                  {{item.value}}
+                              </view>
+                            </block>
+                        </view>
+                    </view>
+                      
+                </view>
+                <view class='bg_content_footer'>
+                    确 定
+                </view>
+            </view>
+              
+        </view>  
+    </view> 
 </view>
   
