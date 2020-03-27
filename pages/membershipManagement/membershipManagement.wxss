@@ -41,7 +41,7 @@ page{
 }
 .left_name_modal{
     position: absolute;
-    width: 100%;
+    width: 323rpx;
     height: 200rpx;
     background: #ffffff;
     top:77rpx;
@@ -51,7 +51,11 @@ page{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 0 30rpx;
+    padding: 30rpx 30rpx;
+    color: #9FA0A0;
+}
+.active{
+    color: #3E3A39;
 }
 .membershipManagement_top_left .center{
     height: 78rpx;
@@ -61,6 +65,7 @@ page{
     font-size: 26rpx;
     padding-left: 22rpx;
     border-radius: 6rpx;
+    flex: 1;
 }
 .center_search{
     margin-right: 20rpx;
@@ -80,7 +85,7 @@ page{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 0 30rpx;
+    padding: 30rpx 30rpx;
 }
 .membershi_top_bg{
     position: fixed;
@@ -105,6 +110,140 @@ page{
     background: #ECECEC;
     width: 100%;
 }
+.member_list_warp{
+    padding-bottom: 120rpx;
+}
+.modal_line{
+    display: flex;
+    justify-content: space-between;
+    color: #3E3A39;
+    font-size: 28rpx;
+    padding: 40rpx 30rpx;
+    border-bottom: 1px solid #ECECEC;
+    align-items: center;
+}
+.modal_radio{
+    margin-right: 40rpx;
+}
+.vip_status_warp{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.vip_item{
+    min-width: 240rpx;
+    padding: 12rpx 20rpx;
+    border: 1px solid #ECECEC;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+.type_active{
+    color: #FDC600;
+    border: 1px solid #FDC600;
+}
+.coach_list_item{
+    display: flex;
+    justify-content: space-between;
+    padding: 24rpx 30rpx;
+    border-bottom: 1px solid #ECECEC;
+    background: #ffffff;
+    align-items: center;
+}
+.list_item_img{
+    width: 101rpx;
+    height: 101rpx;
+    border-radius: 50%;
+}
+.list_item_img image {
+    width: 101rpx;
+    height: 101rpx;
+    border-radius: 50%;
+}
+.coach_right_warp{
+    margin-left: 20rpx;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.coach_right{
+    display: flex;
+    justify-content: space-between;
+    font-size:28rpx;
+    align-items: center;
+}
+.coach_text_name{
+    color: #3E3A39;
+    font-size:28rpx;
+}
+.coach_store_type{
+    color: #9FA0A0;
+    font-size: 26rpx;
+}
+.coach_time{
+    color: #3E3A39;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.coach_class{
+    color: #3E3A39;
+    font-size:20rpx;
+}
+.checked_warp_self{
+    margin-left: 20rpx;
+}
+.members_footer{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    height: 110rpx;
+    width: 100%;
+    border: 1px solid #ECECEC;
+}
+.members_footer .members_item{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.members_ok{
+    background: #FDC600;
+}
+.member_pop_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.member_pop_item_flex{
+    display: flex;
+    align-items: center;
+}
+.member_pop_warp{
+    max-height: 400rpx;
+    overflow: auto;
+}
+.members_pop_ok{
+    height: 100rpx;
+    width: 100%;
+    background: #FDC600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+}
+.modal_line_vip{
+    color: #3E3A39;
+    font-size: 28rpx;
+    padding: 40rpx 30rpx;
+    border-bottom: 1px solid #ECECEC;
+    align-items: center;
+}
+
+
 
 
 

@@ -126,6 +126,13 @@
 					"id": -1,
 					"name": "pages/membershipManagement/membershipManagement",
 					"pathName": "pages/membershipManagement/membershipManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vipStatus/vipStatus",
+					"pathName": "pages/vipStatus/vipStatus",
 					"scene": null
 				}
 			]

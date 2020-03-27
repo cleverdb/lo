@@ -20,7 +20,8 @@
     "pages/schedule/schedule",
     "pages/customerCoach/customerCoach",
     "pages/appointmentManagement/appointmentManagement",
-    "pages/membershipManagement/membershipManagement"
+    "pages/membershipManagement/membershipManagement",
+    "pages/vipStatus/vipStatus"
   ],
   "permission": {
     "scope.userLocation": {

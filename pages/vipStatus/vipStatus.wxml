@@ -1,0 +1,25 @@
+
+<view class="vip_status_page_warp">
+    <view class='vip_status_top' >
+        <block wx:for="{{vipTopData}}">
+            <view class="vip_status_item {{activeIndex == item.id ? 'vip_active' : ''}}" bindtap="vipTopClick" data-id="{{item.id}}" >
+                <view class="vip_status_num" >
+                    {{item.num}}
+                </view>
+                <view class="vip_text">
+                    {{item.text}}
+                </view>    
+            </view>  
+        </block>
+    </view>
+    <view class='vip_status_line'></view>
+    <view class='vip_list_warp'>
+        <view class='vip_list_title'>
+            {{vipTopData[activeIndex].text + '会员'}}
+        </view>
+    </view>
+    <view class='vip_no_data'>
+        <wux-prompt visible="true" icon="{{showNoText[activeIndex].img}}" text="{{showNoText[activeIndex].text}}" />
+    </view>    
+</view>
+  

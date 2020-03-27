@@ -24,7 +24,50 @@ Page({
     show: false,
 
     inputfocus:false,
-    isBlur:false
+    isBlur:false,
+
+    storeSelect:{},
+    storeShow: false,
+    isShowMore : false,
+    storeObj :[{
+      key:1,
+      value:'我的客户'
+    },{
+      key: 2,
+      value: 'LIOU健身乐城店'
+    },{
+      key: 3,
+      value: 'LIOU STUDIO健身工作室'
+    }],
+    stortSelect:{
+      key: 1,
+      value: '我的客户'
+    },
+    itemArr: [
+      { name: 'normal', value: '不限' },
+      { name: 'man', value: '男' },
+      { name: 'wonam', value: '女' }
+    ],
+    vipStatus:[{
+      key:1,
+      value:'正式会员'
+    }, {
+        key: 2,
+        value: '待办理会员'
+      }, {
+        key: 3,
+        value: '新会员'
+      }, {
+        key: 4,
+        value: '历史会员'
+      }],
+    vipActive:{},
+    item:{
+      name:'',
+      checked:false
+    },
+    show_checkobox:false,
+    visible2:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -89,7 +132,6 @@ Page({
   inputFocusTow: function () {
     const that = this;
     setTimeout(() => {
-        console.log('isBlur');
         that.setData({
           isBlur: true,
         })
@@ -97,15 +139,75 @@ Page({
   },
   bindblur:function(){
     const { isBlur } = this.data;
-    console.log('isBlur', isBlur);
     if (isBlur){
       this.setData({
         inputfocus: false,
         isBlur:false
       })
     }
+    this.setData({
+      isShowMore: false,
+      storeShow: false
+    })
     
   },
+  stroeClick:function(){
+    const { storeShow } = this.data;
+    this.setData({
+      storeShow: !storeShow,
+      isShowMore: false,
+      show:false,
+      threeShow: false
+    })
+  },
+  showMore:function(){
+    const { isShowMore } = this.data;
+    this.setData({
+      isShowMore: !isShowMore,
+      storeShow: false,
+      show: false,
+      threeShow: false
+    })
+  },
+  storeClick:function(e){
+    const { dataset } = e.currentTarget;
+    const { item } = dataset;
+    this.setData({
+      stortSelect:item,
+      storeShow: false,
+    })
+  },
+  vipClick:function(e){
+    const { dataset } = e.currentTarget;
+    const { item } = dataset;
+    this.setData({
+      vipActive: item
+    })
+  },
+  showCheckBox:function(){
+    const { show_checkobox } = this.data;
+    this.setData({
+      show_checkobox: !show_checkobox,
+      isShowMore: false,
+      storeShow: false,
+      show: false,
+      threeShow: false
+    })
+  },
+  cancalClick:function(){
+    show_checkobox;false
+  },
+  onClose2:function(){
+    this.setData({
+      visible2:false,
+    })
+  },
+  showPop:function(){
+    this.setData({
+      visible2: true,
+    })
+  },
+
   /**
    * 筛选条件
    */
@@ -142,5 +244,5 @@ Page({
       show: false
     })
   },
-  catchtapModal: function () { }
+  catchtapModal: function () { },
 })

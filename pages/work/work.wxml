@@ -12,7 +12,7 @@
         <view>客户管理</view>
       </view>
     </i-cell>
-    <i-cell is-link>
+    <i-cell is-link url="/pages/vipStatus/vipStatus">
       <view class="card_item">
         <image src="/images/icon/work_card_item_2.png" mode='aspectFit' class="card_item_1_img"></image>
         <view>会员动态</view>

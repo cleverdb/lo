@@ -1,6 +1,9 @@
 {
   "navigationBarTitleText": "客户管理",
   "usingComponents": {
-    "i-icon": "../../dist/iview/icon/index"
+    "i-icon": "../../dist/iview/icon/index",
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-popup": "../../dist/wux/popup/index"
   }
 }
