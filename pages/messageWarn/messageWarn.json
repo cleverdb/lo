@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "消息提醒",
+  "usingComponents": {
+    "wux-swipe-action-group": "../../dist/wux/swipe-action-group/index",
+    "wux-swipe-action": "../../dist/wux/swipe-action/index",
+    "wux-badge": "../../dist/wux/badge/index",
+    "wux-prompt": "../../dist/wux/prompt/index"
+  }
+}

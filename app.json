@@ -21,7 +21,10 @@
     "pages/customerCoach/customerCoach",
     "pages/appointmentManagement/appointmentManagement",
     "pages/membershipManagement/membershipManagement",
-    "pages/vipStatus/vipStatus"
+    "pages/vipStatus/vipStatus",
+    "pages/messageWarn/messageWarn",
+    "pages/messageDetail/messageDetail",
+    "pages/appointmentClient/appointmentClient"
   ],
   "permission": {
     "scope.userLocation": {

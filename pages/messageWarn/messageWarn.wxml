@@ -1,0 +1,32 @@
+<view class='message_warn_warp'>
+    <wux-swipe-action-group>
+        <wux-swipe-action autoClose right="{{ right }}" bind:click="onClick">
+            <navigator url="/pages/messageDetail/messageDetail" hover-class="none">
+                <view class='message_warn_item'>
+                    <view class='message_add_line'>
+                        <view class="message_warn_item_top">
+                            <view>
+                                <wux-badge dot="{{ false }}">
+                                    上课提醒
+                                </wux-badge>
+                            </view>
+                            <view>
+                                01月04日  08:30
+                            </view>
+                        </view> 
+                        <view class='message_warn_text'>
+                            V 刘悦已刷卡进店
+                        </view>
+                        <view class='message_warn_text'>
+                            预约09:00《常规私教课》,请合理安排时间 
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </wux-swipe-action>
+    </wux-swipe-action-group>
+    
+</view>
+<view class='message_no_data'>
+    <wux-prompt visible="true" icon="{{showNoText[activeIndex].img}}" text="暂无消息提醒" />
+</view> 

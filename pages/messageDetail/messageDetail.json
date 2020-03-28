@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "消息提醒",
+  "usingComponents": {
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index"
+  }
+}

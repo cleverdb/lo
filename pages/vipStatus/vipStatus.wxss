@@ -66,6 +66,7 @@ page{
 .list_item_center{
     flex: 1;
     font-size: 26rpx;
+    padding-left: 20rpx;
 }
 .list_right_img{
     display: flex;
@@ -81,7 +82,7 @@ page{
     display: flex;
     color:rgba(159,160,160,1);
     font-size: 26rpx;
-    margin-left: 20rpx;
+    align-items: center;
 }
 .item_style_img{
     width: 34rpx;
@@ -90,6 +91,8 @@ page{
 }
 .item_small{
     font-size: 24rpx;
+    color: rgba(159,160,160,1);
+
 }
 .item_name{
     color:rgba(62,58,57,1);

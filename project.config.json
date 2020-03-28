@@ -133,6 +133,20 @@
 					"id": -1,
 					"name": "pages/vipStatus/vipStatus",
 					"pathName": "pages/vipStatus/vipStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vipStatus/vipStatus",
+					"pathName": "pages/vipStatus/vipStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/messageDetail/messageDetail",
+					"pathName": "pages/messageDetail/messageDetail",
 					"scene": null
 				}
 			]
