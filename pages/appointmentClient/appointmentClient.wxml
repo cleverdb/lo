@@ -1,2 +1,92 @@
-<!--pages/appointmentClient/appointmentClient.wxml-->
-<text>pages/appointmentClient/appointmentClient.wxml</text>
+<view class='appointment_client_warp'>
+    <view class='appointmen_content'>
+        <wux-cell-group>
+            <wux-cell hover-class="none">
+                <view>
+                    <wux-input disabled="{{!okShow}}" value="{{ value1 }}" label="客户姓名" placeholder="请输入姓名" class='appointment_input' />
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view>
+                    <wux-input disabled="{{!okShow}}" value="{{ value1 }}" label="客户电话" placeholder="请输入电话" class='appointment_input' />
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none" >
+                <view class='appointmen_item'>
+                    <view>
+                        会员类型
+                    </view>
+                    <radio-group class="radio-group" bindchange="radioChange" >
+                        <radio color="#E7355E" disabled="{{!okShow}}" class="nca_radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                            <text>{{item.value}}</text>
+                        </radio>
+                    </radio-group>    
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none" is-link>
+                <view class='appointmen_item' bindtap="showNewMessage">
+                    <view>
+                        信息来源
+                    </view>
+                    <view>
+                        新客户选择信息来源
+                    </view>   
+                </view>
+            </wux-cell>
+            <wux-date-picker visible="{{true}}" controlled="{{true}}" disabled="{{!okShow}}" mode="datetime" value="{{ value1 }}" lang="zh_CN" data-index="1" data-mode="datetime">
+                <wux-cell title="预约时间" hover-class="none" is-link extra="{{ displayValue1 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-cell hover-class="none" is-link>
+                <view class='appointmen_item'>
+                    <view>
+                        预约门店
+                    </view>
+                    <view>
+                        <picker disabled="{{!okShow}}" bindchange="bindPickerChange" value="{{storeIndex}}" range="{{storeArr}}" range-key="value">
+                            <view class="picker">
+                            {{storeIndex == -1 ? '请选择预约门店' : storeArr[storeIndex].value}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </wux-cell>
+        </wux-cell-group>
+    </view>
+    <view class='appointment_line'></view>
+    <view class='appointment_textarea_warp'>
+        <view class='textarea-title'>
+            备注
+        </view>
+        <view>
+            <textarea disabled="{{!okShow}}" bindblur="bindTextAreaBlur" auto-height placeholder="请输入备注信息" />
+        </view>
+    </view>
+      
+    <wux-button wx:if="{{okShow}}" block class='appointment_footer' type="energized" bind:click="onOk">确认预约</wux-button>
+    <view wx:else class='appointment_mofiy'>
+        <view class='mofiy_left mofiy'>
+            修改
+        </view>
+        <view class='mofiy_right mofiy'>
+            取消
+        </view>
+    </view>
+      
+</view>
+<wux-popup visible="{{ visible }}" position="bottom" bind:close="onClose">
+    <view>
+        <view class='appoint_pop_title'>
+            <view class='appoint_pop_top'>
+                信息来源
+            </view>
+            <view class='appoint_pop_content'>
+               <block wx:for="{{popContent}}">
+                   <view class='pop_content_item {{ item.key == popActive.key ? "pop_acive" : "" }}' data-item="{{item}}" bindtap="popItemClick">
+                       {{item.value}}
+                   </view>
+               </block>
+            </view>
+        </view>
+        <wux-button block class='appoint_pop_footer' type="energized" bind:close="onClose">确 定</wux-button>
+    </view>
+</wux-popup>

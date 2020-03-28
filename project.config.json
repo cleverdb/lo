@@ -147,6 +147,13 @@
 					"id": -1,
 					"name": "pages/messageDetail/messageDetail",
 					"pathName": "pages/messageDetail/messageDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/appointmentClient/appointmentClient",
+					"pathName": "pages/appointmentClient/appointmentClient",
 					"scene": null
 				}
 			]
