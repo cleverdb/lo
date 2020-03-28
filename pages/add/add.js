@@ -17,16 +17,16 @@ Page({
         },{
             img: "/images/icon/add_new_person.png",
             text: '添加新会员',
-            url:''
+            url:'/pages/newClientAdd/newClientAdd'
         }],
         arr1: [{
             img: "/images/icon/call_log.png",
             text: '联系记录',
-            url: ''
+            url: '/pages/phoneRecord/phoneRecord'
         }, {
             img: "/images/icon/add_new_person.png",
             text: '添加新会员',
-            url: ''
+            url: '/pages/newClientAdd/newClientAdd'
         }]
     },
 
