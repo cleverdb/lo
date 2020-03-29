@@ -19,7 +19,7 @@ Page({
     shadow1:false,
     shadow2:false,
     shadow3:false,
-    isPlan:false,
+    isPlan:'beforePlan',//beforePlan|isPlan|canclePlan|
     stores:[
       { name:"LIOU健身乐城店"},
       { name:"LIOU STUDIO健身工作室"}
@@ -163,17 +163,17 @@ Page({
   },
   isToPlan(){
     this.setData({
-      isPlan:true
+      isPlan:'isPlan'
     });
   },
   canclePlan(){
     this.setData({
-      isPlan: false
+      isPlan: 'canclePlan'
     });
   },
   modifyPlan(){
     this.setData({
-      isPlan: false
+      isPlan: 'beforePlan'
     });
   },
   confirm() {
@@ -212,8 +212,6 @@ Page({
     })
   },
   onValueChange(e) {
-    console.log("this is sha?")
     this.setData({ multisChosed: e.detail.value })
-    console.log('onValueChange', e.detail)
   },
 })
