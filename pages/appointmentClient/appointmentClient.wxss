@@ -1,0 +1,121 @@
+/* pages/appointmentClient/appointmentClient.wxss */
+page{
+    height: 100%;
+    background: #ffffff;
+}
+.appointment_client_warp{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.appointmen_content{
+    color:rgba(62,58,57,1);
+    font-size: 26rpx;
+}
+.appointment_input{
+    text-align: right;
+}
+.appointment_input .wux-input__item{
+    line-height: auto;
+    min-height: auto;
+    height: auto;
+}
+.appointmen_cell_warp{
+    padding-left: 30rpx;
+}
+.appointmen_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nca_radio{
+    transform:scale(0.7);
+    font-size: 30rpx;
+}
+.appointment_line{
+    height: 20rpx;
+    width: 100%;
+    background: #F0EDF1;
+}
+.appointment_footer{
+    /* background: #FDC700; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 32rpx;
+}
+.appointment_footer .wux-button--block{
+    margin: 0;
+}
+.appoint_pop_title{
+    font-size: 28rpx;
+    color:rgba(62,58,57,1);
+    padding: 30rpx 30rpx 0 30rpx;
+}
+.appoint_pop_footer{
+    width: 100%;
+    background: #FDC700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.appoint_pop_footer .wux-button--block{
+    margin: 0;
+}
+.appoint_pop_content{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 300rpx;
+}
+.appoint_pop_top{
+    text-align: left;
+    margin-bottom: 46rpx;
+}
+.pop_content_item{
+    width: 198rpx;
+    height: 57rpx;
+    font-size:28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ECECEC;
+}
+.pop_acive{
+    border: 1px solid #FDC700;
+    color:#FDC700;
+}
+.appointment_textarea_warp{
+    flex: 1;
+    padding: 30rpx;
+    padding-bottom: 114rpx;
+}
+.textarea-title{
+    color:rgba(62,58,57,1);
+    font-size: 28rpx;
+    margin-bottom: 40rpx;
+}
+textarea{
+    width: 100%;
+    font-size: 28rpx;
+}
+.appointment_mofiy{
+    display: flex;
+    height: 88rpx;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #ECECEC;
+}
+.mofiy{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mofiy_right{
+    background: #FDC700;
+}

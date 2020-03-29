@@ -1,0 +1,430 @@
+<view class="membershipManagement_warp">
+    <view class="membershipManagement_top">
+        <view class='membershipManagement_top_left'>
+            <view class='left' wx:if="{{!inputfocus}}">
+                <view class="left_name" catchtap='stroeClick'>
+                    {{stortSelect.value}}
+                </view>
+                <i-icon type="{{storeShow ? 'packup' :'unfold'}}" />
+                <view class='left_name_modal' wx:if="{{storeShow}}">
+                    <block wx:for="{{storeObj}}">
+                        <view catchtap='storeClick' data-item='{{item}}' class="{{stortSelect.key == item.key ? 'active' : ''}}">
+                            {{item.value}}
+                        </view>
+                        <view class='content_item_line'></view>
+                    </block>
+                </view>
+            </view>
+            <view class='center {{inputfocus ? "center_search_width" : ""}}'>
+                <i-icon type="search" class="center_search" />
+                <input wx:if="{{!inputfocus}}" class="weui-input" placeholder="请输入会员名、手机号" catchfocus="inputFocus"/>
+                <input wx:else class="weui-input" auto-focus placeholder="请输入会员名、手机号" catchfocus="inputFocusTow" style="width: 100%" catchblur="bindblur"/>
+            </view>  
+        </view>
+        <view class="right" wx:if="{{!inputfocus}}">
+            <i-icon type="switch" size="28" catchtap="showMore" /> 
+            <view class="right_content" wx:if="{{isShowMore}}">
+                <view class='right_content_item'>
+                   <image class="right_content_img" src="/images/icon/add_new_per.png" mode="aspectFill" lazy-load="false" />
+                    <view>
+                        添加新客户
+                    </view>
+                </view>
+                <view class='content_item_line'></view>
+                <view class='right_content_item' catchtap='showCheckBox'>
+                    <image class="right_content_img" src="/images/icon/change_person.png" mode="aspectFill" lazy-load="false" />
+                    <view>
+                        更换会籍顾问
+                    </view>
+                </view>
+                   
+            </view>
+        </view>
+        <view class='membershi_top_bg' wx:if="{{(isShowMore || storeShow)}}" catchtap="bindblur"></view>
+    </view>
+    <view>
+      <view class='filterbar_coach'>
+            <view class='left filterbar_item {{activeKey ==1 ? "acive_filter" : ""}}' data-activeKey="1" bindtap="click">
+                <view class='left_content' catchtap="showModal">
+                    {{active.value}}
+                </view>
+                <i-icon type="{{show ? 'packup' :'unfold'}}" />
+                <view class='filterbar_modal' wx:if="{{show}}">
+                    <block wx:for="{{filterChildren}}">
+                        <view class="{{item.key == active.key ? 'active' : ''}}" data-modalItem="{{item}}" catchtap="clickActive">
+                            {{item.value}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!---<view class='center filterbar_item {{activeKey ==2 ? "acive_filter" : ""}}' data-activeKey="2" bindtap="click">
+                顺序排列
+            </view>--->
+            <view class='right filterbar_item {{activeKey ==3 ? "acive_filter" : ""}}' data-activeKey="3" bindtap="click">
+                筛选
+            </view>
+        </view>
+        <view class='filterbar_bg' wx:if="{{(show || threeShow)}}" catchtap="hideModal">
+            <view class='filter_bg_content' wx:if="{{threeShow}}" catchtap="catchtapModal">
+                <view class='bg_content_top'>
+                    <view class='modal_line_vip'>
+                        <view style='margin-bottom:20rpx'>
+                            会员状态
+                        </view>
+                        <view class='vip_status_warp'>
+                            <block wx:for="{{vipStatus}}">
+                                <view class='vip_item {{item.key == vipActive.key ? "type_active" : ""}}' data-item='{{item}}' catchtap='vipClick'>
+                                    {{item.value}}   
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                    <view class='modal_line'>
+                        <view>
+                            <view>会员性别</view>
+                        </view>
+                        <radio-group class="radio-group" catchtap="radioChange" >
+                            <radio class="radio modal_radio" coler="#F8C700" wx:for-items="{{itemArr}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text>{{item.value}}</text>
+                            </radio>
+                        </radio-group> 
+                    </view>
+                </view>
+                <view class='bg_content_footer'>
+                    确 定
+                </view>
+            </view>
+        </view>  
+    </view>
+    <view class="member_list_warp">
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                <view class="coach_text_name">
+                    刘石磊
+                </view>
+                    <view class="coach_store_type">
+                    正式会员
+                </view>   
+                </view>
+                <view class='coach_right'>
+                <view class="coach_time">
+                    <view>
+                        2019.01.12  12:00
+                    </view>
+                    <view>
+                        注册
+                    </view>   
+                </view>
+                    <view class="coach_store_type">
+                    唐京京
+                </view>   
+                </view>
+            </view>
+            <view class='checked_warp_self' wx:if="{{show_checkobox}}">
+                <checkbox checked="{{item.checked}}"/>
+            </view>
+        </view>
+    </view>
+    <view class='members_footer' wx:if="{{show_checkobox}}">
+        <view class="members_item" catchtap="cancalClick">
+            取消
+        </view>
+        <view class="members_item members_ok" catchtap="showPop">
+            确定
+        </view> 
+    </view>
+</view>
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+    <view class='member_pop_warp'>
+        <wux-cell-group title="请选择会籍顾问">
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <view class='member_pop_item'>
+                    <view class='member_pop_item_flex'>
+                    <view class="list_item_img">
+                            <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+                        </view>
+                        <view style="margin-left:20rpx">
+                            刘石磊
+                        </view>
+                    </view>
+                    <view class='member_pop_item_flex'>
+                        <view>
+                            工号:
+                        </view>
+                        <view>
+                            123456
+                        </view>
+                    </view>
+                </view>
+            </wux-cell>
+        </wux-cell-group>
+    </view>
+    <view class="members_pop_ok">
+        确 认
+    </view>
+</wux-popup>
+  

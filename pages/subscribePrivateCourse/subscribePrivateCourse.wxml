@@ -31,20 +31,22 @@
       <view class="spc_font26 spc_margin">七天前会员</view>
     </view>
     <view wx:for="{{largeSev}}" wx:for-item="item" wx:key="item.phone" class="{{index<largeSev.length-1?'spc_bottom_line':''}}">
-    <view class="spc_item">
-        <view class="spc_item_avatar">
-          <wux-avatar src="{{item.avatar}}" wux-class="spc_item_avatar_size"></wux-avatar>
+      <navigator url="/pages/courseBookingDetail/courseBookingDetail" hover-class="none">
+        <view class="spc_item">
+            <view class="spc_item_avatar">
+              <wux-avatar src="{{item.avatar}}" wux-class="spc_item_avatar_size"></wux-avatar>
+            </view>
+            <view class="spc_item_info1">
+              <view class="spc_item_info1_1">V {{item.name}}</view>
+              <view >{{item.phone}}</view>
+            </view>
+            <view class="spc_item_info2">
+              <view class="spc_item_info2_1">{{item.coursetime}}</view>
+              <view class="spc_item_info2_2">{{item.classhour}}</view>
+            </view>
         </view>
-        <view class="spc_item_info1">
-          <view class="spc_item_info1_1">V {{item.name}}</view>
-          <view >{{item.phone}}</view>
-        </view>
-        <view class="spc_item_info2">
-          <view class="spc_item_info2_1">{{item.coursetime}}</view>
-          <view class="spc_item_info2_2">{{item.classhour}}</view>
-        </view>
-      </view>
-      </view>
+      </navigator>
+    </view>
   </view>
 </view >
 </view>

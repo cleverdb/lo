@@ -1,31 +1,13 @@
-// pages/customer_coach/customer_coach.js
+// pages/messageWarn/messageWarn.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [{
-      type: 'radio',
-      label: 'Updated',
-      value: 'updated',
-      checked: true,
-      children: [{
-        label: 'Recently updated',
-        value: 'desc',
-        checked: true, // 默认选中
-      },
-      {
-        label: 'Least recently updated',
-        value: 'asc',
-      },
-      ],
-      groups: ['001'],
-    },{
-        type: 'sort',
-        label: 'Stars',
-        value: 'stars',
-        groups: ['003'],
+    right:[{
+      text: '删除',
+      style: 'background-color: #E73660; color: #ffffff; font-size:28rpx; width: 148rpx',
     }]
   },
 

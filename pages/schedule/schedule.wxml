@@ -45,6 +45,32 @@
             </wux-timeline-item>
         </wux-timeline>
     </view>
+    <view class='schedule_footer'>
+        <navigator url="/pages/appointmentClient/appointmentClient" hover-class="none">
+            <view class='schedule_footer_item'>
+                <image class="schedule_footer_img" src="/images/icon/reserve_add_per.png" mode="aspectFill" lazy-load="false"/> 
+                <view class='schedule_footer_text'>
+                    预约客户
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/pages/messageWarn/messageWarn" hover-class="none">
+            <view class='schedule_footer_item'>
+                <image class="schedule_footer_img" src="/images/icon/reserve_add_lesson.png" mode="aspectFill" lazy-load="false"  />
+                <view class='schedule_footer_text'>
+                    消息提醒
+                </view>
+            </view>
+        </navigator>
+        <navigator url="/pages/subscribePrivateCourse/subscribePrivateCourse" hover-class="none">
+            <view class='schedule_footer_item'>
+                <image class="schedule_footer_img" src="/images/icon/reserve_add_lesson.png" mode="aspectFill" lazy-load="false" />
+                <view class='schedule_footer_text'>
+                    预约课程
+                </view>
+            </view> 
+        </navigator> 
+    </view>
       
 </view>
   

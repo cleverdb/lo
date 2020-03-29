@@ -18,7 +18,13 @@
     "pages/publishCourse/publishCourse",
     "pages/add/add",
     "pages/schedule/schedule",
-    "pages/customer_coach/customer_coach"
+    "pages/customerCoach/customerCoach",
+    "pages/appointmentManagement/appointmentManagement",
+    "pages/membershipManagement/membershipManagement",
+    "pages/vipStatus/vipStatus",
+    "pages/messageWarn/messageWarn",
+    "pages/messageDetail/messageDetail",
+    "pages/appointmentClient/appointmentClient"
   ],
   "permission": {
     "scope.userLocation": {

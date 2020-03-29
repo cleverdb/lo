@@ -1,0 +1,32 @@
+/* pages/messageWarn/messageWarn.wxss */
+page{
+    height: 100%;
+    background: #ffffff;
+}
+.message_warn_warp{
+    height: 100%;
+}
+.message_warn_item{
+    padding: 32rpx;
+    padding-bottom: 0;
+}
+.message_warn_item_top{
+    display: flex;
+    justify-content: space-between;
+    color:rgba(62,58,57,1);
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+}
+.message_warn_text{
+    color:rgba(114,113,113,1);
+    font-size: 24rpx;
+    margin-bottom: 10rpx;
+}
+.message_add_line{
+    border-bottom: 1px solid #ECECEC;
+    padding-bottom: 32rpx;
+    height: 100%;
+}
+.message_no_data{
+    height: 100%;
+}

@@ -1,0 +1,128 @@
+<view class='message_deatil_warp'>
+    <view class='message_detail_top'>
+        <view class='message_img_warp'>
+            <image class="message_detail_img" src="/images/test4.png" mode="aspectFill" lazy-load="false" />
+            <view>
+                V 张珂洋
+            </view>
+        </view>
+        <!--<view class='message_class'>
+            <view class='class_item'>
+                <view class='class_num'>
+                    320
+                </view>
+                <view class='class_text'>
+                    课程单价
+                </view>  
+            </view>
+            <view class='class_item'>
+                <view class='class_num'>
+                    320
+                </view>
+                <view class='class_text'>
+                    课程时长/分钟
+                </view>  
+            </view>
+            <view class='class_item'>
+                <view class='class_num'>
+                    320
+                </view>
+                <view class='class_text'>
+                上课人数
+                </view>  
+            </view>
+        </view>-->
+        <view class='message_class'>
+            <view class='class_item'>
+                <view class='consumption_num'>
+                    <view class='consumption_small'>
+                        ￥
+                    </view>
+                    <view>
+                        5,320
+                    </view>
+                </view>
+                <view class='class_text'>
+                    消费金额
+                </view>  
+            </view>
+            <view class='class_item'>
+                <view class='consumption_num'>
+                    <view>
+                       365 
+                    </view>
+                    <view class='consumption_small'>
+                        天
+                    </view>
+                      
+                </view>
+                <view class='class_text'>
+                    购买数量
+                </view>  
+            </view>
+        </view>
+          
+    </view>
+    <view class='class_footer'>
+        <wux-cell-group>
+            <wux-cell title="课程名称" extra="常规私教课"></wux-cell>
+            <wux-cell title="上课门店" extra="LIOU健身乐城店"></wux-cell>
+            <wux-cell title="上课时间" extra="2019.01.04 10:00-10:59"></wux-cell>
+            <wux-cell title="进店时间" extra="2019.01.04 10:00"></wux-cell>
+            <wux-cell>
+                <view class='message_div'>
+                    <view>
+                        课程状态
+                    </view>
+                    <view class='message_red'>
+                        待上课
+                    </view>
+                </view>
+            </wux-cell>
+
+
+            <wux-cell title="消费项目" extra="LIOU健身乐城店年卡"></wux-cell>
+            <wux-cell title="服务时长/次数" extra="365天"></wux-cell>
+            <wux-cell title="购买时间" extra="2019.01.04 10:00-10:59"></wux-cell>
+            <wux-cell title="凭证号" extra="C01010000001680"></wux-cell>
+            <wux-cell>
+                <view class='message_div'>
+                    <view>
+                        优惠券额度
+                    </view>
+                    <view class='message_red'>
+                        满1000减100
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell title="销售人员" extra="唐京京"></wux-cell>
+            <wux-cell title="收款人员" extra="赵文雅：全款"></wux-cell>
+
+
+            <wux-cell title="进店时间" extra="2019.01.04 10:00"></wux-cell>
+            <wux-cell title="会籍类别" extra="LIOU健身乐城年卡"></wux-cell>
+            <wux-cell>
+                <view class='message_div'>
+                    <view>
+                        购买门店
+                    </view>
+                    <view class='message_red'>
+                        30天
+                    </view>
+                </view>
+            </wux-cell>
+            <wux-cell title="购买门店" extra="LIOU健身乐城店"></wux-cell>
+        </wux-cell-group>
+
+    </view>
+    <view class='message_footer'>
+        <image class="message_footer_icon" src="/images/icon/delete_icon.png" mode="aspectFill" lazy-load="false" />
+        <view>
+            删除
+        </view>
+          
+    </view>
+       
+        
+</view>
+  

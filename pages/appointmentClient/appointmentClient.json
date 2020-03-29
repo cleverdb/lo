@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "预约客户",
+  "usingComponents": {
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-input": "../../dist/wux/input/index",
+    "wux-popup": "../../dist/wux/popup/index",
+    "wux-button": "../../dist/wux/button/index",
+    "wux-date-picker": "../../dist/wux/date-picker/index",
+    "wux-textarea": "../../dist/wux/textarea/index"
+  }
+}

@@ -1,0 +1,414 @@
+<view class='coach_warp {{(show || threeShow) ? "hidden_class" : "" }}'>
+    <view class='coach_search_warp'>
+        <wux-search-bar showCancel="false" placeholder='请输入会员姓名、手机号'/>
+    </view>
+    <view>
+      <view class='filterbar_coach'>
+            <view class='left filterbar_item {{activeKey ==1 ? "acive_filter" : ""}}' data-activeKey="1" bindtap="click">
+                <view class='left_content' catchtap="showModal">
+                    {{active.value}}
+                </view>
+                <i-icon type="{{show ? 'packup' :'unfold'}}" />
+                <view class='filterbar_modal' wx:if="{{show}}">
+                    <block wx:for="{{filterChildren}}">
+                        <view class="{{item.key == active.key ? 'active' : ''}}" data-modalItem="{{item}}" catchtap="clickActive">
+                            {{item.value}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!---<view class='center filterbar_item {{activeKey ==2 ? "acive_filter" : ""}}' data-activeKey="2" bindtap="click">
+                顺序排列
+            </view>--->
+            <view class='right filterbar_item {{activeKey ==3 ? "acive_filter" : ""}}' data-activeKey="3" bindtap="click">
+                筛选
+            </view>
+        </view>
+        <view class='filterbar_bg' wx:if="{{(show || threeShow)}}" catchtap="hideModal">
+            <view class='filter_bg_content' wx:if="{{threeShow}}" catchtap="catchtapModal">
+                <view class='bg_content_top'>
+                    <view class='modal_line'>
+                        <view>
+                            会员性别
+                        </view>
+                        <radio-group class="radio-group" catchtap="radioChange" >
+                            <radio class="radio modal_radio" coler="#F8C700" wx:for-items="{{itemArr}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text>{{item.value}}</text>
+                            </radio>
+                        </radio-group> 
+                    </view>
+                    <view class='modal_line'>
+                        <view>
+                            会员类型
+                        </view>
+                        <view class='modal_line_right'>
+                            <block wx:for="{{vipType}}">
+                              <view class='right_item {{item.key == typeAcive.key ? "type_active" : ""}}' bindtap="typeClick" data-item="{{item}}">
+                                  {{item.value}}
+                              </view>
+                            </block>
+                              
+                        </view>
+                    </view>
+                    <view class='store_view'>
+                        <view>
+                            选择门店 
+                        </view>
+                        <view class='store_warp'>
+                            <block wx:for="{{storeArr}}">
+                              <view class='right_item {{item.key == soreAcive.key ? "type_active" : ""}}' bindtap="storeClick" data-item="{{item}}">
+                                  {{item.value}}
+                              </view>
+                            </block>
+                        </view>
+                    </view>
+                      
+                </view>
+                <view class='bg_content_footer'>
+                    确 定
+                </view>
+            </view>
+              
+        </view>  
+    </view>
+    <view class='coach_list_footer'>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+        <view class='coach_list_item'>
+            <view class="list_item_img">
+                <image src="/images/test2.png" class="" mode="aspectFill" lazy-load="false" />
+            </view>
+            <view class='coach_right_warp'>
+                <view class='coach_right'>
+                   <view class="coach_text_name">
+                       刘石磊
+                   </view>
+                    <view class="coach_store_type">
+                       正式会员
+                   </view>   
+                </view>
+                <view class='coach_right'>
+                   <view class="coach_time">
+                       2019.01.12  12:00
+                   </view>
+                    <view>
+                        <text class="coach_class">剩余课时：</text>
+                        <text class="coach_class">20节</text>
+                   </view>   
+                </view>
+            </view>  
+        </view>
+    </view>
+      
+</view>
+  

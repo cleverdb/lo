@@ -1,0 +1,64 @@
+
+<view class="vip_status_page_warp">
+    <view class='vip_status_top' >
+        <block wx:for="{{vipTopData}}">
+            <view class="vip_status_item {{activeIndex == item.id ? 'vip_active' : ''}}" bindtap="vipTopClick" data-id="{{item.id}}" >
+                <view class="vip_status_num" >
+                    {{item.num}}
+                </view>
+                <view class="vip_text">
+                    {{item.text}}
+                </view>    
+            </view>  
+        </block>
+    </view>
+    <view class='vip_status_line'></view>
+    <view class='vip_list_warp'>
+        <view class='vip_list_title'>
+            {{vipTopData[activeIndex].text + '会员'}}
+        </view>
+        <view class='vip_list_item'>
+            <view  class='list_item_img'>
+                <image class="" src="/images/test2.png" mode="aspectFill" lazy-load="false"/>
+            </view>
+            <view class="list_item_center">
+                <view class='item_style'>
+                    <view class='item_name'>
+                        V 谢文静
+                    </view>
+                    <view class='item_small'>
+                        乐城店周卡体验卡
+                    </view> 
+                </view>
+                <view class='item_small' wx:if="{{vipTopData[activeIndex].id == 2}}">
+                    1993.01.04到期
+                </view> 
+                <navigator url="/pages/phoneRecordAdd/phoneRecordAdd" hover-class="none">
+                    <view class='item_style' style="margin-top:20rpx">
+                        <image class="item_style_img" src="/images/icon/phone_record_img_1.png" mode="aspectFill" lazy-load="false"/> 
+                        <view class='item_small'>
+                            点击新增联系记录
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+            <view>
+                <view class='list_right_img' wx:if="{{vipTopData[activeIndex].id == 2}}">
+                    <image class="" src="/images/icon/mine_reserve_tall.png" mode="aspectFill" lazy-load="false"/>
+                    <view class='vip_close'>
+                        7天后过期
+                    </view>
+                        
+                </view>
+                  
+            </view>
+                 
+        </view>
+    </view>
+   
+      
+    <view class='vip_no_data'>
+        <wux-prompt visible="true" icon="{{showNoText[activeIndex].img}}" text="{{showNoText[activeIndex].text}}" />
+    </view>    
+</view>
+  

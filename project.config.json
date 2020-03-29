@@ -117,8 +117,43 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/customer_coach/customer_coach",
-					"pathName": "pages/customer_coach/customer_coach",
+					"name": "pages/customerCoach/customerCoach",
+					"pathName": "pages/customerCoach/customerCoach",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/membershipManagement/membershipManagement",
+					"pathName": "pages/membershipManagement/membershipManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vipStatus/vipStatus",
+					"pathName": "pages/vipStatus/vipStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/vipStatus/vipStatus",
+					"pathName": "pages/vipStatus/vipStatus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/messageDetail/messageDetail",
+					"pathName": "pages/messageDetail/messageDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/appointmentClient/appointmentClient",
+					"pathName": "pages/appointmentClient/appointmentClient",
 					"scene": null
 				}
 			]

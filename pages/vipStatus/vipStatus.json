@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "会员动态",
+  "usingComponents": {
+    "wux-prompt": "../../dist/wux/prompt/index"
+  }
+}
