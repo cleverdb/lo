@@ -1,3 +1,5 @@
+import { $wuxDialog } from '../../dist/wux/index'
+import { $wuxToast } from '../../dist/wux/index'
 const app = getApp();
 Page({
   data: {
@@ -12,8 +14,12 @@ Page({
     chosedCourseShow:"",
     chosedStore:"",
     chosedStoreShow:"",
+    chosedTime:"",
+    chosedTimeShow:"",
     shadow1:false,
-    shadow2:true,
+    shadow2:false,
+    shadow3:false,
+    isPlan:false,
     stores:[
       { name:"LIOU健身乐城店"},
       { name:"LIOU STUDIO健身工作室"}
@@ -24,7 +30,7 @@ Page({
       { name: "拳击课", money: "320", surplus: "10", total: "50", expire: "2020.09.09" }
     ],
     multis:[
-      ['<i style="color:red;">01</i>月19日 周日', '01月19日 周日', '01月19日 周日','01月19日 周日'],
+      ['01月19日 周日', '01月19日 周日', '01月19日 周日','01月19日 周日'],
       ['00','01','02'],
       ['00','30']
     ],
@@ -75,7 +81,8 @@ Page({
     f.push(['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']);
     f.push(['00','10','20','30','40','50']);
     this.setData({
-      multis:f
+      multis:f,
+      multisChosed:[f[0][0],f[1][0],f[2][0]]
     });
   },
   onReady() {
@@ -131,5 +138,82 @@ Page({
     this.setData({
       shadow2: true
     });
+  },
+  handleCancle3() {
+    this.setData({
+      shadow3: false,
+      chosedTime: this.data.chosedTimeShow
+    });
+  },
+  handleClick3() {
+    let t =this.data.multisChosed;
+    console.log(t);
+    if(t.length>0){
+      this.data.chosedTime=t[0]+t[1]+t[2];
+    }
+    this.setData({
+      shadow3: false,
+      chosedTimeShow: this.data.chosedTime
+    });
+  },
+  chooseTime() {
+    this.setData({
+      shadow3: true
+    });
+  },
+  isToPlan(){
+    this.setData({
+      isPlan:true
+    });
+  },
+  canclePlan(){
+    this.setData({
+      isPlan: false
+    });
+  },
+  modifyPlan(){
+    this.setData({
+      isPlan: false
+    });
+  },
+  confirm() {
+    if (this.data.chosedCourseShow==""){
+      this.showToastText("选择上课信息");
+    } else if (this.data.chosedStoreShow == "") {
+      this.showToastText("选择门店");
+    } else if (this.data.chosedTimeShow == "") {
+      this.showToastText("选择时间");
+    }else{
+      let content = this.data.bookingCourse.user + ' ' + this.data.chosedCourseShow + this.data.chosedTimeShow;
+      let that = this;
+      $wuxDialog().confirm({
+        resetOnClose: true,
+        closable: true,
+        title: '信息核对',
+        content: content,
+        confirmText: '确认',
+        cancelText: '修改',
+        onConfirm(e) {
+          that.isToPlan();
+        },
+        onCancel(e) {
+          console.log('谢谢你不吃之恩！')
+        },
+      })
+    }
+  },
+  showToastText(msg) {
+    $wuxToast().show({
+      type: 'text',
+      duration: 1500,
+      color: '#fff',
+      text: msg,
+      success: () => console.log(msg)
+    })
+  },
+  onValueChange(e) {
+    console.log("this is sha?")
+    this.setData({ multisChosed: e.detail.value })
+    console.log('onValueChange', e.detail)
   },
 })

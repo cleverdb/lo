@@ -3,10 +3,11 @@
   "usingComponents": {
     "wux-multi-picker-view": "../../dist/wux/multi-picker-view/index",
     "i-button": "../../dist/iview/button/index",
-    "wux-search-bar": "../../dist/wux/search-bar/index",
     "wux-avatar": "../../dist/wux/avatar/index",
     "wux-prompt": "../../dist/wux/prompt/index",
     "wux-cell-group": "../../dist/wux/cell-group/index",
-    "wux-cell": "../../dist/wux/cell/index"
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-dialog": "../../dist/wux/dialog/index",
+    "wux-toast": "../../dist/wux/toast/index"
   }
 }
