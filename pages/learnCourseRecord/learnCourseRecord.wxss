@@ -1,0 +1,126 @@
+page{
+  background: #F1EEF2;
+}
+.lcr_c{
+  width: 100%;
+  height: 151rpx;
+  background: #fff;
+}
+.lcr_c1{
+  width: cal(100%-60rpx);
+  height: cal(100%-40rpx);
+  padding: 40rpx 30rpx 0 30rpx;
+  display: flex;
+  align-items: baseline;
+}
+.lcr_c1_2{
+  flex-grow: 1;
+  display: flex;
+  align-items: baseline;
+}
+.lcr_c1_2_1{
+  flex: 1;
+  margin-left: 40rpx;
+}
+.lcr_font{
+  font-size: 58rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #3E3A39;
+}
+.lcr_font1{
+  font-size: 24rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #3E3A39;
+}
+.lcr_c1_2_2{
+  flex: 1;
+  text-align: right;
+  margin-right: 39rpx;
+}
+.lcr_c1_img{
+  width: 15rpx;
+  height: 26rpx;
+}
+/**/
+.lcr_c2{
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin: 15rpx 0 0 0; 
+}
+.lcr_c3{
+  width: cal(100%-60rpx);
+  margin: 0 30rpx;
+}
+.lcr_title{
+  width: 100%;
+  height: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 34rpx 0;
+}
+.lcr_title_1{
+  font-size: 28rpx;
+  font-weight: Bold;
+  font-family: PingFang-SC-Bold;
+  color: #3E3A39;
+}
+.lcr_title_2{
+  text-align: right;
+  font-size: 32rpx;
+  font-weight: Bold;
+  font-family: PingFang-SC-Bold;
+  color: #E7355F;
+}
+/*    */
+.lcr_item{
+  border-top: 2rpx solid #F1EEF2;
+  width: 100%;
+  height: auto;
+  padding: 34rpx 0;
+}
+.lcr_item1{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.lcr_item2{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13rpx;
+}
+.lcr_item1_1{
+  font-size: 28rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #3E3A39;
+}
+.lcr_item1_2{
+  font-size: 20rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #FFFFFF;
+  padding: 8rpx 11rpx;
+}
+.lcr_item2_1{
+  font-size: 24rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #727171;
+}
+.lcr_item2_2{
+  font-size: 22rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #727171;
+}
+.lcr_bgc1{
+background: #E7365F;
+}
+.lcr_bgc2{
+background: #3EBEE0;
+}
