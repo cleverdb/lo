@@ -1,0 +1,45 @@
+<view class="cm_body">
+  <view class="cm_body1">
+    <view class="cm_item" wx:for="{{coupons}}" >
+    <view  wx:if="{{item.isVaild=='yes'}}">
+      <view class="cm_item1">
+        <view class="cm_item1_font1 cm_item_staus">{{item.fullReduction}}</view>
+        <view class="cm_item1_font2">{{item.exchange}}<image src="../../images/icon/phone_record_add_img_1.png" class="cm_item1_img"></image></view>
+      </view>
+      <view class="cm_item2">
+        <view class="cm_item2_font1 cm_item_staus">{{item.buyScope}}</view>
+        <view class="cm_item2_font2">{{item.activeLife}}</view>
+      </view>
+      <view class="cm_item3">
+        <view class="cm_item3_font1 cm_item_staus1">{{item.exchangecode}}</view>
+        <view class="cm_item3_font2" data-exchangecode="{{item.exchangecode}}" bindtap="copy">复 制</view>
+      </view>
+    </view>
+    <view  wx:else>
+      <view class="cm_item1">
+        <view class="cm_item1_font1 cm_item_staus2">{{item.fullReduction}}</view>
+        <view class="cm_item1_font2">{{item.exchange}}<image src="../../images/icon/phone_record_add_img_1.png" class="cm_item1_img"></image></view>
+      </view>
+      <view class="cm_item2">
+        <view class="cm_item2_font1 cm_item_staus2">{{item.buyScope}}</view>
+        <view class="cm_item2_font2 cm_item_staus2">{{item.activeLife}}</view>
+      </view>
+      <view class="cm_item3">
+        <view class="cm_item3_font1 cm_item_staus2">{{item.exchangecode}}</view>
+        <view class="cm_item3_font3 cm_item_staus2" >过 期</view>
+      </view>
+    </view>
+    </view>
+  </view>
+</view>
+<view class="cm_btn">
+  <view class="cm_btn_1" bindtap="delete">
+    <image src="../../images/icon/delete_all.png" class="cm_btn_img"></image>
+    <view class="cm_btn_font">删除</view>
+  </view>
+  <view class="cm_btn_2" bindtap="add">
+    <image src="../../images/icon/phone_record_img_1.png" class="cm_btn_img"></image>
+    <view class="cm_btn_font">添加</view>
+  </view>
+</view>
+<wux-toast id="wux-toast" />
