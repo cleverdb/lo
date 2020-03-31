@@ -248,3 +248,10 @@ page{
   width: cal(100%-60rpx);
   margin: 40rpx 15rpx;
 }
+/*最底层按钮*/
+.cbd_page_bottom_btn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

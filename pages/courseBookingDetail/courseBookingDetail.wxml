@@ -27,10 +27,28 @@
     <wux-cell-group wux-class="cbd_no_padding">
       <wux-cell wux-class="cbd_cell_no_padding" title="课程名称" extra="{{chosedCourseShow==''?'请选择课程':chosedCourseShow}}" bind:click="chooseCourse" is-link></wux-cell>
       <wux-cell wux-class="cbd_cell_no_padding" title="请选择课程" extra="{{chosedStoreShow==''?'请选择门店':chosedStoreShow}}" bind:click="chooseStore" is-link></wux-cell>
-      <wux-cell wux-class="cbd_cell_no_padding" title="上课时间" extra="请选择时间" is-link></wux-cell>
-      <wux-cell wux-class="cbd_cell_no_padding" title="课程状态" extra="待预约"></wux-cell>
+      <wux-cell wux-class="cbd_cell_no_padding"  bind:click="chooseTime" title="上课时间" extra="{{chosedTimeShow==''?'请选择时间':chosedTimeShow}}" is-link></wux-cell>
+      <wux-cell wux-class="cbd_cell_no_padding" title="课程状态" extra="{{isPlan=='beforePlan'?'待预约':(isPlan=='isPlan'?'已预约':'取消预约')}}"></wux-cell>
+      <wux-cell wx:if="{{isPlan=='canclePlan'}}" wux-class="cbd_cell_no_padding" title="取消时间" extra="当前时间"></wux-cell>
+      <wux-cell wx:if="{{isPlan=='canclePlan'}}" wux-class="cbd_cell_no_padding" title="操作人员" extra="会员取消"></wux-cell>
     </wux-cell-group>
   </view>
+</view>
+<view class="cbd_page_bottom_btn">
+<view wx:if="{{isPlan=='beforePlan'}}">
+<i-button bind:click="confirm" i-class="nca_i_btn" type="warning" long>确认</i-button>
+</view>
+<view wx:if="{{isPlan=='isPlan'}}" style="display:flex;">
+<view style="flex:1">
+<i-button bind:click="modifyPlan" i-class="nca_i_btn" type="ghost" long>修改</i-button>
+</view>
+<view style="flex:1">
+<i-button bind:click="canclePlan" i-class="nca_i_btn" type="warning" long>取消预约</i-button>
+</view>
+</view>
+<view wx:if="{{isPlan=='canclePlan'}}">
+<i-button bind:click="modifyPlan" i-class="nca_i_btn" type="warning" long>重新预约</i-button>
+</view>
 </view>
 <view wx:if="{{shadow1}}"  class="cbd_shadow">
   <view bindtap="handleCancle1" class="cbd_shadow_item1"></view>
@@ -74,8 +92,8 @@
   <i-button bind:click="handleClick2" i-class="nca_i_btn" type="warning" long>确认</i-button>
   </view>
 </view>
-<view wx:if="true"  class="cbd_shadow">
-  <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>
+<view wx:if="{{shadow3}}"  class="cbd_shadow">
+  <view bindtap="handleCancle3" class="cbd_shadow_item1"></view>
   <view class="cbd_shadow_item00">
     <view class="cbd_shadow_item00_c">
     <wux-multi-picker-view value="{{ multisChosed }}" options="{{ multis }}" bind:valueChange="onValueChange" />
@@ -84,4 +102,6 @@
   <view class="cbd_shadow_item3">
   <i-button bind:click="handleClick3" i-class="nca_i_btn" type="warning" long>确认</i-button>
   </view>
-</view>  
+</view>
+<wux-dialog id="wux-dialog" />
+<wux-toast id="wux-toast" />

@@ -1,0 +1,35 @@
+<view class="lcr_c">
+  <view class="lcr_c1">
+  <view>
+    <image src="../../images/icon/arrow-left.png" class="lcr_c1_img"></image>
+  </view>
+    <view class="lcr_c1_2">
+      <view class="lcr_c1_2_1 lcr_font">1月</view>
+      <view class="lcr_c1_2_2"><i class="lcr_font1">当月课时量：</i><i class="lcr_font">68</i></view>
+    </view>
+  <view>
+    <image src="../../images/icon/arrow-right.png" 
+    class="lcr_c1_img"></image>
+  </view>
+  </view>
+</view>
+
+<view class="lcr_c2" wx:for="{{rds}}">
+  <view class="lcr_c3">
+    <view class="lcr_title">
+      <view class="lcr_title_1">{{item.rdDate}}</view>
+      <view class="lcr_title_2">{{item.rdCount}}节课</view>
+    </view>
+    <view class="lcr_item" wx:for="{{item.detail}}" wx:for-item="detail">
+      <view class="lcr_item1">
+        <view class="lcr_item1_1">V {{detail.rdName}}</view>
+        <view wx:if="{{detail.rdStatus=='yes'}}" class="lcr_item1_2 lcr_bgc1">待确认</view>
+        <view wx:else class="lcr_item1_2 lcr_bgc2">已完成</view>
+      </view>
+      <view class="lcr_item2">
+        <view class="lcr_item2_1">{{detail.rdCourse}} {{detail.courseTime}}</view>
+        <view class="lcr_item2_2">剩余课时：{{detail.courseMore}}</view>
+      </view>
+    </view>
+  </view>
+</view>

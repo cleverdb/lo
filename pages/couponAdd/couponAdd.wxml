@@ -21,7 +21,9 @@
       <image src="../../images/icon/coupon_add_1.png" class="ca_container1_item2_3"></image>
     </view>
   </view>
+  <view style="position:fixed;left:0;right:0;bottom:0;">
   <i-button bind:click="handleClick3" i-class="nca_i_btn" type="warning" long>确认</i-button>
+  </view>
 </view>
 <view wx:if="{{shadow1}}"  class="cbd_shadow">
   <view bindtap="handleCancle2" class="cbd_shadow_item1"></view>

@@ -1,0 +1,132 @@
+page{
+  background: #F0EDF1;
+}
+.cm_btn{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 74rpx;
+  padding: 18rpx 257rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.cm_btn_1{
+  width: 49rpx;
+  height: 72rpx;
+}
+.cm_btn_2{
+  width: 49rpx;
+  height: 100%;
+}
+.cm_btn_img{
+  width: 49rpx;
+  height: 47rpx;
+}
+.cm_btn_font{
+  font-size: 22rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #3E3A39;
+}
+.cm_body{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 120rpx;
+  top: 0;
+  background: #F0EDF1;
+  overflow: auto;
+}
+/*      */
+.cm_body1{
+  width: cal(100%-60rpx);
+  margin: 0 30rpx 0 30rpx;
+}
+.cm_item{
+  width: cal(100%-58rpx);
+  padding: 0 29rpx;
+  background: #fff;
+  margin-top:29rpx; 
+}
+.cm_item1{
+  width: 100%;
+  padding: 31rpx 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.cm_item1_font1{
+  font-size: 36rpx;
+  font-weight: Bold;
+  font-family: PingFang-SC-Bold; 
+}
+.cm_item1_font2{
+  font-size: 24rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  color: #9FA0A0;
+}
+.cm_item1_img{
+  width: 10rpx;
+  height: 15rpx;
+  margin-left: 19rpx;
+}
+.cm_item_staus{
+  color: #E7355F;
+}
+.cm_item_staus1{
+  color: #3E3A39;
+}
+.cm_item_staus2{
+  color: #9FA0A0;
+}
+
+/*    */
+.cm_item2{
+  width: 100%;
+  padding: 10rpx 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #9FA0A0;
+}
+.cm_item2_font1{
+  font-size: 20rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+}
+.cm_item2_font2{
+  font-size: 26rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+}
+/*       */
+.cm_item3{
+  width: 100%;
+  padding: 25rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+.cm_item3_font1{
+  font-size: 28rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  padding: 17rpx 0;
+}
+.cm_item3_font2{
+  font-size: 28rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  padding: 17rpx 29rpx;
+  background: #FCC800;
+  border:1rpx solid #9FA0A0;
+}
+.cm_item3_font3{
+  font-size: 28rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  padding: 17rpx 29rpx;
+  border:1rpx solid #9FA0A0;
+}
