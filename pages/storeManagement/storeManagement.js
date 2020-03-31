@@ -1,17 +1,11 @@
+// pages/storeManagement/storeManagement.js
 import Utils from '../../utils/util.js'
-const app = getApp();
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    phoneRecordInfos: [
-      { prTime: "2019.12.12 15:12", prClient: "袁小明", prContent: "已通知2019年营业时间，祝会员元旦快乐。", nextTime: "2019.05.28", prStatus: true },
-      { prTime: "2019.12.12 15:12", prClient: "袁小明", prContent: "已通知2019年营业时间，祝会员元旦快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐快乐。", nextTime: "2019.05.28", prStatus: true },
-      { prTime: "2019.12.12 15:12", prClient: "袁小明", prContent: "客户电话没有没有人接听。。", nextTime: "", prStatus: false },
-    ],
     year: 0,
     month: 0,
     date: ['日', '一', '二', '三', '四', '五', '六'],
@@ -41,7 +35,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // getRecords();
+
   },
 
   /**
@@ -85,14 +79,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getRecords:function(){
-  
-  },
-  // goPhoneRecordAdd:function(){
-  //   wx.showToast({
-  //     title: 'goPhoneRecordAdd',
-  //   });
-  // },
+
 
   dateTap: function (e) {
     const { selectedDay } = this.data;
@@ -174,4 +161,5 @@ Page({
       timeitem: id == timeDataSelected ? {} : timeitem
     })
   },
+
 })

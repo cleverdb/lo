@@ -1,199 +1,75 @@
- /* pages/curoseDetail/curoseDetail.wxss */
 page{
   height: 100%;
-}
-.container {
-  color: #a0a0a0;
-  display:block;
-  font-size:28rpx;
-}
-
-.container-hd {
-  width: 100%;
-  display: flex;
-  flex-grow: row no-wrap;
-  /* justify-content: space-between; */
-  box-sizing: border-box;
-  height: auto;
-  padding:20rpx;
-  align-items: center;
-  border-bottom:10rpx solid #090000;
-}
-
-.coach-info {
-  margin-left: 20rpx;
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  color: #fcc700;
-  font-size: 30rpx;
-}
-
-.coach-info .cell {
-  height: 100%;
-  margin-top: 16rpx;
-}
-.coach-avatar{
-  width: 150rpx;
-  height: 150rpx;
-  margin: 0rpx 10rpx;
-}
-.empty {
-  background-color: #a0a0a0;
-  border-radius: 50%;
-}
-.coach-avatar   image {
-  border-radius: 50%;
-  width: 150rpx;
-  height: 150rpx;
-}
-
-.container-bd {
-  margin-top: 10rpx;
-  width: 100%;
-  padding:0 20rpx 100rpx 20rpx;
-  box-sizing: border-box;
-  height: auto;
-  align-items: center;
-  background-color: #3e3e3e;
-}
-
-.course {
-  padding: 40rpx 0;
-  border-bottom: 1rpx rgba(168,168,168,0.2) solid;
-}
-
-.no-border{
-  border-bottom: 1rpx #3e3e3e solid;
-}
-
-.content {
-  margin-top: 20rpx;
-  font-size: 28rpx;
-  line-height: 40rpx;
-}
-
-.buy-course {
-  width: 100%;
-  color: #090000;
-  position: fixed;
-  height: 100rpx;
-  bottom: 0;
-  margin: 0;
-  right: 0;
-  left: 0;
-  background-color: #fcc700;
-  justify-content: center;
-  display: flex;
-  font-size: 34rpx;
-  font-weight: 700;
-  align-items: center;
-}
-
-.popup-container {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #090000;
-  opacity: 0.2;
-  overflow: hidden;
-  z-index: 500;
-  color: #ffffff;
-}
-
-.popup-content {
-  height: 600rpx;
-  width: 100%;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 600;
   background: #ffffff;
-  padding-top: 20rpx;
 }
-
-.popup-content .cell {
-  border-bottom: 2rpx solid #a0a0a0;
-  line-height: 100rpx;
-  padding: 0 20rpx 0 20rpx;
+.curose_detail_warp{
+  height: 100%;
+}
+.curose_detail_top{
+  padding: 30rpx 30rpx 40rpx 30rpx;
+}
+.curose_detail_img{
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.curose_detail_img image{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+}
+.detail_top_warp{
   display: flex;
-  flex-direction: row;
   align-items: center;
-}
-
-.popup-content .name {
   font-size: 28rpx;
 }
-
-.popup-content .value {
-  font-size: 28rpx;
+.curose_detail_bottom{
+  flex: 1;
 }
-
-.num-step {
-  border: 2rpx solid #a0a0a0;
-  border-radius: 6rpx;
-  width: 140rpx;
-  height: 52rpx;
-  margin: 0 0 0 40rpx;
+.detail_top_item{
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
 }
-
-.num-step text {
-  width: 38rpx;
-  height: 56rpx;
-  line-height: 42rpx;
-  text-align: center;
-  float: left;
+.red{
+  color:#E7355F
 }
-
-.num-step input {
-  float: left;
-  margin: 0 auto;
-  width: 60rpx;
-  text-align: center;
-  height: 52rpx;
-  font-size: 24rpx;
-  border-left: 2rpx solid #a0a0a0;
-  border-right: 2rpx solid #a0a0a0;
+.curose_detail_num_warp{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80rpx;
 }
-
-.num-step .ok {
-  color: black;
+.detail_num{
+  font-size: 58rpx;
+  color: #3E3A39;
 }
-
-.num-step .disabled {
-  color: #a0a0a0;
+.detail_text{
+  color: #727171;
+  font-size: 20rpx;
 }
-
-.modal-container {
+.item_num{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-.modal-container .mc-hd {
-  padding-bottom: 20rpx;
+.curose_line{
+  height: 20rpx;
+  background: #F0EDF1;
+}
+.curose_list_warp{
+  padding: 0 30rpx;
+}
+.list_item{
   display: flex;
-  flex-direction: row;
+  color: #3E3A39;
+  font-size: 28rpx;
   justify-content: space-between;
+  padding: 40rpx 0;
+  border-bottom: 1px solid #ECECEC;
 }
-
-.mc-hd .money {
-  font-size: 48rpx;
-  font-weight: 700;
-  color: #090000;
-}
-
-.modal-container .mc-bd {
-  border-top: 2rpx solid #a0a0a0;
-  padding-top: 20rpx;
-}
-
-.modal-container .mc-bd .cell {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.normal{
+  color:#3FBDE0
 }

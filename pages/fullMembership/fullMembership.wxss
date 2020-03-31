@@ -1,0 +1,33 @@
+/* pages/fullMembership/fullMembership.wxss */
+page{
+    height: 100%;
+}
+.full_membership_warp{
+    padding: 0 30rpx;
+}
+.full_membership_item{
+    padding: 40rpx 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26rpx;
+    align-items: center;
+    border-bottom: 1px solid #ECECEC;
+   color: #3E3A39;
+}
+.item_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.item_right_red{
+    color: #E7355F;
+}
+.full_member_status{
+    margin-top: 30rpx;
+}
+.full_normal{
+    color: #3FBDE0;
+}
+.done_status{
+    color: #9FA0A0;
+}

@@ -1,0 +1,30 @@
+/* pages/membershipDetail/membershipDetail.wxss */
+page{
+    height: 100%;
+    background: #ffffff;
+}
+.membership_detail_warp{
+    height: 100%;
+}
+.detail_top_warp{
+    padding: 0 30rpx;
+}
+.detail_item{
+    color: #3E3A39;
+    font-size: 26rpx;
+    padding: 40rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ECECEC;
+}
+.red{
+    color: #E7355F;
+}
+.normal{
+    color: #3FBDE0
+}
+.detail_item_line{
+    height: 20rpx;
+    background: #F0EDF1
+}

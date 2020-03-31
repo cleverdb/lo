@@ -1,0 +1,174 @@
+<!--pages/baseMessage/baseMessage.wxml-->
+<view class='base_message_warp'>
+    <view class='base_message_top'>
+        <view class='base_message_img'>
+            <image class="" src="/images/test4.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        </view>
+        <view class='base_message_right'>
+            <view class='base_message_col'>
+                <view>
+                    V 张珂洋
+                </view>
+                <view style='font-size:24rpx'>
+                    NO:00001234
+                </view>  
+            </view>
+            <view class='base_message_col base_right'>
+                <view>
+                    正式会员
+                </view>
+                <view style='font-size:24rpx'>
+                    LIOU健身乐城店
+                </view>  
+            </view> 
+        </view>
+    </view>
+    <view class='detail_item_line'></view>
+    <view class='base_message_list_warp'>
+        <view class='base_messgae_item'>
+            <view>
+                性别
+            </view>
+            <view>
+                女
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                生日
+            </view>
+            <view>
+                1973.12.08
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                电话
+            </view>
+            <view>
+                13811805558
+            </view>
+        </view> 
+        <view class='base_messgae_item'>
+            <view>
+                微信
+            </view>
+            <view>
+                13811805558
+            </view>
+        </view> 
+        <view class='base_messgae_item item_last'>
+            <view>
+                状态
+            </view>
+            <view class='normal'>
+                正常
+            </view>
+        </view> 
+    </view>
+    <view class='detail_item_line'></view>
+    <view class='base_message_list_warp'>
+        <view class='base_messgae_item'>
+            <view>
+                会籍顾问
+            </view>
+            <view class='item_right'>
+                <view>
+                    唐京京 
+                </view>
+                <view class='item_change'>
+                    更换
+                </view>
+                <i-icon type="enter" size='20' color='#9FA0A0' />
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                跟进教练
+            </view>
+            <view class='item_right'>
+                <view>
+                    唐京京 
+                </view>
+                <view class='item_change'>
+                    更换
+                </view>
+                <i-icon type="enter" size='20' color='#9FA0A0' />
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                会籍有效期
+            </view>
+            <view>
+                212天
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                剩余课时
+            </view>
+            <view>
+                30节
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                注册时间
+            </view>
+            <view>
+                2019.01.01  15:20
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                入库时间
+            </view>
+            <view>
+                2019.01.02  15:20
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                信息来源
+            </view>
+            <view>
+                其他
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                电话来访
+            </view>
+            <view>
+                否
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                会员类型
+            </view>
+            <view>
+                私教会员
+            </view>
+        </view>
+        <view class='base_messgae_item'>
+            <view>
+                会员状态
+            </view>
+            <view>
+                正式会员
+            </view>
+        </view>
+    </view>
+    <view class='detail_item_line'></view>
+    <view class='base_message_list_warp'>
+       <view class='base_messgae_item'>
+            <view>
+                备注
+            </view>
+        </view> 
+    </view>
+      
+</view>
+  

@@ -18,7 +18,7 @@
         <view>会员动态</view>
       </view>
     </i-cell>
-    <i-cell is-link>
+    <i-cell is-link url="/pages/storeManagement/storeManagement">
       <view class="card_item">
         <image src="/images/icon/work_card_item_3.png" mode='aspectFit' class="card_item_1_img"></image>
         <view>进店管理</view>

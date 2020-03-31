@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择会员",
+  "usingComponents": {
+    "i-icon": "../../dist/iview/icon/index",
+    "wux-search-bar": "../../dist/wux/search-bar/index"
+  }
+}

@@ -1,0 +1,68 @@
+/* pages/baseMessage/baseMessage.wxss */
+page{
+    height: 100%;
+}
+.base_message_warp{
+    background: #ffffff;
+}
+.base_message_top{
+    padding: 50rpx 30rpx;
+    display: flex;
+    font-size: 28rpx;
+}
+.base_message_img{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+    overflow: hidden;
+}
+.base_message_img image{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+.base_message_right{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+.base_message_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.base_right{
+    color: #9FA0A0
+}
+.detail_item_line{
+    height: 20rpx;
+    background: #F0EDF1
+}
+.base_message_list_warp{
+    padding: 0 30rpx;
+}
+.base_messgae_item{
+    padding: 40rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3E3A39;
+    border-bottom: 1px solid #ECECEC;
+    font-size: 26rpx;
+}
+.item_last{
+    border:none;
+}
+.normal{
+    color: #3FBDE0
+}
+.item_right{
+    display: flex;
+    align-items: center;
+}
+.item_change{
+    font-size: 24rpx;
+    color: #9FA0A0;
+    margin-left: 20rpx;
+}

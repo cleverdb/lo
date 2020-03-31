@@ -1,4 +1,7 @@
 /* pages/classRecord/classRecord.wxss */
+page{
+    height: 100%;
+}
 .class_record_page{
     height: 100%;
     display: flex;
@@ -6,4 +9,62 @@
 }
 .class_record_swiper{
     height: 100%;
+}
+.class_record_tabs{
+    
+}
+.class_record_item{
+    width: 25%;
+}
+.class_record_item .wux-tabs__tab--balanced .wux-tabs__tab-bar {
+    background: #F0C71F;
+}
+.class_record_item .wux-tabs__tab--balanced.wux-tabs__tab--current {
+    color: #353235;
+}
+
+
+.class_record_line{
+    height: 20rpx;
+    background: #F0EDF1;
+}
+.class_record_list_warp{
+    padding: 0 30rpx;
+    flex: 1;
+}
+.record_list_item{
+    padding: 36rpx 0;
+    border-bottom: 1px solid #ECECEC;
+}
+.item_top{
+    display: flex;
+    justify-content: space-around;
+    font-size: 28rpx;
+    margin-bottom: 32rpx;
+    color: #3E3A39;
+}
+.item_top .center{
+    flex: 1;
+    margin-left: 20rpx;
+    color: #9FA0A0;
+    font-size: 26rpx;
+}
+.item_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.item_bottom_left{
+    font-size: 26rpx;
+    color: #3E3A39;
+}
+.item_bottom_right{
+    color:rgba(159,160,160,1);
+    font-size:24rpx;
+    display: flex;
+}
+.record_class_status{
+    color: #ffffff;
+    font-size: 20rpx;
+    border: 1px solid #ECECEC;
+    padding: 4rpx 6rpx;
 }

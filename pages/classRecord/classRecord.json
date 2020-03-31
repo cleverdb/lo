@@ -1,6 +1,7 @@
 {
+  "navigationBarTitleText": "上课记录",
   "usingComponents": {
-    "i-tabs": "../../dist/iview/tabs/index",
-    "i-tab": "../../dist/iview/tab/index"
+    "wux-tabs": "../../dist/wux/tabs/index",
+    "wux-tab": "../../dist/wux/tab/index"
   }
 }

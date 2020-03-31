@@ -6,7 +6,34 @@ Page({
    */
   data: {
     current:1,
-    winHeight:0
+    tabs:[{
+      key:1,
+      title:'全部'
+    },
+    {
+      key: 2,
+      title: '待上课'
+    }, {
+      key: 3,
+      title: '已完成'
+    }, {
+      key: 4,
+      title: '已取消'
+    }],
+    classStatus:{
+      2:{
+        color: '#E13A67',
+        text: '待上课'
+      },
+      3: {
+        color: '#3DBEDB',
+        text: '已完成'
+      },
+      4: {
+        color: '#FBC806',
+        text: '已取消'
+      }
+    }
   },
 
   /**
@@ -27,19 +54,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        const clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        const calc = clientHeight * rpxR - 84;
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
+    
   },
 
   /**
@@ -77,10 +92,20 @@ Page({
 
   },
   // tabs change
-  onTabsChange:function(e){
-    const { detail } = e;
+  onTabsChange(e) {
+    console.log('onTabsChange', e)
+    const { key } = e.detail
+    const index = this.data.tabs.map((n) => n.key).indexOf(key)
+
     this.setData({
-      current: detail.key
+      current:key,
     })
   },
+  onSwiperChange:function(e){
+      console.log('e', e);
+      const { current } = e.detail;
+      this.setData({
+        current:current + 1
+      })
+  }
 })

@@ -1,29 +1,44 @@
 <!--pages/classRecord/classRecord.wxml-->
 <view class="class_record_page">
-    <i-tabs current="{{current}}" bindchange="onTabsChange">
-        <i-tab key="1" title="全部"></i-tab>
-        <i-tab key="2" title="待上课"></i-tab>
-        <i-tab key="3" title="已完成"></i-tab>
-        <i-tab key="4" title="已取消"></i-tab>
-    </i-tabs>
-    <view class='class_record_swiper' style="height:{{winHeight}}rpx">
-        <swiper current="{{ current-1 }}" bindchange="onSwiperChange">
+    <wux-tabs class='class_record_tabs' wux-class="bordered" controlled current="{{ current }}" bindchange="onTabsChange">
+        <block wx:for="{{ tabs }}" wx:key="key">
+            <wux-tab class='class_record_item' key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+        </block>
+    </wux-tabs>
+    <view class='class_record_line'></view>
+
+    <view class='class_record_list_warp'>
+    <swiper class='class_record_swiper' current="{{ current - 1 }}" bindchange="onSwiperChange">
+        <block wx:for="{{tabs}}">
             <swiper-item>
-                <view class="content">
-                    
+                <view class='record_list_item'>
+                    <view class='item_top'>
+                        <view>
+                            常规私教课
+                        </view>
+                        <view class='center'>
+                            戴兴坤
+                        </view>
+                        <view class='record_class_status' style='background:{{classStatus[current].color}}'>
+                            {{classStatus[current].text}}
+                        </view>
+                    </view>
+                    <view class='item_bottom'>
+                        <view class='item_bottom_left'>
+                            2019.01.04  10:00-10:59
+                        </view>
+                        <view class='item_bottom_right' wx:if="{{current!=4}}">
+                            <view>剩余:</view><view>15/30</view>
+                        </view>
+                        <view class='item_bottom_right' wx:else>
+                            <view>12.28  12:28</view><view>取消</view>
+                        </view> 
+                    </view>
                 </view>
-            </swiper-item>
-            <swiper-item>
-                <view class="content">2</view>
-            </swiper-item>
-            <swiper-item>
-                <view class="content">3</view>
-            </swiper-item>
-            <swiper-item>
-                <view class="content">4</view>
-            </swiper-item>
-        </swiper>
+            </swiper-item> 
+        </block>
+    </swiper>
+        
     </view>
       
-    
 </view>

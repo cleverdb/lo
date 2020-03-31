@@ -1,0 +1,252 @@
+<!--pages/customerDetails/customerDetails.wxml-->
+<view class='customer_details_warp'>
+    <view>
+        <wux-tabs class='customer_details_tabs' wux-class="bordered" controlled current="{{ current }}" bindchange="onTabsChange">
+            <block wx:for="{{ tabs }}" wx:key="key">
+                <wux-tab class='customer_details_item' key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+            </block>
+        </wux-tabs> 
+    </view>
+    <view class='customer_details_line'></view>
+    <view class='customer_details_card_warp'>
+       <swiper class='customer_details_swiper' current="{{ current - 1 }}" bindchange="onSwiperChange">
+            <swiper-item class='details_swiper_item'>
+                <view class='tabs_customer_top'>
+                    <view class='tabs_img_warp'>
+                        <image class="" src="/images/test2.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                    </view>
+                    <view class='center'>
+                       <view class='center_name'>
+                           V 张珂洋
+                       </view>
+                        <view class='custon_vip_status'>
+                           正式会员
+                       </view>   
+                    </view>
+                    <view class='tabs_tall_warp'>
+                        <image class="" src="/images/icon/mine_reserve_tall.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+                    </view>  
+                </view>
+                <view class='customer_line'></view>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            基本信息
+                        </view>
+                        <navigator url="/pages/baseMessage/baseMessage" hover-class="no-hover">
+                            <i-icon type="more" size="28"/>
+                        </navigator>
+                    </view>
+                    <view class='customer_item'>
+                        <view>
+                            会籍顾问
+                        </view>
+                        <view class='item_right'>
+                            <view>
+                                唐京京 
+                            </view>
+                            <view class='item_change'>
+                                更换
+                            </view>
+                            <i-icon type="enter" size='20' color='#9FA0A0' />
+                        </view>
+                    </view>
+                    <view class='customer_item'>
+                        <view>
+                            生日
+                        </view>
+                        <view>
+                            1993.12.08
+                        </view>
+                    </view>
+                    <view class='customer_item'>
+                        <view>
+                            会籍有效期
+                        </view>
+                        <view class='item_right_red'>
+                            212天
+                        </view>
+                    </view>
+                    <view class='customer_item last'>
+                        <view>
+                            剩余课时
+                        </view>
+                        <view class='item_right_col'>
+                            <view class='item_right_red'>
+                                30节
+                            </view>
+                            <view class='item_class_num'>
+                                常规私教课：30节
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='customer_line'></view>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            上课记录
+                        </view>
+                        <view>
+                            <navigator url="/pages/classRecord/classRecord" hover-class="no-hover">
+                                <i-icon type="more" size="28"/>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class='customer_item_class'>
+                        <view class='item_top' style='margin-bottom:20rpx'>
+                            <view>
+                                常规私教课
+                            </view>
+                            <view class='class_status'>
+                                待上课
+                            </view>
+                        </view>
+                        <view class='item_top'>
+                            <view>
+                                戴兴坤
+                            </view>
+                            <view class='item_class_num'>
+                                2019.01.04  10:00-10:59
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='customer_line'></view>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            联系记录
+                        </view>
+                        <view>
+                            <navigator url="/pages/phoneRecord/phoneRecord" hover-class="no-hover">
+                                <i-icon type="more" size="28"/>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class='customer_item'>
+                        <view>
+                            <view class='top'>
+                                2019.01.02  09:22
+                            </view>
+                            <view class='center'>
+                                通知会员店里将要举办的活动内容。
+                            </view>
+                            <view class='bottom'>
+                                下次联系时间：2019.05.28
+                            </view>
+                        </view>
+                        <view class='customer_item_right'>
+                            <view class='right_name'>
+                                袁明路
+                            </view>
+                            <view class='right_bottom'>
+                                有效
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class='details_swiper_item'>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            会籍类型
+                        </view>
+                        <navigator url="/pages/fullMembership/fullMembership" hover-class="no-hover">
+                            <i-icon type="more" size="28"/>
+                        </navigator>
+                    </view>
+                    <view class='customer_item'>
+                        <view>
+                            <view style='margin-bottom:33rpx'>
+                                乐城一年卡
+                            </view>
+                            <view style='color: #727171'>
+                                2020.05.05 到期
+                            </view>
+                        </view>
+                        <view class='item_right item_right_red'>
+                            剩余:212天
+                        </view>
+                    </view>
+                    <view class='customer_item item_guoqi'>
+                        <view>
+                            <view style='margin-bottom:33rpx'>
+                                乐城一年卡
+                            </view>
+                            <view>
+                                2020.05.05 到期
+                            </view>
+                        </view>
+                        <view class='item_right item_guoqi'>
+                            已过期
+                        </view>
+                    </view>
+                </view>
+                <view class='customer_line'></view>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            课程
+                        </view>
+                        <view>
+                            <navigator url="/pages/fullCourse/fullCourse" hover-class="no-hover">
+                                <i-icon type="more" size="28"/>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class='coach_warp'>
+                        <view class='customer_item_coach'>
+                            <view>
+                                常规私教课
+                            </view>
+                            <view class='item_right_red'>
+                                剩余:30/50
+                            </view>
+                        </view>
+                        <view class='customer_item_coach small_font'>
+                            <view>
+                                教练：戴兴坤
+                            </view>
+                            <view>
+                                未完成
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='customer_line'></view>
+                <view class='customer_message_warp'>
+                    <view class='customer_title'>
+                        <view class='customer_title_left'>
+                            进店记录
+                        </view>
+                        <view>
+                            <navigator url="/pages/storeRecord/storeRecord" hover-class="no-hover">
+                                <i-icon type="more" size="28"/>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view class='coach_warp'>
+                        <view class='customer_item_coach'>
+                            <view>
+                                2019.01.04 10:00-11:30
+                            </view>
+                        </view>
+                        <view class='customer_item_coach small_font'>
+                            <view>
+                                锻炼时长：90min
+                            </view>
+                            <view>
+                                LIOU健身乐城店
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item> 
+        </swiper>
+    </view>
+       
+    
+</view>
+  

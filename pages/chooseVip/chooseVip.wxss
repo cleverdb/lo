@@ -1,117 +1,57 @@
-/* pages/customerCoach/customerCoach.wxss */
+/* pages/chooseVip/chooseVip.wxss */
 page{
-    background: #F0EDF1;
     height: 100%;
 }
-.coach_warp .wux-search-bar__input{
+.choose_vip_search .wux-search-bar__input{
     height: auto;
 }
-.coach_warp .wux-search-bar__label{
+.choose_vip_search .wux-search-bar__label{
     top:10rpx;
 }
-.coach_warp{
+.choose_vip_warp{
     height: 100%;
 }
 .hidden_class{
     overflow: hidden;
 }
-.coach_search_warp{
-    margin-bottom: 10rpx;
+.choose_list_warp{
+    padding: 0 30rpx;
 }
-.modal_line{
+.choose_vip_item{
     display: flex;
     justify-content: space-between;
-    color: #3E3A39;
+    color:rgba(62,58,57,1);
     font-size: 28rpx;
-    padding: 40rpx 30rpx;
-    border-bottom: 1px solid #ECECEC;
     align-items: center;
-}
-.modal_radio{
-    margin-right: 40rpx;
-}
-.modal_line_right{
-    display: flex;
-    justify-content: space-around;
-    flex: 1;
-}
-.right_item{
-    padding: 12rpx 20rpx;
-    border: 1px solid #ECECEC;
-}
-.type_active{
-    color: #FDC600;
-    border: 1px solid #FDC600;
-}
-.store_warp{
-    margin-top: 20rpx;
-}
-.store_warp view{
-    float: left;
-    margin-left: 20rpx;
-    margin-bottom: 20rpx;
-}
-.store_view{
-    font-size: 28rpx;
-    color: #3E3A39;
-    padding: 40rpx 30rpx;
-}
-.coach_list_footer{
-    height: 86%;
-    background: #ffffff;
-}
-.coach_list_item{
-    display: flex;
-    justify-content: space-between;
-    padding: 24rpx 30rpx;
+    padding: 24rpx 0;
     border-bottom: 1px solid #ECECEC;
-    background: #ffffff;
 }
-.list_item_img{
+.choose_img_warp{
+    width: 101rpx;
+    height: 101rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20rpx;
+}
+.choose_img{
     width: 101rpx;
     height: 101rpx;
     border-radius: 50%;
 }
-.list_item_img image {
-    width: 101rpx;
-    height: 101rpx;
-    border-radius: 50%;
-}
-.coach_right_warp{
-    margin-left: 20rpx;
+.choose_vip_right{
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
-.coach_right{
-    display: flex;
-    justify-content: space-between;
-    font-size:28rpx;
-}
-.coach_text_name{
-    color: #3E3A39;
-    font-size:28rpx;
-}
-.coach_store_type{
-    color: #9FA0A0;
+.choose_vip_status{
+    color:rgba(159,160,160,1);
     font-size: 26rpx;
 }
-.coach_time{
-    color: #3E3A39;
-    font-size: 28rpx;
+.vip_right_top{
+    display: flex;
+    justify-content: space-between;
 }
-.coach_class{
-    color: #3E3A39;
-    font-size:20rpx;
+.vip_right_bottom{
+    display: flex;
 }
-
-
-
-
-
-
-
 
 
 

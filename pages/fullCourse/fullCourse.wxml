@@ -1,0 +1,41 @@
+<view class='fullCourse_warp'>
+    <navigator class="" target="" url="/pages/curoseDetail/curoseDetail" hover-class="no-hover">
+        <view class='fullCourse_coach_warp'>
+            <view class='customer_item_coach'>
+                <view>
+                    常规私教课
+                </view>
+                <view class='item_right_red'>
+                    剩余:30/50
+                </view>
+            </view>
+            <view class='customer_item_coach small_font'>
+                <view>
+                    教练：戴兴坤
+                </view>
+                <view>
+                    未完成
+                </view>
+            </view>
+        </view>   
+    </navigator>
+    <view class='fullCourse_coach_warp'>
+        <view class='customer_item_coach done_color'>
+            <view>
+                常规私教课
+            </view>
+            <view>
+                剩余:00/50
+            </view>
+        </view>
+        <view class='customer_item_coach small_font done_color'>
+            <view>
+                教练：戴兴坤
+            </view>
+            <view>
+                已完成
+            </view>
+        </view>
+    </view>
+</view>
+  

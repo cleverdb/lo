@@ -1,0 +1,91 @@
+<view class='choose_vip_warp {{(show || threeShow) ? "hidden_class" : "" }}'>
+    <view class='choose_vip_search'>
+        <wux-search-bar clear maxlength="8" placeholder='请输入会员名、手机号' />
+    </view>
+
+    <view>
+      <view class='filterbar_coach'>
+            <view class='left filterbar_item {{activeKey ==1 ? "acive_filter" : ""}}' data-activeKey="1" bindtap="click">
+                <view class='left_content' catchtap="showModal">
+                    {{active.value}}
+                </view>
+                <i-icon type="{{show ? 'packup' :'unfold'}}" />
+                <view class='filterbar_modal' wx:if="{{show}}">
+                    <block wx:for="{{filterChildren}}">
+                        <view class="{{item.key == active.key ? 'active' : ''}}" data-modalItem="{{item}}" catchtap="clickActive">
+                            {{item.value}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <!---<view class='center filterbar_item {{activeKey ==2 ? "acive_filter" : ""}}' data-activeKey="2" bindtap="click">
+                顺序排列
+            </view>--->
+            <view class='right filterbar_item {{activeKey ==3 ? "acive_filter" : ""}}' data-activeKey="3" bindtap="click">
+                筛选
+            </view>
+        </view>
+        <view class='filterbar_bg' wx:if="{{(show || threeShow)}}" catchtap="hideModal">
+            <view class='filter_bg_content' wx:if="{{threeShow}}" catchtap="catchtapModal">
+                <view class='bg_content_top'>
+                    <view class='modal_line_vip'>
+                        <view style='margin-bottom:20rpx'>
+                            会员状态
+                        </view>
+                        <view class='vip_status_warp'>
+                            <block wx:for="{{vipStatus}}">
+                                <view class='vip_item {{item.key == vipActive.key ? "type_active" : ""}}' data-item='{{item}}' catchtap='vipClick'>
+                                    {{item.value}}   
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                    <view class='modal_line'>
+                        <view>
+                            <view>会员性别</view>
+                        </view>
+                        <radio-group class="radio-group" catchtap="radioChange" >
+                            <radio class="radio modal_radio" coler="#F8C700" wx:for-items="{{itemArr}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text>{{item.value}}</text>
+                            </radio>
+                        </radio-group> 
+                    </view>
+                </view>
+                <view class='bg_content_footer'>
+                    确 定
+                </view>
+            </view>
+        </view>  
+    </view>
+
+    <view class='choose_list_warp'>
+        <view class='choose_vip_item'>
+            <view class='choose_img_warp'>
+                <image class="choose_img" src="/images/test2.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+            </view>
+            <view class='choose_vip_right'>
+                <view class='vip_right_top'>
+                   <view>
+                       V 王丽萍
+                   </view>
+                   <view class='choose_vip_status'>
+                       未激活会员
+                   </view>
+                </view>
+                <view class='vip_right_bottom'>
+                    <view>
+                        最近联系:
+                    </view>
+                    <view>
+                        2019.01.01
+                    </view>
+                </view>
+                    
+            </view>
+                
+        </view>
+            
+    </view>
+      
+</view>
+  

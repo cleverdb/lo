@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "基本资料",
+  "usingComponents": {
+    "i-icon": "../../dist/iview/icon/index"
+  }
+}

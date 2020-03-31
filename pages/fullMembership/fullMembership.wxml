@@ -1,0 +1,59 @@
+<view class='full_membership_warp'>
+    <navigator class="" target="" url="/pages/membershipDetail/membershipDetail" hover-class="no-hover">
+        <view class='full_membership_item'>
+            <view>
+                <view style='margin-bottom:33rpx'>
+                    乐城一年卡
+                </view>
+                <view style='color: #727171'>
+                    2020.05.05 到期
+                </view>
+            </view>
+            <view class='item_right item_right_red'>
+                <view>
+                    剩余:212天 
+                </view>
+                <view class='full_member_status full_normal'>
+                    状态:正常
+                </view>
+            </view>
+        </view>  
+    </navigator>
+    <view class='full_membership_item done_status'>
+        <view>
+            <view style='margin-bottom:33rpx'>
+                乐城一年卡
+            </view>
+            <view style='color: #727171'>
+                2020.05.05 到期
+            </view>
+        </view>
+        <view class='item_right'>
+            <view>
+                剩余:212天 
+            </view>
+            <view class='full_member_status'>
+                已过期
+            </view>
+        </view>
+    </view>
+    <view class='full_membership_item'>
+        <view>
+            <view style='margin-bottom:33rpx'>
+                乐城一年卡
+            </view>
+            <view style='color: #727171'>
+                2020.05.05 到期
+            </view>
+        </view>
+        <view class='item_right item_right_red'>
+            <view>
+                剩余:212天 
+            </view>
+            <view class='full_member_status'>
+                状态:请假
+            </view>
+        </view>
+    </view>
+</view>
+  

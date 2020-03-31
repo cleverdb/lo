@@ -154,6 +154,69 @@
 					"id": -1,
 					"name": "pages/appointmentClient/appointmentClient",
 					"pathName": "pages/appointmentClient/appointmentClient",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/phoneRecord/phoneRecord",
+					"pathName": "pages/phoneRecord/phoneRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/chooseVip/chooseVip",
+					"pathName": "pages/chooseVip/chooseVip",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/phoneRecordAdd/phoneRecordAdd",
+					"pathName": "pages/phoneRecordAdd/phoneRecordAdd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/storeManagement/storeManagement",
+					"pathName": "pages/storeManagement/storeManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/classRecord/classRecord",
+					"pathName": "pages/classRecord/classRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/storeRecord/storeRecord",
+					"pathName": "pages/storeRecord/storeRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customerDetails/customerDetails",
+					"pathName": "pages/customerDetails/customerDetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/membershipDetail/membershipDetail",
+					"pathName": "pages/membershipDetail/membershipDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/curoseDetail/curoseDetail",
+					"pathName": "pages/curoseDetail/curoseDetail",
 					"scene": null
 				}
 			]

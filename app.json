@@ -24,7 +24,16 @@
     "pages/vipStatus/vipStatus",
     "pages/messageWarn/messageWarn",
     "pages/messageDetail/messageDetail",
-    "pages/appointmentClient/appointmentClient"
+    "pages/appointmentClient/appointmentClient",
+    "pages/chooseVip/chooseVip",
+    "pages/storeManagement/storeManagement",
+    "pages/storeRecord/storeRecord",
+    "pages/customerDetails/customerDetails",
+    "pages/fullCourse/fullCourse",
+    "pages/fullMembership/fullMembership",
+    "pages/membershipDetail/membershipDetail",
+    "pages/baseMessage/baseMessage",
+    "pages/curoseDetail/curoseDetail"
   ],
   "permission": {
     "scope.userLocation": {

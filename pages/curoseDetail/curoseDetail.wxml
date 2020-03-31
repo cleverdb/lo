@@ -1,93 +1,150 @@
-<!--pages/curoseDetail/curoseDetail.wxml-->
-<import src="../template/pageAlert/pageAlert.wxml" />
-<template is="PageAlert" data="{{...pageState}}" />
-<view class="container" wx:if='{{!pageState.state}}'>
-  <view class='container-hd'>
-    <view class="coach-avatar {{course.iconUrl ? ' ' : 'empty '}}">
-      <image wx:if='{{course.iconUrl}}' mode='scaleToFill' src="{{host}}{{course.iconUrl}}"></image>
-    </view>
-    <view class='coach-info'>
-      <view class='cell title'>{{course.coachName}}</view>
-      <view class='cell'>{{course.forte}}</view>
-      <view class='cell'>
-        <text>{{course.honor}}</text>
+<view class='curose_detail_warp'>
+  <view class='curose_detail_top'>
+    <view class='detail_top_warp'>
+      <view class='curose_detail_img'>
+        <image class="" src="/images/test4.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
+      <view class='curose_detail_bottom'>
+        <view class='detail_top_item' style='margin-bottom:40rpx'>
+          <view style='color:#3E3A39'>
+            秦洪明
+          </view>
+          <view class='red'>
+            剩余:30/30
+          </view>
+        </view> 
+        <view class='detail_top_item'>
+          <view style='font-weight:bloder'>
+            常规私教课
+          </view>
+          <view style='color:#9FA0A0'>
+            LIOU健身乐城店
+          </view>
+        </view> 
+      </view>
+    </view>
+    <view class='curose_detail_num_warp'>
+      <view class='item_num'>
+        <view class='detail_num'>
+          320
+        </view>
+        <view class='detail_text'>
+          课程单价
+        </view>  
+      </view>
+      <view class='item_num'>
+        <view class='detail_num'>
+          59
+        </view>
+        <view class='detail_text'>
+          课程时长/分钟
+        </view>  
+      </view>
+      <view class='item_num'>
+        <view class='detail_num'>
+          600
+        </view>
+        <view class='detail_text'>
+          燃烧卡路里/大卡
+        </view>  
+      </view>        
     </view>
   </view>
-  <view class='container-bd'>
-    <view class='course'>
-      <view class='title'>课程简介</view>
-      <view class='content'>
-        <text>{{course.summary}}</text>
+  <view class='curose_line'></view>
+  <view class='curose_list_warp'>
+      <view class='list_item'>
+        <view>
+          课程类型
+        </view>
+        <view>
+          私教课
+        </view>
       </view>
-    </view>
-   
-    <view class='course no-border'>
-      <view class='title'>课程要求</view>
-      <view class='content'>
-        <text>{{course.demand}}</text>
+      <view class='list_item'>
+        <view>
+          课程强度
+        </view>
+        <view>
+          舒缓
+        </view>
       </view>
-    </view>
+      <view class='list_item'>
+        <view>
+          可授课门店
+        </view>
+        <view>
+          全门店
+        </view>
+      </view>
+      <view class='list_item'>
+        <view>
+          实付金额
+        </view>
+        <view class='red'>
+          ￥16000
+        </view>
+      </view>
+      <view class='list_item'>
+        <view>
+          赠送课
+        </view>
+        <view class='red'>
+          剩余：0/0
+        </view>
+      </view>
+      <view class='list_item'>
+        <view>
+          课程状态
+        </view>
+        <view class='normal'>
+          正常
+        </view>
+      </view>
+        
   </view>
-  <cover-view class='buy-course' bindtap='buyCourse'>
-    <cover-view>购买课程</cover-view>
-  </cover-view>
-  <view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-  <view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}">
-    <view class="popup-content-hd">
-      <!-- <icon type="clear" size="40"></icon> -->
-    </view>
-    <view class="popup-content-bd">
-      <view class="cell">
-        <text class='name'>课程名称：</text>
-        <text class='value'>跆拳道</text>
-      </view>
-      <view class="cell">
-        <text class='name'>课程教练：</text>
-        <text class='value'>王百万</text>
-      </view>
-      <view class="cell">
-        <text class='name'>课程价格：</text>
-        <text class='value'>{{coursePrice}} 元/课</text>
-      </view>
-      <view class="cell">
-        <text class='name'>购买数量：</text>
-        <view class="num-step">
-          <text bindtap='bindMinus' class="{{minusStatus}}">-</text>
-          <input type="number" value="{{courseNum}}" bindchange="bindChange" />
-          <text bindtap='bindPlus'>+</text>
+  <view class='curose_line'></view>
+  <view class='curose_list_warp'>
+      <view class='list_item'>
+        <view>
+          购买时间
+        </view>
+        <view>
+          2018.10.30  10:54
         </view>
       </view>
-      <view class="cell">
-        <text class='name'>总金额：</text>
-        <text class='value'>{{totalCoursePrice}}</text>
-      </view>
-    </view>
-    <view class="popup-content-ft">
-      <view class='container-ft'>
-        <view class='buy-course' bindtap='buyCourse'>
-          <text>确认购买</text>
+      <view class='list_item'>
+        <view>
+          有效期
+        </view>
+        <view>
+          2019.04.30-2029.04.26
         </view>
       </view>
-    </view>
+      <view class='list_item'>
+        <view>
+          凭证类型
+        </view>
+        <view>
+          购买
+        </view>
+      </view>
+      <view class='list_item'>
+        <view>
+          销售员
+        </view>
+        <view>
+          秦洪明
+        </view>
+      </view>
+  </view> 
+  <view class='curose_line'></view>
+  <view class='curose_list_warp'>
+      <view class='list_item'>
+            <view>
+                备注
+            </view>
+        </view> 
   </view>
-
-  <modal title="" hidden="{{hideModal}}" bindconfirm="confirmCourse" bindcancel="cancelCourse">
-    <view class="modal-container">
-      <view class="mc-hd">
-        <text>课程总金额</text>
-        <text class="money">¥{{totalCoursePrice}}</text>
-      </view>
-      <view class="mc-bd">
-        <view class='cell'>
-          <text>课程名称</text>
-          <text>跆拳道</text>
-        </view>
-        <view class='cell'>
-          <text>课时</text>
-          <text>{{courseNum}}课时</text>
-        </view>
-      </view>
-    </view>
-  </modal>
+    
 </view>
+  

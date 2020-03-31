@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "进店记录",
+  "usingComponents": {
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index"
+  }
+}

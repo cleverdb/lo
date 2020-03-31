@@ -1,0 +1,86 @@
+<!--pages/storeRecord/storeRecord.wxml-->
+<view class='store_record_warp'>
+    <wux-cell-group>
+        <wux-cell>
+            <view>
+                <view class='record_item_time'>
+                    <view>
+                        2019.01.04
+                    </view>
+                    <view style='font-weight:bloder;margin-left:20rpx'>
+                        10:00-11:30
+                    </view>
+                </view>  
+                <view class='record_item_bottom'>
+                    <view>
+                        锻炼时长：90min
+                    </view>
+                    <view>
+                        LIOU健身乐城店
+                    </view>
+                </view>
+            </view>
+        </wux-cell>
+        <wux-cell>
+            <view>
+                <view class='record_item_time'>
+                    <view>
+                        2019.01.04
+                    </view>
+                    <view style='font-weight:bloder;margin-left:20rpx'>
+                        10:00-11:30
+                    </view>
+                </view>  
+                <view class='record_item_bottom'>
+                    <view>
+                        锻炼时长：90min
+                    </view>
+                    <view>
+                        LIOU健身乐城店
+                    </view>
+                </view>
+            </view>
+        </wux-cell>
+        <wux-cell>
+            <view>
+                <view class='record_item_time'>
+                    <view>
+                        2019.01.04
+                    </view>
+                    <view style='font-weight:bloder;margin-left:20rpx'>
+                        10:00-11:30
+                    </view>
+                </view>  
+                <view class='record_item_bottom'>
+                    <view>
+                        锻炼时长：90min
+                    </view>
+                    <view>
+                        LIOU健身乐城店
+                    </view>
+                </view>
+            </view>
+        </wux-cell>
+        <wux-cell>
+            <view>
+                <view class='record_item_time'>
+                    <view>
+                        2019.01.04
+                    </view>
+                    <view style='font-weight:bloder;margin-left:20rpx'>
+                        10:00-11:30
+                    </view>
+                </view>  
+                <view class='record_item_bottom'>
+                    <view>
+                        锻炼时长：90min
+                    </view>
+                    <view>
+                        LIOU健身乐城店
+                    </view>
+                </view>
+            </view>
+        </wux-cell>
+    </wux-cell-group>
+</view>
+  

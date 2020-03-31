@@ -1,0 +1,20 @@
+/* pages/storeRecord/storeRecord.wxss */
+page{
+    height: 100%;
+    background: #F0EDF1;
+}
+.store_record_warp{
+   font-size: 24rpx;
+}
+.record_item_time{
+    display: flex;
+    font-size: 28rpx;
+    color: #3E3A39;
+    margin-bottom: 26rpx;
+}
+.record_item_bottom{
+    display: flex;
+    font-size: 24rpx;
+    justify-content: space-between;
+    color: #727171;
+}

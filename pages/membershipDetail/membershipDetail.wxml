@@ -1,0 +1,89 @@
+<view class='membership_detail_warp'>
+    <view class='detail_top_warp'>
+        <view class='detail_item'>
+            <view>
+                会籍名称
+            </view>
+            <view>
+                LIOU健身乐城店年卡
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                有效期
+            </view>
+            <view>
+                2018.03.29-2019.05.29
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                剩余天数
+            </view>
+            <view class='red'>
+                212天
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                会籍状态
+            </view>
+            <view class='normal'>
+                正常
+            </view>
+        </view>
+    </view>
+    <view class='detail_item_line'></view>
+    <view class='detail_top_warp'>
+        <view class='detail_item'>
+            <view>
+                购买时间
+            </view>
+            <view>
+                2018.03.29  13:59
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                购买门店
+            </view>
+            <view>
+                LIOU健身乐城店
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                凭证类型
+            </view>
+            <view>
+                转让接收
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                实付金额
+            </view>
+            <view class='red'>
+                ￥5200.00
+            </view>
+        </view>
+        <view class='detail_item'>
+            <view>
+                销售员
+            </view>
+            <view>
+                唐京京
+            </view>
+        </view>
+    </view>
+    <view class='detail_item_line'></view>
+    <view class='detail_top_warp'>
+        <view class='detail_item'>
+            <view>
+                备注
+            </view>
+        </view>
+    </view>
+      
+</view>
+  

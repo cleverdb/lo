@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "客户详情",
+  "usingComponents": {
+    "wux-tabs": "../../dist/wux/tabs/index",
+    "wux-tab": "../../dist/wux/tab/index",
+    "i-icon": "../../dist/iview/icon/index"
+  }
+}

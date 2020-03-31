@@ -1,4 +1,30 @@
 <view class="pr_container">
+  <view class="one_top_wrap {{showData ? 'all_data_wrap' : 'show_data_wrap'}}">
+      <view class='date-show'>
+          <view class="date-content">{{year}}年{{month}}月</view>
+          <view class='data-today'>
+              今
+          </view>
+      </view>
+      <view class="date-br">
+          <view class='header'>
+          <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
+          </view>
+          <view class='date-box'>
+          <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+              <view class='date-head'>
+              <view>{{item.dateNum}}</view>
+              </view>
+          </view>
+          </view>
+      </view>
+      <view class="date-show-footer" bindtap="showDataTap">
+          <view class="footer-view">
+              <image class="" src="{{ !showData ?'/images/icon/arrow-bottom.png':'/images/icon/arrow-top.png'}}" mode="aspectFit" />
+          </view>
+      </view>
+  </view>
+  <view class="pr_line"></view>  
   <view class="pr_items">
     <view wx:for="{{phoneRecordInfos}}" class="pr_item {{item.prStatus?'':'pr_color_invalid'}} {{index==phoneRecordInfos.length-1?'':'pr_item_bottom_line'}}">
       <view class="pr_item_c pr_item_1">
