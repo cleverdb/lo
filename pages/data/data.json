@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "数据",
+  "usingComponents": {
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-toast": "../../dist/wux/toast/index"
+  }
+}
