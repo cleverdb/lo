@@ -9,7 +9,20 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"uglifyFileName": true
+		"coverView": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.1",
@@ -217,6 +230,27 @@
 					"id": -1,
 					"name": "pages/curoseDetail/curoseDetail",
 					"pathName": "pages/curoseDetail/curoseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/baseMessage/baseMessage",
+					"pathName": "pages/baseMessage/baseMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/courseBookingDetail/courseBookingDetail",
+					"pathName": "pages/courseBookingDetail/courseBookingDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/couponAdd/couponAdd",
+					"pathName": "pages/couponAdd/couponAdd",
 					"scene": null
 				}
 			]

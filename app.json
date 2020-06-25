@@ -33,7 +33,8 @@
     "pages/fullMembership/fullMembership",
     "pages/membershipDetail/membershipDetail",
     "pages/baseMessage/baseMessage",
-    "pages/curoseDetail/curoseDetail"
+    "pages/curoseDetail/curoseDetail",
+    "pages/couponAdd/couponAdd"
   ],
   "permission": {
     "scope.userLocation": {

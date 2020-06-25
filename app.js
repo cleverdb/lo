@@ -52,7 +52,7 @@ App({
     })
   },
   globalData: {
-    app_id: 'wx687f20a8752f6364',//wx7564b8b90db5388b
+    app_id: 'wxb87a1e7204b637bc',//wx7564b8b90db5388b
     sessionKey:'',
     openId:'',
     hasLogin:false,
