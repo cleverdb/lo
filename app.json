@@ -57,13 +57,13 @@
       {
         "pagePath": "pages/schedule/schedule",
         "iconPath": "images/icon/schedule.png",
-        "selectedIconPath": "images/icon/schedule.png",
+        "selectedIconPath": "images/icon/schedule-ok.png",
         "text": "日程"
       },
       {
         "pagePath": "pages/work/work",
         "iconPath": "images/icon/work.png",
-        "selectedIconPath": "images/icon/work.png",
+        "selectedIconPath": "images/icon/work-ok.png",
         "text": "工作"
       },
       {

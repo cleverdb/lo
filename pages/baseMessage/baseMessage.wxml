@@ -2,7 +2,7 @@
 <view class='base_message_warp'>
     <view class='base_message_top'>
         <view class='base_message_img'>
-            <image class="" src="/images/test4.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+            <image class="" src="/images/test2.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
         </view>
         <view class='base_message_right'>
             <view class='base_message_col'>

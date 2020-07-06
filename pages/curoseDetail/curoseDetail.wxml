@@ -2,7 +2,7 @@
   <view class='curose_detail_top'>
     <view class='detail_top_warp'>
       <view class='curose_detail_img'>
-        <image class="" src="/images/test4.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="/images/test2.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
       <view class='curose_detail_bottom'>
         <view class='detail_top_item' style='margin-bottom:40rpx'>

@@ -1,7 +1,7 @@
 <view class='message_deatil_warp'>
     <view class='message_detail_top'>
         <view class='message_img_warp'>
-            <image class="message_detail_img" src="/images/test4.png" mode="aspectFill" lazy-load="false" />
+            <image class="message_detail_img" src="/images/test2.png" mode="aspectFill" lazy-load="false" />
             <view>
                 V 张珂洋
             </view>
