@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/work/work",
     "pages/courseBookingDetail/courseBookingDetail",
     "pages/subscribePrivateCourse/subscribePrivateCourse",
     "pages/newClientAdd/newClientAdd",
     "pages/phoneRecordAdd/phoneRecordAdd",
     "pages/phoneRecord/phoneRecord",
-    "pages/work/work",
     "pages/mine/mine",
     "pages/login/login",
     "pages/logs/logs",

@@ -1,0 +1,26 @@
+{
+  "name": "lo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"gulp --tasks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cleverdb/lo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cleverdb/lo/issues"
+  },
+  "homepage": "https://github.com/cleverdb/lo#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-less": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-rev": "^9.0.0"
+  }
+}
