@@ -3,12 +3,15 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class='container' wx:if='{{!pageState.state}}'>
   <view class="card-box" wx:if="{{cardList.length > 0}}" wx:for="{{cardList}}" wx:key="{{index}}" data-id="{{item.cardUuid}}">
-    <image src="{{host}}{{item.cardLogoUrl}}" mode='scaleToFill' wx:if="{{item.cardLogoUrl}}"></image>
-    <view class='card' wx:if="{{item.cardTypeId=='month_card'||item.cardTypeId=='year_card'|| item.cardTypeId=='week_card'||item.cardTypeId=='custom_card'}}">
+     <image src="{{host}}{{item.cardLogoUrl}}" mode='scaleToFill' ></image>
+     <view class='card'>
       <text>有效期至{{item.expireDate}}</text>
     </view>
-    <view class='card' wx:if="{{item.cardTypeId=='private_card'||item.cardTypeId=='special_card'|| item.cardTypeId=='try_card'}}">
+    <!-- <view class='card' wx:if="{{item.cardTypeId=='month_card'||item.cardTypeId=='year_card'|| item.cardTypeId=='week_card'||item.cardTypeId=='custom_card'}}">
+      <text>有效期至{{item.expireDate}}</text>
+    </view> -->
+    <!-- <view class='card' wx:if="{{item.cardTypeId=='private_card'||item.cardTypeId=='special_card'|| item.cardTypeId=='try_card'}}">
       <text>剩余{{item.remaining}}课时</text>
-    </view>
+    </view> -->
   </view>
 </view>

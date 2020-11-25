@@ -31,7 +31,7 @@
             <text class="container-bd-time {{timeDataSelected == index ? 'container-bd-select'  : ''}}" bindtap="timeClick" data-id="{{index}}">{{item.startTime}}-{{item.endTime}}</text>
         </block>
         <view class="container-view" wx:if="{{array_time.length==0}}">
-            暂没有可预约时间
+            暂时没有可预约时间
         </view>
     </view>
     <view class="footer_button">

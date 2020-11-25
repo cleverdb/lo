@@ -11,7 +11,8 @@ Page({
     storeAreaId: '',
     host: app.globalData.host,
     storeDetailList: [],
-    moreFlag:false
+    moreFlag:false,
+    pageState: { state: 'empty'}
   },
 
   /**
@@ -44,9 +45,15 @@ Page({
           const { data: storeDetailList } = data;
           const dat = storeDetailList.map((v) => {
             const { keywords } = v;
-            return {
-              ...v,
-              keywords: keywords.split('/')
+            if (keywords) {
+              return {
+                ...v,
+                keywords: keywords.split('/')
+              }
+            } else {
+              return {
+                ...v
+              }
             }
           });
           _this.setData({
@@ -143,10 +150,16 @@ Page({
         const dat = res.data.data
         const result = dat.map((v) => {
           const { keywords } = v;
-          return {
-            ...v,
-            keywords: keywords.split('/')
-          }
+          if(keywords){
+            return {
+              ...v,
+              keywords: keywords.split('/')
+            }
+          }else{
+            return {
+              ...v
+            }
+          }   
         });
         if (result.length == 0) {
           _this.setData({

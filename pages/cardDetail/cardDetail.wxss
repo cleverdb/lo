@@ -296,6 +296,7 @@ border-top-left-radius: 10rpx;
 }
 .sales_list{
   margin-top:30rpx;
+  overflow-y: scroll;
 }
 .sales_title{
   font-size: 27rpx;

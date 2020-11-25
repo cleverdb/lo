@@ -4,8 +4,13 @@
 <view class='container' wx:if='{{!pageState.state}}'>
   <view class='container-hd'>
     <view class='container-hd_hd'>
-      <view class='avatar'>
-        <image mode='scaleToFill' src="{{wUser.avatarUrl ? wUser.avatarUrl:'../../images/logo.png'}}"></image>
+      <view wx:if="{{wUser.avatarUrl}}"  class='avatar'>
+        <image mode='scaleToFill' src="{{wUser.avatarUrl}}"></image>     
+      </view>
+      <view wx:else  class='avatar-default'>
+        <button   open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onlyGetUserInfo"  class="circle">
+           <image mode='scaleToFill'  src="{{'../../images/icon/yellow-logo.png'}}"></image>
+        </button>
       </view>
     </view>
     <view class='container-hd_bd'>  
@@ -40,6 +45,9 @@
         <!-- <image mode='scaleToFill' src='../../images/icon/arrow-right.png'></image> -->
       </view>
     </navigator>
+  </view>
+  <view class='container-ft' bindtap="logout">
+        退出登录
   </view>
 </view>
 

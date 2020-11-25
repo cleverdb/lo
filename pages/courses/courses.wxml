@@ -9,7 +9,7 @@
                 <view class="footer_bar">
                     <text class="course_name">{{item.courseTypeName}}</text>
                     <view>
-                        <block wx:for="{{item.keywords}}" wx:for-item="itemName">
+                        <block wx:for="{{item.keywords}}" wx:key="index" wx:for-item="itemName">
                             <button class="tag" id="{{itemName}}">{{itemName}}</button>
                         </block>
                     </view>

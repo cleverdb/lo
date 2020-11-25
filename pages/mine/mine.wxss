@@ -2,6 +2,7 @@
 @import '../template/pageAlert/pageAlert.wxss';
 page {
   height: 100%;
+  background: #ffffff;
 }
 
 .container {
@@ -76,15 +77,29 @@ page {
 .avatar {
   margin: 0 auto;
   text-align: center;
+ }
+
+ .avatar image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius:50%;
+
 }
 
-.avatar image {
-  width: 200rpx;
-  height: 200rpx;
+.avatar-default image {
+  width: 150rpx;
+  height: 150rpx;
   border-radius:50%;
+  left: 0;
+  position: absolute;
+}
+.avatar-default button::after{
+  border: 1px solid #ffffff;
+
 }
 
 .info .text {
+  position: absolute;
   text-align: center;
   color: #ccc;
   font-size: 26rpx;
@@ -193,4 +208,17 @@ page {
   bottom: 48rpx;
   left:164rpx;
   font-size:32rpx;
+}
+.circle{
+  width: 150rpx;
+  height: 150rpx;
+  border: 0 solid #ffffff;
+  border-radius: 50%; 
+  font-size:0;
+}
+.container-ft{
+  text-align: center;
+  font-size: 30rpx;
+  color: #AEAEAF;
+  margin-top: 100rpx;  
 }

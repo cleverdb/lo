@@ -25,7 +25,7 @@ Page({
     circular: true,
     interval: 5000,
     duration: 1000,
-    storeId: '',
+    storeId: app.globalData.storeId,
     pageIndex: 0,
     pageSize: 5,
     storePhone: '',
@@ -55,7 +55,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('asdsadsadsa');
     this.initData()
     this.getSelectData();
     this.getCoach();

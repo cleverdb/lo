@@ -26,7 +26,7 @@
     </view>
     <view  class="fitness_coach_end">
         <view class="end_left">
-            <navigator class="" target="" url="/pages/privateCoursesBuy1/privateCoursesBuy1?coachId={{userId}}" hover-class="navigator-hover" open-type="navigate">
+            <navigator class="" target="" bindtap="gotoLearnCourse"  hover-class="navigator-hover" open-type="navigate">
                 体验课
             </navigator>
         </view>

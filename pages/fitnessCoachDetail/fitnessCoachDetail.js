@@ -33,7 +33,6 @@ Page({
       });
       return;
     }
-    this.getDataSelect();
     wx.showLoading({
       title: '加载中...',
     })
@@ -83,6 +82,7 @@ Page({
         wx.hideLoading()
       }
     })
+    this.getDataSelect(userId);
   },
 
   /**
@@ -96,6 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const _this = this;
     if (app.globalData.userInfo.userId) {
       this.setData({
         pageState: {}
@@ -154,17 +155,37 @@ Page({
       coachId: userId
     }
     app.globalData.coachSelectData = data;
-    // 跳转到正式课程
-    wx.navigateTo({
-      url: `/pages/courseDetail/courseDetail`,
-    })
-  },
-  getDataSelect:function(){
-    const _this = this;
     wx.request({
-      url: `${app.globalData.host}/rest/s1/Goods/course/classes`,
+      url: `${app.globalData.host}/rest/s1/Goods/course/private`,
       data:{
         storeId: app.globalData.storeId,
+        courseId:selectArray[value].courseId,
+        coachId:userId,
+      },
+      success:function(res){
+        if(Object.keys(res.data).length > 0){
+          wx.navigateTo({
+            url: `/pages/courseDetail/courseDetail`,
+          })
+        }else{
+          wx.showModal({
+            title: '温馨提示',
+            content: "非常抱歉，教练暂无相关课程",
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
+        }
+      }
+    })
+  },
+  getDataSelect:function(userId){
+    const _this = this;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/coachClasses`,
+      data:{
+        storeId: app.globalData.storeId,
+        coachId: userId,
       },
       success:function(res){
         console.log(res);
@@ -174,5 +195,31 @@ Page({
         })
       }
     })
+  },
+  gotoLearnCourse:function(){
+    const {userId } = this.data;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/course/private/experience`,
+      data: {
+        coachId:userId,
+        storeId:app.globalData.storeId,
+      },
+      success:function(res){
+        if(Object.keys(res.data).length > 0){
+          wx.navigateTo({
+            url: `/pages/privateCoursesBuy1/privateCoursesBuy1?coachId=`+userId,
+          })
+        }else{
+          wx.showModal({
+            title: '温馨提示',
+            content: "非常抱歉，教练暂无相关课程",
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
+        }
+      }
+    })
+    
   }
 })

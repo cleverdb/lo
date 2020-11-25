@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    level: [1, 2, 3, 4, 5],
     host: app.globalData.host,
     data: [],
     courseDetail: {},
@@ -14,7 +15,8 @@ Page({
     courseData: {},
     weekObj: Utils.weekObj,
     hours: new Date().getHours(),
-    startWeek: new Date().getDay()
+    startWeek: new Date().getDay(),
+    pageState:{}
   },
  
   /**
@@ -50,9 +52,6 @@ Page({
               dayNum: titleArray[0]
             }] 
           }, []);
-          console.log(_this.data.startWeek);
-          console.log(dayNum);
-          
           _this.setData({
             data: dayNum
           })
@@ -83,18 +82,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(!this.wUser){
+      this.setData({
+          wUser: app.globalData.wUserInfo
+      })
+    }
     if (app.globalData.userInfo.userId) {
       this.setData({
-        pageState: {}
-      })
+        pageState: {},
+        user: app.globalData.userInfo
+      });
     } else {
-      _this.setData({
+      this.setData({
         pageState: {
           message: '请先登陆/注册哟~',
           state: 'unlogin'
         }
       })
     }
+    
   },
 
   /**
@@ -138,12 +144,21 @@ Page({
     const { coursedata, disabled } = e.currentTarget.dataset;
     if (disabled) {
       wx.showToast({
-        title: '已过期,请选择其他课',
+        title: '课程已过期,其他时间',
         duration: 2000,
         icon: 'none'
       });
       return;
     }
+    if(coursedata.appointmentNumber == coursedata.maxNumber){
+      wx.showToast({
+        title: '已预约满,请选择其他时间',
+        duration: 2000,
+        icon: 'none'
+      });
+      return;
+    }
+    
     const { coursePlanId } = this.data;
     const { coursePlanId: courseplanid, courseId: courseid } = coursedata;
     const courseId = coursePlanId == courseplanid ? "" : courseid;
@@ -157,7 +172,6 @@ Page({
   },
   getDetail: function (param) {
     const _this = this;
-    console.log(param);
     if (param!=='') {
       wx.showLoading({
         title: '加载中...',
@@ -211,6 +225,15 @@ Page({
     const { coursePlanId, courseId } = courseData;
     const { unitPrice } = courseDetail;
     const { userId } = app.globalData.userInfo;
+    if (!userId) {
+      this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return;
+    }
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/appointment/group`,
       method: 'POST',
@@ -267,5 +290,14 @@ Page({
 
       }
     })
-  }
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
 })

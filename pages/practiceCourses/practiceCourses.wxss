@@ -44,13 +44,17 @@
     flex:1;
     display: flex;
 }
-.typename{
+.act_hd{
     font-size:28rpx;
+    display: flex;
+}
+.typename{
     margin-right: 20rpx;
 }
 .typename_bottom{
-    font-size:24rpx;
+    font-size:20rpx;
     color: #727171;
+    margin-right: 12rpx;
 }
 .container .content_container_item .item_details{
     display: flex;
@@ -204,6 +208,21 @@
 .footer_handle view image{
     width: 68rpx;
     height: 58rpx;
+}
+
+.lightning-panel{
+    display: flex;
+    align-items: flex-end;
+  }
+.lightning{
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: -12rpx;
+}
+.lightning image{
+    width: 100%;
+    height: 100%;
+    display:flex!important;
 }
 
 

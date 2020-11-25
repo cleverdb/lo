@@ -18,8 +18,9 @@
                     <view class="_table_head">
                         <text>{{item.title}}</text>
                     </view>
+                     <view class="body_col" >
                     <block wx:for="{{item.data}}" wx:key="index" wx:if="{{item.data}}" wx:for-item="item1">
-                        <view class="body_col" >
+                       
                             <block wx:for="{{item1}}" wx:key="index" wx:for-item="item2">
                                 <view 
                                     class="tr_col {{item2.coursePlanId == coursePlanId ? 'tr_col_background' : '' }}"
@@ -27,20 +28,21 @@
                                     data-courseData="{{item2}}"
                                     data-disabled="{{(weekObj[item.dayNum] < startWeek)||((weekObj[item.dayNum] == startWeek)&&((fn.split(item2.startTime))<hours))}}"
                                 >
-                                    <view>
-                                        <text>{{item2.startTime}}-{{item2.endTime}}</text>
-                                    </view>
+                                    
+                                    <text>{{item2.startTime}}-{{item2.endTime}}</text>
                                     <view class='col_name'>{{item2.courseName}}</view>
                                     <view class='col_name'>{{item2.coachName}}</view>
+                                    <text>({{item2.appointmentNumber}}/{{item2.maxNumber}})</text>
                                 </view>
                             </block>
-                        </view>
+                       
                     </block>
+                     </view>
                 </view>
             </block>
         </view>
     </scroll-view>
-    <view wx:if="{{isDetail}}">
+    <view wx:if="{{isDetail}}" class="footer">
         <view class="space"></view>
         <view class="_card" >
         <view class="_card_head">
@@ -48,10 +50,15 @@
                 <text>{{courseDetail.courseName}}</text>
             </view>
             <view class="_card_head_subheading">
-               <text wx:if="{{courseDetail.unitPrice}}" class='subheading_text'>￥{{courseDetail.unitPrice}}</text>
-               <text wx:else class='subheading_text'>免费</text>
-               <text>燃烧指数:</text>
-               <text>{{courseDetail.bmiLevel}}/5</text>
+               <view class='lightning-panel'>
+                    <text wx:if="{{courseDetail.unitPrice}}" class='subheading_text'>￥{{courseDetail.unitPrice}}</text>
+                    <text wx:else class='subheading_text'>免费</text>
+                    <view class='typename_bottom'>燃脂指数</view>
+                    <view class='lightning' wx:for="{{level}}">
+                        <image mode="aspectFit" wx:if="{{(courseDetail.bmiLevel - item >=0)}}" src="/images/icon/lightning_full.png" />
+                        <image mode="aspectFit" wx:else src="/images/icon/lightning_empty.png" />
+                    </view>
+                </view>
             </view>
         </view>
         <view class="_card_head_details">
@@ -60,12 +67,13 @@
         </view>
         <view class="space"></view>
         <view class="person_details">
-            <image class="_person_details_img" src="{{host}}{{courseDetail.coachPic}}" />
+         <image wx:if="{{courseDetail.coachName}}" class="_person_details_img" src="{{host}}{{courseDetail.coachPic}}" />
+             <image wx:if="{{!courseDetail.coachName}}" class="_person_details_img_big" src="{{host}}{{courseDetail.coachPic}}" />
             <view>
                 <view class="_personDetail_name">
                     <text>{{courseDetail.coachName}}</text>
                 </view>
-                <view class="_personDetail_goods">
+                <view class="_personDetail_goods" wx:if="{{courseDetail.coachForte}}">
                     <text>擅长:{{courseDetail.coachForte}}</text>
                 </view>
                 <view class="_personDetail_detail">

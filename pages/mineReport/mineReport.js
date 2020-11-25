@@ -53,7 +53,8 @@ Page({
     ranking: '',
     howlong: '',
     calorie: '',
-    level: '-'
+    level: '-',
+    noAuth:false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -343,23 +344,37 @@ Page({
     const data = index === 2 ? `${new Date().getFullYear()}-${new Date().getMonth() + 1}` : Utils.nowDate();
     this.getDataDay({ reportDate: data}, typeObj[index]);
   },
-  shareTap: function () {
+  shareTap: function (res) {
+    if(!res.detail.userInfo){
+      wx.showToast({
+        title: '请先授权获取头像信息',
+        duration: 2000,
+        icon: 'none'
+      })
+      return;
+    }
+    debugger
+    app.globalData.wUserInfo = res.detail.userInfo
     const _this = this;
     wx.showLoading({
       title: '图片生成中...',
     })
+
     const promise1 = new Promise((resove, reject) => {
-      wx.downloadFile({
-        url: app.globalData.wUserInfo.avatarUrl,
-        success: function (res) {
-          //背景图
-          _this.setData({
-            bgImgPath: res.tempFilePath
-          })
-          resove();
-        }
-      })
+      if(app.globalData.wUserInfo.avatarUrl){
+        wx.downloadFile({
+          url: app.globalData.wUserInfo.avatarUrl,
+          success: function (res) {
+            //背景图
+            _this.setData({
+              bgImgPath: res.tempFilePath
+            })
+            resove();
+          }
+        })
+      }
     });
+  
     const promise2 = new Promise((resove, reject) => {
       const { qrCode } = _this.data;
       wx.downloadFile({
@@ -503,8 +518,8 @@ Page({
     const _this = this;
     const { canWidth, canHeight } = this.data;
     wx.canvasToTempFilePath({
-      width: canWidth /2,
-      height: canHeight /2,
+      width: canWidth,
+      height: canHeight,
       destWidth:canWidth,
       destHeight: canHeight,
       fileType: 'jpg',
@@ -520,8 +535,13 @@ Page({
             if (!res.authSetting['scope.writePhotosAlbum']) {
               wx.authorize({
                 scope: 'scope.writePhotosAlbum',
-                success() {
+                success () {
                   _this.downLoadImg();
+                },
+                fail() {
+                  _this.setData({
+                    noAuth:true
+                  })
                 }
               })
             } else {
@@ -547,7 +567,8 @@ Page({
           duration: 2000
         });
         _this.setData({
-          isShow:false
+          isShow:false,
+          noAuth:false
         })
       },
       fail: function (err) {
@@ -610,7 +631,7 @@ Page({
       ctx.setFontSize(40); // 字体大小 注意不要加引号
       ctx.fillText(score, w, h - 20); // 文字内容和文字坐标
       ctx.setFontSize(14); // 字体大小 注意不要加引号
-      ctx.fillText(`运动等级:${level==='-'?'B':level}`, w, h + 25); // 文字内容和文字坐标
+      ctx.fillText(`运动等级:${!level || level==='-'?'B':level}`, w, h + 25); // 文字内容和文字坐标
       ctx.draw();
     }).exec();
   },
@@ -629,5 +650,24 @@ Page({
       }, 50);
     }
     _this.getReport({ score: param, process: param, level });
+  },
+  getSetting:function(event){
+    let self = this
+    self.isShowToast = false
+    if (!event.detail.authSetting['scope.writePhotosAlbum']) {
+        wx.showModal({
+            title: '温馨提示',
+            content: '无法保存，请授权允许访问相册',
+            showCancel: false
+        })
+    } else {
+        wx.showToast({
+            icon: 'success',
+            title: `授权成功`,
+            success(res) {
+                self.downLoadImg();
+            }
+        })
+    }
   }
 })

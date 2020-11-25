@@ -37,7 +37,7 @@ Page({
         pageState: {}
       })
     } else {
-      _this.setData({
+      this.setData({
         pageState: {
           message: '请先登陆/注册哟~',
           state: 'unlogin'
@@ -137,6 +137,16 @@ Page({
   },
   // 点击 支付按钮
   tapnPay: function () {
+    var  _this = this;
+    if (!app.globalData.userInfo.userId) {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return;
+    } 
     const {
       radioChecked,
       unitPrice,
@@ -301,6 +311,15 @@ Page({
           }
         })
       }
+    })
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
 })

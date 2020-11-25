@@ -246,13 +246,22 @@ Page({
   },
   radioTap: function(e){
     const { radioChecked } = this.data;
-    console.log('家具啊啊', radioChecked);
     this.setData({
       radioChecked: !radioChecked
     })
   },
   // 点击 支付按钮
   tapnPay: function () {
+    var  _this = this;
+    if (!app.globalData.userInfo.userId) {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return;
+    } 
     const { 
       radioChecked,
       num, 
@@ -415,6 +424,15 @@ Page({
           }
         })
       }
+    })
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
 

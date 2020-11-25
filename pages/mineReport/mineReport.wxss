@@ -276,3 +276,29 @@ image {
     width: 68rpx;
     height: 58rpx;
 }
+.share-btn button {
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  position: static;
+  background-color: #3F3B3A;
+}
+.footer_handle_div button {
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  position: static;
+  background-color: #FFFFFF;
+}
+.share-btn button image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.footer_handle_div,.share-btn button:after {
+  content: none;
+}
+
+.footer_handle_div,.share-btn button::after {
+  border: none;
+}

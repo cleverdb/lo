@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData();
+  
   },
 
   /**
@@ -28,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initData({'storeId':app.globalData.storeId});
   },
 
   /**
@@ -85,6 +85,9 @@ Page({
           })
         } else {
           _this.setData({
+            pageState: {}
+          })
+          _this.setData({
             'cardList': res.data.data,
             disabledBg: true
           })
@@ -116,7 +119,8 @@ Page({
     wx.navigateTo({
       url: urlMap[data.type] + "?cardId=" + cardId
     });
-
-
   },
+  reloadTap:function(){
+    this.initData({'storeId':app.globalData.storeId});
+  }
 })

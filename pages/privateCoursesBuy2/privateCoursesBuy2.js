@@ -58,7 +58,7 @@ Page({
         pageState: {}
       })
     } else {
-      _this.setData({
+      this.setData({
         pageState: {
           message: '请先登陆/注册哟~',
           state: 'unlogin'
@@ -160,8 +160,8 @@ Page({
       total,
       oldTotal: total,
       selectTicket:{},
-      ticketDesc:'暂无优惠券'
     })
+    this.getVoucher(total);
     // this.setData({
     //   teacherSel: !this.data.teacherSel
     // })
@@ -223,7 +223,7 @@ Page({
             const { forte = '' } = current;
             return [...nex, {
               ...current,
-              tags: forte ? forte.split('、'):[]
+              tags: forte? forte.split('、').slice(0,2):[]
               }]
           }, []);
           _this.setData({
@@ -287,7 +287,7 @@ Page({
     const selectTicketData = voucheruuid == selectTicket.voucherUuid ? {} : data;
     this.setData({
       selectTicket: selectTicketData,
-      total: Object.keys(selectTicketData).length == 0 ? oldTotal : (oldTotal - parvalue)
+      total: Object.keys(selectTicketData).length == 0 ? oldTotal : (oldTotal - parvalue).toFixed(2)
     });
 
   },
@@ -392,9 +392,9 @@ Page({
             return
           }
           const result = res.data.data
-          const { orderid } = result;
+          const { orderId } = result;
           _this.setData({
-            orderid
+            orderId
           })
           wx.requestPayment({
             timeStamp: result.timeStamp,
@@ -412,7 +412,7 @@ Page({
                 success(res) {
                   if (res.confirm) {
                     wx.navigateTo({
-                      url: `/pages/reserveTime/reserveTime?courseId=${courseId}&coachName=${coachName}&courseName=${courseName}&orderid=${orderid}`
+                      url: `/pages/reserveTime/reserveTime?courseId=${courseId}&coachName=${coachName}&courseName=${courseName}&orderId=${orderId}`
                     })
                   }
                 }
@@ -424,5 +424,14 @@ Page({
       })
     }
 
+  },
+   loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
 })

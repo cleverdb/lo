@@ -18,8 +18,10 @@
         <view wx:if='{{choose==2}}'>
            {{year}}-{{month}}
         </view>
-        <view bindtap="shareTap">
-          <image src="/images/icon/share.png" />
+        <view class="share-btn" >
+         <button open-type="getUserInfo" bindgetuserinfo="shareTap">
+           <image src="/images/icon/share.png" />
+         </button>
         </view>
     </view>
     <view class='nav-center'>
@@ -92,9 +94,13 @@
         <image src="/images/close.png"></image>
     </view>
     <view class="footer_handle">
-        <view class='footer_handle_div' catchtap='loadImg'>
+        <view class='footer_handle_div' catchtap='loadImg' wx:if="{{!noAuth}}">
             <image src="/images/save.png"></image>
             <text>保存并分享到朋友圈</text>
         </view>
+      
+            <button type="primary" open-type="openSetting" wx:if="{{noAuth}}"
+                bindopensetting='getSetting'>授权访问相册</button>
+    
     </view>
 </view>

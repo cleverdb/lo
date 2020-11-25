@@ -23,14 +23,14 @@ Page({
     timeDataSelected: -1,
     coachName: '',
     courseName:'',
-    orderid:''
+    orderId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { courseId, coachName, courseName, orderid=undefined,id=undefined } = options;
+    const { courseId, coachName, courseName, orderId=undefined,id=undefined } = options;
     let now = new Date();
     let year = now.getFullYear();
     let month = now.getMonth() + 1;
@@ -44,13 +44,13 @@ Page({
       coachName,
       courseName,
       courseId,
-      orderid,
+      orderId,
       id
     });
     this.initData({
       courseId,
       storeId: app.globalData.storeId,
-      data: nowDay
+      date: nowDay
     })
   },
 
@@ -128,7 +128,7 @@ Page({
     this.initData({
       courseId,
       storeId: app.globalData.storeId,
-      data: selectDate
+      date: selectDate
     })
   },
 
@@ -246,14 +246,14 @@ Page({
       timeDataSelected,
       array_time,
       selectedDay,
-      orderid,
+      orderId,
       id
     } = this.data;
     const { startTime, endTime, coursePlanId } = array_time[timeDataSelected];
     let startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
     console.log(startWeek);
     const { userId } = app.globalData.userInfo;
-    const data = orderid != undefined ? { orderid } : { id };
+    const data = orderId != undefined ? { orderId } : { id };
     wx.showModal({
       title: '请确认预约信息',
       content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}-${coachName}\r\n在“我的-我的课程”中查看`,
@@ -262,6 +262,7 @@ Page({
         if (res.confirm) {
           wx.request({
             url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
+            method:'POST',
             data: {
               userId,
               appiontmentType: 'course_appointment',

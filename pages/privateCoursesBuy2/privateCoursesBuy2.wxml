@@ -28,7 +28,7 @@
             <view class="teacherslist_item"  bindtap="onItemSelTeacher" data-coachName="{{item.coachName}}">
                 <image wx:if="{{item.besel}}" class="besel_icon" src="../../images/icon/ensure_three.png" alt="" />
                 <view class='course_img {{item.iconUrl? "":"course_no_img"}}'>
-                    <image  src="{{host}}{{item.iconUrl}}" wx:if="{{item.iconUrl}}" mode='aspectFit'></image>
+                    <image  src="{{host}}{{item.iconUrl}}" wx:if="{{item.iconUrl}}" mode='widthFix'></image>
                     <text wx:else>暂无图片</text>
                 </view>
                 <view class="footer_bar">

@@ -68,7 +68,7 @@ Page({
       pageIndex: ++pageIndex
     });
     const param = {
-      pageIndex: ++pageIndex,
+      pageIndex: pageIndex,
       pageSize,
     }
     this.loadMoreData(param);
@@ -106,7 +106,7 @@ Page({
             const { forte } = v;
             return {
               ...v,
-              forte: forte.split('、')
+              forte: forte?forte.split('、').slice(0,2):[]
             }
           });
           _this.setData({
@@ -140,7 +140,7 @@ Page({
           const { forte } = v;
           return {
             ...v,
-            forte: forte.split('、')
+            forte: forte? forte.split('、').slice(0,2):[]
           }
         });
         if (result.length == 0) {

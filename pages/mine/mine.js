@@ -61,13 +61,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (e) {
+    if(!this.wUser){
+      this.setData({
+          wUser: app.globalData.wUserInfo
+      })
+    }
     if (app.globalData.userInfo.userId) {
       this.setData({
         pageState: {},
         user: app.globalData.userInfo
       });
     } else {
-      _this.setData({
+      this.setData({
         pageState: {
           message: '请先登陆/注册哟~',
           state: 'unlogin'
@@ -146,18 +151,20 @@ Page({
   },
   getVip: function () {
     const _this = this;
-    wx.request({
-      url: `${app.globalData.host}/rest/s1/Goods/mine/privatevip`,
-      data: {
-        userId: app.globalData.userInfo.userId
-      },
-      success: function(res) {
-        const { flag = false } = res.data.data;
-        _this.setData({
-            isShow:flag
-        })
-      }
-    })
+    if (app.globalData.userInfo.userId){
+      wx.request({
+        url: `${app.globalData.host}/rest/s1/Goods/mine/privatevip`,
+        data: {
+          userId: app.globalData.userInfo.userId
+        },
+        success: function (res) {
+          const { flag = false } = res.data.data;
+          _this.setData({
+            isShow: flag
+          })
+        }
+      })
+    }
   },
   setVipTap: function () {
     const _this = this;
@@ -184,5 +191,52 @@ Page({
     this.setData({
       isShow:false
     })
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
+  onlyGetUserInfo:function(res){
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+      this.setData({
+        wUser:userInfo
+      })
+    }
+  },
+  logout:function(){
+    wx.showModal({
+      title: '提示',
+      content: '确认要残忍的离开～～',
+      showCancel: true,
+      confirmColor: '#FCC800',
+      success(res) {
+        if(res.confirm){
+          wx.request({
+            url: `${app.globalData.host}/rest/s1/Goods/mine/logout`,
+            method:'POST',
+            data: {
+              userId: app.globalData.userInfo.userId,
+              openId:app.globalData.openId
+            },
+            success: function (res) { 
+              app.globalData.userInfo = {}
+              app.globalData.wUserInfo = {}
+              app.globalData.hasLogin = false
+              wx.switchTab({
+                url: '/pages/home/home',
+              })
+            }
+          })
+        }
+        
+      }
+    }) 
   }
 })

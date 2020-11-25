@@ -182,7 +182,7 @@ page {
 }
 
 .td .cancel {
-  width: 150rpx;
+  width: 170rpx;
   height: 80rpx;
   line-height: 80rpx;
   text-align: center;

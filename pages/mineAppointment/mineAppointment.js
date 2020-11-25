@@ -50,9 +50,7 @@ Page({
       isToday: nowDay
     })
     this.initData({
-      userId: app.globalData.userInfo.userId,
-      startDate: nowDay,
-      endDate: Utils.plusDate(nowDay, 1)
+      userId: app.globalData.userInfo.userId
     })
   },
 

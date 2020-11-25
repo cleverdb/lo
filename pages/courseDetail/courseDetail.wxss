@@ -1,7 +1,7 @@
 /* pages/privateCoursesBuy2/privateCoursesBuy2.wxss *//* pages/privateCoursesBuy/privateCoursesBuy.wxss */
 @import '../template/pageAlert/pageAlert.wxss';
 page {
-  min-height: 100%;
+  height: 100%;
 }
 .try_course_container{
     /* height: 100vh; */

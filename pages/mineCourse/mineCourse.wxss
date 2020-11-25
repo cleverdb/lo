@@ -2,6 +2,7 @@
 @import '../template/pageAlert/pageAlert.wxss';
 page{
     background: #ffffff;
+    height: 100%;
 }
 .container{
     height: 100%;
@@ -70,8 +71,8 @@ page{
   -webkit-transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
   transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
   position: absolute;
-  top: 25rpx;
-  margin-top: -8rpx;
+  top: 26rpx;
+  margin-top: -12rpx;
   right: 4rpx;
 }
 .list-button{
@@ -84,6 +85,11 @@ page{
     justify-content: center;
 }
 .container_no_data_wrap{
-    height: 400rpx;
-    line-height: 400rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #a0a0a0;
+    font-size: 28rpx;
+    margin: auto;
+    text-align: center;
 }

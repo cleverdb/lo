@@ -4,7 +4,7 @@
 <view class="container_q" wx:if='{{!pageState.state}}'>
   <view class="container-hd">
     <swiper indicator-dots="{{indicatorDots}}" circular='{{circular}}' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{banner}}" wx:key="*this">
+      <block wx:for="{{banner}}" wx:key="index">
         <swiper-item>
           <image src="{{host}}{{item.picUrl}}" data-item='{{item}}' class="slide-image" mode="scaleToFill" bindtap='bannerTap' />
         </swiper-item>
@@ -37,7 +37,7 @@
       <image class="" src="/images/icon/phone.png" mode="aspectFit" lazy-load="false" />
     </view>
   </view>
-  <view class="store_introduction" wx:if="{{sliberBanner.length > 0}}">
+  <view class="store_introduction height360" wx:if="{{sliberBanner.length > 0}}">
       <view>
         <view class="store_introduction_title">
            <text>店内环境</text>
@@ -70,7 +70,7 @@
   <view class="store_introduction no_data_introduction" wx:else>
       暂无数据
   </view>
-  <view class="store_introduction" wx:if="{{coachList.length > 0}}">
+  <view class="store_introduction height420" wx:if="{{coachList.length > 0}}">
       <view>
         <view class="store_introduction_title">
            <text>私人教练</text>

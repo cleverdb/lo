@@ -85,6 +85,15 @@ Page({
             }
           })
         } else {
+          if (res.data.data.length === 0){
+            _this.setData({
+              pageState: {
+                state: 'empty',
+                message: '非常抱歉，暂无私教课程~',
+              }
+            })
+            return;
+          }
           _this.setData({
             courseList: [_this.data.courseList, ...res.data.data],
             disabledBg: true

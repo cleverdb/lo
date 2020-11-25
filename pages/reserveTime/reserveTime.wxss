@@ -160,9 +160,12 @@ page {
     color: #3F3B3A;
 }
 .container-view{
+  margin-top: 100rpx;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 28rpx;
+  color: #a0a0a0;
 }

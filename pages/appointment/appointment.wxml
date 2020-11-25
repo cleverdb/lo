@@ -2,7 +2,7 @@
 <template is="PageAlert" data="{{...pageState}}" />
 <view class="appoint_wrap" wx:if='{{!pageState.state}}'>
    <view class="appoint_tab">
-     <block wx:for="{{tabArray}}">
+     <block wx:for="{{tabArray}}" wx:key='index'>
         <view class="{{tabsIndex==index ? 'active' : ''}}" bindtap="tapChange" data-id='{{index}}'>
           {{item.title}}
         </view>
@@ -32,7 +32,7 @@
                         <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
                       </view>
                       <view class='date-box'>
-                        <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                        <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' data-index='0' bindtap='dateTap'>
                           <view class='date-head'>
                             <view>{{item.dateNum}}</view>
                           </view>
@@ -45,7 +45,7 @@
                       </view>
                     </view>
                   </view>
-                  <block wx:for="{{courseList}}" >
+                  <block wx:for="{{courseList}}" wx:key='index'>
                     <view class="class_list" >
                       <view class="class_list_left">
                         <image src="{{host}}{{item.iconUrl}}" mode="aspectFill" wx:if="{{item.iconUrl}}"/>
@@ -57,14 +57,16 @@
                               <text class="class_title">{{item.courseName}}</text>
                               <view class="class_teacher">
                                 <text>{{item.coachName}}</text>
-                                <text>擅长:{{item.coachForte}}</text>
+                                <block wx:if="{{item.coachForte}}">
+                                 <text class="{{item.coachForte.length > 10 ?'small':''}}">擅长:{{item.coachForte}}</text>
+                                </block>
+                               
                               </view>
                             </view>
                             <view>
                                 <button 
                                   class="top_button" 
                                   bindtap="reserveTap" 
-                                  disabled="{{item.remaining==0}}"
                                   data-activeItem="{{item}}"
                                 >
                                   预 约
@@ -100,7 +102,7 @@
                          <view wx:for='{{date}}' wx:key='index'>{{item}}</view>
                        </view>
                        <view class='date-box'>
-                         <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index' data-date='{{item.isToday}}' bindtap='dateTap'>
+                         <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}} {{selectedDay == item.isToday ? "selectedDay" : ""}}' wx:key='index'  data-index='1' data-date='{{item.isToday}}' bindtap='dateTap'>
                            <view class='date-head'>
                              <view>{{item.dateNum}}</view>
                            </view>
@@ -113,16 +115,16 @@
                        </view>
                      </view>
                    </view>
-                   <block wx:for="{{groupArr}}" >
+                   <block wx:for="{{groupArr}}" wx:key='index'>
                       <view class="class_list_wrap" wx:if="{{item.plans.length > 0}}">
                         <view class="class_name">
                           {{item.courseAreaName}}
                         </view>
-                        <block wx:for="{{item.plans}}" wx:for-item="itemGroup" wx:for-index="idx">
+                        <block wx:for="{{item.plans}}" wx:for-item="itemGroup" wx:for-index="index">
                           <view class="class_list_content">
+                          <view class="item_course_name">{{itemGroup.courseName}} <text>({{itemGroup.appointmentNumber}}/{{itemGroup.maxNumber}})</text></view>
                             <view class="class_list_item">
                                 <view class="list_item_left">
-                                  <view>{{itemGroup.courseName}}</view>
                                   <view class='item_left_name'>{{itemGroup.coachName}}</view>
                                   <view wx:if="{{itemGroup.unitPrice!=0}}" class="item_left_bottom">￥{{itemGroup.unitPrice}}</view>
                                   <view wx:else class='item_left_bottom'>免费</view>
@@ -131,16 +133,16 @@
                                   <view class="list_item_time">{{itemGroup.startTime}}-{{itemGroup.endTime}}</view>
                                 </view>
                                 <view>
-                                  <button class="top_button" bindtap="classTap" data-plans="{{itemGroup}}"  >预 约</button>
+                                  <button wx:if="{{itemGroup.maxNumber > itemGroup.appointmentNumber}}" class="top_button" bindtap="classTap" data-plans="{{itemGroup}}"  >预 约</button>
+                                  <button wx:else type="default"  class='top_button'  disabled="true" >预 约</button>
                                 </view>
                             </view>
-                            <view class="list_item_line" wx:if="{{!(item.plans.length==1)&&!(idx==(item.plans.length-1))}}"></view>
                           </view>
                         </block>
                       </view>
                    </block>
                     <view wx:if="{{isShow}}" class="time_no_wrap">
-                      暂无预约课
+                      暂时无课程安排
                     </view>
                 </scroll-view>
           </swiper-item>
@@ -156,6 +158,9 @@
                     </view>
                     <view class="main_container">
                         <view wx:if="{{besel=='1'}}">
+                        <view wx:if="{{!runningList ||runningList.length == 0}}" class="time_no_wrap">
+                              暂时无活动安排，敬请期待
+                            </view>
                             <block wx:for="{{runningList}}" wx:key="index">
                                 <view class="list_item_container">
                                     <image bindtap="ondetail" data-courseId="{{item.courseId}}" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />

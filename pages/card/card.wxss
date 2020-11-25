@@ -15,6 +15,7 @@ page{
    height: 283rpx;
    position:relative;
    margin-bottom:20rpx;
+   background-color: #e8e8e8;
 }
 
 .detail-box{

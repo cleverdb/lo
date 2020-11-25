@@ -1,5 +1,9 @@
 /* pages/publicCourses/publicCourses.wxss */
 @import '../template/pageAlert/pageAlert.wxss';
+page{
+  height: 100%;
+  background-color: #ffffff;
+}
 .container{
     min-height: 100vh;
     background-color: #ffffff;
@@ -121,3 +125,12 @@ margin-bottom: 20rpx;
   font-size: 20rpx;
   color: #D3D3D4;
 }
+.time_no_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #a0a0a0;
+    font-size: 28rpx;
+    margin-top:200rpx; 
+    text-align: center;
+  }

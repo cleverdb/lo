@@ -57,7 +57,7 @@ Page({
         pageState: {}
       })
     } else {
-      _this.setData({
+      this.setData({
         pageState: {
           message: '请先登陆/注册哟~',
           state: 'unlogin'
@@ -261,6 +261,15 @@ Page({
   },
   // 报名
   payTap:function(e){
+    if(!app.globalData.userInfo.userId){
+      this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return;
+    }
     const { item } = e.currentTarget.dataset;
     const { courseId, unitPrice=0,} = item;
     const { userId } = app.globalData.userInfo;
@@ -324,5 +333,14 @@ Page({
 
       }
     })
-  }
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
 })

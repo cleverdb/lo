@@ -177,15 +177,24 @@ swiper  image{
   width: 14px;
 }
 .store_introduction{
+  height: 360rpx;
   margin-top: 20rpx;
   background: #ffffff;
-  padding-bottom: 23rpx;
+  padding-bottom: 20rpx;
 }
+.height360{
+  height: 360rpx!important;
+}
+.height420{
+  height: 420rpx!important;
+} 
 .no_data_introduction{
-  height: 300rpx;
+  height: 360rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #a0a0a0;
+  font-size: 28rpx;
 }
 .store_introduction_title{
   padding: 30rpx;
@@ -214,6 +223,7 @@ swiper  image{
   border-radius:10rpx;
   margin-bottom: 10rpx;
   overflow: hidden;
+  height: 207rpx;
 }
 .scroll-view-item_H image{
   width:100%;
@@ -248,6 +258,7 @@ swiper  image{
 }
 .scroll-view-item_H.coach_W{
   width: 200rpx;
+  height: 318rpx;
 }
 .navigator-hover {
 background-color: rgba(0, 0, 0, 0);

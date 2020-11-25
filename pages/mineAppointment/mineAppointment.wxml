@@ -38,11 +38,12 @@
             </view>
             <view>
               <text class='badge'>{{item.coachName}}</text>
+              <text class='badge'>{{item.date}}</text>
               <text class='badge'>{{item.startTime}}-{{item.endTime}}</text>
             </view>
           </view>
           <view class='td'>
-            <button type="default" bindtap='cancelTap' class='cancel' data-item="{{item}}" disabled="{{item.appointmentStatus != 'appointment_start'}}" >{{item.appointmentStatusName}}</button>
+            <button type="default" bindtap='cancelTap' class='cancel' data-item="{{item}}" disabled="{{item.appointmentStatus != 'appointment_start'}}" >{{item.op_statusName||item.appointmentStatusName}}</button>
           </view>
         </view>
       </block>
@@ -55,7 +56,7 @@
   <view class="alert" hidden='{{hideAlert}}'>
     <view class='alert-hd'>
       <view>
-        请确认取消预约信息
+        {{selectItem.op_statusName == '取消'? ' 取消预约':'确认消费'}}
       </view>
     </view>
     <view class='alert-bd'>

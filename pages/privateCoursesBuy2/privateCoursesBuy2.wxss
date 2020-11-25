@@ -188,7 +188,7 @@ width: 22rpx;
   color: #A7A7A8;
   display: inline-block;
   margin: 0;
-  font-size: 20rpx;
+  font-size: 18rpx;
   margin-left: 10rpx;
 }
 .course_name{

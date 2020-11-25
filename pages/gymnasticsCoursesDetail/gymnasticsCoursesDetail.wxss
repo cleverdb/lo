@@ -1,10 +1,13 @@
 /* pages/gymnasticsCoursesDetail/gymnasticsCoursesDetail.wxss */
 @import '../template/pageAlert/pageAlert.wxss';
+page{
+  height: 100%;
+  background-color: #ffffff;
+}
 .container{
     background-color: #ffffff;
     min-height: 100vh;
     position: relative;
-    padding-bottom: 53rpx;
 }
 .left{
     padding: 20rpx;
@@ -75,7 +78,7 @@
 .container .body_col{
     overflow-y: auto;
     border-bottom:1rpx solid  #E4E5E5;
-    height: 160rpx;
+    height: 450rpx;
 }
 .col_name{
     font-size: 20rpx;
@@ -86,11 +89,14 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    height: 160rpx;
+    height: 120rpx;
     flex-direction: column;
+    margin: 5rpx;
+    background: #ffff7f;
+
 }
 .tr_col_background{
-    background:  #FCC700;
+    background:  #FCC700 !important;
 }
 .tr_col_border{
     border-bottom:1rpx solid  #E4E5E5;
@@ -180,9 +186,12 @@
 }
 
 .person_details ._person_details_img{
-    flex:1 0 auto ;
     width: 185rpx;
     height: 205rpx;
+    margin-right:22rpx;
+    border-radius:10rpx;
+}
+.person_details ._person_details_img_big{
     margin-right:22rpx;
     border-radius:10rpx;
 }
@@ -224,5 +233,26 @@
     height: 71rpx;
     position: absolute;
     right:10rpx;
-    top:30%;
+    top:250rpx;
+}
+.footer{
+    width: 100%;
+    margin-bottom: 107rpx;
+}
+.typename_bottom{
+    margin-right: 12rpx;
+}
+.lightning-panel{
+    display: flex;
+    align-items: flex-end;
+  }
+.lightning{
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: -12rpx;
+}
+.lightning image{
+    width: 100%;
+    height: 100%;
+    display:flex!important;
 }

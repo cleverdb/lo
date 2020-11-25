@@ -27,6 +27,6 @@
         </block>
     </scroll-view>
     <view  class='container_no_data_wrap' wx:else>
-        暂无课程
+        暂无课程~
     </view>
 </view>

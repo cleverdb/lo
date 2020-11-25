@@ -13,6 +13,9 @@
             </view>
             <view class="main_container">
                 <view wx:if="{{besel=='1'}}">
+                    <view wx:if="{{!runningList ||runningList.length == 0}}" class="time_no_wrap">
+                              暂时无活动安排，敬请期待
+                    </view>
                     <block wx:for="{{runningList}}" wx:key="index">
                         <view class="list_item_container">
                             <image bindtap="ondetail" data-courseId="{{item.courseId}}" class="imgs_item" src="{{host}}{{item.navPicUrl}}" />

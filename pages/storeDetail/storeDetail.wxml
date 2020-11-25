@@ -1,6 +1,8 @@
 <!--pages/storeDetail/storeDetail.wxml-->
-<view class="store_detail_wrap" hover-class="none" hover-stop-propagation="false">
-    <block wx:for="{{storeDetailList}}"  wx:key="*this">
+<import src="../template/pageAlert/pageAlert.wxml" />
+<template is="PageAlert" data="{{...pageState}}" />
+<view class="store_detail_wrap" hover-class="none" hover-stop-propagation="false" wx:if='{{!pageState.state}}'>
+    <block wx:for="{{storeDetailList}}"  wx:key="index">
         <view class="store_detail_item">
             <view class="detail_item_top">
                <image src="{{host}}{{item.envPicture}}"  mode="widthFix" />
@@ -8,8 +10,8 @@
             <view class="detail_item_bottom">
                 <view class="item_bottom_top">
                     <text class="bottom_top_left">{{item.areaName}}</text>
-                    <view class="bottom_top_left_wrap">
-                        <block wx:for="{{item.keywords}}"  wx:for-item="itemKeywords">
+                    <view class="bottom_top_left_wrap" wx:if="{{item.keywords.length > 0}}">
+                        <block wx:for="{{item.keywords}}" wx:key="index" wx:for-item="itemKeywords">
                             <text class="bottom_top_right right">{{itemKeywords}}</text>
                         </block>
                     </view>

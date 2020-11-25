@@ -59,7 +59,7 @@ App({
     userInfo: {},
     wUserInfo: {},
     host: "https://liouwellness.com",
-    host_j: "http://localhost:8091",
+    // host: "http://localhost:8080",
     storeId: '',
     selectStore: [],
     coachSelectData:{}

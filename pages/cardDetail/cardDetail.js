@@ -20,6 +20,7 @@ Page({
       "cardLogoUrl": "",
       "buyNote": "",
     },
+    pageState: {},
     selectTicket:{},
     num: 1,
     teacherSel: false,
@@ -49,18 +50,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.userInfo.userId) {
-      this.setData({
-        pageState: {}
-      })
-    } else {
-      _this.setData({
-        pageState: {
-          message: '请先登陆/注册哟~',
-          state: 'unlogin'
-        }
-      })
-    }
   },
 
   /**
@@ -189,7 +178,6 @@ Page({
   },
   radioTap: function (e) {
     const { radioChecked } = this.data;
-    console.log('家具啊啊', radioChecked);
     this.setData({
       radioChecked: !radioChecked
     })
@@ -459,7 +447,17 @@ Page({
   },
   // 点击 支付
   tapnPay: function () {
+    debugger
     var _this = this;
+    if (!app.globalData.userInfo.userId) {
+      _this.setData({
+        pageState: {
+          message: '请先登陆/注册哟~',
+          state: 'unlogin'
+        }
+      })
+      return;
+    } 
     const {
       radioChecked,
       data,
@@ -523,5 +521,14 @@ Page({
         },
       })
     }
+  },
+  loginTap: function (res) {
+    let userInfo = res.detail.userInfo;
+    if (userInfo) {
+      app.globalData.wUserInfo = userInfo
+    }
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
   },
 })

@@ -1,4 +1,7 @@
 /* pages/privateCourses/privateCourses.wxss */
+page{
+  height: 100%;
+}
 .container{
   min-height:100vh;
   background-color: #EEEFEF;

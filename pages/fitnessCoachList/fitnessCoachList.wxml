@@ -1,16 +1,16 @@
 <!--pages/fitnessCoachList/fitnessCoachList.wxml-->
 <!-- pages/storeDetail/storeDetail.wxml -->
 <view class="store_detail_wrap">
-    <block wx:for="{{coachList}}">
+    <block wx:for="{{coachList}}" wx:key="index">
         <navigator url="/pages/fitnessCoachDetail/fitnessCoachDetail?userId={{item.userId}}"  hover-class="className">
             <view class="store_detail_item">
                 <view class="img_wrap">
-                    <image src="{{host}}{{item.iconUrl}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />
+                    <image src="{{host}}{{item.iconUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
                 </view>
                 <view class="detail_text">
                     <text class="detail_text_left">{{item.userFullName}}</text>
                     <view class="detail_text_right_wrap">
-                        <block wx:for="{{item.forte}}" wx:for-item="itemForte">
+                        <block wx:for="{{item.forte}}" wx:key="index" wx:for-item="itemForte">
                             <text class="detail_text_right right">{{itemForte}}</text>
                         </block>
                     </view>
@@ -18,9 +18,9 @@
             </view>
         </navigator>
     </block>
-    <view class='bottomline' wx:if="{{moreFlag}}">
+</view>
+ <view class='bottomline' wx:if="{{moreFlag}}">
         <text class='baseline'></text>
         <text class='tip'>我是有底线的哟～</text>
         <text class='baseline'></text>
-    </view>
 </view>

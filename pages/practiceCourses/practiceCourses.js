@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    level: [1, 2, 3, 4, 5],
     isShow: false,
     host: app.globalData.host,
     address: "",
@@ -47,12 +48,12 @@ Page({
         } else {
           const dat = res.data.data;
           const { latitude, longitude, storeName, address} =dat;
-          app.globalData.selectStore = [{
-            latitude,
-            longitude,
-            storeName,
-            address
-          }]
+          // app.globalData.selectStore = [{
+          //   latitude,
+          //   longitude,
+          //   storeName,
+          //   address
+          // }]
           _this.setData({
             ...dat,
           })

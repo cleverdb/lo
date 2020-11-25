@@ -6,10 +6,16 @@
     <image class="show_image" wx:else src="{{host}}{{navPicUrl}}"></image>
     <view class="content_container">
         <view class="content_container_item  bor_bottom">
-            <view class="">
+            <view class="act_hd">
                 <text class="typename">{{courseName}}</text>
-                <text class='typename_bottom'>燃脂指数: {{bmiLevel}}/5</text>
-                <text>{{titleList.price}}</text>
+                <view class='lightning-panel'>
+                    <!-- <text class='typename_bottom' style="color:red;">200</text> -->
+                    <view class='typename_bottom'>燃脂指数</view>
+                    <view class='lightning' wx:for="{{level}}">
+                        <image mode="aspectFit" wx:if="{{(bmiLevel - item >=0)}}" src="/images/icon/lightning_full.png" />
+                        <image mode="aspectFit" wx:else src="/images/icon/lightning_empty.png" />
+                    </view>
+                </view>
             </view>
             <view>
                 <button bindtip="onshare" class='item_details_view' bindtap='showModalTap'>
@@ -32,7 +38,7 @@
             </view>
         </view>
     </view>
-    <view>
+    <view style="width:100%">
         <view class="center_item"></view>
         <view>
             <view class="list_title">
@@ -41,11 +47,15 @@
             <view class="detail_content">
                 <view class="detail_content_item">
                     <text class="detail_title">报名类型</text>
-                    <text class="detail_content">{{joinType}}</text>
+                    <view class="detail_content">
+                      <text>{{joinType}}</text>
+                      </view>
                 </view>
                 <view class="detail_content_item">
                     <text class="detail_title">活动背景</text>
-                    <text class="detail_content">{{courseBg}}</text>
+                    <view class="detail_content">
+                    <text>{{courseBg}}</text>
+                    </view>
                 </view>
             </view>
         </view>

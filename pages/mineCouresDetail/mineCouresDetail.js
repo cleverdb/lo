@@ -26,7 +26,7 @@ Page({
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/mine/consume`,
       data: {
-        id:'VIP20000100000'
+        id: id
       },
       success: function (res) {
         let result = res.data.data;

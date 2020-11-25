@@ -100,7 +100,7 @@ Page({
       this.initData(),
       this.getGroup({
         date: selectedDay,
-        storeId: '100000'
+        storeId: app.globalData.storeId
       })
     }
     wx.getSystemInfo({
@@ -109,7 +109,6 @@ Page({
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
         var calc = clientHeight * rpxR - 98;
-        console.log(calc)
         that.setData({
           winHeight: calc
         });
@@ -154,9 +153,9 @@ Page({
         donePageIndex
       };
     this.setData(dataParam)
-    this.loadMoreData({
-      ...param,
-    });
+    // this.loadMoreData({
+    //   ...param,
+    // });
   },
 
   /**
@@ -351,7 +350,6 @@ Page({
     _this.setData({
       times: times
     })
-    console.log(times)
   },
   filtePlanStore: function() {
     let _this = this
@@ -436,15 +434,16 @@ Page({
 
   dateTap: function (e) {
     const { selectedDay } = this.data;
-    console.log(selectedDay);
     let selectDate = e.currentTarget.dataset.date;
     if (selectDate == undefined) {
       return;
     }
-    this.getGroup({
-      date: selectDate,
-      storeId: app.globalData.storeId
-    })
+    if(e.currentTarget.dataset.index === '1'){
+      this.getGroup({
+        date: selectDate,
+        storeId: app.globalData.storeId
+      })
+    }
     this.setData({
       selectedDay: selectDate,
     })
@@ -543,8 +542,8 @@ Page({
   },
   // 课程预约的点击事件
   classTap: function (e) {
+    const self = this;
     const { plans } = e.currentTarget.dataset;
-    console.log(plans);
     const { selectedDay} = this.data;
     const { userId} = app.globalData.userInfo;
     const { 
@@ -559,7 +558,7 @@ Page({
     const startWeek = new Date(selectedDay).getDay(); //目标月1号对应的星期
     wx.showModal({
       title: '请确认预约信息',
-      content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}${coachName}`,
+      content: `${selectedDay} 周${Utils.weekObj[startWeek]}\r\n${startTime}-${endTime}\r\n${courseName}${coachName?coachName:''}`,
       confirmColor: '#FCC800',
       success(res) {
         if (res.confirm) {
@@ -581,6 +580,9 @@ Page({
                   duration: 2000,
                   icon: 'none'
                 })
+                if(errors.indexOf("会籍卡") > -1 ){
+                  self.gotoCardPage()
+                }
                 return
               }
               if (unitPrice > 0) {
@@ -614,8 +616,7 @@ Page({
                   title: messages,
                   duration: 2000,
                   icon: 'none',
-                });
-                
+                });    
               }
 
             }
@@ -635,7 +636,7 @@ Page({
       data: {
         courseId,
         storeId: app.globalData.storeId,
-        data: selectedDay
+        date: selectedDay
       },
       success: function (res) {
         const resurl = res.data.data;
@@ -672,6 +673,7 @@ Page({
   },
   // 点击预约
   setDataTap: function () {
+    var _this = this;
     const { timeitem, activeitem } = this.data;
     const { coursePlanId } = timeitem;
     const { id, appiontmentType } = activeitem;
@@ -700,14 +702,13 @@ Page({
           duration: 2000,
           icon: 'none'
         });
-        _this.setData9({
+        _this.setData({
           modalVisible: false,
         })
       }
     })
   },
   getGroup: function (param) {
-    console.log(param);
     const _this = this;
     wx.showLoading({
       title: '加载中...',
@@ -821,7 +822,6 @@ Page({
             const { courseDate } = current;
             const weaknum = new Date(courseDate).getDay();
             const dat2 = `周${Utils.weekObj[weaknum]}`;
-            console.log(weaknum, Utils.weekObj[weaknum]);
             return [...ex, {
               ...current,
               weakData: dat2
@@ -845,4 +845,75 @@ Page({
       }
     })
   },
+  // 报名
+  payTap: function (e) {
+    const { item } = e.currentTarget.dataset;
+    const { courseId, unitPrice = 0, } = item;
+    const { userId } = app.globalData.userInfo;
+    wx.request({
+      url: `${app.globalData.host}/rest/s1/Goods/appointment/public`,
+      method: 'POST',
+      data: {
+        courseId,
+        realPay: unitPrice > 0 ? unitPrice : 0,
+        openId: app.globalData.openId,
+        vipId: userId
+      },
+      success(res) {
+        const { errorCode = undefined, messages, errors } = res.data;
+        if (errorCode) {
+          wx.showModal({
+            title: '预约提示',
+            content: errors,
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
+          return
+        }
+        if (unitPrice > 0) {
+          const result = res.data.data;
+          const { orderid } = result;
+          wx.requestPayment({
+            timeStamp: result.timeStamp,
+            nonceStr: result.nonceStr,
+            package: result.package,
+            signType: result.signType,
+            paySign: result.paySign,
+            success(res) {
+              wx.showModal({
+                title: '预约提示',
+                content: messages,
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#FCC800',
+              });
+            },
+            fail(res) {
+              wx.request({
+                url: `${app.globalData.host}/rest/s1/Goods/appointment/public/disabled`,
+                data: {
+                  orderId: orderid,
+                }
+              })
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '预约提示',
+            content: messages,
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#FCC800',
+          });
+        }
+
+      }
+    })
+  },
+  gotoCardPage:function(){
+    wx.switchTab({
+      url: `/pages/card/card`,
+    })
+  }
 })

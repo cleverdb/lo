@@ -33,7 +33,7 @@
         <image class="arrow-right" src="/images/icon/arrow-right.png" />
       </view>
     </view>
-    <view class="content_item">
+    <!-- <view class="content_item">
       <view>
         <text>开卡场馆</text>
       </view>
@@ -45,7 +45,7 @@
           </picker>
         <image class="arrow-right" src="/images/icon/arrow-right.png" />
       </view>
-    </view>
+    </view> -->
     <view class="content_item">
       <view>
         <text>销售人员</text>
@@ -89,8 +89,8 @@
     <button class="buy_button" disabled="{{!radioChecked}}">确认购买</button>
   </view>
 </view>
-<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus||isShowsalesList}}" catchtouchmove="true"></view>
-<view wx:if="{{isShowsalesList}}" animation="{{animation2}}" class="flex_container" catchtouchmove="true">
+<view class="popup-container" bindtap="hideModal" wx:if="{{showModalStatus||isShowsalesList}}" ></view>
+<view wx:if="{{isShowsalesList}}" animation="{{animation2}}" class="flex_container" >
   <view class="sales_title">选择会籍销售人员</view>
   <view class="sales_list row-rap">
     <block wx:for="{{sales}}" wx:key="index" wx:if="{{sales}}">
@@ -107,7 +107,7 @@
   </view>
 </view>
 
-<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}" catchtouchmove="true">
+<view animation="{{animationData}}" class="popup-content" wx:if="{{showModalStatus}}" >
     <view class="popup-content-bd">
       <scroll-view scroll-y class='sv'>
         <view class="usable_title" wx:if="{{usable.length > 0}}">
