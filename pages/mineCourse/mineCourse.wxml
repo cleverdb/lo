@@ -19,8 +19,9 @@
                         <text class='center-bottom'>/{{item.totalNum}}</text>
                     </view>
                     <view class='{{item.remaining==0 ? "item-catch": ""}}' bindtap="courseTap" data-item="{{item}}">
-                        <button class='list-button' wx:if="{{item.remaining>0}}">预约</button>
-                        <text class='list-catch' wx:else>查看详情</text>
+                        <!-- <button class='list-button' wx:if="{{item.remaining>0}}">预约</button>
+                        <text class='list-catch' wx:else>查看详情</text> -->
+                        <text class='list-catch'>查看详情</text>
                     </view>
                 </view>
             </view>

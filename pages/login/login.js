@@ -102,7 +102,6 @@ Page({
   wechatLogin: function(e) {
     let _this = this
     let errMsg = e.detail.errMsg
-    debugger
     let params = {
       iv: e.detail.iv,
       encryptedData: e.detail.encryptedData,
@@ -185,7 +184,6 @@ Page({
           return
         }
         if (!res.data.data.success) {
-          debugger
           wx.showToast({
             title: res.data.data.messages,
             icon: 'none',
