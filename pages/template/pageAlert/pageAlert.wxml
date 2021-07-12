@@ -7,7 +7,7 @@
     </view>
     <view class="page-state" wx:if="{{state == 'unlogin'}}">
       <view class="message">{{message}}</view>
-      <view class="btn"><button open-type="getUserInfo" bindgetuserinfo="loginTap">登陆/注册</button></view>
+      <view class="btn"><button open-type="getUserInfo" bindgetuserinfo="loginTap">登录/注册</button></view>
     </view>
     <view class="page-state " wx:if="{{state == 'empty'}}">
       <view class="message empty">{{message}}</view>

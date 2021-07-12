@@ -58,8 +58,8 @@ App({
     hasLogin: false,
     userInfo: {},
     wUserInfo: {},
-    host: "https://liouwellness.com",
-    // host: "http://localhost:8080",
+    //host: "https://liouwellness.com",
+    host: "http://localhost:8080",
     storeId: '',
     selectStore: [],
     coachSelectData:{}

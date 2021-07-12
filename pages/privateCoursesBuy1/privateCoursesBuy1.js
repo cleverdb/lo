@@ -39,7 +39,7 @@ Page({
     } else {
       this.setData({
         pageState: {
-          message: '请先登陆/注册哟~',
+          message: '请先登录/注册哟~',
           state: 'unlogin'
         }
       })
@@ -141,7 +141,7 @@ Page({
     if (!app.globalData.userInfo.userId) {
       _this.setData({
         pageState: {
-          message: '请先登陆/注册哟~',
+          message: '请先登录/注册哟~',
           state: 'unlogin'
         }
       })

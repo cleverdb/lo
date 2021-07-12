@@ -142,7 +142,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: "微信登陆失败",
+            title: "微信登录失败",
             icon: 'none',
             duration: 2000
           })
@@ -192,7 +192,7 @@ Page({
           return
         }
         wx.showToast({
-          title: "登陆成功",
+          title: "登录成功",
           icon: 'success',
           duration: 2000
         })

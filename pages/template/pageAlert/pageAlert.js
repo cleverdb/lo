@@ -21,7 +21,7 @@ const empty = (that, message) => {
   }
 }
 const _login = (that,message) => {
-  return (message = '请先登陆哟') => {
+  return (message = '请先登录哟') => {
     that.setData({
       pageState: {
         state: 'unlogin',

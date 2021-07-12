@@ -60,7 +60,7 @@ Page({
     } else {
       this.setData({
         pageState: {
-          message: '请先登陆/注册哟~',
+          message: '请先登录/注册哟~',
           state: 'unlogin'
         }
       })

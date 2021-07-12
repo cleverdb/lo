@@ -27,7 +27,7 @@
         <view class="cell id" wx:if="{{user.vipId}}">No:{{user.vipId}}</view>
       </block>
       <block wx:else>
-        <button class='cell' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登陆/注册</button>
+        <button class='cell' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录/注册</button>
       </block>
     </view>
   </view>

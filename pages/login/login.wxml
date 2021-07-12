@@ -24,21 +24,21 @@
         </view>
       </block>
       <view class="btn">
-        <button form-type="submit" >登陆</button>
+        <button form-type="submit" >登录</button>
       </view>
     </form>
   </view>
   <view class='bd'>
     <!-- <view class='row'>
-      <button type='primary' bindtap='accountTap' disabled='{{account}}' >账号密码登陆</button>
+      <button type='primary' bindtap='accountTap' disabled='{{account}}' >账号密码登录</button>
     </view> -->
     <view class='row'>
-      <button type='primary' open-type="getPhoneNumber" bindgetphonenumber="wechatLogin">微信登陆</button>
+      <button type='primary' open-type="getPhoneNumber" bindgetphonenumber="wechatLogin">微信登录</button>
       <!-- <image class='wechat' src="/images/icon/wechat.png"></image> -->
       
     </view>
     <!-- <view class='row'>
-      <button type='primary' bindtap='telTap' disabled='{{tel}}'>手机号登陆</button>
+      <button type='primary' bindtap='telTap' disabled='{{tel}}'>手机号登录</button>
     </view> -->
   </view>
   <view class='ft'></view>

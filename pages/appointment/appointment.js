@@ -244,7 +244,7 @@ Page({
     if (!userId) {
       this.setData({
         pageState: {
-          message: '请先登陆/注册哟~',
+          message: '请先登录/注册哟~',
           state: 'unlogin'
         }
       })
@@ -628,13 +628,14 @@ Page({
   // 预约的点击事件
   reserveTap: function (e) {
     const { activeitem } = e.currentTarget.dataset;
-    const { courseId } = activeitem;
+    const { courseId,coachId } = activeitem;
     const { selectedDay } = this.data;
     const _this = this;
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/appointment/private/planlist`,
       data: {
         courseId,
+        coachId,
         storeId: app.globalData.storeId,
         date: selectedDay
       },
@@ -676,7 +677,7 @@ Page({
     var _this = this;
     const { timeitem, activeitem } = this.data;
     const { coursePlanId } = timeitem;
-    const { id, appiontmentType } = activeitem;
+    const { id, appiontmentType} = activeitem;
     const { userId } = app.globalData.userInfo;
     wx.request({
       url: `${app.globalData.host}/rest/s1/Goods/appointment/private`,
