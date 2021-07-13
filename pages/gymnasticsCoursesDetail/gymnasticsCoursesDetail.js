@@ -256,7 +256,7 @@ Page({
         }
         if (unitPrice > 0) {
           const result = res.data.data;
-          const { orderid } = result;
+          const { orderId } = result;
           wx.requestPayment({
             timeStamp: result.timeStamp,
             nonceStr: result.nonceStr,
@@ -275,7 +275,7 @@ Page({
               wx.request({
                 url: `${app.globalData.host}/rest/s1/Goods/appointment/group/disabled`,
                 data: {
-                  orderId: orderid,
+                  orderId: orderId,
                 }
               })
             }
